@@ -48,6 +48,10 @@ jobs:
         working-directory: ./core/frontend
         run: npm ci
 
+      - name: Run frontend tests
+        working-directory: ./core/frontend
+        run: npm test -- --passWithNoTests
+
       - name: Install backend dependencies
         working-directory: ./core/backend
         run: npm ci
