@@ -1,4 +1,4 @@
-import { ThemeColors } from '../../core/frontend/lib/theme';
+import { ThemeColors } from '../theme';
 
 const colors: ThemeColors = {
   primary: {

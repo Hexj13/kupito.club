@@ -1,4 +1,4 @@
-import { SiteConfig } from '../../core/frontend/lib/site-config';
+import { SiteConfig } from '../site-config';
 
 const config: SiteConfig = {
   country: 'mk',
