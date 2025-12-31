@@ -1,0 +1,12 @@
+{
+  "name": "kupito-club",
+  "version": "1.0.0",
+  "description": "Kupito.club - Platform for Macedonia",
+  "private": true,
+  "scripts": {
+    "prepare:build": "cp -r locales core/frontend/lib/ && cp -r theme core/frontend/lib/ && cp -r config core/frontend/lib/",
+    "build": "npm run prepare:build && cd core/frontend && npm run build",
+    "build:backend": "cd core/backend && npm run build",
+    "dev": "npm run prepare:build && cd core && npm run dev"
+  }
+}
