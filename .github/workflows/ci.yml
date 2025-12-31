@@ -13,6 +13,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -21,9 +22,27 @@ jobs:
 
       - name: Copy locale files to core
         run: |
+          if [ ! -d "locales" ] || [ ! -d "theme" ] || [ ! -d "config" ]; then
+            echo "❌ Error: Required directories (locales, theme, config) not found"
+            exit 1
+          fi
           cp -r locales core/frontend/lib/
           cp -r theme core/frontend/lib/
           cp -r config core/frontend/lib/
+          
+          if [ ! -f "core/frontend/lib/locales/mk.json" ]; then
+            echo "❌ Error: Failed to copy locales/mk.json"
+            exit 1
+          fi
+          if [ ! -f "core/frontend/lib/theme/colors.ts" ]; then
+            echo "❌ Error: Failed to copy theme/colors.ts"
+            exit 1
+          fi
+          if [ ! -f "core/frontend/lib/config/site.ts" ]; then
+            echo "❌ Error: Failed to copy config/site.ts"
+            exit 1
+          fi
+          echo "✅ All locale files copied successfully"
 
       - name: Install frontend dependencies
         working-directory: ./core/frontend
@@ -41,9 +60,31 @@ jobs:
           NEXT_PUBLIC_API_URL: ${{ secrets.API_URL }}
         run: npm run build
 
+      - name: Verify frontend build
+        working-directory: ./core/frontend
+        run: |
+          if [ ! -d ".next" ]; then
+            echo "❌ Build failed: .next directory not found"
+            exit 1
+          fi
+          echo "✅ Frontend build successful"
+
       - name: Build backend
         working-directory: ./core/backend
         run: npm run build
+
+      - name: Verify backend build
+        working-directory: ./core/backend
+        run: |
+          if [ ! -d "dist" ]; then
+            echo "❌ Build failed: dist directory not found"
+            exit 1
+          fi
+          if [ ! -f "dist/main.js" ]; then
+            echo "❌ Build failed: dist/main.js not found"
+            exit 1
+          fi
+          echo "✅ Backend build successful"
 
       - name: Deploy
         # Add your deployment steps here
