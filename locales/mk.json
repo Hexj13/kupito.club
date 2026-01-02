@@ -87,7 +87,9 @@
     "normal": "Нормален",
     "large": "Голем",
     "saving": "Зачувување...",
-    "goToHome": "На главна"
+    "goToHome": "На главна",
+    "today": "Денес",
+    "daysAgo": "{days} дена пред"
   },
   "cookieSettings": {
     "loading": "Вчитување...",
