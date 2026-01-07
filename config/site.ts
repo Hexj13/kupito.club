@@ -4,7 +4,7 @@ const config: SiteConfig = {
   country: 'mk',
   name: 'Kupito',
   domain: 'kupito.club',
-  locale: 'mk_MK',
+  locale: 'mk-MK',
   currency: 'MKD',
   countryCode: 'MK',
   supportEmail: 'support@kupito.club',
