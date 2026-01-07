@@ -48,9 +48,9 @@ git push
 
 ## Build Process
 
-During build, locale-specific files are copied to `core/frontend/lib/`:
-- `locales/` → `core/frontend/lib/locales/`
+During build, platform-specific files are copied to `core/frontend/lib/`:
+- `locales/` → `core/frontend/lib/locales/` (for fallback, translations are loaded directly from root)
 - `theme/` → `core/frontend/lib/theme/`
 - `config/` → `core/frontend/lib/config/`
 
-This allows the core to load platform-specific configuration dynamically.
+**Note:** Translation files (`locales/mk.json`, `locales/en.json`) are loaded directly from the root directory. The copy to `core/frontend/lib/locales/` is kept for backward compatibility and fallback purposes. Theme and config files still require copying to core.

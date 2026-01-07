@@ -42,7 +42,7 @@ jobs:
             echo "❌ Error: Failed to copy config/site.ts"
             exit 1
           fi
-          echo "✅ All locale files copied successfully"
+          echo "✅ All platform files copied successfully"
 
       - name: Install frontend dependencies
         working-directory: ./core/frontend
