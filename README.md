@@ -7,6 +7,7 @@ Platform for Macedonia - Car marketplace built on PPCSL core.
 This repository contains only platform-specific configuration:
 
 - `locales/mk.json` - Macedonian translations
+- `locales/en.json` - English translations
 - `theme/colors.ts` - Macedonian color scheme
 - `config/site.ts` - Site configuration (domain, locale, currency, etc.)
 - `core/` - Git submodule pointing to PPCSL core repository
