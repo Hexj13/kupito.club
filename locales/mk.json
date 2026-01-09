@@ -245,12 +245,18 @@
     "codeDigitsOnly": "Кодот мора да содржи само цифри",
     "sendSmsError": "Грешка при испраќање на SMS",
     "maxAttemptsReached": "Достигнато е максималниот број на обиди. Испратете го кодот повторно.",
+    "maxAttemptsReachedWithMinutes": "Достигнато е максималниот број на обиди (40). Обидете се повторно за {minutes} минути.",
     "ipBlocked": "IP адресата е блокирана за {remainingMinutes} минути",
     "codeInvalid": "Невалиден код. Обидете се повторно.",
+    "invalidCodeWithAttempts": "Невалиден код. Обидете се повторно. ({attempts}/10)",
     "enterFullCode": "Внесете го целосниот код",
     "verifying": "Проверување...",
     "verify": "Потврди",
-    "resendCode": "Испрати нов код"
+    "blocked": "Блокирано",
+    "resendCode": "Испрати нов код",
+    "resendCodeWithCooldown": "Испрати нов код ({cooldown}с)",
+    "codeResent": "Кодот е испратен повторно",
+    "maxResendAttempts": "Максимален број на обиди"
   },
   "saveFilter": {
     "editTitle": "Уреди филтер",
@@ -637,6 +643,7 @@
     "urgent": "Итно",
     "new": "Ново",
     "search": "Пребарај",
+    "searching": "Пребарување...",
     "reset": "Ресетирај",
     "addToFavorites": "Додади во омилени",
     "login": "Најави се",
@@ -682,12 +689,32 @@
       "title": "Промена на телефон",
       "currentPhone": "Тековен телефон",
       "newPhone": "Нов телефонски број",
-      "backToProfile": "Назад кон профил"
+      "backToProfile": "Назад кон профил",
+      "phoneRequired": "Телефонскиот број е задолжителен",
+      "phoneInvalid": "Внесете валиден телефон (формат: +код држава број)",
+      "codeSent": "SMS кодот е испратен",
+      "sendCodeError": "Грешка при испраќање на SMS",
+      "sending": "Испраќање...",
+      "sendCode": "Испрати код"
     },
     "verifyPhoneChange": {
       "title": "Потврда на нов телефон",
       "codeSent": "Испратениот код на телефон",
-      "enterCode": "Внесете го 6-цифрениот код од СМС пораката"
+      "enterCode": "Внесете го 6-цифрениот код од СМС пораката",
+      "verify": "Потврди",
+      "blocked": "Блокирано",
+      "invalidCodeWithAttempts": "Невалиден код. Обидете се повторно. ({attempts}/10)",
+      "maxAttemptsReached": "Достигнато е максималниот број на обиди. Испратете го кодот повторно.",
+      "maxAttemptsReachedWithMinutes": "Достигнато е максималниот број на обиди. Обидете се повторно за {minutes} минути",
+      "maxAttempts": "Достигнато е максималниот број на обиди (10). Испратете го кодот повторно за да продолжите.",
+      "codeRequired": "Кодот мора да содржи точно 6 цифри",
+      "codeDigitsOnly": "Кодот мора да содржи само цифри",
+      "phoneChangedSuccess": "Телефонот е успешно променет",
+      "ipBlocked": "IP адресата е блокирана за {minutes} минути",
+      "codeResent": "Кодот е испратен повторно",
+      "resendCodeError": "Грешка при испраќање на SMS",
+      "resendCode": "Испрати нов код",
+      "resendCodeWithCooldown": "Испрати нов код ({cooldown}с)"
     }
   },
   "admin": {
@@ -949,6 +976,8 @@
   "verifyEmail": {
     "title": "Потврда на email адреса",
     "pleaseWait": "Ве молиме почекајте...",
+    "invalidLink": "Невалиден линк за потврда",
+    "verificationError": "Грешка при потврда на email адресата",
     "success": {
       "title": "Email адресата е успешно потврдена",
       "description": "Вашата email адреса е успешно потврдена. Сега можете да користите сите функции на платформата.",
