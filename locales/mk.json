@@ -872,7 +872,8 @@
     "transmission": {
       "Manual": "Мануелна",
       "Automatic": "Автоматска",
-      "CVT": "Варијатор"
+      "CVT": "Варијатор",
+      "Robot": "Робот"
     },
     "driveType": {
       "FWD": "Преден",
