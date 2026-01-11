@@ -563,6 +563,11 @@
     "imageAltOf": "{title} - Слика {index} од {total}",
     "openFullSize": "Отвори на полн формат"
   },
+  "similarListings": {
+    "title": "Слични огласи",
+    "scrollLeft": "Скроллирај налево",
+    "scrollRight": "Скроллирај надесно"
+  },
   "searchFilters": {
     "popular": "Популарни",
     "popularFilters": "Популарни филтри",
