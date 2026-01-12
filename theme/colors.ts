@@ -36,6 +36,10 @@ const colors: ThemeColors = {
     warning: "#f59e0b",
     info: "#3b82f6",
   },
+  pwa: {
+    backgroundColor: "#0f172a",
+    themeColor: "#3b82f6",
+  },
 };
 
 export default colors;

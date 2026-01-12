@@ -1,41 +1,78 @@
 # Kupito.club
 
-Platform for Macedonia - Car marketplace built on PPCSL core.
+**Platform for Macedonia** - Car marketplace built on PPCSL core.
 
-## Structure
+## 📁 Structure
 
-This repository contains only platform-specific configuration:
+This repository contains **only platform-specific files**:
 
-- `locales/mk.json` - Macedonian translations
-- `locales/en.json` - English translations
-- `theme/colors.ts` - Macedonian color scheme
-- `config/site.ts` - Site configuration (domain, locale, currency, etc.)
-- `core/` - Git submodule pointing to PPCSL core repository
-
-## Development
-
-```bash
-# Initialize submodule (first time)
-git submodule update --init --recursive
-
-# Update core to latest version
-cd core
-git pull origin main
-cd ..
-
-# Prepare build (copies locale files to core)
-npm run prepare:build
-
-# Build frontend
-npm run build
-
-# Build backend
-npm run build:backend
+```
+kupito.club/
+├── assets/           # Графические ресурсы (логотипы, иконки, watermark)
+│   ├── frontend/public/
+│   └── backend/watermark/
+├── config/           # Конфигурация платформы
+│   └── site.ts
+├── locales/          # Переводы
+│   ├── mk.json
+│   └── en.json
+├── theme/            # Цветовая схема
+│   └── colors.ts
+├── scripts/          # Platform-specific скрипты генерации данных
+│   └── mk/
+│       ├── production/
+│       └── stage/
+├── core/             # Git submodule → PPCSL core
+├── package.json
+└── README.md
 ```
 
-## Updating Core
+**Core repository** содержит всю бизнес-логику и компоненты.
 
-When PPCSL core is updated:
+---
+
+## 🚀 Quick Start
+
+```bash
+# 1. Клонировать с submodule
+git clone --recurse-submodules <repo-url>
+
+# 2. Установить зависимости
+npm install
+cd core/backend && npm install
+cd ../frontend && npm install
+cd ../..
+
+# 3. Подготовить сборку (копирует platform-файлы в core)
+npm run prepare:build
+
+# 4. Запустить
+npm run dev
+```
+
+**Frontend:** http://localhost:3000  
+**Backend:** http://localhost:4000
+
+---
+
+## 📦 Build Process
+
+При запуске `npm run prepare:build` файлы копируются из platform-repo в core:
+
+```
+assets/frontend/public/*     → core/frontend/public/
+assets/backend/watermark/    → core/backend/assets/watermark/
+locales/                     → core/frontend/lib/locales/
+theme/                       → core/frontend/lib/theme/
+config/                      → core/frontend/lib/config/
+scripts/mk/                  → core/backend/src/scripts/mk/
+```
+
+**Core остаётся универсальным**, работает для всех платформ!
+
+---
+
+## 🔄 Updating Core
 
 ```bash
 cd core
@@ -46,11 +83,17 @@ git commit -m "chore: update PPCSL core"
 git push
 ```
 
-## Build Process
+---
 
-During build, platform-specific files are copied to `core/frontend/lib/`:
-- `locales/` → `core/frontend/lib/locales/` (for fallback, translations are loaded directly from root)
-- `theme/` → `core/frontend/lib/theme/`
-- `config/` → `core/frontend/lib/config/`
+## 📚 Documentation
 
-**Note:** Translation files (`locales/mk.json`, `locales/en.json`) are loaded directly from the root directory. The copy to `core/frontend/lib/locales/` is kept for backward compatibility and fallback purposes. Theme and config files still require copying to core.
+Вся документация в **core repository**:
+
+- **[Core Documentation](./core/docs/README.md)** - Общая документация
+- **[Platform Guide](./core/docs/guides/PLATFORM_GUIDE.md)** - Создание платформ
+- **[Deployment Guide](./core/docs/guides/DEPLOYMENT.md)** - Деплой
+- **[Architecture](./core/docs/architecture/README_ARCHITECTURE.md)** - Архитектура
+
+---
+
+**Built on:** [PPCSL](./core/) (Platform-Portable Car Sales Logic)

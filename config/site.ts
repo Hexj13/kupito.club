@@ -6,6 +6,7 @@ const config: SiteConfig = {
   domain: "kupito.club",
   locale: "mk-MK",
   currency: "MKD",
+  currencies: ["MKD", "EUR"] as const,
   countryCode: "MK",
   supportEmail: "support@kupito.club",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://kupito.club",
