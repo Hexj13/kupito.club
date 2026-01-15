@@ -68,6 +68,8 @@
     "selectSorting": "Избери подредување",
     "scrollToFilters": "Скроллирај до филтри",
     "scrollBack": "Врати се назад",
+    "scrollLeft": "Скроллирај налево",
+    "scrollRight": "Скроллирај надесно",
     "acceptCookies": "Прифаќање на cookies",
     "closeCookies": "Затвори",
     "cookieConsentMessage": "Користиме cookies за подобрување на корисничкото искуство, анализирање и маркетинг.",
@@ -573,6 +575,7 @@
   "searchFilters": {
     "popular": "Популарни",
     "popularFilters": "Популарни филтри",
+    "popularBodyTypes": "Популарни типови на каросерии",
     "showPopularFilters": "Прикажи популарни филтри",
     "hidePopularFilters": "Сокриј популарни филтри",
     "selectBrands": "Избери марки",
