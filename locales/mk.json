@@ -343,6 +343,12 @@
     "selectBrand": "Изберете марка",
     "selectCity": "Изберете град",
     "descriptionPlaceholder": "Додадете опис на автомобилот...",
+    "vehicleTypeLabel": "Тип на возило",
+    "vehicleType": {
+      "car": "Легков",
+      "truck": "Камион",
+      "moto": "Мото"
+    },
     "brandRequired": "Потребно е да изберете марка",
     "modelRequired": "Потребно е да изберете модел",
     "yearRequired": "Потребно е да внесете година",
@@ -577,6 +583,7 @@
     "popular": "Популарни",
     "popularFilters": "Популарни филтри",
     "popularBodyTypes": "Популарни типови на каросерии",
+    "categoryLabel": "Категорија:",
     "showPopularFilters": "Прикажи популарни филтри",
     "hidePopularFilters": "Сокриј популарни филтри",
     "selectBrands": "Избери марки",
@@ -902,7 +909,19 @@
       "Van": "Фургон",
       "Pickup": "Пикап",
       "Minivan": "Миниван",
-      "Truck": "Камион"
+      "Truck": "Камион",
+      "Bus": "Автобус",
+      "SemiTruck": "Седелен влечач",
+      "Tractor": "Трактор",
+      "SpecialEquipment": "Специјална",
+      "Naked": "Нейкед",
+      "Sport": "Спорт",
+      "Touring": "Туристички",
+      "Cruiser": "Крузер",
+      "Adventure": "Авантуристички",
+      "Scooter": "Скутер",
+      "Enduro": "Ендуро",
+      "Cross": "Крос"
     },
     "doors": {
       "2": "2 врати",
@@ -968,7 +987,20 @@
       "multifunction_steering": "Мултифункционален волањ",
       "start_stop": "Start-Stop систем",
       "esp": "ESP систем",
-      "abs": "ABS систем"
+      "abs": "ABS систем",
+      "hydraulic_lift": "Хидраулична виљушка",
+      "winch": "Винч",
+      "tachograph": "Тахограф",
+      "refrigerator": "Фрижидер",
+      "adblue_system": "AdBlue систем",
+      "parking_brake": "Паркинг кочница",
+      "alarm_system": "Аларм систем",
+      "luggage_rack": "Носач за багаж",
+      "windshield": "Ветробран",
+      "heated_grips": "Загреани рачки",
+      "quick_shifter": "Брз менувач",
+      "traction_control": "Контрола на влечење",
+      "riding_modes": "Режими на возење"
     }
   },
   "breadcrumbs": {

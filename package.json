@@ -11,6 +11,7 @@
     "seed": "COUNTRY=mk npm run prepare:build && cd core/backend && COUNTRY=mk npx ts-node -r tsconfig-paths/register src/scripts/stage/seed.ts",
     "reset-and-seed": "COUNTRY=mk npm run prepare:build && cd core/backend && COUNTRY=mk npx ts-node -r tsconfig-paths/register src/scripts/stage/reset-and-seed.ts",
     "add-brands": "cd core/backend && npx ts-node -r tsconfig-paths/register src/scripts/stage/add-brands.ts",
-    "seed-all-brands": "cd core/backend && npx ts-node -r tsconfig-paths/register src/scripts/stage/seed-all-brands.ts"
+    "seed-all-brands": "cd core/backend && npx ts-node -r tsconfig-paths/register src/scripts/stage/seed-all-brands.ts",
+    "check-models-validity": "cd core/backend && COUNTRY=mk npx ts-node -r tsconfig-paths/register src/scripts/stage/check-models-validity.ts"
   }
 }
