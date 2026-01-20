@@ -14,15 +14,11 @@ kupito.club/
 ├── config/           # Конфигурация платформы
 │   └── site.ts
 ├── locales/          # Переводы
-│   ├── mk.json
-│   └── en.json
+│   └── mk.json
 ├── theme/            # Цветовая схема
 │   └── colors.ts
-├── scripts/          # Platform-specific скрипты генерации данных
-│   └── mk/
-│       ├── production/
-│       └── stage/
 ├── core/             # Git submodule → PPCSL core
+│   └── backend/src/scripts/platforms/mk/  # Platform configs в core
 ├── package.json
 └── README.md
 ```
@@ -65,7 +61,6 @@ assets/backend/watermark/    → core/backend/assets/watermark/
 locales/                     → core/frontend/lib/locales/
 theme/                       → core/frontend/lib/theme/
 config/                      → core/frontend/lib/config/
-scripts/mk/                  → core/backend/src/scripts/mk/
 ```
 
 **Core остаётся универсальным**, работает для всех платформ!
