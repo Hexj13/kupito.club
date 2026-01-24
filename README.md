@@ -87,7 +87,7 @@ git push
 - **[Core Documentation](./core/docs/README.md)** - Общая документация
 - **[Platform Guide](./core/docs/guides/PLATFORM_GUIDE.md)** - Создание платформ
 - **[Deployment Guide](./core/docs/guides/DEPLOYMENT.md)** - Деплой
-- **[Architecture](./core/docs/architecture/README_ARCHITECTURE.md)** - Архитектура
+- **[Architecture](./core/docs/architecture/ARCHITECTURE_OVERVIEW.md)** - Архитектура
 
 ---
 

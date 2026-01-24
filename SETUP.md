@@ -1,4 +1,4 @@
-# Setup Instructions for kupito.club
+# Настройка kupito.club (первоначальная установка)
 
 ## Prerequisites
 
