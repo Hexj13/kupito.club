@@ -262,11 +262,49 @@ WHERE type = 'Admin';
 - Включают румынские названия (`name`), английские (`nameEn`) и русские (`nameRu`)
 - Всего ~90 городов Молдовы
 
+### 4.2. Проблема: отображаются города Македонии
+
+**Если на продакшене отображаются города Македонии вместо городов Молдовы:**
+
+1. **Проверьте переменные окружения:**
+   - Убедитесь, что `COUNTRY=md` установлена в Backend Service
+   - Убедитесь, что `NEXT_PUBLIC_COUNTRY=md` установлена в Backend и Frontend Services
+
+2. **Очистите кэш городов в Redis:**
+   
+   **Вариант 1: Через Render Shell (РЕКОМЕНДУЕТСЯ)**
+   
+   Откройте Render Dashboard → Backend Service → **Shell** и выполните:
+   ```bash
+   cd core/backend
+   npm run clear-cache:prod
+   ```
+   
+   **Вариант 2: Через Redis CLI (если есть доступ)**
+   
+   Подключитесь к Redis и выполните:
+   ```bash
+   redis-cli
+   KEYS cache:cities:*
+   DEL cache:cities:all
+   ```
+   
+   Или удалите все ключи с префиксом:
+   ```bash
+   redis-cli --scan --pattern "cache:cities:*" | xargs redis-cli DEL
+   ```
+
+3. **Перезапустите Backend Service:**
+   - После очистки кэша перезапустите Backend Service в Render Dashboard
+   - Это гарантирует, что сервис перезагрузит города из кода с учетом правильной переменной `COUNTRY=md`
+
 **Проверка:**
-После деплоя можно проверить доступность городов:
+После деплоя и очистки кэша можно проверить доступность городов:
 ```bash
 curl https://api.kupito.club/api/cities
 ```
+
+Должны вернуться города Молдовы (Chișinău, Bălți, Tiraspol и т.д.), а не города Македонии (Skopje, Bitola и т.д.).
 
 ---
 
