@@ -1,4 +1,4 @@
-name: CI/CD MK
+name: CI/CD MD
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    name: Build and Deploy MK
+    name: Build and Deploy MD
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -30,8 +30,12 @@ jobs:
           cp -r theme core/frontend/lib/
           cp -r config core/frontend/lib/
           
-          if [ ! -f "core/frontend/lib/locales/mk.json" ]; then
-            echo "❌ Error: Failed to copy locales/mk.json"
+          if [ ! -f "core/frontend/lib/locales/ro.json" ]; then
+            echo "❌ Error: Failed to copy locales/ro.json"
+            exit 1
+          fi
+          if [ ! -f "core/frontend/lib/locales/ru.json" ]; then
+            echo "❌ Error: Failed to copy locales/ru.json"
             exit 1
           fi
           if [ ! -f "core/frontend/lib/theme/colors.ts" ]; then
@@ -59,7 +63,7 @@ jobs:
       - name: Build frontend
         working-directory: ./core/frontend
         env:
-          NEXT_PUBLIC_COUNTRY: mk
+          NEXT_PUBLIC_COUNTRY: md
           NEXT_PUBLIC_SITE_URL: https://kupito.club
           NEXT_PUBLIC_API_URL: ${{ secrets.API_URL }}
         run: npm run build
