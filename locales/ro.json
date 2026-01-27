@@ -411,7 +411,7 @@
     "imageEmptyError": "Fișierul este gol",
     "imageMaxCountError": "Maximum 20 de fotografii",
     "basicInfo": "Informații de bază",
-    "brandModelInfo": "Dacă nu există marca sau modelul pe care îl căutați, scrieți-ne la adresa de email support@kupito.club și îl vom adăuga în decurs de o zi și vă vom anunța imediat după adăugare.",
+    "brandModelInfo": "Dacă marca sau modelul pe care îl căutați nu este disponibil, scrieți-ne la support@kupito.club. Îl vom adăuga în cursul zilei și vă vom anunța imediat.",
     "brandLabel": "Marcă *",
     "modelLabel": "Model *",
     "yearLabel": "An *",
