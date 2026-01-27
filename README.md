@@ -1,6 +1,6 @@
 # Kupito.club
 
-**Platform for Macedonia** - Car marketplace built on PPCSL core.
+**Platform for Moldova** - Car marketplace built on PPCSL core.
 
 ## 📁 Structure
 
@@ -14,11 +14,12 @@ kupito.club/
 ├── config/           # Конфигурация платформы
 │   └── site.ts
 ├── locales/          # Переводы
-│   └── mk.json
+│   ├── ro.json
+│   └── ru.json
 ├── theme/            # Цветовая схема
 │   └── colors.ts
 ├── core/             # Git submodule → PPCSL core
-│   └── backend/src/scripts/platforms/mk/  # Platform configs в core
+│   └── backend/src/scripts/platforms/md/  # Platform configs в core
 ├── package.json
 └── README.md
 ```

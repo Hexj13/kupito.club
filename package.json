@@ -1,7 +1,7 @@
 {
   "name": "kupito-club",
   "version": "1.0.0",
-  "description": "Kupito.club - Platform for Macedonia",
+  "description": "Kupito.club - Platform for Moldova",
   "private": true,
   "scripts": {
     "format:platform": "cd core/frontend && npx prettier --write ../../config/*.ts ../../theme/*.ts ../../locales/*.json",
@@ -9,10 +9,11 @@
     "build": "npm run prepare:build && cd core/frontend && npm run build",
     "build:backend": "cd core/backend && npm run build",
     "dev": "npm run prepare:build && cd core && npm run dev",
-    "seed": "COUNTRY=mk npm run prepare:build && cd core/backend && COUNTRY=mk npx ts-node -r tsconfig-paths/register src/scripts/stage/seed.ts",
-    "reset-and-seed": "COUNTRY=mk npm run prepare:build && cd core/backend && COUNTRY=mk npx ts-node -r tsconfig-paths/register src/scripts/stage/reset-and-seed.ts",
+    "seed": "COUNTRY=md npm run prepare:build && cd core/backend && COUNTRY=md npx ts-node -r tsconfig-paths/register src/scripts/stage/seed.ts",
+    "reset-and-seed": "COUNTRY=md npm run prepare:build && cd core/backend && COUNTRY=md npx ts-node -r tsconfig-paths/register src/scripts/stage/reset-and-seed.ts",
     "add-brands": "cd core/backend && npx ts-node -r tsconfig-paths/register src/scripts/stage/add-brands.ts",
     "seed-all-brands": "cd core/backend && npx ts-node -r tsconfig-paths/register src/scripts/stage/seed-all-brands.ts",
-    "check-models-validity": "cd core/backend && COUNTRY=mk npx ts-node -r tsconfig-paths/register src/scripts/stage/check-models-validity.ts"
+    "check-models-validity": "cd core/backend && COUNTRY=md npx ts-node -r tsconfig-paths/register src/scripts/stage/check-models-validity.ts",
+    "check-hydration": "npx tsx scripts/check-hydration.ts"
   }
 }
