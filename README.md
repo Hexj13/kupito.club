@@ -83,7 +83,18 @@ git push
 
 ## 📚 Documentation
 
-Вся документация в **core repository**:
+### Platform-Specific (Молдова)
+
+Документация платформы находится в папке **[`docs/`](./docs/)**:
+
+- **[Документация платформы](./docs/README.md)** - Главный entry point
+- **[Деплой](./docs/deployment/PRODUCTION_DEPLOYMENT.md)** - Инструкции для продакшн
+- **[Скрипты](./docs/scripts/SEED_ALL_BRANDS_COMPLETE.md)** - Документация по скриптам
+- **[Настройка](./docs/setup/SETUP.md)** - Первоначальная установка
+
+### Core Documentation (универсальная)
+
+Вся универсальная документация в **core repository**:
 
 - **[Core Documentation](./core/docs/README.md)** - Общая документация
 - **[Platform Guide](./core/docs/guides/PLATFORM_GUIDE.md)** - Создание платформ
