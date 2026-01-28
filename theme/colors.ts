@@ -37,6 +37,7 @@ const colors: ThemeColors = {
   divider: "#DADADA",
   accent: "#F2AE3E",
   accentSecondary: "#FF5A5F",
+  newBadge: "#6AA4C6",
   semantic: {
     success: "#28A745",
     error: "#DC3545",
