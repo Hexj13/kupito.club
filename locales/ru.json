@@ -16,7 +16,7 @@
     "compare": "Сравнение",
     "profile": "Профиль",
     "admin": "Админ",
-    "logout": "Выйти",
+    "logout": "Выход",
     "logoutShort": "Выход",
     "createListing": "Создать объявление",
     "createListingShort": "Создать",
@@ -709,7 +709,7 @@
     "searching": "Поиск...",
     "reset": "Сбросить",
     "addToFavorites": "Добавить в избранное",
-    "login": "Вход",
+    "login": "Войти",
     "noResults": "Результаты не найдены"
   },
   "profile": {
