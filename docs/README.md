@@ -19,6 +19,12 @@
 
 - **[SETUP.md](./setup/SETUP.md)** - Первоначальная настройка платформы
 
+### 📡 [`sentry/`](./sentry/)
+**Мониторинг Sentry**
+
+- **[SETUP.md](./sentry/SETUP.md)** - Инструкция по настройке Sentry
+- **[LAUNCH_CHECKLIST.md](./sentry/LAUNCH_CHECKLIST.md)** - Чеклист готовности к запуску рекламы
+
 ---
 
 ## 🔗 Связанная документация

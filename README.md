@@ -13,7 +13,11 @@ kupito.club/
 │   └── backend/watermark/
 ├── config/           # Конфигурация платформы
 │   └── site.ts
-├── locales/          # Переводы
+├── locales/          # Переводы (frontend: UI)
+│   ├── ro.json
+│   └── ru.json
+├── locales/backend/  # Переводы API (ошибки, валидация, vehicleOptions)
+│   ├── en.json
 │   ├── ro.json
 │   └── ru.json
 ├── theme/            # Цветовая схема
@@ -57,11 +61,12 @@ npm run dev
 При запуске `npm run prepare:build` файлы копируются из platform-repo в core:
 
 ```
-assets/frontend/public/*     → core/frontend/public/
-assets/backend/watermark/    → core/backend/assets/watermark/
-locales/                     → core/frontend/lib/locales/
-theme/                       → core/frontend/lib/theme/
-config/                      → core/frontend/lib/config/
+assets/frontend/public/*        → core/frontend/public/
+assets/backend/watermark/        → core/backend/assets/watermark/
+locales/ro.json, locales/ru.json → core/frontend/lib/locales/
+locales/backend/*.json          → core/backend/src/common/i18n/
+theme/                          → core/frontend/lib/theme/
+config/                         → core/frontend/lib/config/
 ```
 
 **Core остаётся универсальным**, работает для всех платформ!

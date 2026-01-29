@@ -36,7 +36,7 @@ git push -u origin main --force  # Use --force to overwrite old repository
 # Check submodule status
 git submodule status
 
-# Test build process
+# Test build process (copies frontend locales ro/ru and backend locales to core)
 npm run prepare:build
 cd core/frontend
 npm install

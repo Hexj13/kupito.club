@@ -13,7 +13,7 @@
 - ✅ **auto-close-old-listings** - мониторинг автоматического закрытия старых объявлений
 - ✅ **ip-block-cleanup** - мониторинг очистки IP блоков (каждый час)
 - ✅ **refresh-token-cleanup** - мониторинг очистки истекших токенов (каждый день в 2:00)
-- ✅ **close-old-listings-endpoint** - мониторинг внешнего cron endpoint
+- Endpoint `POST /listings/cron/close-old` доступен для внешнего крона (без Sentry monitor; мониторинг — только `auto-close-old-listings`)
 
 ### Бизнес-метрики
 - ✅ **users.registered** - счетчик регистраций (с атрибутами: user_type, has_email, has_phone)
@@ -49,7 +49,7 @@ NODE_ENV=production
    - `auto-close-old-listings` (schedule: `0 0 * * *`)
    - `ip-block-cleanup` (schedule: каждый час)
    - `refresh-token-cleanup` (schedule: `0 2 * * *`)
-   - `close-old-listings-endpoint` (schedule: `0 0 * * *`)
+   - (монитор `close-old-listings-endpoint` удалён — используется только in-process cron)
 
 Или они создадутся автоматически при первом выполнении (если используется `withMonitor` с конфигурацией).
 

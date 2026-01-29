@@ -21,7 +21,7 @@
    - На вопрос "Do you use a framework?" выберите **Nest.js** (не "Nope, Vanilla")
    - Нажмите "Configure SDK" или "Create Project"
 
-**Важно:** 
+**Важно:**
 - Фронтенд и бэкенд должны быть разными проектами, так как это разные платформы с разными настройками
 - Выбор "Nest.js" даст более точную настройку и автоматическую инструментацию для NestJS приложений
 
@@ -387,7 +387,7 @@ Sentry.getGlobalScope().setAttributes({
 
 Sentry.withScope((scope) => {
   scope.setAttribute('step', 'authentication');
-  
+
   // Все атрибуты scope будут добавлены
   Sentry.metrics.count('clicks', 1);
   Sentry.metrics.gauge('time_since_refresh', 4, { unit: 'hour' });
@@ -857,7 +857,9 @@ export class ListingsService {
 
 ### Мониторинг внешних Cron Endpoints
 
-Для внешних cron endpoints (например, `/api/listings/cron/close-old`, вызываемых через Render Cron Job), используйте `Sentry.withMonitor()` или `Sentry.captureCheckIn()`:
+Для close-old-listings используется только in-process cron (`auto-close-old-listings` в ListingsService). Endpoint `POST /listings/cron/close-old` оставлен для опционального вызова извне, но без Sentry monitor — в Sentry монитор `close-old-listings-endpoint` можно удалить.
+
+Для других внешних cron endpoints используйте `Sentry.withMonitor()` или `Sentry.captureCheckIn()`:
 
 #### Вариант 1: withMonitor (рекомендуется)
 
@@ -921,7 +923,7 @@ async closeOldListings(@Headers('x-cron-secret') secret: string) {
 
   try {
     const result = await this.listingsService.autoCloseOldListings();
-    
+
     // Уведомляем Sentry об успешном завершении
     Sentry.captureCheckIn(
       {
@@ -959,7 +961,7 @@ async closeOldListings(@Headers('x-cron-secret') secret: string) {
 
   try {
     const result = await this.listingsService.autoCloseOldListings();
-    
+
     // Уведомляем Sentry об успешном завершении
     Sentry.captureCheckIn({
       monitorSlug: 'close-old-listings-endpoint',

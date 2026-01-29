@@ -381,6 +381,7 @@
       "truck": "Comercial",
       "moto": "Motociclete"
     },
+    "required": "Completați câmpul obligatoriu",
     "brandRequired": "Este necesar să selectați marca",
     "modelRequired": "Este necesar să selectați modelul",
     "yearRequired": "Este necesar să introduceți anul",
@@ -401,6 +402,7 @@
     "conditionRequired": "Este necesar să selectați starea",
     "registrationTypeRequired": "Este necesar să selectați tipul de înmatriculare",
     "horsepowerRequired": "Este necesar să introduceți o valoare validă pentru cai putere",
+    "powerKwRequired": "Este necesar să introduceți puterea în kW",
     "registrationDateRequired": "Este necesar să introduceți data până la care este înmatriculat",
     "registrationDateInvalid": "Data înmatriculării nu poate fi mai mică decât luna și anul curent",
     "registrationDateFormatError": "Data trebuie să fie în format lună.an (de exemplu: 05.2025). Luna trebuie să fie formată din două cifre.",
