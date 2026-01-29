@@ -41,7 +41,7 @@ assets/backend/watermark/    → core/backend/assets/watermark/
 
 **Детальная документация:**
 - [core/docs/guides/PLATFORM_CHECKLIST.md](../core/docs/guides/PLATFORM_CHECKLIST.md) - Чеклист и требования
-- [core/docs/platform-plans/PLAN_ALBANIA_PLATFORM.md](../core/docs/platform-plans/PLAN_ALBANIA_PLATFORM.md) - Пример (Этап 12)
+- [core/docs/guides/PLATFORM_CHECKLIST.md](../core/docs/guides/PLATFORM_CHECKLIST.md) - Чеклист и требования к assets
 
 **Tools:**
 - [Real Favicon Generator](https://realfavicongenerator.net/) - для генерации favicon

@@ -651,7 +651,7 @@
     "registrationTypeOptions": {
       "Local": "Locală",
       "Foreign": "Străină",
-      "Cleared": "Vămuită (pe numele cumpărătorului)"
+      "Cleared": "Vămuită"
     },
     "yearFromTitle": "Introduceți anul (1940-{currentYear})",
     "yearToTitle": "Introduceți anul (1940-{currentYear})",
@@ -899,7 +899,7 @@
     "closed": "Închis"
   },
   "compare": {
-    "title": "Comparare vehicule",
+    "title": "Comparare auto",
     "loadError": "Eroare la încărcarea anunțurilor",
     "removedFromComparison": "Eliminat din comparație",
     "noVehicles": "Nu există vehicule pentru comparație",
@@ -1221,7 +1221,7 @@
         "cars": "autoturisme",
         "buyCar": "cumpără autoturism",
         "carsForSale": "autoturisme de vânzare",
-        "northMacedonia": "Moldova"
+        "moldova": "Moldova"
       }
     }
   },

@@ -651,7 +651,7 @@
     "registrationTypeOptions": {
       "Local": "Местная",
       "Foreign": "Иностранная",
-      "Cleared": "Растаможена (на имя покупателя)"
+      "Cleared": "Растаможена"
     },
     "yearFromTitle": "Введите год (1940-{currentYear})",
     "yearToTitle": "Введите год (1940-{currentYear})",
@@ -899,7 +899,7 @@
     "closed": "Închis"
   },
   "compare": {
-    "title": "Сравнение транспортных средств",
+    "title": "Сравнение авто",
     "loadError": "Ошибка при загрузке объявлений",
     "removedFromComparison": "Удалено из сравнения",
     "noVehicles": "Нет транспортных средств для сравнения",
@@ -1221,7 +1221,7 @@
         "cars": "автомобили",
         "buyCar": "купить автомобиль",
         "carsForSale": "автомобили на продажу",
-        "northMacedonia": "Moldova"
+        "moldova": "Moldova"
       }
     }
   },
