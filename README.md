@@ -8,46 +8,46 @@ This repository contains **only platform-specific files**:
 
 ```
 kupito.club/
-├── assets/           # Графические ресурсы (логотипы, иконки, watermark)
+├── assets/           # Graphics resources (logos, icons, watermark)
 │   ├── frontend/public/
 │   └── backend/watermark/
-├── config/           # Конфигурация платформы
+├── config/           # Platform configuration
 │   └── site.ts
-├── locales/          # Переводы (frontend: UI)
+├── locales/          # Translations (frontend: UI)
 │   ├── ro.json
 │   └── ru.json
-├── locales/backend/  # Переводы API (ошибки, валидация, vehicleOptions)
+├── locales/backend/  # API translations (errors, validation, vehicleOptions)
 │   ├── en.json
 │   ├── ro.json
 │   └── ru.json
-├── theme/            # Цветовая схема
+├── theme/            # Color scheme
 │   └── colors.ts
 ├── core/             # Git submodule → PPCSL core
-│   └── backend/src/scripts/platforms/md/  # Platform configs в core
+│   └── backend/src/scripts/platforms/md/  # Platform configs in core
 ├── package.json
 └── README.md
 ```
 
-**Core repository** содержит всю бизнес-логику и компоненты.
+**Core repository** contains all business logic and components.
 
 ---
 
 ## 🚀 Quick Start
 
 ```bash
-# 1. Клонировать с submodule
+# 1. Clone with submodule
 git clone --recurse-submodules <repo-url>
 
-# 2. Установить зависимости
+# 2. Install dependencies
 npm install
 cd core/backend && npm install
 cd ../frontend && npm install
 cd ../..
 
-# 3. Подготовить сборку (копирует platform-файлы в core)
+# 3. Prepare build (copies platform files to core)
 npm run prepare:build
 
-# 4. Запустить
+# 4. Run
 npm run dev
 ```
 
@@ -56,9 +56,27 @@ npm run dev
 
 ---
 
+## 🧪 Testing & Linting
+
+```bash
+# Frontend
+cd core/frontend
+npm run lint:fix      # ESLint
+npm run format        # Prettier
+npm run test          # Jest tests
+
+# Backend
+cd core/backend
+npm run lint          # ESLint
+npm run format        # Prettier
+npm run test          # Jest tests
+```
+
+---
+
 ## 📦 Build Process
 
-При запуске `npm run prepare:build` файлы копируются из platform-repo в core:
+When running `npm run prepare:build`, files are copied from platform-repo to core:
 
 ```
 assets/frontend/public/*        → core/frontend/public/
@@ -69,7 +87,7 @@ theme/                          → core/frontend/lib/theme/
 config/                         → core/frontend/lib/config/
 ```
 
-**Core остаётся универсальным**, работает для всех платформ!
+**Core remains universal**, works for all platforms!
 
 ---
 
@@ -88,23 +106,24 @@ git push
 
 ## 📚 Documentation
 
-### Platform-Specific (Молдова)
+### Platform-Specific (Moldova)
 
-Документация платформы находится в папке **[`docs/`](./docs/)**:
+Platform documentation is located in **[`docs/`](./docs/)**:
 
-- **[Документация платформы](./docs/README.md)** - Главный entry point
-- **[Деплой](./docs/deployment/PRODUCTION_DEPLOYMENT.md)** - Инструкции для продакшн
-- **[Скрипты](./docs/scripts/SEED_ALL_BRANDS_COMPLETE.md)** - Документация по скриптам
-- **[Настройка](./docs/setup/SETUP.md)** - Первоначальная установка
+- **[Platform Documentation](./docs/README.md)** - Main entry point
+- **[Deploy](./docs/deployment/PRODUCTION_DEPLOYMENT.md)** - Production instructions
+- **[Scripts](./docs/scripts/SEED_ALL_BRANDS_COMPLETE.md)** - Scripts documentation
+- **[Setup](./docs/setup/SETUP.md)** - Initial setup
+- **[Features](./docs/features/)** - Feature documentation (URL/title, slugs)
 
-### Core Documentation (универсальная)
+### Core Documentation (universal)
 
-Вся универсальная документация в **core repository**:
+All universal documentation in **core repository**:
 
-- **[Core Documentation](./core/docs/README.md)** - Общая документация
-- **[Platform Guide](./core/docs/guides/PLATFORM_GUIDE.md)** - Создание платформ
-- **[Deployment Guide](./core/docs/guides/DEPLOYMENT.md)** - Деплой
-- **[Architecture](./core/docs/architecture/ARCHITECTURE_OVERVIEW.md)** - Архитектура
+- **[Core Documentation](./core/docs/README.md)** - General documentation
+- **[Platform Guide](./core/docs/guides/PLATFORM_GUIDE.md)** - Creating platforms
+- **[Deployment Guide](./core/docs/guides/DEPLOYMENT.md)** - Deployment
+- **[Architecture](./core/docs/architecture/ARCHITECTURE_OVERVIEW.md)** - Architecture
 
 ---
 

@@ -1,105 +1,105 @@
-# Скрипт полной генерации всех марок и моделей
+# Complete Brands and Models Generation Script
 
-## Описание
+## Description
 
-Единый production скрипт для генерации всех марок и моделей (легковые, грузовики, мотоциклы) с автоматической проверкой дубликатов.
+A unified production script for generating all brands and models (cars, trucks, motorcycles) with automatic duplicate checking.
 
-## Расположение
+## Location
 
-**Файл:** `core/backend/src/scripts/production/seed-all-brands-complete.ts`  
-**Команда:** `npm run seed:all-brands:complete:prod`
+**File:** `core/backend/src/scripts/production/seed-all-brands-complete.ts`  
+**Command:** `npm run seed:all-brands:complete:prod`
 
-## Использование на проде
+## Production Usage
 
-### Базовый запуск
+### Basic Run
 
 ```bash
 cd core/backend
 npm run seed:all-brands:complete:prod
 ```
 
-### С опциями
+### With Options
 
 ```bash
-# Пропустить тяжелые скрипты (быстрее, но меньше данных)
+# Skip heavy scripts (faster, but less data)
 npm run seed:all-brands:complete:prod -- --skip-heavy
 
-# Пропустить проверку дубликатов (экономит память)
+# Skip duplicate checking (saves memory)
 npm run seed:all-brands:complete:prod -- --skip-duplicates
 
-# Автоматически удалить дубликаты, если найдены
+# Automatically remove duplicates if found
 npm run seed:all-brands:complete:prod -- --auto-remove-duplicates
 
-# Комбинация опций
+# Combination of options
 npm run seed:all-brands:complete:prod -- --skip-heavy --skip-duplicates
 ```
 
-## Что делает скрипт
+## What the Script Does
 
-1. **Запускает все скрипты генерации** в правильном порядке:
-   - Базовые марки и модели
-   - Итальянские марки
-   - Американские марки
-   - Немецкие марки
-   - Японские марки
-   - Французские марки
-   - Коммерческие модели
-   - Grand версии
-   - Исторические и редкие модели
-   - Недостающие марки легкового транспорта
-   - Марки грузовиков
-   - Марки мотоциклов
+1. **Runs all generation scripts** in the correct order:
+   - Base brands and models
+   - Italian brands
+   - American brands
+   - German brands
+   - Japanese brands
+   - French brands
+   - Commercial models
+   - Grand versions
+   - Historical and rare models
+   - Missing car brands
+   - Truck brands
+   - Motorcycle brands
 
-2. **Проверяет дубликаты** после генерации
-3. **Может автоматически удалить дубликаты** (с флагом `--auto-remove-duplicates`)
-4. **Очищает кэш Redis** после завершения
+2. **Checks for duplicates** after generation
+3. **Can automatically remove duplicates** (with `--auto-remove-duplicates` flag)
+4. **Clears Redis cache** after completion
 
-## Безопасность
+## Safety
 
-✅ **Все скрипты генерации проверяют существование** марок и моделей перед добавлением  
-✅ **Дубликаты не создаются** при нормальной работе  
-✅ **Проверка дубликатов** выполняется после всех скриптов  
-✅ **Опция автоматического удаления** доступна при необходимости
+✅ **All generation scripts check existence** of brands and models before adding  
+✅ **Duplicates are not created** during normal operation  
+✅ **Duplicate checking** is performed after all scripts  
+✅ **Automatic removal option** available if needed
 
-## Требования
+## Requirements
 
-- База данных доступна
-- Переменные окружения настроены
-- Redis доступен (для очистки кэша, опционально)
+- Database accessible
+- Environment variables configured
+- Redis available (for cache clearing, optional)
 
-## Пример вывода
+## Example Output
 
 ```
-🌱 Полная генерация всех марок и моделей...
+🌱 Full generation of all brands and models...
 
-ℹ️  Все скрипты генерации проверяют существование перед добавлением,
-   поэтому дубликаты не должны создаваться.
+ℹ️  All generation scripts check existence before adding,
+   so duplicates should not be created.
 
-[1/12] Базовые марки и модели ✅
-[2/12] Итальянские марки ✅
+[1/12] Base brands and models ✅
+[2/12] Italian brands ✅
 ...
-[12/12] Марки мотоциклов ✅
+[12/12] Motorcycle brands ✅
 
-📊 Итоговые результаты: 250 марок, 3500 моделей
+📊 Final results: 250 brands, 3500 models
 
-🔍 Проверка на дубликати...
-📊 Результаты проверки дубликатов:
-   - Дубликаты марок: 0
-   - Дубликаты моделей в рамках одной марки: 0
+🔍 Checking for duplicates...
+📊 Duplicate check results:
+   - Brand duplicates: 0
+   - Model duplicates within same brand: 0
 
-✅ Дубликаты не найдены
+✅ No duplicates found
 
-✅ Кэш очищен
+✅ Cache cleared
 
-✅ Полная генерация завершена
-   - Обработано скриптов: 12
-   - Ошибок: 0
-   - Дубликаты марок: 0
-   - Дубликаты моделей: 0
+✅ Full generation completed
+   - Scripts processed: 12
+   - Errors: 0
+   - Brand duplicates: 0
+   - Model duplicates: 0
 ```
 
-## Примечания
+## Notes
 
-- Скрипт безопасен для повторного запуска
-- Все скрипты генерации идемпотентны (не создают дубликаты)
-- Рекомендуется запускать на проде после деплоя для обновления данных
+- Script is safe to run repeatedly
+- All generation scripts are idempotent (do not create duplicates)
+- Recommended to run on production after deploy to update data

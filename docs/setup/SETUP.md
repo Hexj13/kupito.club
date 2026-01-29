@@ -1,4 +1,4 @@
-# Настройка kupito.club (первоначальная установка)
+# Kupito.club Setup (Initial Installation)
 
 ## Prerequisites
 
@@ -30,7 +30,24 @@ git branch -M main
 git push -u origin main --force  # Use --force to overwrite old repository
 ```
 
-## Step 3: Verify
+## Step 3: Install Dependencies
+
+```bash
+# Root
+npm install
+
+# Backend
+cd core/backend
+npm install
+cd ../..
+
+# Frontend
+cd core/frontend
+npm install
+cd ../..
+```
+
+## Step 4: Verify
 
 ```bash
 # Check submodule status
@@ -38,8 +55,17 @@ git submodule status
 
 # Test build process (copies frontend locales ro/ru and backend locales to core)
 npm run prepare:build
+
+# Run linting
+cd core/frontend && npm run lint && cd ../..
+cd core/backend && npm run lint:check && cd ../..
+
+# Run tests
+cd core/frontend && npm run test && cd ../..
+cd core/backend && npm run test && cd ../..
+
+# Build frontend
 cd core/frontend
-npm install
 npm run build
 ```
 

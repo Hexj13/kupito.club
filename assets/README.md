@@ -1,25 +1,25 @@
 # Platform Assets
 
-Графические ресурсы платформы (логотипы, иконки, watermark).
+Platform graphics resources (logos, icons, watermark).
 
 ## 📁 Structure
 
 ```
 assets/
 ├── frontend/public/
-│   ├── favicon*.png      # Все размеры favicon
-│   ├── logo*.png         # Логотипы платформы
-│   ├── og-image.jpg      # Open Graph изображение
-│   └── pwa192.png        # PWA иконка
+│   ├── favicon*.png      # All favicon sizes
+│   ├── logo*.png         # Platform logos
+│   ├── og-image.jpg      # Open Graph image
+│   └── pwa192.png        # PWA icon
 └── backend/watermark/
-    └── logo.png          # Watermark для фотографий
+    └── logo.png          # Watermark for photos
 ```
 
 ## 🔄 How It Works
 
-**1. Источник:** Файлы в `assets/` - **source of truth**  
-**2. Копирование:** При `npm run prepare:build` копируются в `core/`  
-**3. Использование:** Core использует скопированные ресурсы
+**1. Source:** Files in `assets/` are the **source of truth**  
+**2. Copy:** Copied to `core/` during `npm run prepare:build`  
+**3. Usage:** Core uses the copied resources
 
 ```bash
 assets/frontend/public/*     → core/frontend/public/
@@ -35,19 +35,18 @@ assets/backend/watermark/    → core/backend/assets/watermark/
 - `pwa192.png` (192x192px)
 
 ### Backend (`backend/watermark/`)
-- `logo.png` - PNG с прозрачным фоном, ~200x200px, светлый цвет
+- `logo.png` - PNG with transparent background, ~200x200px, light color
 
 ## 🎨 Asset Requirements
 
-**Детальная документация:**
-- [core/docs/guides/PLATFORM_CHECKLIST.md](../core/docs/guides/PLATFORM_CHECKLIST.md) - Чеклист и требования
-- [core/docs/guides/PLATFORM_CHECKLIST.md](../core/docs/guides/PLATFORM_CHECKLIST.md) - Чеклист и требования к assets
+**Detailed documentation:**
+- [core/docs/guides/PLATFORM_CHECKLIST.md](../core/docs/guides/PLATFORM_CHECKLIST.md) - Checklist and requirements
 
 **Tools:**
-- [Real Favicon Generator](https://realfavicongenerator.net/) - для генерации favicon
+- [Real Favicon Generator](https://realfavicongenerator.net/) - for favicon generation
 
 ## ⚠️ Important
 
-- ❌ **Не коммитить** скопированные assets в core
-- ✅ **Всегда редактировать** в `assets/`, не в core
-- ✅ Assets в core - **временные**, пересоздаются при каждом build
+- ❌ **Do not commit** copied assets to core
+- ✅ **Always edit** in `assets/`, not in core
+- ✅ Assets in core are **temporary**, recreated on each build

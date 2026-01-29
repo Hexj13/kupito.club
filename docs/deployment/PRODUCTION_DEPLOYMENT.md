@@ -1,87 +1,87 @@
-# Инструкции для деплоя на продакшн (Молдова)
+# Production Deployment Instructions (Moldova)
 
-> **📅 Дата создания:** 2026-01-27  
-> **📅 Дата обновления:** 2026-01-27  
-> **🎯 Цель:** Инструкции по настройке и поддержке продакшн окружения
+> **📅 Created:** 2026-01-27  
+> **📅 Updated:** 2026-01-27  
+> **🎯 Purpose:** Instructions for setting up and maintaining production environment
 
-## 🎯 Краткая сводка
+## 🎯 Quick Summary
 
-После деплоя на продакшн нужно выполнить следующие действия:
+After deploying to production, perform the following actions:
 
-1. **Обновить переменные окружения** в Render.com:
-   - `NEXT_PUBLIC_COUNTRY=md` (в Backend и Frontend)
-   - `NEXT_PUBLIC_ENABLE_LANGUAGE_SWITCHER=true` (в Backend и Frontend)
-   - `COUNTRY=md` (в Backend, для скриптов)
+1. **Update environment variables** in Render.com:
+   - `NEXT_PUBLIC_COUNTRY=md` (in Backend and Frontend)
+   - `NEXT_PUBLIC_ENABLE_LANGUAGE_SWITCHER=true` (in Backend and Frontend)
+   - `COUNTRY=md` (in Backend, for scripts)
 
-2. **Очистить данные** (если нужно):
-   - Удалить все объявления и пользователей через скрипт (рекомендуется)
-   - ⚠️ **ВНИМАНИЕ:** Это удалит ВСЕ данные!
+2. **Clear data** (if needed):
+   - Delete all listings and users via script (recommended)
+   - ⚠️ **WARNING:** This will delete ALL data!
 
-3. **Назначить администратора**:
-   - После регистрации пользователя назначить ему роль админа
-   - По email: `npm run make-admin:prod -- --email user@example.com`
-   - По телефону: `npm run make-admin:prod -- --phone +373XXXXXXXXX`
+3. **Assign administrator**:
+   - After user registers, assign admin role
+   - By email: `npm run make-admin:prod -- --email user@example.com`
+   - By phone: `npm run make-admin:prod -- --phone +373XXXXXXXXX`
 
-4. **Города уже в коде** - не требуют генерации, доступны сразу после деплоя
-5. **Генерация данных НЕ нужна** на проде - данные создаются реальными пользователями
+4. **Cities are already in code** - no generation required, available immediately after deploy
+5. **Data generation NOT needed** on prod - data is created by real users
 
-### 📝 Как запускать скрипты в Render
+### 📝 How to Run Scripts in Render
 
-**Все скрипты запускаются через Render Shell:**
+**All scripts are run via Render Shell:**
 
-1. Откройте **Render Dashboard** → Ваш Backend Service → **Shell**
-2. Перейдите в директорию: `cd core/backend`
-3. Запустите нужный скрипт: `npm run <команда>`
+1. Open **Render Dashboard** → Your Backend Service → **Shell**
+2. Navigate to directory: `cd core/backend`
+3. Run the needed script: `npm run <command>`
 
-**Пример:**
+**Example:**
 ```bash
 cd core/backend
 npm run clear-listings-and-users:prod
 ```
 
-**✅ Преимущества использования скриптов:**
-- Автоматическое подключение к БД (использует переменные окружения)
-- Безопасность (не нужно знать пароль БД)
-- Удобство (все в одном месте)
-- Логирование (видно что происходит)
+**✅ Advantages of using scripts:**
+- Automatic DB connection (uses environment variables)
+- Security (no need to know DB password)
+- Convenience (all in one place)
+- Logging (visible what's happening)
 
 ---
 
-## 📋 Содержание
+## 📋 Contents
 
-1. [Подготовка к деплою](#подготовка-к-деплою)
-2. [Очистка данных на проде](#очистка-данных-на-проде)
-3. [Назначение администратора](#назначение-администратора)
-4. [Города](#города)
-5. [Генерация данных](#генерация-данных)
-6. [Проверка после деплоя](#проверка-после-деплоя)
+1. [Preparing for Deploy](#preparing-for-deploy)
+2. [Clearing Data on Prod](#clearing-data-on-prod)
+3. [Assigning Administrator](#assigning-administrator)
+4. [Cities](#cities)
+5. [Data Generation](#data-generation)
+6. [Post-Deploy Verification](#post-deploy-verification)
 
 ---
 
-## 🚀 Подготовка к деплою
+## 🚀 Preparing for Deploy
 
-### 1.1. Обновление переменных окружения в Render.com
+### 1.1. Updating Environment Variables in Render.com
 
 **Backend Service (Render.com):**
-- Установить `NEXT_PUBLIC_COUNTRY=md`
-- Установить `NEXT_PUBLIC_ENABLE_LANGUAGE_SWITCHER=true`
-- Установить `COUNTRY=md` (для скриптов)
+- Set `NEXT_PUBLIC_COUNTRY=md`
+- Set `NEXT_PUBLIC_ENABLE_LANGUAGE_SWITCHER=true`
+- Set `COUNTRY=md` (for scripts)
 
 **Frontend Service (Render.com):**
-- Установить `NEXT_PUBLIC_COUNTRY=md`
-- Установить `NEXT_PUBLIC_ENABLE_LANGUAGE_SWITCHER=true`
+- Set `NEXT_PUBLIC_COUNTRY=md`
+- Set `NEXT_PUBLIC_ENABLE_LANGUAGE_SWITCHER=true`
 
-### 1.2. Проверка базы данных
+### 1.2. Database Verification
 
-Убедиться, что:
-- Миграции применены (через Render Shell: `cd core/backend && npm run migration:run`)
-- База данных доступна
-- Переменные окружения для подключения к БД настроены
+Ensure that:
+- Migrations are applied (via Render Shell: `cd core/backend && npm run migration:run`)
+- Database is accessible
+- DB connection environment variables are configured
 
-**Как запустить миграции в Render:**
+**How to run migrations in Render:**
 
-1. **Откройте Render Dashboard** → Ваш Backend Service → **Shell**
-2. **Выполните команду:**
+1. **Open Render Dashboard** → Your Backend Service → **Shell**
+2. **Execute command:**
    ```bash
    cd core/backend
    npm run migration:run
@@ -89,96 +89,96 @@ npm run clear-listings-and-users:prod
 
 ---
 
-## 🗑️ Очистка данных на проде
+## 🗑️ Clearing Data on Prod
 
-### 2.1. Удаление всех объявлений и пользователей
+### 2.1. Deleting All Listings and Users
 
-**⚠️ ВНИМАНИЕ:** Эта операция удалит ВСЕ объявления и ВСЕХ пользователей из базы данных. Выполняйте только после полного деплоя и проверки работоспособности системы.
+**⚠️ WARNING:** This operation will delete ALL listings and ALL users from the database. Execute only after complete deploy and system functionality verification.
 
-#### ✅ Вариант 1: Через скрипт (РЕКОМЕНДУЕТСЯ)
+#### ✅ Option 1: Via Script (RECOMMENDED)
 
-**Это самый простой и безопасный способ!**
+**This is the simplest and safest way!**
 
-Production скрипт для очистки уже создан и доступен. Запуск через Render Shell:
+Production cleanup script is already created and available. Run via Render Shell:
 
-1. **Откройте Render Dashboard** → Ваш Backend Service → **Shell**
-2. **Выполните команду:**
+1. **Open Render Dashboard** → Your Backend Service → **Shell**
+2. **Execute command:**
    ```bash
    cd core/backend
    npm run clear-listings-and-users:prod
    ```
 
-Скрипт автоматически:
-- ✅ Подключится к базе данных (использует переменные окружения из Render)
-- ✅ Удалит все объявления, пользователей и связанные данные
-- ✅ Покажет статистику удаленных записей
-- ✅ Выполнит проверку после очистки
+Script automatically:
+- ✅ Connects to database (uses Render environment variables)
+- ✅ Deletes all listings, users and related data
+- ✅ Shows deletion statistics
+- ✅ Performs verification after cleanup
 
-**⚠️ ВНИМАНИЕ:** Этот скрипт удалит ВСЕ объявления и ВСЕХ пользователей из базы данных. Выполняйте только после полного деплоя и проверки работоспособности системы.
+**⚠️ WARNING:** This script will delete ALL listings and ALL users from the database. Execute only after complete deploy and system functionality verification.
 
-#### Вариант 2: Через SQL (альтернативный способ)
+#### Option 2: Via SQL (alternative method)
 
-Если по какой-то причине нужно выполнить SQL напрямую:
+If for some reason you need to execute SQL directly:
 
-**Как подключиться к БД в Render:**
+**How to connect to DB in Render:**
 
-1. **Через Render Dashboard:**
-   - Render Dashboard → Ваша PostgreSQL Database → **Info**
-   - Найдите **External Database URL** или используйте отдельные параметры:
+1. **Via Render Dashboard:**
+   - Render Dashboard → Your PostgreSQL Database → **Info**
+   - Find **External Database URL** or use separate parameters:
      - Host
-     - Port (обычно 5432)
+     - Port (usually 5432)
      - Database name
      - Username
      - Password
 
-2. **Подключение через psql (локально):**
+2. **Connect via psql (locally):**
    ```bash
    psql "postgresql://username:password@host:port/database"
    ```
 
-3. **Или через любой PostgreSQL клиент:**
-   - Используйте External Database URL из Render
-   - Или используйте параметры подключения отдельно
+3. **Or via any PostgreSQL client:**
+   - Use External Database URL from Render
+   - Or use connection parameters separately
 
-**SQL команды для очистки:**
+**SQL commands for cleanup:**
 
 ```sql
--- Удаление истории промоций
+-- Delete promotion history
 DELETE FROM promotion_history;
 
--- Удаление просмотров объявлений
+-- Delete listing views
 DELETE FROM listing_views;
 
--- Удаление избранного
+-- Delete favorites
 DELETE FROM favorites;
 
--- Удаление сохраненных фильтров
+-- Delete saved filters
 DELETE FROM saved_filters;
 
--- Удаление объявлений
+-- Delete listings
 DELETE FROM listings;
 
--- Удаление транспортных средств
+-- Delete vehicles
 DELETE FROM vehicles;
 
--- Удаление кодов верификации телефонов
+-- Delete phone verification codes
 DELETE FROM phone_verification_codes;
 
--- Удаление пользователей
+-- Delete users
 DELETE FROM users;
 ```
 
-**Порядок выполнения важен** - сначала удаляются зависимые данные, затем основные таблицы.
+**Execution order is important** - dependent data is deleted first, then main tables.
 
-**⚠️ Рекомендация:** Используйте скрипт (Вариант 1) - он безопаснее и проще!
+**⚠️ Recommendation:** Use the script (Option 1) - it's safer and simpler!
 
-### 2.2. Проверка после очистки
+### 2.2. Verification After Cleanup
 
-Скрипт автоматически выводит статистику после очистки. Также можно проверить вручную:
+Script automatically outputs statistics after cleanup. You can also verify manually:
 
-**Через Render Shell (рекомендуется):**
+**Via Render Shell (recommended):**
 
-Создайте простой скрипт проверки или используйте SQL:
+Create a simple verification script or use SQL:
 
 ```sql
 SELECT COUNT(*) FROM listings;
@@ -186,55 +186,55 @@ SELECT COUNT(*) FROM users;
 SELECT COUNT(*) FROM vehicles;
 ```
 
-Все запросы должны вернуть `0`.
+All queries should return `0`.
 
-**Или через Render Dashboard:**
-- Render Dashboard → Ваша PostgreSQL Database → **Connect** → **psql**
-- Выполните SQL запросы выше
+**Or via Render Dashboard:**
+- Render Dashboard → Your PostgreSQL Database → **Connect** → **psql**
+- Execute SQL queries above
 
 ---
 
-## 👑 Назначение администратора
+## 👑 Assigning Administrator
 
-### 3.1. Назначение админа по email
+### 3.1. Assigning Admin by Email
 
-После того, как пользователь зарегистрировался, назначить ему роль администратора:
+After user registers, assign admin role:
 
-**Через Render Shell:**
+**Via Render Shell:**
 
-1. **Откройте Render Dashboard** → Ваш Backend Service → **Shell**
-2. **Выполните команду:**
+1. **Open Render Dashboard** → Your Backend Service → **Shell**
+2. **Execute command:**
    ```bash
    cd core/backend
    npm run make-admin:prod -- --email user@example.com
    ```
 
-Если нужно также обновить пароль:
+If you also need to update password:
 
 ```bash
 npm run make-admin:prod -- --email user@example.com --update-password --password newpassword123
 ```
 
-### 3.2. Назначение админа по телефону
+### 3.2. Assigning Admin by Phone
 
-Если пользователь зарегистрировался только с телефоном (без email), можно назначить админа по телефону:
+If user registered only with phone (without email), you can assign admin by phone:
 
-**Через Render Shell:**
+**Via Render Shell:**
 
-1. **Откройте Render Dashboard** → Ваш Backend Service → **Shell**
-2. **Выполните команду:**
+1. **Open Render Dashboard** → Your Backend Service → **Shell**
+2. **Execute command:**
    ```bash
    cd core/backend
    npm run make-admin:prod -- --phone +373XXXXXXXXX
    ```
 
-**Примечание:** Скрипт сначала ищет пользователя по email (если указан), затем по телефону (если указан). Если пользователь найден по телефону, ему будет назначена роль администратора.
+**Note:** Script first searches user by email (if specified), then by phone (if specified). If user is found by phone, admin role will be assigned.
 
-**Важно:** При создании нового пользователя через скрипт обязательно нужен email. Если нужно только назначить админа существующему пользователю, можно использовать только телефон.
+**Important:** When creating a new user via script, email is required. If you only need to assign admin to existing user, you can use only phone.
 
-### 3.3. Проверка назначения админа
+### 3.3. Verifying Admin Assignment
 
-Проверить, что пользователь стал админом:
+Verify that user became admin:
 
 ```sql
 SELECT id, email, phone, first_name, last_name, type, active 
@@ -244,190 +244,190 @@ WHERE type = 'Admin';
 
 ---
 
-## 🏙️ Города
+## 🏙️ Cities
 
-### 4.1. Когда города будут доступны?
+### 4.1. When Will Cities Be Available?
 
-**✅ Города уже доступны сразу после деплоя!**
+**✅ Cities are available immediately after deploy!**
 
-Города хранятся **прямо в коде** в файле `core/backend/src/cities/cities.service.ts` и **НЕ требуют генерации или загрузки в базу данных**.
+Cities are stored **directly in code** in file `core/backend/src/cities/cities.service.ts` and **do NOT require generation or loading into database**.
 
-**Как это работает:**
-- Города хардкодятся в сервисе как массив объектов
-- При первом запросе они кешируются в Redis
-- Доступны через API endpoint `/api/cities`
-- Не требуют миграций или seed скриптов
+**How it works:**
+- Cities are hardcoded in service as array of objects
+- On first request they are cached in Redis
+- Available via API endpoint `/api/cities`
+- Do not require migrations or seed scripts
 
-**Города для Молдовы уже добавлены в код:**
-- Все города из конфигурации `platforms/md/config.ts` уже есть в `cities.service.ts`
-- Включают румынские названия (`name`), английские (`nameEn`) и русские (`nameRu`)
-- Всего ~90 городов Молдовы
+**Cities for Moldova are already added to code:**
+- All cities from configuration `platforms/md/config.ts` are already in `cities.service.ts`
+- Include Romanian names (`name`), English (`nameEn`) and Russian (`nameRu`)
+- Total ~90 cities in Moldova
 
-### 4.2. Проблема: отображаются неправильные города
+### 4.2. Problem: Wrong Cities Displayed
 
-**Если на продакшене отображаются неправильные города:**
+**If wrong cities are displayed on production:**
 
-1. **Проверьте переменные окружения:**
-   - Убедитесь, что `COUNTRY=md` установлена в Backend Service
-   - Убедитесь, что `NEXT_PUBLIC_COUNTRY=md` установлена в Backend и Frontend Services
+1. **Check environment variables:**
+   - Ensure `COUNTRY=md` is set in Backend Service
+   - Ensure `NEXT_PUBLIC_COUNTRY=md` is set in Backend and Frontend Services
 
-2. **Очистите кэш городов в Redis:**
+2. **Clear cities cache in Redis:**
    
-   **Вариант 1: Через Render Shell (РЕКОМЕНДУЕТСЯ)**
+   **Option 1: Via Render Shell (RECOMMENDED)**
    
-   Откройте Render Dashboard → Backend Service → **Shell** и выполните:
+   Open Render Dashboard → Backend Service → **Shell** and execute:
    ```bash
    cd core/backend
    npm run clear-cache:prod
    ```
    
-   **Вариант 2: Через Redis CLI (если есть доступ)**
+   **Option 2: Via Redis CLI (if you have access)**
    
-   Подключитесь к Redis и выполните:
+   Connect to Redis and execute:
    ```bash
    redis-cli
    KEYS cache:cities:*
    DEL cache:cities:all
    ```
    
-   Или удалите все ключи с префиксом:
+   Or delete all keys with prefix:
    ```bash
    redis-cli --scan --pattern "cache:cities:*" | xargs redis-cli DEL
    ```
 
-3. **Перезапустите Backend Service:**
-   - После очистки кэша перезапустите Backend Service в Render Dashboard
-   - Это гарантирует, что сервис перезагрузит города из кода с учетом правильной переменной `COUNTRY=md`
+3. **Restart Backend Service:**
+   - After clearing cache, restart Backend Service in Render Dashboard
+   - This ensures service reloads cities from code with correct `COUNTRY=md` variable
 
-**Проверка:**
-После деплоя и очистки кэша можно проверить доступность городов:
+**Verification:**
+After deploy and cache clearing, you can verify cities availability:
 ```bash
 curl https://api.kupito.club/api/cities
 ```
 
-Должны вернуться города Молдовы (Chișinău, Bălți, Tiraspol и т.д.).
+Should return Moldova cities (Chișinău, Bălți, Tiraspol, etc.).
 
 ---
 
-## 🌱 Генерация данных
+## 🌱 Data Generation
 
-### 5.1. Нужна ли генерация данных на проде?
+### 5.1. Is Data Generation Needed on Prod?
 
-**❌ НЕТ, генерация данных на проде НЕ нужна.**
+**❌ NO, data generation is NOT needed on prod.**
 
-Скрипты генерации (`seed.ts`, `reset-and-seed.ts`) предназначены **только для тестовых/разработческих окружений** и создают:
-- Тестовых пользователей
-- Тестовые объявления
-- Тестовые данные
+Generation scripts (`seed.ts`, `reset-and-seed.ts`) are intended **only for test/development environments** and create:
+- Test users
+- Test listings
+- Test data
 
-**На продакшне данные должны создаваться только реальными пользователями через интерфейс сайта.**
+**On production, data should only be created by real users through the website interface.**
 
-### 5.2. Если всё же нужны тестовые данные
+### 5.2. If Test Data Is Still Needed
 
-Если по какой-то причине нужно создать тестовые данные на проде (например, для демонстрации):
+If for some reason you need to create test data on prod (e.g., for demonstration):
 
-1. **⚠️ ВНИМАНИЕ:** Это создаст тестовые данные, которые будут видны всем пользователям
-2. Убедиться, что `COUNTRY=md` установлена
-3. Запустить скрипт генерации (только для stage окружения):
+1. **⚠️ WARNING:** This will create test data visible to all users
+2. Ensure `COUNTRY=md` is set
+3. Run generation script (only for stage environment):
    ```bash
    cd core/backend
    npm run seed
    ```
 
-**Рекомендация:** Лучше создать тестовые данные вручную через интерфейс сайта после назначения админа.
+**Recommendation:** Better to create test data manually through website interface after assigning admin.
 
 ---
 
-## ✅ Проверка после деплоя
+## ✅ Post-Deploy Verification
 
-### 6.1. Проверка переменных окружения
+### 6.1. Environment Variables Verification
 
-Убедиться, что все переменные окружения обновлены:
-- `NEXT_PUBLIC_COUNTRY=md` (в Backend и Frontend)
-- `NEXT_PUBLIC_ENABLE_LANGUAGE_SWITCHER=true` (в Backend и Frontend)
-- `COUNTRY=md` (в Backend, для скриптов)
+Ensure all environment variables are updated:
+- `NEXT_PUBLIC_COUNTRY=md` (in Backend and Frontend)
+- `NEXT_PUBLIC_ENABLE_LANGUAGE_SWITCHER=true` (in Backend and Frontend)
+- `COUNTRY=md` (in Backend, for scripts)
 
-### 6.2. Проверка работы сайта
+### 6.2. Website Operation Verification
 
-- [ ] Сайт доступен по `https://kupito.club`
-- [ ] API доступен по `https://api.kupito.club`
-- [ ] Переключатель языка работает (румынский/русский)
-- [ ] Города отображаются корректно (румынские названия) - доступны сразу после деплоя
-- [ ] API городов работает: `GET /api/cities` возвращает список городов Молдовы
-- [ ] Валюты отображаются корректно (EUR, MDL)
-- [ ] Телефонные номера нормализуются с префиксом `+373`
+- [ ] Website accessible at `https://kupito.club`
+- [ ] API accessible at `https://api.kupito.club`
+- [ ] Language switcher works (Romanian/Russian)
+- [ ] Cities displayed correctly (Romanian names) - available immediately after deploy
+- [ ] Cities API works: `GET /api/cities` returns Moldova cities list
+- [ ] Currencies displayed correctly (EUR, MDL)
+- [ ] Phone numbers normalized with `+373` prefix
 
-### 6.3. Проверка базы данных
+### 6.3. Database Verification
 
-- [ ] Все объявления удалены (если выполнялась очистка)
-- [ ] Все пользователи удалены (если выполнялась очистка)
-- [ ] Администратор назначен корректно
-- [ ] Бренды и модели загружены (если нужно, см. [SEED_ALL_BRANDS_COMPLETE.md](../scripts/SEED_ALL_BRANDS_COMPLETE.md))
+- [ ] All listings deleted (if cleanup was performed)
+- [ ] All users deleted (if cleanup was performed)
+- [ ] Administrator assigned correctly
+- [ ] Brands and models loaded (if needed, see [SEED_ALL_BRANDS_COMPLETE.md](../scripts/SEED_ALL_BRANDS_COMPLETE.md))
 
-### 6.4. Проверка функциональности
+### 6.4. Functionality Verification
 
-- [ ] Регистрация пользователей работает
-- [ ] Создание объявлений работает
-- [ ] Поиск объявлений работает
-- [ ] Загрузка изображений работает
-- [ ] Админ-панель доступна для администратора
-
----
-
-## 📝 Чек-лист выполнения
-
-### Перед деплоем:
-- [ ] Все изменения кода задеплоены
-- [ ] Переменные окружения обновлены в Render.com
-- [ ] Миграции применены к базе данных
-
-### После деплоя:
-- [ ] Сайт доступен и работает
-- [ ] API доступен и работает
-- [ ] Переменные окружения проверены
-
-### Очистка данных (если нужно):
-- [ ] Все объявления удалены
-- [ ] Все пользователи удалены
-- [ ] Связанные данные очищены (избранное, просмотры, фильтры)
-
-### Назначение админа:
-- [ ] Пользователь зарегистрировался
-- [ ] Администратор назначен (по email или телефону)
-- [ ] Админ может войти в систему
-- [ ] Админ-панель доступна
-
-### Финальная проверка:
-- [ ] Все функции работают корректно
-- [ ] Нет ошибок в логах
-- [ ] Пользователи могут регистрироваться и создавать объявления
+- [ ] User registration works
+- [ ] Listing creation works
+- [ ] Listing search works
+- [ ] Image upload works
+- [ ] Admin panel accessible for administrator
 
 ---
 
-## 🔗 Связанные документы
+## 📝 Execution Checklist
 
-- [Документация по скриптам](../../core/backend/docs/SCRIPTS.md)
-- [Скрипт генерации марок и моделей](../scripts/SEED_ALL_BRANDS_COMPLETE.md)
-- [Архитектура проекта](../../core/docs/architecture/TECHNICAL.md)
-- [Настройка платформы](../setup/SETUP.md)
+### Before Deploy:
+- [ ] All code changes deployed
+- [ ] Environment variables updated in Render.com
+- [ ] Migrations applied to database
+
+### After Deploy:
+- [ ] Website accessible and working
+- [ ] API accessible and working
+- [ ] Environment variables verified
+
+### Data Cleanup (if needed):
+- [ ] All listings deleted
+- [ ] All users deleted
+- [ ] Related data cleared (favorites, views, filters)
+
+### Admin Assignment:
+- [ ] User registered
+- [ ] Administrator assigned (by email or phone)
+- [ ] Admin can log in
+- [ ] Admin panel accessible
+
+### Final Verification:
+- [ ] All functions work correctly
+- [ ] No errors in logs
+- [ ] Users can register and create listings
 
 ---
 
-## ⚠️ Важные замечания
+## 🔗 Related Documents
 
-1. **Очистка данных:** Выполняйте только после полного деплоя и проверки работоспособности
-2. **Генерация данных:** На проде НЕ нужна - данные создаются реальными пользователями
-3. **Генерация марок и моделей:** При необходимости используйте [SEED_ALL_BRANDS_COMPLETE.md](../scripts/SEED_ALL_BRANDS_COMPLETE.md)
-4. **Назначение админа:** Можно выполнить сразу после регистрации пользователя
-5. **Переменные окружения:** Обязательно проверить в Render.com перед деплоем
-6. **Резервное копирование:** Рекомендуется сделать бэкап базы данных перед очисткой
+- [Scripts Documentation](../../core/backend/docs/SCRIPTS.md)
+- [Brands and Models Generation Script](../scripts/SEED_ALL_BRANDS_COMPLETE.md)
+- [Project Architecture](../../core/docs/architecture/TECHNICAL.md)
+- [Platform Setup](../setup/SETUP.md)
 
 ---
 
-## 📞 Поддержка
+## ⚠️ Important Notes
 
-При возникновении проблем:
-1. Проверить логи в Render.com
-2. Проверить логи базы данных
-3. Проверить переменные окружения
-4. Обратиться к документации проекта
+1. **Data cleanup:** Execute only after complete deploy and functionality verification
+2. **Data generation:** NOT needed on prod - data is created by real users
+3. **Brands and models generation:** If needed, use [SEED_ALL_BRANDS_COMPLETE.md](../scripts/SEED_ALL_BRANDS_COMPLETE.md)
+4. **Admin assignment:** Can be done immediately after user registration
+5. **Environment variables:** Must verify in Render.com before deploy
+6. **Backup:** Recommended to backup database before cleanup
+
+---
+
+## 📞 Support
+
+If problems occur:
+1. Check logs in Render.com
+2. Check database logs
+3. Check environment variables
+4. Refer to project documentation

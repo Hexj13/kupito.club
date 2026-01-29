@@ -1,42 +1,47 @@
-# Документация платформы Kupito.club (Молдова)
+# Kupito.club Platform Documentation (Moldova)
 
-Документация, специфичная для платформы Молдовы.
+Documentation specific to the Moldova platform.
 
-## 📚 Структура документации
+## 📚 Documentation Structure
 
 ### 🚀 [`deployment/`](./deployment/)
-**Деплой и продакшн**
+**Deploy and Production**
 
-- **[PRODUCTION_DEPLOYMENT.md](./deployment/PRODUCTION_DEPLOYMENT.md)** - Инструкции для деплоя на продакшн
+- **[PRODUCTION_DEPLOYMENT.md](./deployment/PRODUCTION_DEPLOYMENT.md)** - Production deployment instructions
 
 ### 📜 [`scripts/`](./scripts/)
-**Скрипты**
+**Scripts**
 
-- **[SEED_ALL_BRANDS_COMPLETE.md](./scripts/SEED_ALL_BRANDS_COMPLETE.md)** - Документация по скрипту генерации марок и моделей
+- **[SEED_ALL_BRANDS_COMPLETE.md](./scripts/SEED_ALL_BRANDS_COMPLETE.md)** - Brands and models generation script documentation
 
 ### 🛠️ [`setup/`](./setup/)
-**Настройка и установка**
+**Setup and Installation**
 
-- **[SETUP.md](./setup/SETUP.md)** - Первоначальная настройка платформы
+- **[SETUP.md](./setup/SETUP.md)** - Initial platform setup
 
 ### 📡 [`sentry/`](./sentry/)
-**Мониторинг Sentry**
+**Sentry Monitoring**
 
-- **[SETUP.md](./sentry/SETUP.md)** - Инструкция по настройке Sentry
-- **[LAUNCH_CHECKLIST.md](./sentry/LAUNCH_CHECKLIST.md)** - Чеклист готовности к запуску рекламы
+- **[SETUP.md](./sentry/SETUP.md)** - Sentry setup instructions
+- **[LAUNCH_CHECKLIST.md](./sentry/LAUNCH_CHECKLIST.md)** - Launch readiness checklist
 
----
+### 🔧 [`features/`](./features/)
+**Feature Documentation**
 
-## 🔗 Связанная документация
-
-**Core документация** (универсальная для всех платформ):
-- [Core Documentation](../core/docs/README.md) - Общая документация PPCSL
-- [Platform Guide](../core/docs/guides/PLATFORM_GUIDE.md) - Руководство по созданию платформ
-- [Architecture](../core/docs/architecture/ARCHITECTURE_OVERVIEW.md) - Архитектура системы
+- **[SEARCH_TITLE_URL.md](./features/SEARCH_TITLE_URL.md)** - URL and title generation for search page (slugs, diacritics)
 
 ---
 
-## 🚀 Быстрый старт
+## 🔗 Related Documentation
 
-1. **Настройка:** [SETUP.md](./setup/SETUP.md)
-2. **Деплой:** [PRODUCTION_DEPLOYMENT.md](./deployment/PRODUCTION_DEPLOYMENT.md)
+**Core documentation** (universal for all platforms):
+- [Core Documentation](../core/docs/README.md) - General PPCSL documentation
+- [Platform Guide](../core/docs/guides/PLATFORM_GUIDE.md) - Platform creation guide
+- [Architecture](../core/docs/architecture/ARCHITECTURE_OVERVIEW.md) - System architecture
+
+---
+
+## 🚀 Quick Start
+
+1. **Setup:** [SETUP.md](./setup/SETUP.md)
+2. **Deploy:** [PRODUCTION_DEPLOYMENT.md](./deployment/PRODUCTION_DEPLOYMENT.md)
