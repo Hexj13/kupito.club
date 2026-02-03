@@ -42,10 +42,12 @@ const faqConfig: FAQConfigWithLanguages = {
         answer: [
           "Pentru a vă înregistra pe Kupito:",
           '1. Faceți clic pe butonul "Înregistrare" din colțul din dreapta sus',
-          "2. Completați informațiile necesare (nume, prenume, email, telefon, parolă)",
-          "3. Selectați dacă sunteți persoană fizică sau juridică",
-          "4. Confirmați telefonul cu codul SMS pe care îl veți primi",
-          "5. Confirmați emailul cu linkul pe care îl veți primi",
+          "2. Selectați dacă sunteți persoană fizică sau juridică",
+          "3. Completați formularul: telefon (obligatoriu), parolă (obligatoriu), mesajere (opțional: Viber, WhatsApp, Telegram). Pentru persoana juridică — și denumirea companiei (obligatoriu)",
+          "4. Acceptați termenii și condițiile și trimiteți formularul",
+          "5. Confirmați telefonul cu codul SMS pe care îl veți primi",
+          "6. Pe pasul următor puteți completa numele, prenumele, emailul (opțional) sau să săriți și să le completați mai târziu în \"Profil\"",
+          "7. Dacă ați introdus emailul, confirmați-l cu linkul pe care îl veți primi",
           "După înregistrarea cu succes, puteți începe să publicați anunțuri.",
         ],
       },
@@ -237,6 +239,17 @@ const faqConfig: FAQConfigWithLanguages = {
       },
       {
         id: "22",
+        question: "Ce este tabla de anunțuri a vânzătorului?",
+        answer: [
+          "Tabla de anunțuri este o pagină publică pe care fiecare vânzător o are. Pe această pagină sunt afișate toate anunțurile active ale vânzătorului.",
+          "Cum puteți deschide tabla unui vânzător:",
+          "• Pe pagina unui anunț: în blocul de contact al vânzătorului, dacă vânzătorul are mai mult de un anunț activ, apăsați pe „Vezi toate anunțurile vânzătorului”. Linkul se deschide într-o filă nouă.",
+          '• Dacă sunteți vânzător: în „Anunțurile mele” apăsați pe „Tabla mea de anunțuri” pentru a deschide propria pagină.',
+          "Puteți partaja linkul către tabla dvs. în mesagerii sau rețele sociale, ca să afișați toate anunțurile într-un singur loc.",
+        ],
+      },
+      {
+        id: "23",
         question: "Există o aplicație mobilă pentru Kupito?",
         answer: [
           "Kupito este o Progressive Web App (PWA), ceea ce înseamnă că o puteți instala pe telefonul dvs. ca aplicație mobilă:",
@@ -321,11 +334,13 @@ const faqConfig: FAQConfigWithLanguages = {
         answer: [
           "Для регистрации на Kupito:",
           '1. Нажмите на кнопку "Регистрация" в правом верхнем углу',
-          "2. Заполните необходимую информацию (имя, фамилия, email, телефон, пароль)",
-          "3. Выберите, являетесь ли вы физическим или юридическим лицом",
-          "4. Подтвердите телефон с помощью SMS-кода, который вы получите",
-          "5. Подтвердите email по ссылке, которую вы получите",
-          "После успешной регистрации вы можете начать размещать объявления.",
+          "2. Выберите тип: физическое или юридическое лицо",
+          "3. Заполните форму: телефон (обязательно), пароль (обязательно), при желании — мессенджеры (Viber, WhatsApp, Telegram). Для юрлица также название компании (обязательно)",
+          "4. Примите условия использования и отправьте форму",
+          "5. Подтвердите телефон с помощью SMS-кода, который придёт на указанный номер",
+          "6. На следующем шаге можно указать имя, фамилию, email (по желанию) или пропустить и заполнить позже в «Профиле»",
+          "7. Если указали email — подтвердите его по ссылке из письма",
+          "После успешной регистрации вы можете размещать объявления.",
         ],
       },
       {
@@ -517,6 +532,17 @@ const faqConfig: FAQConfigWithLanguages = {
       },
       {
         id: "22",
+        question: "Что такое доска объявлений продавца?",
+        answer: [
+          "Доска объявлений — это публичная страница каждого продавца. На ней отображаются все активные объявления этого продавца.",
+          "Как открыть доску продавца:",
+          "• На странице объявления: в блоке контактов продавца, если у продавца больше одного активного объявления, нажмите «Посмотреть все объявления продавца». Ссылка откроется в новой вкладке.",
+          '• Если вы продавец: в «Мои объявления» нажмите «Моя доска объявлений», чтобы открыть свою страницу.',
+          "Ссылку на свою доску можно отправить в мессенджеры или соцсети, чтобы показать все объявления в одном месте.",
+        ],
+      },
+      {
+        id: "23",
         question: "Существует ли мобильное приложение для Kupito?",
         answer: [
           "Kupito - это Progressive Web App (PWA), что означает, что вы можете установить его на свой телефон как мобильное приложение:",

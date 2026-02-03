@@ -538,7 +538,17 @@
     "promoted": "Продвинутые",
     "notPromoted": "Не продвинутые",
     "promotionHistory": "История продвижений",
-    "noPromotionHistory": "Нет истории продвижений"
+    "noPromotionHistory": "Нет истории продвижений",
+    "myBoard": "Моя доска объявлений"
+  },
+  "board": {
+    "title": "Доска объявлений от {sellerName}",
+    "home": "Главная",
+    "loadMore": "Загрузить ещё",
+    "noMoreListings": "Больше нет объявлений",
+    "noListings": "У этого продавца пока нет активных объявлений.",
+    "ownerNoticeTitle": "Это ваша доска объявлений.",
+    "ownerNoticeText": "Здесь отображаются все ваши активные объявления. Вы можете использовать ссылку на эту страницу, чтобы отправить её в мессенджерах или соцсетях и показать все свои объявления в одном месте."
   },
   "listingDetail": {
     "home": "Главная",
@@ -602,6 +612,7 @@
     "individual": "Физическое лицо",
     "business": "Юридическое лицо",
     "company": "Компания",
+    "companyWebsite": "Сайт компании",
     "name": "Имя",
     "city": "Город",
     "email": "Email",
@@ -722,6 +733,9 @@
     "title": "Профиль",
     "contactInfo": "Контактная информация",
     "phone": "Телефон",
+    "phoneChangeBoardUrlNoticeBefore": "При смене номера телефона изменится и ссылка на вашу доску объявлений. Если вы уже использовали её где-то (например, в соцсетях или мессенджерах), обновите ссылку — новый адрес можно скопировать в разделе «",
+    "phoneChangeBoardUrlNoticeAfter": "».",
+    "availableMessengers": "Доступные мессенджеры",
     "emailAndNotifications": "Email и уведомления",
     "email": "Email",
     "emailPlaceholder": "Введите адрес email",
@@ -731,6 +745,9 @@
     "companyInfo": "Информация о компании",
     "companyName": "Название компании",
     "companyNamePlaceholder": "Введите название компании",
+    "companyWebsiteUrl": "Ссылка на сайт компании",
+    "companyWebsiteUrlPlaceholder": "https://example.com",
+    "invalidCompanyWebsiteUrl": "Введите корректный адрес, начинающийся с http:// или https://",
     "personalData": "Личные данные",
     "firstName": "Имя",
     "firstNamePlaceholder": "Введите ваше имя",
