@@ -128,3 +128,5 @@ All universal documentation in **core repository**:
 ---
 
 **Built on:** [PPCSL](./core/) (Platform-Portable Car Sales Logic)
+
+<!-- CI trigger 2026-02 -->
