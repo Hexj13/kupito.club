@@ -598,7 +598,7 @@
     "description": "Descriere",
     "expand": "Citește mai mult",
     "collapse": "Citește mai puțin",
-    "previousListings": "Anunțuri anterioare pentru acest vehicul",
+    "previousListings": "Anunțuri anterioare pentru acest auto",
     "vehicleHistory": "Istoric vehicul",
     "historyHint": "Afișăm anunțuri anterioare pentru acest vehicul cu același VIN. Pentru protecția confidențialității, prețul și datele personale ale autorilor sunt ascunse pentru anunțuri închise.",
     "vinNotProvided": "Codul VIN nu este specificat",
@@ -606,7 +606,7 @@
     "title": "Titlu",
     "closedAt": "Închis",
     "open": "Deschide →",
-    "noPreviousListings": "Nu există anunțuri anterioare pentru acest vehicul",
+    "noPreviousListings": "Nu există anunțuri anterioare pentru acest auto",
     "contactInfo": "Informații de contact",
     "sellerType": "Tip vânzător",
     "individual": "Persoană fizică",
@@ -1049,7 +1049,12 @@
       "metallic_pearl": "Perlă metalizată",
       "matte_black": "Negru mat",
       "matte_gray": "Gri mat",
-      "matte_blue": "Albastru mat"
+      "matte_blue": "Albastru mat",
+      "burgundy": "Bordeaux",
+      "cream": "Crem",
+      "chameleon": "Cameleon",
+      "special": "Special",
+      "other": "Altul"
     },
     "equipment": {
       "air_conditioning": "Aer condiționat",
