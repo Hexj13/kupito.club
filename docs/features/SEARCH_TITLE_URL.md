@@ -349,7 +349,7 @@ Script automatically:
 
 ### Frontend
 - `core/frontend/app/page.tsx` - `getTitleFromParams()` function (fallback)
-- `core/frontend/lib/utils.ts` - `createSlug()`, `slugToName()` functions
+- `core/frontend/lib/utils/utils.ts` - `createSlug()`, `slugToName()` functions (import via `@/lib/utils`)
 
 ### Cleanup Scripts
 - Script needed for finding and merging brand duplicates
