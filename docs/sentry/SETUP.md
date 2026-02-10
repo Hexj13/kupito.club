@@ -447,8 +447,8 @@ export class ListingsService {
       'auto-close-old-listings',
       async () => {
         // Existing logic for closing listings
-        const fiveMonthsAgo = new Date();
-        fiveMonthsAgo.setMonth(fiveMonthsAgo.getMonth() - 5);
+        const ninetyDaysAgo = new Date();
+        ninetyDaysAgo.setDate(ninetyDaysAgo.getDate() - 90);
         // ... rest of logic
       },
       {
