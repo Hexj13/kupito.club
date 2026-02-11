@@ -58,6 +58,7 @@
     "yes": "Da",
     "no": "Nu",
     "search": "Caută",
+    "requiredAsterisk": "*",
     "apiErrors": {
       "timeout": "Timpul de conectare a expirat. Încercați din nou.",
       "networkError": "Eroare de rețea. Verificați conexiunea la internet.",
@@ -183,6 +184,7 @@
     "phone": "Telefon",
     "phonePlaceholder": "+37370123456",
     "phoneHint": "Dacă este specificat și email, autentificarea poate fi efectuată atât pe număr de telefon, cât și pe email",
+    "emailHint": "Autentificarea poate fi efectuată cu acest email sau cu numărul de telefon",
     "phoneRequired": "Telefonul este obligatoriu",
     "phoneInvalid": "Introduceți un telefon valid (format: +cod țară număr)",
     "phoneMustStartWithPlus": "Telefonul trebuie să înceapă cu +",
