@@ -1146,12 +1146,11 @@
       "windshield": "Parbriz",
       "wireless_charging": "Încărcare wireless",
       "xenon_lights": "Faruri xenon",
-      "tires_summer": "Vara",
-      "tires_winter": "Iarnă",
-      "tires_sport": "Sport",
-      "tires_all_terrain": "Off-road",
-      "tires_all_season": "Toate anotimpurile",
-      "tires_run_flat": "Run-Flat"
+      "tires_summer": "Anvelope de vară",
+      "tires_winter": "Anvelope de iarnă",
+      "tires_sport": "Anvelope sport",
+      "tires_all_terrain": "Anvelope off-road",
+      "tires_all_season": "Anvelope all season"
     },
     "equipmentCategories": {
       "comfort": "Confort",

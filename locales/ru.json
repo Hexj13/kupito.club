@@ -1146,12 +1146,11 @@
       "windshield": "Ветровое стекло",
       "wireless_charging": "Беспроводная зарядка",
       "xenon_lights": "Ксеноновые фары",
-      "tires_summer": "Летние",
-      "tires_winter": "Зимние",
-      "tires_sport": "Спортивные",
-      "tires_all_terrain": "Внедорожные",
-      "tires_all_season": "Всесезонные",
-      "tires_run_flat": "Run-Flat"
+      "tires_summer": "Летние шины",
+      "tires_winter": "Зимние шины",
+      "tires_sport": "Спортивные шины",
+      "tires_all_terrain": "Внедорожные шины",
+      "tires_all_season": "Всесезонные шины"
     },
     "equipmentCategories": {
       "comfort": "Комфорт",
