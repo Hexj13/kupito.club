@@ -27,11 +27,11 @@
     "toggleMenu": "Comută meniul"
   },
   "home": {
-    "title": "Autoturisme în Moldova",
-    "subtitle": "Cumpără sau vinde auto pe",
+    "title": "Vânzare auto în Moldova",
+    "subtitle": "Publicați anunțul",
     "subtitleBold": "Kupito!",
-    "subtitle2": "Publică anunț",
-    "subtitle3": "gratuit.",
+    "subtitle2": ". Cumpărați sau vindeți auto pe ",
+    "subtitle3": "gratuit",
     "popularSearches": "Căutări populare"
   },
   "listingsPage": {
@@ -644,13 +644,15 @@
   },
   "searchFilters": {
     "popular": "Populare",
-    "popularFilters": "Modele populare",
+    "popularFilters": "Popular",
     "popularBodyTypes": "Tipuri de caroserie populare",
     "equipmentSortMode": "Rezim sortare:",
     "equipmentSortModeFull": "Potrivire completă",
     "equipmentSortModePartial": "Potrivire parțială",
     "equipmentSortModeHint": "Potrivire completă: în anunț trebuie să fie toate opțiunile de echipament selectate. Potrivire parțială: este suficient ca în anunț să fie prezentă cel puțin una dintre opțiunile selectate.",
     "categoryLabel": "Categorie:",
+    "comingSoonHint": "În curând pe site!",
+    "tireAlt": "Anvelope",
     "showPopularFilters": "Afișează filtre populare",
     "hidePopularFilters": "Ascunde filtre populare",
     "selectBrands": "Selectează mărci",

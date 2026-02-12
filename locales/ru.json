@@ -27,11 +27,11 @@
     "toggleMenu": "Переключить меню"
   },
   "home": {
-    "title": "Автомобили в Молдове",
-    "subtitle": "Купите или продайте авто на",
+    "title": "Продажа авто в Молдове",
+    "subtitle": "Опубликуйте объявление",
     "subtitleBold": "Kupito!",
-    "subtitle2": "Опубликуйте объявление",
-    "subtitle3": "бесплатно.",
+    "subtitle2": ". Продайте или купите авто на ",
+    "subtitle3": "бесплатно",
     "popularSearches": "Популярные поиски"
   },
   "listingsPage": {
@@ -644,13 +644,15 @@
   },
   "searchFilters": {
     "popular": "Популярные",
-    "popularFilters": "Популярные модели",
+    "popularFilters": "Популярное",
     "popularBodyTypes": "Популярные типы кузова",
     "equipmentSortMode": "Режим сортировки:",
     "equipmentSortModeFull": "Полное совпадение",
     "equipmentSortModePartial": "Частичное совпадение",
     "equipmentSortModeHint": "Полное совпадение: в объявлении должны быть все выбранные опции комплектации. Частичное совпадение: достаточно, чтобы в объявлении была хотя бы одна из выбранных опций.",
     "categoryLabel": "Категория:",
+    "comingSoonHint": "Скоро на сайте!",
+    "tireAlt": "Шины",
     "showPopularFilters": "Показать популярные фильтры",
     "hidePopularFilters": "Скрыть популярные фильтры",
     "selectBrands": "Выберите марки",
