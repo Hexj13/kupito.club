@@ -170,7 +170,7 @@
     "loggingIn": "Se autentifică...",
     "loginButton": "Autentificare",
     "passwordPlaceholder": "Introduceți parola dvs.",
-    "filterSavedSuccess": "Filtrul a fost salvat cu succes",
+    "filterSavedSuccess": "Filtrul a fost salvat cu succes în favorite",
     "filterSaveError": "Eroare la salvarea filtrului",
     "filterLimitError": "Puteți salva maximum 20 de filtre. Vă rugăm să ștergeți unul dintre filtrele existente."
   },
@@ -290,7 +290,7 @@
     "maxResendAttempts": "Număr maxim de încercări"
   },
   "saveFilter": {
-    "editTitle": "Editează filtrul",
+    "editTitle": "Editează denumirea",
     "saveTitle": "Salvează filtrul",
     "name": "Nume",
     "nameRequired": "Introduceți un nume pentru filtrul",
@@ -299,7 +299,7 @@
     "saving": "Se salvează...",
     "save": "Salvează",
     "filterUpdated": "Filtrul a fost actualizat cu succes",
-    "filterSaved": "Filtrul a fost salvat cu succes",
+    "filterSaved": "Filtrul a fost salvat cu succes în favorite",
     "updateError": "Eroare la actualizarea filtrului",
     "saveError": "Eroare la salvarea filtrului"
   },
@@ -415,7 +415,7 @@
     "imageEmptyError": "Fișierul este gol",
     "imageMaxCountError": "Maximum 20 de fotografii",
     "basicInfo": "Informații de bază",
-    "brandModelInfo": "Dacă marca sau modelul pe care le căutați nu sunt disponibile, scrieți-ne la support@kupito.club. Le vom adăuga în cursul zilei și vă vom anunța imediat.",
+    "brandModelInfo": "Dacă marca sau modelul pe care le căutați nu sunt în listă, scrieți-ne la support@kupito.club. Le vom adăuga în cursul zilei și vă vom anunța imediat.",
     "brandLabel": "Marcă",
     "modelLabel": "Model",
     "yearLabel": "An",
@@ -430,7 +430,7 @@
     "mileageLabel": "Kilometraj",
     "technicalSpecs": "Caracteristici tehnice",
     "equipment": "Echipament",
-    "equipmentInfo": "Indicarea echipamentului nu este obligatorie pentru crearea anunțului, dar dacă îl indicați, căutarea anunțului dvs. va fi mai eficientă și îi va îmbunătăți calitatea pentru cumpărătorii potențiali.",
+    "equipmentInfo": "Indicarea echipamentului nu este obligatorie, dar ajută la îmbunătățirea calității anunțului și la creșterea eficienței căutării pentru cumpărători.",
     "exterior": "Aspect exterior",
     "priceAndLocation": "Preț și locație",
     "conditionAndRegistration": "Stare și înmatriculare",
@@ -552,7 +552,7 @@
     "noMoreListings": "Nu mai există anunțuri",
     "noListings": "Acest vânzător nu are încă anunțuri active.",
     "ownerNoticeTitle": "Aceasta este tabla dvs. de anunțuri.",
-    "ownerNoticeText": "Aici sunt afișate toate anunțurile dvs. active. Puteți folosi linkul către această pagină pentru a o trimite în mesagerii sau rețelele sociale și a afișa toate anunțurile într-un singur loc."
+    "ownerNoticeText": "Aici sunt afișate toate anunțurile dvs. active. Puteți folosi linkul către această pagină pentru a o trimite în mesagerii sau rețelele sociale și a afișa toate anunțurile pe o singură pagină."
   },
   "listingDetail": {
     "home": "Acasă",
@@ -605,8 +605,8 @@
     "previousListings": "Anunțuri anterioare pentru acest auto",
     "vehicleHistory": "Istoric vehicul",
     "historyHint": "Afișăm anunțuri anterioare pentru acest vehicul cu același VIN. Pentru protecția confidențialității, prețul și datele personale ale autorilor sunt ascunse pentru anunțuri închise.",
-    "vinNotProvided": "Codul VIN nu este specificat",
-    "vinNotProvidedDescription": "Pentru a putea verifica istoricul acestui vehicul, este necesar să fie specificat codul VIN în anunț. Fără cod VIN, nu putem identifica anunțuri anterioare pentru același vehicul.",
+    "vinNotProvided": "Codul VIN nu este specificat de vânzător",
+    "vinNotProvidedDescription": "Fără el, nu putem identifica anunțurile anterioare pentru acest vehicul.",
     "title": "Titlu",
     "closedAt": "Închis",
     "open": "Deschide →",
@@ -748,7 +748,7 @@
     "title": "Profil",
     "contactInfo": "Informații de contact",
     "phone": "Telefon",
-    "phoneChangeBoardUrlNoticeBefore": "La schimbarea numărului de telefon se va schimba și linkul către tabla dvs. de anunțuri. Dacă ați partajat acest link (de ex. în rețele sociale sau mesagerii), actualizați-l cu noul link din „",
+    "phoneChangeBoardUrlNoticeBefore": "La schimbarea numărului de telefon se va schimba și linkul către tabla dvs. de anunțuri. Dacă ați partajat acest link (de ex. în rețele sociale sau mesagerii), actualizați-l — noul URL poate fi copiat pe pagina „",
     "phoneChangeBoardUrlNoticeAfter": "”.",
     "availableMessengers": "Mesageri disponibili",
     "emailAndNotifications": "Email și notificări",
@@ -937,7 +937,7 @@
     "noVehicles": "Nu există vehicule pentru comparație",
     "addVehiclesHint": "Adăugați vehicule din paginile anunțurilor pentru a le compara",
     "browseListings": "Răsfoiește anunțuri",
-    "clearAll": "Șterge tot",
+    "clearAll": "Curăță tot",
     "allRemoved": "Toate vehiculele au fost eliminate din comparație",
     "parameter": "Parametru",
     "photo": "Fotografie",
