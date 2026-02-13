@@ -12,7 +12,7 @@ Documentation specific to the Moldova platform.
 ### 📜 [`scripts/`](./scripts/)
 **Scripts**
 
-- **[SEED_ALL_BRANDS_COMPLETE.md](./scripts/SEED_ALL_BRANDS_COMPLETE.md)** - Brands and models generation script documentation
+- **[BRANDS_MODELS_MASTER_PLAN.md](./scripts/BRANDS_MODELS_MASTER_PLAN.md)** - Brands and models generation script documentation
 
 ### 🛠️ [`setup/`](./setup/)
 **Setup and Installation**
