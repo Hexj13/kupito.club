@@ -112,9 +112,9 @@ Platform documentation is located in **[`docs/`](./docs/)**:
 
 - **[Platform Documentation](./docs/README.md)** - Main entry point
 - **[Deploy](./docs/deployment/PRODUCTION_DEPLOYMENT.md)** - Production instructions
-- **[Scripts](./docs/scripts/BRANDS_MODELS_MASTER_PLAN.md)** - Scripts documentation
 - **[Setup](./docs/setup/SETUP.md)** - Initial setup
-- **[Features](./docs/features/)** - Feature documentation (URL/title, slugs)
+- **[Brands and Models](./core/docs/scripts/BRANDS_MODELS_MASTER_PLAN.md)** - Scripts and production flow (in core)
+- **[Search title/URL](./core/docs/features/SEARCH_TITLE_URL.md)** - Slugs and diacritics (in core)
 
 ### Core Documentation (universal)
 

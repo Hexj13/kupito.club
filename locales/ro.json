@@ -480,6 +480,7 @@
     "new": "Autoturism nou",
     "newMoto": "Nou",
     "urgent": "Urgent",
+    "approxPriceWithCurrency": "(≈ {price} {currency})",
     "promoted": "Promovat",
     "promote": "Promovează",
     "unpromote": "Anulează promovarea",

@@ -480,6 +480,7 @@
     "new": "Новое авто",
     "newMoto": "Новое",
     "urgent": "Срочно",
+    "approxPriceWithCurrency": "(≈ {price} {currency})",
     "promoted": "Продвинуто",
     "promote": "Продвинуть",
     "unpromote": "Отменить продвижение",

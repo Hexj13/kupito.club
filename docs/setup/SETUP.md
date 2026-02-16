@@ -56,6 +56,9 @@ git submodule status
 # Test build process (copies frontend locales ro/ru and backend locales to core)
 npm run prepare:build
 
+# Optional: check required env vars (script lives in core/scripts/)
+npm run check-env
+
 # Run linting
 cd core/frontend && npm run lint && cd ../..
 cd core/backend && npm run lint:check && cd ../..
