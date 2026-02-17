@@ -50,6 +50,7 @@ coverage-integration/
 
 # Generated files
 swagger.json
+core/frontend/lib/theme.json
 
 # Database
 *.sqlite
