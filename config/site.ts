@@ -1,15 +1,15 @@
-import { SiteConfig } from "../site-config";
+import type { SiteConfig } from '../site-config';
 
 const config: SiteConfig = {
-  country: "md",
-  name: "Kupito",
-  domain: "kupito.club",
-  locale: "ro-MD",
-  currency: "EUR",
-  currencies: ["EUR", "MDL"] as const,
-  countryCode: "MD",
-  supportEmail: "support@kupito.club",
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://kupito.club",
+  country: 'md',
+  name: 'Kupito',
+  domain: 'kupito.club',
+  locale: 'ro-MD',
+  currency: 'EUR',
+  currencies: ['EUR', 'MDL'] as const,
+  countryCode: 'MD',
+  supportEmail: 'support@kupito.club',
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://kupito.club',
 };
 
 export default config;

@@ -45,33 +45,43 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Copy locale files to core
+      - name: Copy platform files to core
         run: |
-          if [ ! -d "locales" ] || [ ! -d "theme" ] || [ ! -d "config" ]; then
-            echo "❌ Error: Required directories (locales, theme, config) not found"
-            exit 1
-          fi
-          cp -r locales core/frontend/lib/
+          for dir in locales theme config assets; do
+            if [ ! -d "$dir" ]; then
+              echo "Error: Required directory '$dir' not found"
+              exit 1
+            fi
+          done
+
+          mkdir -p core/frontend/lib/locales
+          rm -rf core/frontend/lib/locales/backend
+          cp locales/ro.json locales/ru.json core/frontend/lib/locales/
+
+          cp locales/backend/*.json core/backend/src/common/i18n/
+
           cp -r theme core/frontend/lib/
           cp -r config core/frontend/lib/
-          
-          if [ ! -f "core/frontend/lib/locales/ro.json" ]; then
-            echo "❌ Error: Failed to copy locales/ro.json"
-            exit 1
-          fi
-          if [ ! -f "core/frontend/lib/locales/ru.json" ]; then
-            echo "❌ Error: Failed to copy locales/ru.json"
-            exit 1
-          fi
-          if [ ! -f "core/frontend/lib/theme/colors.ts" ]; then
-            echo "❌ Error: Failed to copy theme/colors.ts"
-            exit 1
-          fi
-          if [ ! -f "core/frontend/lib/config/site.ts" ]; then
-            echo "❌ Error: Failed to copy config/site.ts"
-            exit 1
-          fi
-          echo "✅ All platform files copied successfully"
+
+          cp -r assets/frontend/public/* core/frontend/public/
+          cp -r assets/backend/watermark core/backend/assets/
+
+          for f in \
+            core/frontend/lib/locales/ro.json \
+            core/frontend/lib/locales/ru.json \
+            core/frontend/lib/theme/colors.ts \
+            core/frontend/lib/config/site.ts \
+            core/backend/src/common/i18n/ro.json \
+            core/backend/src/common/i18n/ru.json \
+            core/backend/src/common/i18n/en.json \
+            core/frontend/public/logo.png \
+            core/backend/assets/watermark/logo.png; do
+            if [ ! -f "$f" ]; then
+              echo "Error: Missing expected file: $f"
+              exit 1
+            fi
+          done
+          echo "All platform files copied and verified"
 
       - name: Install frontend dependencies
         working-directory: ./core/frontend

@@ -17,6 +17,11 @@
     "add-brands": "cd core/backend && npx ts-node -r tsconfig-paths/register src/scripts/stage/add-brands.ts",
     "seed-all-brands": "cd core/backend && npx ts-node -r tsconfig-paths/register src/scripts/stage/seed-all-brands.ts",
     "check-models-validity": "cd core/backend && COUNTRY=md npx ts-node -r tsconfig-paths/register src/scripts/stage/check-models-validity.ts",
-    "check-hydration": "cd core && npx tsx scripts/check-hydration.ts"
+    "check-hydration": "cd core && npx tsx scripts/check-hydration.ts",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7"
   }
 }
