@@ -58,6 +58,7 @@ jobs:
           rm -rf core/frontend/lib/locales/backend
           cp locales/ro.json locales/ru.json core/frontend/lib/locales/
 
+          mkdir -p core/backend/src/common/i18n
           cp locales/backend/*.json core/backend/src/common/i18n/
 
           cp -r theme core/frontend/lib/
