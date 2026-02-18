@@ -327,6 +327,7 @@
     "defaultTitle": "Автомобиль на продажу",
     "imageAlt": "{title} - Изображение {index}",
     "imageAltWithTotal": "{title} - Изображение {index} из {total}",
+    "closeImageModal": "Закрыть просмотр фото",
     "notFoundTitle": "Объявление не найдено",
     "notFoundDescription": "Объявление не существует или недоступно.",
     "addToFavorites": "Добавлено в избранное",

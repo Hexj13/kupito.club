@@ -327,6 +327,7 @@
     "defaultTitle": "Autoturism de vânzare",
     "imageAlt": "{title} - Imagine {index}",
     "imageAltWithTotal": "{title} - Imagine {index} din {total}",
+    "closeImageModal": "Închide vizualizarea foto",
     "notFoundTitle": "Anunțul nu a fost găsit",
     "notFoundDescription": "Anunțul nu există sau nu este disponibil.",
     "addToFavorites": "Adăugat la favorite",
