@@ -24,7 +24,8 @@
     "loginShort": "Войти",
     "register": "Регистрация",
     "brandName": "Kupito",
-    "toggleMenu": "Переключить меню"
+    "toggleMenu": "Переключить меню",
+    "more": "Ещё"
   },
   "home": {
     "title": "Продажа авто в Молдове",
@@ -59,6 +60,8 @@
     "yes": "Да",
     "no": "Нет",
     "search": "Поиск",
+    "choose": "Выберите...",
+    "selectedCount": "Выбрано {count}",
     "requiredAsterisk": "*",
     "apiErrors": {
       "timeout": "Время подключения истекло. Попробуйте снова.",
@@ -560,7 +563,7 @@
   },
   "listingDetail": {
     "home": "Главная",
-    "addToFavorites": "Добавить в избранное",
+    "addToFavorites": "В избранное",
     "removeFromFavorites": "Удалить из избранного",
     "yourListing": "Ваше объявление",
     "cannotAddOwnListing": "Вы не можете добавить свое объявление в избранное",
@@ -846,7 +849,7 @@
       "statusUpdateError": "Ошибка при обновлении статуса",
       "copySuccess": "{label} скопирован",
       "copyError": "Ошибка при копировании",
-      "searchByIdPlaceholder": "Введите ID объявления",
+      "searchByIdPlaceholder": "ID объявления / ID пользователя",
       "searchByCreatorPlaceholder": "Введите имя, email или компанию",
       "searchByCreator": "Поиск по пользователю",
       "searchById": "Поиск по ID",
@@ -872,12 +875,12 @@
       "allRoles": "Все роли",
       "individual": "Физическое лицо",
       "business": "Юридическое лицо",
-      "admin": "Admin",
+      "admin": "Администратор",
       "loadMore": "Загрузить еще",
       "loading": "Загрузка...",
       "deletedUser": "Удаленный пользователь",
       "user": "Пользователь:",
-      "active": "Activ",
+      "active": "Активен",
       "inactive": "Деактивирован",
       "activate": "Активировать",
       "deactivate": "Деактивировать",
@@ -892,7 +895,7 @@
       "status": "Статус:",
       "listings": "Объявления:",
       "unavailable": "Недоступно",
-      "searchPlaceholder": "Поиск по ID, email, телефону, имени, фамилии или компании"
+      "searchPlaceholder": "ID / email / телефон / имя / компания"
     },
     "promotionEnabled": "Продвижение активировано",
     "promotionDisabled": "Продвижение деактивировано",
@@ -900,7 +903,7 @@
     "promotionsTabLabel": "Продвижения",
     "promotionsTab": {
       "loadError": "Ошибка при загрузке продвижений",
-      "searchPlaceholder": "Поиск по ID",
+      "searchPlaceholder": "ID объявления / ID пользователя",
       "searchByListingId": "По ID объявления",
       "searchByUserId": "По ID пользователя",
       "noPromotions": "Нет продвижений",
