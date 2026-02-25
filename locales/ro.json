@@ -24,7 +24,8 @@
     "loginShort": "Intră",
     "register": "Înregistrare",
     "brandName": "Kupito",
-    "toggleMenu": "Comută meniul"
+    "toggleMenu": "Comută meniul",
+    "more": "Mai mult"
   },
   "home": {
     "title": "Vânzare auto în Moldova",
@@ -59,6 +60,8 @@
     "yes": "Da",
     "no": "Nu",
     "search": "Caută",
+    "choose": "Alege...",
+    "selectedCount": "Selectate {count}",
     "requiredAsterisk": "*",
     "apiErrors": {
       "timeout": "Timpul de conectare a expirat. Încercați din nou.",
@@ -563,7 +566,7 @@
   },
   "listingDetail": {
     "home": "Acasă",
-    "addToFavorites": "Adaugă la favorite",
+    "addToFavorites": "La favorite",
     "removeFromFavorites": "Elimină din favorite",
     "yourListing": "Anunțul dvs.",
     "cannotAddOwnListing": "Nu puteți adăuga propriul anunț la favorite",
@@ -849,7 +852,7 @@
       "statusUpdateError": "Eroare la actualizarea statusului",
       "copySuccess": "{label} a fost copiat",
       "copyError": "Eroare la copiere",
-      "searchByIdPlaceholder": "Introduceți ID-ul anunțului",
+      "searchByIdPlaceholder": "ID anunț / ID utilizator",
       "searchByCreatorPlaceholder": "Introduceți nume, email sau companie",
       "searchByCreator": "Caută după utilizator",
       "searchById": "Caută după ID",
@@ -875,7 +878,7 @@
       "allRoles": "Toate rolurile",
       "individual": "Persoană fizică",
       "business": "Persoană juridică",
-      "admin": "Admin",
+      "admin": "Administrator",
       "loadMore": "Încarcă mai multe",
       "loading": "Se încarcă...",
       "deletedUser": "Utilizator șters",
@@ -895,7 +898,7 @@
       "status": "Status:",
       "listings": "Anunțuri:",
       "unavailable": "Indisponibil",
-      "searchPlaceholder": "Caută după ID, email, telefon, nume, prenume sau companie"
+      "searchPlaceholder": "ID / email / telefon / nume / companie"
     },
     "promotionEnabled": "Promovarea este activată",
     "promotionDisabled": "Promovarea este dezactivată",
@@ -903,7 +906,7 @@
     "promotionsTabLabel": "Promovări",
     "promotionsTab": {
       "loadError": "Eroare la încărcarea promovărilor",
-      "searchPlaceholder": "Caută după ID",
+      "searchPlaceholder": "ID anunț / ID utilizator",
       "searchByListingId": "După ID anunț",
       "searchByUserId": "După ID utilizator",
       "noPromotions": "Nu există promovări",
