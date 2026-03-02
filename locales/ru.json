@@ -666,6 +666,11 @@
   "searchFilters": {
     "popular": "Популярные",
     "popularFilters": "Популярное",
+    "popularModels": "Популярные модели",
+    "showMore": "Показать ещё",
+    "showLess": "Скрыть",
+    "youSelected": "Вы выбрали:",
+    "noPopularBrands": "Нет популярных марок для этой категории",
     "popularBodyTypes": "Популярные типы кузова",
     "equipmentSortMode": "Режим сортировки:",
     "equipmentSortModeFull": "Полное совпадение",
