@@ -422,7 +422,7 @@
     "imageEmptyError": "Fișierul este gol",
     "imageMaxCountError": "Maximum 20 de fotografii",
     "hidePlates": "Ascunde plăcuțele de înmatriculare pe fotografii",
-    "hidePlatesHelper": "Vom acoperi automat plăcuțele cu o mască.",
+    "hidePlatesHelper": "Vom acoperi automat plăcuțele cu o mască. Activați opțiunea înainte de a încărca fotografiile.",
     "plateMaskError": "Nu am reușit să procesăm fotografia. Încercați din nou sau dezactivați ascunderea plăcuțelor.",
     "serverBusyError": "Serverul este ocupat. Încercați peste un minut.",
     "basicInfo": "Informații de bază",
