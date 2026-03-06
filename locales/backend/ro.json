@@ -59,6 +59,7 @@
     "filterLimitExceeded": "Ați atins limita de filtre salvate. Maximum: {max}",
     "maxSavedFiltersReached": "Puteți salva maximum {max} filtre. Vă rugăm să ștergeți unul dintre filtrele existente.",
     "invalidImageFormat": "Format imagine invalid",
+    "animatedImagesNotSupported": "Imaginile animate nu sunt acceptate. Încărcați o imagine statică.",
     "imageTooLarge": "Imaginea este prea mare. Dimensiunea maximă: {max}MB",
     "tooManyImages": "Prea multe imagini. Numărul maxim: {max}",
     "unsupportedVehicleType": "Tip vehicul neacceptat",
