@@ -5,7 +5,8 @@
     "faq": "Часто задаваемые вопросы",
     "terms": "Условия использования",
     "privacy": "Политика конфиденциальности",
-    "cookieSettings": "Настройки cookies"
+    "cookieSettings": "Настройки cookies",
+    "contacts": "Контакты"
   },
   "header": {
     "addListing": "Создать объявление",
@@ -1276,6 +1277,14 @@
       "email": "support@kupito.club"
     }
   },
+  "contacts": {
+    "title": "Контакты",
+    "intro": "Мы — команда разработки kupito.club и всегда готовы помочь. Свяжитесь с нами любым из способов ниже.",
+    "email": "Email",
+    "telegram": "Telegram бот",
+    "whatsapp": "WhatsApp Business Kupito.club",
+    "whatsappValue": "Kupito.club (бизнес-аккаунт)"
+  },
   "verifyEmail": {
     "title": "Проверка адреса email",
     "pleaseWait": "Пожалуйста, подождите...",
@@ -1382,6 +1391,13 @@
       "ogTitle": "Часто задаваемые вопросы (FAQ) - Kupito",
       "ogDescription": "Найдите ответы на наиболее часто задаваемые вопросы о Kupito. Узнайте, как опубликовать объявление, как управлять объявлениями, как искать и сравнивать автомобили и многое другое.",
       "ogAlt": "Kupito - Часто задаваемые вопросы"
+    },
+    "contacts": {
+      "title": "Контакты - kupito.club",
+      "description": "Свяжитесь с командой kupito.club. Email, Telegram бот и WhatsApp Business.",
+      "ogTitle": "Контакты - kupito.club",
+      "ogDescription": "Свяжитесь с командой разработки kupito.club. Мы готовы помочь по email, Telegram или WhatsApp.",
+      "ogAlt": "kupito.club - Контакты"
     },
     "cookieSettings": {
       "title": "Настройки cookies",

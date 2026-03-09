@@ -5,7 +5,8 @@
     "faq": "Întrebări frecvente",
     "terms": "Termeni de utilizare",
     "privacy": "Politica de confidențialitate",
-    "cookieSettings": "Setări cookies"
+    "cookieSettings": "Setări cookies",
+    "contacts": "Contacte"
   },
   "header": {
     "addListing": "Creează anunț",
@@ -1276,6 +1277,14 @@
       "email": "support@kupito.club"
     }
   },
+  "contacts": {
+    "title": "Contacte",
+    "intro": "Suntem echipa de dezvoltare kupito.club și suntem mereu gata să vă ajutăm. Contactați-ne prin oricare din canalele de mai jos.",
+    "email": "Email",
+    "telegram": "Telegram bot",
+    "whatsapp": "WhatsApp Business Kupito.club",
+    "whatsappValue": "Kupito.club (cont business)"
+  },
   "verifyEmail": {
     "title": "Verificare adresă email",
     "pleaseWait": "Vă rugăm așteptați...",
@@ -1382,6 +1391,13 @@
       "ogTitle": "Întrebări frecvente (FAQ) - Kupito",
       "ogDescription": "Găsiți răspunsuri la cele mai frecvente întrebări despre Kupito. Aflați cum să publicați un anunț, cum să gestionați anunțurile, cum să căutați și să comparați autoturisme și multe altele.",
       "ogAlt": "Kupito - Întrebări frecvente"
+    },
+    "contacts": {
+      "title": "Contacte - kupito.club",
+      "description": "Contactați echipa kupito.club. Email, Telegram bot și WhatsApp Business.",
+      "ogTitle": "Contacte - kupito.club",
+      "ogDescription": "Contactați echipa de dezvoltare kupito.club. Suntem gata să vă ajutăm prin email, Telegram sau WhatsApp.",
+      "ogAlt": "kupito.club - Contacte"
     },
     "cookieSettings": {
       "title": "Setări cookies",
