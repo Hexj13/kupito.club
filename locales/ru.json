@@ -1282,8 +1282,11 @@
     "intro": "Мы — команда разработки kupito.club и всегда готовы помочь. Свяжитесь с нами любым из способов ниже.",
     "email": "Email",
     "telegram": "Telegram бот",
-    "whatsapp": "WhatsApp Business Kupito.club",
-    "whatsappValue": "Kupito.club (бизнес-аккаунт)"
+    "whatsapp": "WhatsApp Business",
+    "whatsappValue": "Kupito.club (бизнес-аккаунт)",
+    "copyTitle": "Копировать",
+    "openInNewTab": "Открыть в новой вкладке",
+    "openEmail": "Открыть почтовую программу"
   },
   "verifyEmail": {
     "title": "Проверка адреса email",

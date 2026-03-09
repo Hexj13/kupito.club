@@ -1282,8 +1282,11 @@
     "intro": "Suntem echipa de dezvoltare kupito.club și suntem mereu gata să vă ajutăm. Contactați-ne prin oricare din canalele de mai jos.",
     "email": "Email",
     "telegram": "Telegram bot",
-    "whatsapp": "WhatsApp Business Kupito.club",
-    "whatsappValue": "Kupito.club (cont business)"
+    "whatsapp": "WhatsApp Business",
+    "whatsappValue": "Kupito.club (cont business)",
+    "copyTitle": "Copiază",
+    "openInNewTab": "Deschide în tab nou",
+    "openEmail": "Deschide clientul de email"
   },
   "verifyEmail": {
     "title": "Verificare adresă email",
