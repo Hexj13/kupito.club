@@ -10,6 +10,7 @@ const config: SiteConfig = {
   countryCode: 'MD',
   supportEmail: 'support@kupito.club',
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://kupito.club',
+  assetVersion: '20260313',
 };
 
 export default config;
