@@ -394,6 +394,11 @@
       "truck": "Comercial",
       "moto": "Motociclete"
     },
+    "vehicleTypeShort": {
+      "car": "Auto",
+      "truck": "Comercial",
+      "moto": "Moto"
+    },
     "required": "Completați câmpul obligatoriu",
     "brandRequired": "Este necesar să selectați marca",
     "modelRequired": "Este necesar să selectați modelul",
@@ -1287,6 +1292,7 @@
   },
   "breadcrumbs": {
     "home": "Acasă",
+    "transport": "Transport",
     "ariaLabel": "Breadcrumb-uri"
   },
   "faq": {
