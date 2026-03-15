@@ -1,3 +1,12 @@
+---
+title: Kupito.club
+owner: platform
+tags:
+  - type/readme
+  - scope/platform
+  - status/active
+---
+
 # Kupito.club
 
 **Platform for Moldova** - Car marketplace built on PPCSL core.
@@ -106,24 +115,21 @@ git push
 
 ## 📚 Documentation
 
-### Platform-Specific (Moldova)
+### Platform-only (Moldova)
 
-Platform documentation is located in **[`docs/`](./docs/)**:
+- **[Setup](./docs/setup/setup.md)** — initial platform setup
+- **[Deploy](./docs/deployment/production-deployment.md)** — production deployment
+- **[Sentry](./docs/sentry/sentry-setup.md)** — Sentry setup and launch checklist (platform env)
 
-- **[Platform Documentation](./docs/README.md)** - Main entry point
-- **[Deploy](./docs/deployment/PRODUCTION_DEPLOYMENT.md)** - Production instructions
-- **[Setup](./docs/setup/SETUP.md)** - Initial setup
-- **[Brands and Models](./core/docs/scripts/BRANDS_MODELS_MASTER_PLAN.md)** - Scripts and production flow (in core)
-- **[Search title/URL](./core/docs/features/SEARCH_TITLE_URL.md)** - Slugs and diacritics (in core)
+### Core (source of truth)
 
-### Core Documentation (universal)
+All shared documentation lives in **core**:
 
-All universal documentation in **core repository**:
-
-- **[Core Documentation](./core/docs/README.md)** - General documentation
-- **[Platform Guide](./core/docs/guides/PLATFORM_GUIDE.md)** - Creating platforms
-- **[Deployment Guide](./core/docs/guides/DEPLOYMENT.md)** - Deployment
-- **[Architecture](./core/docs/architecture/ARCHITECTURE_OVERVIEW.md)** - Architecture
+- **[Core docs](./core/docs/README.md)** — entry point
+- **[Documentation architecture](./core/docs/documentation-architecture.md)** — structure, repo vs vault
+- **[Reference](./core/docs/reference/)** — [popular-brands-sync](./core/docs/reference/popular-brands-sync.md), [platform-assets](./core/docs/reference/platform-assets.md), scripts, analytics
+- **[Operations](./core/docs/operations/)** — Sentry launch checklist, deploy, monitoring
+- **[Architecture](./core/docs/architecture/architecture-overview.md)** — system overview
 
 ---
 

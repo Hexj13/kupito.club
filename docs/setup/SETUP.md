@@ -1,3 +1,13 @@
+---
+title: Platform setup
+owner: platform
+tags:
+  - type/guide
+  - domain/platform
+  - scope/platform
+  - status/active
+---
+
 # Kupito.club Setup (Initial Installation)
 
 ## Prerequisites

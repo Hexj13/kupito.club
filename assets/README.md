@@ -1,6 +1,18 @@
+---
+title: Platform assets (summary)
+owner: platform
+tags:
+  - type/reference
+  - domain/platform
+  - scope/platform
+  - status/active
+---
+
 # Platform Assets
 
-Platform graphics resources (logos, icons, watermark).
+**Canonical doc:** [core/docs/reference/platform-assets.md](../core/docs/reference/platform-assets.md)
+
+Platform graphics resources (logos, icons, watermark). Summary below; full checklist and copy rules in core.
 
 ## 📁 Structure
 
@@ -40,7 +52,7 @@ assets/backend/watermark/    → core/backend/assets/watermark/
 ## 🎨 Asset Requirements
 
 **Detailed documentation:**
-- [core/docs/guides/PLATFORM_CHECKLIST.md](../core/docs/guides/PLATFORM_CHECKLIST.md) - Checklist and requirements
+- [core/docs/guides/platform-checklist.md](../core/docs/guides/platform-checklist.md) - Checklist and requirements
 
 **Tools:**
 - [Real Favicon Generator](https://realfavicongenerator.net/) - for favicon generation

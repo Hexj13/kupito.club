@@ -1,4 +1,16 @@
-# Sentry Launch Checklist - Launch Readiness
+---
+title: Sentry launch checklist (Moldova)
+owner: platform
+tags:
+  - type/runbook
+  - domain/ops
+  - scope/platform
+  - status/active
+---
+
+# Sentry Launch Checklist (Moldova)
+
+Shared checklist: **[core/docs/operations/sentry-launch-checklist.md](../../core/docs/operations/sentry-launch-checklist.md)**. Below: platform-specific env and reminders.
 
 ## ✅ What's Already Configured
 

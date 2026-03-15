@@ -1,4 +1,16 @@
-# Sentry Setup Instructions
+---
+title: Sentry setup (Moldova)
+owner: platform
+tags:
+  - type/guide
+  - domain/ops
+  - scope/platform
+  - status/active
+---
+
+# Sentry Setup (Moldova / platform-specific)
+
+Shared setup and reference: **[core/docs/guides/sentry.md](../../core/docs/guides/sentry.md)**. This doc: step-by-step and platform env (e.g. kupito-frontend, kupito-backend).
 
 ## Step 1: Create Projects in Sentry
 
