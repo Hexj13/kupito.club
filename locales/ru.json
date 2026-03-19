@@ -589,6 +589,7 @@
   },
   "board": {
     "title": "Доска объявлений от {sellerName}",
+    "metaDescription": "Активные объявления продавца {sellerName} на одной странице.",
     "home": "Главная",
     "loadMore": "Загрузить ещё",
     "noMoreListings": "Больше нет объявлений",

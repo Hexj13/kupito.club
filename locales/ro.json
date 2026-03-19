@@ -589,6 +589,7 @@
   },
   "board": {
     "title": "Tabla de anunțuri a {sellerName}",
+    "metaDescription": "Anunțuri active de la {sellerName} pe o singură pagină.",
     "home": "Acasă",
     "loadMore": "Încarcă mai multe",
     "noMoreListings": "Nu mai există anunțuri",
