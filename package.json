@@ -19,6 +19,9 @@
     "check-models-validity": "cd core/backend && COUNTRY=md npx ts-node -r tsconfig-paths/register src/scripts/stage/check-models-validity.ts",
     "check-hydration": "cd core && npx tsx scripts/check-hydration.ts",
     "release-check": "env -u devdir sh -c 'npm run prepare:build && (cd core/frontend && npm run lint && npm run lint:styles && npm run format:check && npm test -- --passWithNoTests && npm run build) && (cd core/backend && npm run lint:check && npm run format:check && npm run test && npm run test:integration && npm run build)'",
+    "999md:scan": "cd core/backend && npm run 999md:scan --",
+    "999md:import": "cd core/backend && npm run 999md:import --",
+    "999md:report": "cd core/backend && npm run 999md:report --",
     "prepare": "husky"
   },
   "devDependencies": {
