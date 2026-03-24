@@ -24,6 +24,7 @@
     "login": "Вход",
     "loginShort": "Войти",
     "register": "Регистрация",
+    "loginAndRegister": "Вход и регистрация",
     "brandName": "Kupito",
     "toggleMenu": "Переключить меню",
     "more": "Ещё"
@@ -124,6 +125,10 @@
     "daysAgo": "{days} дней назад",
     "languageRo": "Română",
     "languageRu": "Русский"
+  },
+  "errors": {
+    "smsHourlyLimit": "Достигнут лимит SMS для этого номера. Новый код можно запросить через час.",
+    "maxSmsCodeAttempts": "Слишком много неверных попыток ввода кода. Запросите новый код по SMS."
   },
   "cookieSettings": {
     "loading": "Загрузка...",
@@ -242,6 +247,10 @@
     "dataPreparationError": "Ошибка при подготовке данных",
     "alreadyHaveAccount": "Уже есть аккаунт?"
   },
+  "sign": {
+    "pageTitle": "Вход и регистрация",
+    "greeting": "Привет!"
+  },
   "resetPassword": {
     "title": "Сброс пароля",
     "phoneNumber": "Номер телефона",
@@ -260,12 +269,14 @@
     "codeVerified": "Код успешно проверен",
     "maxAttemptsReached": "Достигнуто максимальное количество попыток. Отправьте код снова, чтобы продолжить.",
     "maxAttemptsReachedWithMinutes": "Достигнуто максимальное количество попыток. Попробуйте снова через {minutes} минут",
-    "maxAttempts": "Достигнуто максимальное количество попыток (10). Отправьте код снова, чтобы продолжить.",
-    "invalidCodeWithAttempts": "Неверный код. Попробуйте снова. ({attempts}/10)",
+    "maxAttempts": "Достигнуто максимальное количество попыток (3). Отправьте код снова, чтобы продолжить.",
+    "invalidCodeWithAttempts": "Неверный код. Попробуйте снова. ({attempts}/3)",
     "verifying": "Проверка...",
     "verify": "Подтвердить",
     "blocked": "Заблокировано",
     "resendCode": "Отправить новый код",
+    "resendCodeWithCooldown": "Отправить новый код ({cooldown}с)",
+    "resendCodeWithCooldownMinutes": "Отправить новый код ({minutes} мин.)",
     "codeResent": "Код отправлен снова",
     "newPassword": "Новый пароль",
     "confirmPassword": "Подтвердите пароль",
@@ -283,16 +294,17 @@
     "codeDigitsOnly": "Код должен содержать только цифры",
     "sendSmsError": "Ошибка при отправке SMS",
     "maxAttemptsReached": "Достигнуто максимальное количество попыток. Отправьте код снова.",
-    "maxAttemptsReachedWithMinutes": "Достигнуто максимальное количество попыток (40). Попробуйте снова через {minutes} минут.",
+    "maxAttemptsReachedWithMinutes": "Достигнуто максимальное количество попыток. Попробуйте снова через {minutes} минут.",
     "ipBlocked": "IP-адрес заблокирован на {remainingMinutes} минут",
     "codeInvalid": "Неверный код. Попробуйте снова.",
-    "invalidCodeWithAttempts": "Неверный код. Попробуйте снова. ({attempts}/10)",
+    "invalidCodeWithAttempts": "Неверный код. Попробуйте снова. ({attempts}/3)",
     "enterFullCode": "Введите полный код",
     "verifying": "Проверка...",
     "verify": "Подтвердить",
     "blocked": "Заблокировано",
     "resendCode": "Отправить новый код",
     "resendCodeWithCooldown": "Отправить новый код ({cooldown}с)",
+    "resendCodeWithCooldownMinutes": "Отправить новый код ({minutes} мин.)",
     "codeResent": "Код отправлен снова",
     "maxResendAttempts": "Максимальное количество попыток"
   },
@@ -341,6 +353,11 @@
     "removeFromFavorites": "Удалено из избранного",
     "addToFavoritesError": "Ошибка при добавлении в избранное",
     "removeFromFavoritesError": "Ошибка при удалении из избранного",
+    "compareAddToComparisonAria": "Добавить в сравнение",
+    "compareRemoveFromComparisonAria": "Удалить из сравнения",
+    "favoriteAddAria": "Добавить в избранное",
+    "favoriteRemoveAria": "Удалить из избранного",
+    "favoriteOwnListingAria": "Нельзя добавить своё объявление в избранное",
     "photoUploaded": "Фотография успешно загружена",
     "photoUploadError": "Ошибка при загрузке фотографии",
     "photoDeleteError": "Ошибка при удалении фотографии",
@@ -604,6 +621,7 @@
     "removeFromFavorites": "Удалить из избранного",
     "yourListing": "Ваше объявление",
     "cannotAddOwnListing": "Вы не можете добавить свое объявление в избранное",
+    "cannotFavoriteOwnListingToast": "Свои объявления нельзя добавлять в избранное. Они находятся в разделе «Мои объявления».",
     "compare": "Сравнить",
     "alreadyInComparison": "Уже в сравнении",
     "cannotCompareMore": "Вы можете сравнить максимум 3 транспортных средства",
@@ -832,6 +850,7 @@
     "phone": "Телефон",
     "phoneChangeBoardUrlNoticeBefore": "При смене номера телефона изменится и ссылка на вашу доску объявлений. Если вы уже использовали её где-то (например, в соцсетях или мессенджерах), обновите ссылку — новый URL можно скопировать на странице «",
     "phoneChangeBoardUrlNoticeAfter": "».",
+    "phoneChangeBoardUrlHintAria": "Подсказка: ссылка на доску при смене номера телефона",
     "availableMessengers": "Доступные мессенджеры",
     "emailAndNotifications": "Email и уведомления",
     "email": "Email",
@@ -850,6 +869,14 @@
     "firstNamePlaceholder": "Введите ваше имя",
     "lastName": "Фамилия",
     "lastNamePlaceholder": "Введите вашу фамилию",
+    "passwordChangeTitle": "Смена пароля",
+    "currentPasswordLabel": "Текущий пароль",
+    "newPasswordLabel": "Новый пароль",
+    "changePasswordButton": "Сменить пароль",
+    "changingPassword": "Смена...",
+    "passwordChangeSuccess": "Пароль успешно изменён",
+    "passwordChangeFillAllFields": "Заполните все поля для смены пароля",
+    "passwordChangeMaxLength": "Новый пароль не может быть длиннее 100 символов",
     "saving": "Сохранение...",
     "saveChanges": "Сохранить изменения",
     "dangerZone": "Опасная зона",
@@ -886,10 +913,10 @@
       "enterCode": "Введите 6-значный код из SMS-сообщения",
       "verify": "Подтвердить",
       "blocked": "Заблокировано",
-      "invalidCodeWithAttempts": "Неверный код. Попробуйте снова. ({attempts}/10)",
+      "invalidCodeWithAttempts": "Неверный код. Попробуйте снова. ({attempts}/3)",
       "maxAttemptsReached": "Достигнуто максимальное количество попыток. Отправьте код снова.",
       "maxAttemptsReachedWithMinutes": "Достигнуто максимальное количество попыток. Попробуйте снова через {minutes} минут",
-      "maxAttempts": "Достигнуто максимальное количество попыток (10). Отправьте код снова, чтобы продолжить.",
+      "maxAttempts": "Достигнуто максимальное количество попыток (3). Отправьте код снова, чтобы продолжить.",
       "codeRequired": "Код должен содержать ровно 6 цифр",
       "codeDigitsOnly": "Код должен содержать только цифры",
       "phoneChangedSuccess": "Телефон успешно изменен",
@@ -897,7 +924,8 @@
       "codeResent": "Код отправлен снова",
       "resendCodeError": "Ошибка при отправке SMS",
       "resendCode": "Отправить новый код",
-      "resendCodeWithCooldown": "Отправить новый код ({cooldown}с)"
+      "resendCodeWithCooldown": "Отправить новый код ({cooldown}с)",
+      "resendCodeWithCooldownMinutes": "Отправить новый код ({minutes} мин.)"
     }
   },
   "admin": {
@@ -1097,6 +1125,8 @@
       "Diesel": "Дизель",
       "Electric": "Электрический",
       "Hybrid": "Гибрид",
+      "MHEV": "Гибрид (MHEV)",
+      "PHEV": "Гибрид (PHEV)",
       "LPG": "ГБО"
     },
     "transmission": {
@@ -1439,6 +1469,13 @@
       "ogTitle": "Регистрация - Kupito",
       "ogDescription": "Зарегистрируйтесь на Kupito и начните публиковать объявления о продаже автомобилей бесплатно. Создайте профиль для физического или юридического лица и свяжитесь с покупателями в Молдове.",
       "ogAlt": "Kupito - Регистрация"
+    },
+    "sign": {
+      "title": "Вход и регистрация",
+      "description": "Войдите в профиль Kupito или зарегистрируйтесь, чтобы управлять объявлениями, избранным и сохранёнными фильтрами.",
+      "ogTitle": "Вход и регистрация - Kupito",
+      "ogDescription": "Войдите в профиль Kupito или зарегистрируйтесь, чтобы управлять объявлениями, избранным и сохранёнными фильтрами.",
+      "ogAlt": "Kupito - Вход и регистрация"
     },
     "resetPassword": {
       "title": "Сброс пароля",

@@ -24,6 +24,7 @@
     "login": "Autentificare",
     "loginShort": "Intră",
     "register": "Înregistrare",
+    "loginAndRegister": "Autentificare și înregistrare",
     "brandName": "Kupito",
     "toggleMenu": "Comută meniul",
     "more": "Mai mult"
@@ -124,6 +125,10 @@
     "daysAgo": "acum {days} zile",
     "languageRo": "Română",
     "languageRu": "Русский"
+  },
+  "errors": {
+    "smsHourlyLimit": "Limita SMS pentru acest număr a fost atinsă. Puteți solicita un cod nou peste o oră.",
+    "maxSmsCodeAttempts": "Prea multe încercări cu cod incorect. Solicitați un nou cod SMS."
   },
   "cookieSettings": {
     "loading": "Se încarcă...",
@@ -242,6 +247,10 @@
     "dataPreparationError": "Eroare la pregătirea datelor",
     "alreadyHaveAccount": "Aveți deja cont?"
   },
+  "sign": {
+    "pageTitle": "Autentificare și înregistrare",
+    "greeting": "Bună!"
+  },
   "resetPassword": {
     "title": "Resetare parolă",
     "phoneNumber": "Număr de telefon",
@@ -260,12 +269,14 @@
     "codeVerified": "Codul a fost verificat cu succes",
     "maxAttemptsReached": "S-a atins numărul maxim de încercări. Trimiteți din nou codul pentru a continua.",
     "maxAttemptsReachedWithMinutes": "S-a atins numărul maxim de încercări. Încercați din nou peste {minutes} minute",
-    "maxAttempts": "S-a atins numărul maxim de încercări (10). Trimiteți din nou codul pentru a continua.",
-    "invalidCodeWithAttempts": "Cod invalid. Încercați din nou. ({attempts}/10)",
+    "maxAttempts": "S-a atins numărul maxim de încercări (3). Trimiteți din nou codul pentru a continua.",
+    "invalidCodeWithAttempts": "Cod invalid. Încercați din nou. ({attempts}/3)",
     "verifying": "Se verifică...",
     "verify": "Confirmă",
     "blocked": "Blocat",
     "resendCode": "Trimite cod nou",
+    "resendCodeWithCooldown": "Trimite cod nou ({cooldown}s)",
+    "resendCodeWithCooldownMinutes": "Trimite cod nou ({minutes} min)",
     "codeResent": "Codul a fost trimis din nou",
     "newPassword": "Parolă nouă",
     "confirmPassword": "Confirmă parola",
@@ -283,16 +294,17 @@
     "codeDigitsOnly": "Codul trebuie să conțină doar cifre",
     "sendSmsError": "Eroare la trimiterea SMS",
     "maxAttemptsReached": "S-a atins numărul maxim de încercări. Trimiteți din nou codul.",
-    "maxAttemptsReachedWithMinutes": "S-a atins numărul maxim de încercări (40). Încercați din nou peste {minutes} minute.",
+    "maxAttemptsReachedWithMinutes": "S-a atins numărul maxim de încercări. Încercați din nou peste {minutes} minute.",
     "ipBlocked": "Adresa IP este blocată pentru {remainingMinutes} minute",
     "codeInvalid": "Cod invalid. Încercați din nou.",
-    "invalidCodeWithAttempts": "Cod invalid. Încercați din nou. ({attempts}/10)",
+    "invalidCodeWithAttempts": "Cod invalid. Încercați din nou. ({attempts}/3)",
     "enterFullCode": "Introduceți codul complet",
     "verifying": "Se verifică...",
     "verify": "Confirmă",
     "blocked": "Blocat",
     "resendCode": "Trimite cod nou",
     "resendCodeWithCooldown": "Trimite cod nou ({cooldown}s)",
+    "resendCodeWithCooldownMinutes": "Trimite cod nou ({minutes} min)",
     "codeResent": "Codul a fost trimis din nou",
     "maxResendAttempts": "Număr maxim de încercări"
   },
@@ -341,6 +353,11 @@
     "removeFromFavorites": "Eliminat din favorite",
     "addToFavoritesError": "Eroare la adăugarea la favorite",
     "removeFromFavoritesError": "Eroare la eliminarea din favorite",
+    "compareAddToComparisonAria": "Adaugă la comparare",
+    "compareRemoveFromComparisonAria": "Elimină din comparare",
+    "favoriteAddAria": "Adaugă la favorite",
+    "favoriteRemoveAria": "Elimină din favorite",
+    "favoriteOwnListingAria": "Nu puteți adăuga propriul anunț la favorite",
     "photoUploaded": "Fotografia a fost încărcată cu succes",
     "photoUploadError": "Eroare la încărcarea fotografiei",
     "photoDeleteError": "Eroare la ștergerea fotografiei",
@@ -604,6 +621,7 @@
     "removeFromFavorites": "Elimină din favorite",
     "yourListing": "Anunțul dvs.",
     "cannotAddOwnListing": "Nu puteți adăuga propriul anunț la favorite",
+    "cannotFavoriteOwnListingToast": "Nu puteți adăuga propriile anunțuri la favorite. Acestea se află în secțiunea «Anunțurile mele».",
     "compare": "Compară",
     "alreadyInComparison": "Deja în comparație",
     "cannotCompareMore": "Puteți compara maximum 3 vehicule",
@@ -832,6 +850,7 @@
     "phone": "Telefon",
     "phoneChangeBoardUrlNoticeBefore": "La schimbarea numărului de telefon se va schimba și linkul către tabla dvs. de anunțuri. Dacă ați partajat acest link (de ex. în rețele sociale sau mesagerii), actualizați-l — noul URL poate fi copiat pe pagina „",
     "phoneChangeBoardUrlNoticeAfter": "”.",
+    "phoneChangeBoardUrlHintAria": "Informații: linkul tablei la schimbarea numărului de telefon",
     "availableMessengers": "Mesageri disponibili",
     "emailAndNotifications": "Email și notificări",
     "email": "Email",
@@ -850,6 +869,14 @@
     "firstNamePlaceholder": "Introduceți prenumele dvs.",
     "lastName": "Nume",
     "lastNamePlaceholder": "Introduceți numele dvs.",
+    "passwordChangeTitle": "Schimbare parolă",
+    "currentPasswordLabel": "Parola actuală",
+    "newPasswordLabel": "Parola nouă",
+    "changePasswordButton": "Schimbă parola",
+    "changingPassword": "Se schimbă...",
+    "passwordChangeSuccess": "Parola a fost schimbată",
+    "passwordChangeFillAllFields": "Completați toate câmpurile pentru parolă",
+    "passwordChangeMaxLength": "Parola nouă nu poate depăși 100 de caractere",
     "saving": "Se salvează...",
     "saveChanges": "Salvează modificări",
     "dangerZone": "Zonă periculoasă",
@@ -886,10 +913,10 @@
       "enterCode": "Introduceți codul de 6 cifre din mesajul SMS",
       "verify": "Confirmă",
       "blocked": "Blocat",
-      "invalidCodeWithAttempts": "Cod invalid. Încercați din nou. ({attempts}/10)",
+      "invalidCodeWithAttempts": "Cod invalid. Încercați din nou. ({attempts}/3)",
       "maxAttemptsReached": "S-a atins numărul maxim de încercări. Trimiteți din nou codul.",
       "maxAttemptsReachedWithMinutes": "S-a atins numărul maxim de încercări. Încercați din nou peste {minutes} minute",
-      "maxAttempts": "S-a atins numărul maxim de încercări (10). Trimiteți din nou codul pentru a continua.",
+      "maxAttempts": "S-a atins numărul maxim de încercări (3). Trimiteți din nou codul pentru a continua.",
       "codeRequired": "Codul trebuie să conțină exact 6 cifre",
       "codeDigitsOnly": "Codul trebuie să conțină doar cifre",
       "phoneChangedSuccess": "Telefonul a fost schimbat cu succes",
@@ -897,7 +924,8 @@
       "codeResent": "Codul a fost trimis din nou",
       "resendCodeError": "Eroare la trimiterea SMS",
       "resendCode": "Trimite cod nou",
-      "resendCodeWithCooldown": "Trimite cod nou ({cooldown}s)"
+      "resendCodeWithCooldown": "Trimite cod nou ({cooldown}s)",
+      "resendCodeWithCooldownMinutes": "Trimite cod nou ({minutes} min)"
     }
   },
   "admin": {
@@ -1097,6 +1125,8 @@
       "Diesel": "Motorină",
       "Electric": "Electric",
       "Hybrid": "Hibrid",
+      "MHEV": "Hibrid (MHEV)",
+      "PHEV": "Hibrid (PHEV)",
       "LPG": "GPL"
     },
     "transmission": {
@@ -1439,6 +1469,13 @@
       "ogTitle": "Înregistrare - Kupito",
       "ogDescription": "Înregistrați-vă pe Kupito și începeți să publicați anunțuri de vânzare auto gratuit. Creați un profil pentru persoană fizică sau juridică și intrați în contact cu cumpărători în Moldova.",
       "ogAlt": "Kupito - Înregistrare"
+    },
+    "sign": {
+      "title": "Autentificare și înregistrare",
+      "description": "Autentificați-vă în contul Kupito sau înregistrați-vă pentru a gestiona anunțuri, favorite și filtre salvate.",
+      "ogTitle": "Autentificare și înregistrare - Kupito",
+      "ogDescription": "Autentificați-vă în contul Kupito sau înregistrați-vă pentru a gestiona anunțuri, favorite și filtre salvate.",
+      "ogAlt": "Kupito - Autentificare și înregistrare"
     },
     "resetPassword": {
       "title": "Resetare parolă",
