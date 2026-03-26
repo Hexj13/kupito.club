@@ -857,7 +857,6 @@
     "emailPlaceholder": "Введите адрес email",
     "emailCannotBeChanged": "Адрес email нельзя изменить",
     "receiveEmailNotifications": "Получать уведомления на email",
-    "enterEmailForNotifications": "Для получения уведомлений введите адрес email",
     "companyInfo": "Информация о компании",
     "companyName": "Название компании",
     "companyNamePlaceholder": "Введите название компании",
