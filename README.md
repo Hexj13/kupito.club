@@ -90,7 +90,7 @@ When running `npm run prepare:build`, files are copied from platform-repo to cor
 ```
 assets/frontend/public/*        → core/frontend/public/
 assets/backend/watermark/        → core/backend/assets/watermark/
-locales/ro.json, locales/ru.json → core/frontend/lib/locales/
+locales/ro.json, locales/ru.json, locales/en.json → core/frontend/lib/locales/
 locales/backend/*.json          → core/backend/src/common/i18n/
 theme/                          → core/frontend/lib/theme/
 config/                         → core/frontend/lib/config/
