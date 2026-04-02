@@ -12,14 +12,14 @@ tags:
 
 ## Old → new paths
 
-| Old | New |
-|-----|-----|
-| docs/README.md | Removed. Navigation via root README + core/docs/README.md |
-| docs/popular-brands-sync.md | core/docs/reference/popular-brands-sync.md (root file is redirect) |
-| assets/README.md | core/docs/reference/platform-assets.md (root file has summary + link) |
-| docs/sentry/SETUP.md | Unchanged; top note points to core/docs/guides/SENTRY.md |
-| docs/sentry/LAUNCH_CHECKLIST.md | core/docs/operations/sentry-launch-checklist.md (root kept as platform-specific copy) |
-| core/docs/features/TODO.md | core/docs/reference/documentation-todo.md (features/TODO.md is redirect) |
+| Old                                    | New                                                                                   |
+| -------------------------------------- | ------------------------------------------------------------------------------------- |
+| docs/README.md                         | Removed. Navigation via root README + core/docs/README.md                             |
+| docs/popular-brands-sync.md            | core/docs/reference/popular-brands-sync.md (root file is redirect)                    |
+| assets/README.md                       | core/docs/reference/platform-assets.md (root file has summary + link)                 |
+| docs/sentry/sentry-setup.md            | Unchanged; top note points to core/docs/guides/sentry.md                              |
+| docs/sentry/sentry-launch-checklist.md | core/docs/operations/sentry-launch-checklist.md (root kept as platform-specific copy) |
+| core/docs/features/TODO.md             | core/docs/reference/documentation-todo.md (features/TODO.md is redirect)              |
 
 ## Renamed
 
@@ -27,12 +27,12 @@ tags:
 
 ## Merged
 
-- Sentry: shared launch checklist merged into core/docs/operations/sentry-launch-checklist.md; setup remains in guides/SENTRY.md; platform sentry docs point to core.
+- Sentry: shared launch checklist merged into core/docs/operations/sentry-launch-checklist.md; setup remains in guides/sentry.md; platform sentry docs point to core.
 - Platform assets: merged into core/docs/reference/platform-assets.md.
 
 ## Deprecated
 
-- docs/_deprecated/ created; no docs moved there in this pass.
+- docs/\_deprecated/ created; no docs moved there in this pass.
 
 ## Removed
 
@@ -47,9 +47,9 @@ tags:
 - core/docs/engineering/documentation-standards.md, obsidian-usage.md
 - core/docs/architecture/README.md, adr/README.md
 - core/docs/domains/README.md, engineering/README.md, operations/README.md, reference/README.md, prompts/README.md
-- core/docs/_deprecated/README.md
+- core/docs/\_deprecated/README.md
 - core/docs/templates/ (README + section-readme, adr, runbook, reference, feature, prompt)
-- docs/_audit/documentation-audit.md — phase 1 audit
+- docs/\_audit/documentation-audit.md — phase 1 audit
 
 ## TODO consolidation
 
@@ -59,7 +59,7 @@ tags:
 
 ## Tag taxonomy and rules
 
-- Tags: type/* (readme, guide, architecture, runbook, reference, adr, prompt, audit), domain/*, scope/core | scope/platform, status/active | status/deprecated
+- Tags: type/_ (readme, guide, architecture, runbook, reference, adr, prompt, audit), domain/_, scope/core | scope/platform, status/active | status/deprecated
 - Minimum per doc: one type, one scope, one status. Defined in documentation-standards.md.
 
 ## New rules and commands

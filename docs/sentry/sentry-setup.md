@@ -12,6 +12,8 @@ tags:
 
 Shared setup and reference: **[core/docs/guides/sentry.md](../../core/docs/guides/sentry.md)**. This doc: step-by-step and platform env (e.g. kupito-frontend, kupito-backend).
 
+Structured payloads, `X-Request-Id` correlation, and sanitization rules: **[core/docs/guides/logging.md](../../core/docs/guides/logging.md)**.
+
 ## Step 1: Create Projects in Sentry
 
 ### Frontend Project
@@ -34,6 +36,7 @@ Shared setup and reference: **[core/docs/guides/sentry.md](../../core/docs/guide
    - Click "Configure SDK" or "Create Project"
 
 **Important:**
+
 - Frontend and backend must be different projects since they are different platforms with different settings
 - Selecting "Nest.js" will provide more accurate setup and automatic instrumentation for NestJS applications
 
@@ -45,6 +48,7 @@ Shared setup and reference: **[core/docs/guides/sentry.md](../../core/docs/guide
 4. This value is for `NEXT_PUBLIC_SENTRY_DSN`
 
 **Alternative method:**
+
 - Settings → Projects → [your project] → Client Keys (DSN)
 - Copy the DSN
 
@@ -98,6 +102,7 @@ NODE_ENV=production
 ```
 
 **Example real values:**
+
 ```env
 NEXT_PUBLIC_SENTRY_DSN=https://bef3229c62ce8e2cdde11fb1e7d2abd3@o4510783132008448.ingest.de.sentry.io/4510783135744080
 SENTRY_ORG=kupitoclub
@@ -127,6 +132,7 @@ NODE_ENV=production
 ```
 
 **Important:**
+
 - `SENTRY_DSN` — this is DSN from **Node.js** project (backend), not from Next.js project
 - `NODE_ENV=production` — required, otherwise Sentry will be disabled on backend
 - These must be **different DSNs** for frontend and backend
@@ -158,11 +164,13 @@ After setup, the project will have these files:
 **Important:** Sentry only works in production (`NODE_ENV=production`).
 
 After deploying to production:
+
 1. Check in Sentry: Issues → errors should appear in `kupito-frontend` project
 2. Check Performance → Transactions for frontend traces
 3. Check Replays → Session Replay for error session recordings
 
 **For testing in production:**
+
 - Open site in production
 - Create a test error (e.g., via `/sentry-test` if page is available)
 - Check in Sentry: Issues → error should appear
@@ -170,6 +178,7 @@ After deploying to production:
 ### Backend
 
 After adding variables and deploying:
+
 1. Check in Sentry: Issues → errors should appear in `kupito-backend` project
 2. Check Performance → Transactions for backend traces
 
@@ -223,16 +232,19 @@ Sentry automatically instruments most operations for performance tracing.
 ### What's Automatically Tracked
 
 **Client:**
+
 - Page loads and navigation
 - Fetch requests to own API
 - Web Vitals (LCP, INP, CLS, FCP, TTFB)
 
 **Server:**
+
 - API routes (`route.ts`)
 - Server Components
 - `getServerSideProps`
 
 **Edge:**
+
 - Middleware
 - Edge API routes
 
@@ -308,6 +320,7 @@ Sentry.startSpan(
 ### Distributed Tracing
 
 Traces are automatically propagated for:
+
 - `fetch()` requests to own domain
 - Server Actions (when using `withServerActionInstrumentation` with headers)
 
@@ -317,10 +330,7 @@ For external APIs, configure `tracePropagationTargets` in `instrumentation-clien
 Sentry.init({
   dsn,
   tracesSampleRate: 0.1,
-  tracePropagationTargets: [
-    "localhost",
-    /^https:\/\/api\.yourcompany\.com/,
-  ],
+  tracePropagationTargets: ["localhost", /^https:\/\/api\.yourcompany\.com/],
 });
 ```
 
@@ -328,13 +338,13 @@ Sentry.init({
 
 SDK automatically tracks Web Vitals on each page load:
 
-| Metric | What it measures | Threshold (good) |
-|--------|------------------|------------------|
-| **LCP** | Largest Contentful Paint — load performance | ≤ 2.5s |
-| **INP** | Interaction to Next Paint — responsiveness | ≤ 200ms |
-| **CLS** | Cumulative Layout Shift — visual stability | ≤ 0.1 |
-| **FCP** | First Contentful Paint — initial render | ≤ 1s |
-| **TTFB** | Time to First Byte — server response | ≤ 100ms |
+| Metric   | What it measures                            | Threshold (good) |
+| -------- | ------------------------------------------- | ---------------- |
+| **LCP**  | Largest Contentful Paint — load performance | ≤ 2.5s           |
+| **INP**  | Interaction to Next Paint — responsiveness  | ≤ 200ms          |
+| **CLS**  | Cumulative Layout Shift — visual stability  | ≤ 0.1            |
+| **FCP**  | First Contentful Paint — initial render     | ≤ 1s             |
+| **TTFB** | Time to First Byte — server response        | ≤ 100ms          |
 
 Web Vitals are displayed as measurements on page load transactions and affect Performance Score in Sentry.
 
@@ -346,26 +356,26 @@ Sentry Metrics allows sending counters, gauges, and distributions from the appli
 
 ### Metric Types
 
-| Type | Usage |
-|------|-------|
-| `count` | Events (orders, clicks, API calls) |
-| `gauge` | Current values (queue depth, connections) |
-| `distribution` | Value ranges (response time, data size) |
+| Type           | Usage                                     |
+| -------------- | ----------------------------------------- |
+| `count`        | Events (orders, clicks, API calls)        |
+| `gauge`        | Current values (queue depth, connections) |
+| `distribution` | Value ranges (response time, data size)   |
 
 ### Basic Usage
 
 ```typescript
-import * as Sentry from '@sentry/nextjs';
+import * as Sentry from "@sentry/nextjs";
 
 // Event counter
-Sentry.metrics.count('orders_created', 1);
+Sentry.metrics.count("orders_created", 1);
 
 // Current value
-Sentry.metrics.gauge('active_connections', 42);
+Sentry.metrics.gauge("active_connections", 42);
 
 // Value distribution
-Sentry.metrics.distribution('api_latency', 187, {
-  unit: 'millisecond',
+Sentry.metrics.distribution("api_latency", 187, {
+  unit: "millisecond",
 });
 ```
 
@@ -374,11 +384,11 @@ Sentry.metrics.distribution('api_latency', 187, {
 Use attributes for filtering and grouping metrics:
 
 ```typescript
-Sentry.metrics.count('api_calls', 1, {
+Sentry.metrics.count("api_calls", 1, {
   attributes: {
-    endpoint: '/api/orders',
-    user_tier: 'pro',
-    region: 'us-west',
+    endpoint: "/api/orders",
+    user_tier: "pro",
+    region: "us-west",
     user_id: user.id,
     order_id: order.id,
   },
@@ -392,12 +402,12 @@ Sentry.metrics.count('api_calls', 1, {
 Specify units for `gauge` and `distribution`:
 
 ```typescript
-Sentry.metrics.distribution('response_time', 187.5, {
-  unit: 'millisecond',
+Sentry.metrics.distribution("response_time", 187.5, {
+  unit: "millisecond",
 });
 
-Sentry.metrics.gauge('memory_usage', 1024, {
-  unit: 'byte',
+Sentry.metrics.gauge("memory_usage", 1024, {
+  unit: "byte",
 });
 ```
 
@@ -410,15 +420,15 @@ Sentry supports structured logging for quick debugging.
 ### Basic Usage
 
 ```typescript
-import * as Sentry from '@sentry/nextjs';
+import * as Sentry from "@sentry/nextjs";
 
 // Different log levels
-Sentry.logger.trace('Entering function', { fn: 'processOrder' });
-Sentry.logger.debug('Cache lookup', { key: 'user:123' });
-Sentry.logger.info('Order created', { order_id: 'order_456' });
-Sentry.logger.warn('Rate limit approaching', { current: 95, max: 100 });
-Sentry.logger.error('Payment failed', { reason: 'card_declined' });
-Sentry.logger.fatal('Database unavailable', { host: 'primary' });
+Sentry.logger.trace("Entering function", { fn: "processOrder" });
+Sentry.logger.debug("Cache lookup", { key: "user:123" });
+Sentry.logger.info("Order created", { order_id: "order_456" });
+Sentry.logger.warn("Rate limit approaching", { current: 95, max: 100 });
+Sentry.logger.error("Payment failed", { reason: "card_declined" });
+Sentry.logger.fatal("Database unavailable", { host: "primary" });
 ```
 
 ### Parameterized Messages
@@ -426,9 +436,7 @@ Sentry.logger.fatal('Database unavailable', { host: 'primary' });
 Use `fmt` for parameterized messages — values are extracted as searchable attributes:
 
 ```typescript
-Sentry.logger.info(
-  Sentry.logger.fmt`User ${userId} purchased ${productName}`,
-);
+Sentry.logger.info(Sentry.logger.fmt`User ${userId} purchased ${productName}`);
 ```
 
 ## Cron Jobs Monitoring
@@ -448,15 +456,15 @@ If app is hosted on Vercel and uses [Vercel Cron Jobs](https://vercel.com/docs/c
 Project uses NestJS cron jobs via `@nestjs/schedule`. For monitoring, use `Sentry.withMonitor()`:
 
 ```typescript
-import * as Sentry from '@sentry/node';
-import { Cron, CronExpression } from '@nestjs/schedule';
+import * as Sentry from "@sentry/node";
+import { Cron, CronExpression } from "@nestjs/schedule";
 
 @Injectable()
 export class ListingsService {
   @Cron(CronExpression.EVERY_DAY_AT_MIDNIGHT)
   async autoCloseOldListings(): Promise<{ closed: number }> {
     return Sentry.withMonitor(
-      'auto-close-old-listings',
+      "auto-close-old-listings",
       async () => {
         // Existing logic for closing listings
         const ninetyDaysAgo = new Date();
@@ -465,8 +473,8 @@ export class ListingsService {
       },
       {
         schedule: {
-          type: 'crontab',
-          value: '0 0 * * *', // Every day at midnight
+          type: "crontab",
+          value: "0 0 * * *", // Every day at midnight
         },
         checkinMargin: 5, // 5 minutes grace period
         maxRuntime: 30, // Maximum runtime 30 minutes
