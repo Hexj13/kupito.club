@@ -81,6 +81,8 @@ npm run clear-listings-and-users:prod
 - Set `NEXT_PUBLIC_COUNTRY=md`
 - Set `NEXT_PUBLIC_ENABLE_LANGUAGE_SWITCHER=true`
 
+**Transactional email (optional):** To send verification and security emails from the API, set `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD`, and (recommended) `SMTP_FROM` and `FRONTEND_URL` on the **backend** service. See the core runbook [smtp-email-setup.md](../../core/docs/operations/smtp-email-setup.md) ([RU](../../core/docs/operations/smtp-email-setup-ru.md)) — local development, Render, Google Workspace.
+
 ### 1.2. Database Verification
 
 Ensure that:

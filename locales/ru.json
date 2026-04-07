@@ -133,7 +133,14 @@
   "errors": {
     "smsHourlyLimit": "Достигнут лимит SMS для этого номера. Новый код можно запросить через час.",
     "maxSmsCodeAttempts": "Слишком много неверных попыток ввода кода. Запросите новый код по SMS.",
-    "additionalPhoneSameAsPrimary": "Дополнительный номер должен отличаться от номера аккаунта"
+    "additionalPhoneSameAsPrimary": "Дополнительный номер должен отличаться от номера аккаунта",
+    "emailAlreadyExists": "Пользователь с таким адресом электронной почты уже существует",
+    "newEmailMustDiffer": "Новый адрес электронной почты должен отличаться от текущего",
+    "emailChangeRequiresConfirmation": "Для смены email запросите подтверждение через сценарий смены email",
+    "emailChangeTooManyAttempts": "Сменить email можно не более 2 раз за 24 часа. Попробуйте позже.",
+    "invalidCurrentPassword": "Неверный текущий пароль",
+    "newPasswordMustDiffer": "Новый пароль должен отличаться от текущего",
+    "emailVerificationResendOnCooldown": "Письмо с подтверждением уже отправлено. Запросить новое можно после истечения срока действия ссылки из этого письма."
   },
   "cookieSettings": {
     "loading": "Загрузка...",
@@ -983,6 +990,11 @@
     "emailAndNotifications": "Email и уведомления",
     "email": "Email",
     "emailPlaceholder": "Введите адрес email",
+    "emailChangeHint": "Для смены email сохраните профиль. Мы отправим ссылку для подтверждения на новый адрес.",
+    "emailChangeHintAria": "Подсказка о смене email",
+    "emailPendingVerification": "Этот email ещё не подтверждён. Проверьте почтовый ящик.",
+    "currentEmail": "Текущий email",
+    "emailChangeLinkSent": "Ссылка для смены email отправлена",
     "emailCannotBeChanged": "Адрес email нельзя изменить",
     "receiveEmailNotifications": "Получать уведомления на email",
     "companyInfo": "Информация о компании",
@@ -1063,7 +1075,31 @@
       "resendCode": "Отправить новый код",
       "resendCodeWithCooldown": "Отправить новый код ({cooldown}с)",
       "resendCodeWithCooldownMinutes": "Отправить новый код ({minutes} мин.)"
-    }
+    },
+    "confirmEmail": {
+      "title": "Подтверждение смены email",
+      "pleaseWait": "Пожалуйста, подождите...",
+      "invalidLink": "Недействительная ссылка для смены email",
+      "confirmationError": "Не удалось подтвердить смену email",
+      "goToProfile": "Перейти в профиль",
+      "linkExpiredTitle": "Ссылка смены email истекла",
+      "linkExpiredDescription": "Срок действия этой ссылки смены email истёк.",
+      "linkExpiredInstructions": "Запросите новое письмо подтверждения и используйте последнюю ссылку из входящих.",
+      "requestNewLink": "Запросить новую ссылку смены email",
+      "resending": "Отправляем новое подтверждение смены email...",
+      "resendSuccess": "Мы отправили новое подтверждение смены email. Проверьте входящие.",
+      "resendError": "Не удалось отправить подтверждение смены email",
+      "success": {
+        "title": "Email успешно изменён",
+        "description": "Ваш новый email подтвержден и сохранен.",
+        "redirecting": "Автоматический переход через",
+        "seconds": "секунд..."
+      }
+    },
+    "emailNotificationTypes": "Типы email-уведомлений",
+    "receiveListingRefreshReminders": "Напоминания об обновлении дат для активных объявлений",
+    "receiveWeeklyViewsDigest": "Еженедельный отчёт о количестве просмотров моих активных объявлений",
+    "receiveSystemAndSecurityNotifications": "Системные уведомления и безопасность"
   },
   "admin": {
     "title": "Панель администратора",
@@ -1122,6 +1158,8 @@
       "companyName": "Название компании:",
       "companyWebsite": "Сайт компании:",
       "email": "Email:",
+      "emailVerified": "Подтверждённый email",
+      "emailVerifiedStatus": "Почта подтверждена:",
       "phone": "Основной номер:",
       "type": "Тип:",
       "status": "Статус:",
@@ -1136,6 +1174,7 @@
       "freePromotionBalanceDisabledHint": "Сначала включите статус партнёра платформы.",
       "notPartner": "Не партнёр",
       "userSaveSuccess": "Данные пользователя сохранены",
+      "emailConfirmationSent": "Письмо для подтверждения новой почты отправлено пользователю",
       "userSaveError": "Не удалось сохранить изменения",
       "unavailable": "Недоступно",
       "searchPlaceholder": "ID / email / телефон / имя / компания"
@@ -1565,6 +1604,12 @@
     "pleaseWait": "Пожалуйста, подождите...",
     "invalidLink": "Неверная ссылка для проверки",
     "verificationError": "Ошибка при проверке адреса email",
+    "linkExpiredTitle": "Ссылка подтверждения истекла",
+    "linkExpiredInstructions": "Запросите новое письмо подтверждения и используйте последнюю ссылку из входящих.",
+    "requestNewLink": "Запросить новое письмо подтверждения",
+    "resending": "Отправляем новое письмо подтверждения...",
+    "resendSuccess": "Мы отправили новое письмо подтверждения. Проверьте входящие.",
+    "resendError": "Не удалось отправить новое письмо подтверждения",
     "success": {
       "title": "Адрес email успешно проверен",
       "description": "Ваш адрес email успешно проверен. Теперь вы можете использовать все функции платформы.",
@@ -1589,7 +1634,8 @@
     "saveSuccess": "Данные успешно сохранены",
     "fixErrors": "Пожалуйста, исправьте ошибки в форме",
     "fillAtLeastOne": "Введите хотя бы одно поле для сохранения",
-    "registrationSuccess": "Вы успешно зарегистрировались"
+    "registrationSuccess": "Вы успешно зарегистрировались",
+    "registrationEmailVerificationSent": "Мы отправили вам письмо на указанную почту для подтверждения email."
   },
   "pwa": {
     "install": "Установить приложение",

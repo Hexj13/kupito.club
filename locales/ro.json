@@ -133,7 +133,14 @@
   "errors": {
     "smsHourlyLimit": "Limita SMS pentru acest număr a fost atinsă. Puteți solicita un cod nou peste o oră.",
     "maxSmsCodeAttempts": "Prea multe încercări cu cod incorect. Solicitați un nou cod SMS.",
-    "additionalPhoneSameAsPrimary": "Numărul suplimentar trebuie să fie diferit de numărul de cont"
+    "additionalPhoneSameAsPrimary": "Numărul suplimentar trebuie să fie diferit de numărul de cont",
+    "emailAlreadyExists": "Utilizator cu această adresă de email există deja",
+    "newEmailMustDiffer": "Noua adresă de email trebuie să fie diferită de cea curentă",
+    "emailChangeRequiresConfirmation": "Pentru schimbarea emailului, solicitați confirmarea prin fluxul de schimbare email",
+    "emailChangeTooManyAttempts": "Poți schimba emailul de cel mult 2 ori în 24 de ore. Încearcă mai târziu.",
+    "invalidCurrentPassword": "Parola actuală este incorectă",
+    "newPasswordMustDiffer": "Parola nouă trebuie să fie diferită de cea actuală",
+    "emailVerificationResendOnCooldown": "Un email de confirmare a fost deja trimis. Poți solicita altul după ce expiră linkul din acel mesaj."
   },
   "cookieSettings": {
     "loading": "Se încarcă...",
@@ -983,6 +990,11 @@
     "emailAndNotifications": "Email și notificări",
     "email": "Email",
     "emailPlaceholder": "Introduceți adresa de email",
+    "emailChangeHint": "Pentru a schimba emailul, salvați profilul. Vom trimite un link de confirmare la noua adresă.",
+    "emailChangeHintAria": "Informație despre schimbarea emailului",
+    "emailPendingVerification": "Acest email nu este încă confirmat și așteaptă confirmarea.",
+    "currentEmail": "Email curent",
+    "emailChangeLinkSent": "Am trimis linkul de confirmare pentru schimbarea emailului",
     "emailCannotBeChanged": "Adresa de email nu poate fi schimbată",
     "receiveEmailNotifications": "Primesc notificări pe email",
     "companyInfo": "Informații despre companie",
@@ -1063,7 +1075,31 @@
       "resendCode": "Trimite cod nou",
       "resendCodeWithCooldown": "Trimite cod nou ({cooldown}s)",
       "resendCodeWithCooldownMinutes": "Trimite cod nou ({minutes} min)"
-    }
+    },
+    "confirmEmail": {
+      "title": "Confirmă schimbarea emailului",
+      "pleaseWait": "Vă rugăm așteptați...",
+      "invalidLink": "Link invalid pentru schimbarea emailului",
+      "confirmationError": "Nu am putut confirma schimbarea emailului",
+      "goToProfile": "Mergi la profil",
+      "linkExpiredTitle": "Link pentru schimbarea emailului expirat",
+      "linkExpiredDescription": "Acest link pentru schimbarea emailului a expirat.",
+      "linkExpiredInstructions": "Solicită un nou email de confirmare și folosește cel mai recent link din inbox.",
+      "requestNewLink": "Solicită un nou link pentru schimbarea emailului",
+      "resending": "Se trimite o nouă confirmare pentru schimbarea emailului...",
+      "resendSuccess": "Am trimis o nouă confirmare pentru schimbarea emailului. Verifică inbox-ul.",
+      "resendError": "Nu am putut trimite confirmarea pentru schimbarea emailului",
+      "success": {
+        "title": "Email schimbat cu succes",
+        "description": "Noul email a fost confirmat și salvat.",
+        "redirecting": "Redirecționare automată în",
+        "seconds": "secunde..."
+      }
+    },
+    "emailNotificationTypes": "Tipuri de notificări pe email",
+    "receiveListingRefreshReminders": "Memento-uri pentru actualizarea datelor anunțurilor active",
+    "receiveWeeklyViewsDigest": "Raport săptămânal privind numărul de vizualizări ale anunțurilor mele active",
+    "receiveSystemAndSecurityNotifications": "Notificări de sistem și securitate"
   },
   "admin": {
     "title": "Panou admin",
@@ -1122,6 +1158,8 @@
       "companyName": "Denumire companie:",
       "companyWebsite": "Site companie:",
       "email": "Email:",
+      "emailVerified": "Email confirmat",
+      "emailVerifiedStatus": "Confirmare email:",
       "phone": "Număr principal:",
       "type": "Tip:",
       "status": "Status:",
@@ -1136,6 +1174,7 @@
       "freePromotionBalanceDisabledHint": "Activați mai întâi statusul de partener al platformei.",
       "notPartner": "Nu este partener",
       "userSaveSuccess": "Utilizator actualizat",
+      "emailConfirmationSent": "Utilizatorului i-a fost trimis emailul de confirmare pentru noua adresă",
       "userSaveError": "Eroare la salvarea utilizatorului",
       "unavailable": "Indisponibil",
       "searchPlaceholder": "ID / email / telefon / nume / companie"
@@ -1565,6 +1604,12 @@
     "pleaseWait": "Vă rugăm așteptați...",
     "invalidLink": "Link invalid pentru verificare",
     "verificationError": "Eroare la verificarea adresei de email",
+    "linkExpiredTitle": "Link de verificare expirat",
+    "linkExpiredInstructions": "Solicită un nou email de confirmare și folosește cel mai recent link din inbox.",
+    "requestNewLink": "Solicită un nou email de confirmare",
+    "resending": "Se trimite un nou email de confirmare...",
+    "resendSuccess": "Am trimis un nou email de confirmare. Verifică inbox-ul.",
+    "resendError": "Nu am putut trimite un nou email de confirmare",
     "success": {
       "title": "Adresa de email a fost verificată cu succes",
       "description": "Adresa dvs. de email a fost verificată cu succes. Acum puteți folosi toate funcțiile platformei.",
@@ -1589,7 +1634,8 @@
     "saveSuccess": "Datele au fost salvate cu succes",
     "fixErrors": "Vă rugăm corectați erorile din formular",
     "fillAtLeastOne": "Introduceți cel puțin un câmp pentru a salva",
-    "registrationSuccess": "V-ați înregistrat cu succes"
+    "registrationSuccess": "V-ați înregistrat cu succes",
+    "registrationEmailVerificationSent": "Ți-am trimis un email la adresa indicată pentru confirmarea adresei de email."
   },
   "pwa": {
     "install": "Instalează aplicația",

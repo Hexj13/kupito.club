@@ -50,6 +50,10 @@ coverage/
 coverage-integration/
 *.lcov
 .nyc_output/
+core/frontend/playwright-report/
+core/frontend/test-results/
+core/frontend/allure-results/
+core/frontend/allure-report/
 
 # Generated files
 swagger.json
