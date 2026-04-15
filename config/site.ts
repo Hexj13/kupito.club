@@ -11,7 +11,16 @@ const config: SiteConfig = {
   supportEmail: 'support@kupito.club',
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://kupito.club',
   assetVersion: '20260313',
+  footerPartnerLogoSurfaceDefault: 'light',
   footerPartners: [
+    {
+      name: 'CipAuto.md',
+      href: 'https://cipauto.md/',
+      logoSrc: '/partners/cipauto.webp',
+      logoWidth: 139,
+      logoHeight: 30,
+      descriptionKey: 'footer.partnerCipautoDescription',
+    },
     {
       name: 'INFOCAR.md',
       href: 'https://infocar.md/?from=kupito',
@@ -30,6 +39,17 @@ const config: SiteConfig = {
       descriptionKey: 'footer.partnerFactumDescription',
     },
   ],
+  reportProvider: {
+    baseUrls: {
+      ro: 'https://infocar.md',
+      ru: 'https://ru.infocar.md',
+    },
+    demoUrls: {
+      ro: 'https://infocar.md/demo?from=kupito',
+      ru: 'https://ru.infocar.md/demo?from=kupito',
+    },
+    partnerFrom: 'kupito',
+  },
 };
 
 export default config;

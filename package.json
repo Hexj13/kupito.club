@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "format:platform": "cd core/frontend && npx prettier --write ../../config/*.ts ../../theme/*.ts ../../locales/*.json",
-    "prepare:build": "mkdir -p core/frontend/lib/locales && rm -rf core/frontend/lib/locales/backend && cp locales/ro.json locales/ru.json locales/en.json core/frontend/lib/locales/ && cp locales/backend/*.json core/backend/src/common/i18n/ && cp -r theme core/frontend/lib/ && rm -rf core/frontend/lib/config && cp -r config core/frontend/lib/ && cp -r assets/frontend/public/* core/frontend/public/ && cp -r assets/backend/watermark core/backend/assets/ && TS_NODE_PROJECT=core/frontend/tsconfig.json node -r ts-node/register core/frontend/scripts/write-theme-json.js",
+    "prepare:build": "mkdir -p core/frontend/lib/locales core/backend/src/common/config core/backend/src/scripts/tools && rm -rf core/frontend/lib/locales/backend core/backend/src/scripts/tools/cipauto-import core/backend/src/scripts/tools/999md-import && cp locales/ro.json locales/ru.json locales/en.json core/frontend/lib/locales/ && cp locales/backend/*.json core/backend/src/common/i18n/ && cp -r theme core/frontend/lib/ && rm -rf core/frontend/lib/config && cp -r config core/frontend/lib/ && cp config/parsers.ts core/backend/src/common/config/parsers.ts && cp -r parsers/* core/backend/src/scripts/tools/ && cp -r assets/frontend/public/* core/frontend/public/ && cp -r assets/backend/watermark core/backend/assets/ && TS_NODE_PROJECT=core/frontend/tsconfig.json node -r ts-node/register core/frontend/scripts/write-theme-json.js",
     "check-env": "node core/scripts/check-env.js",
     "check-env:runtime": "node core/scripts/check-env.js --runtime",
     "prebuild": "node core/scripts/check-env.js",

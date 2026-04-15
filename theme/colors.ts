@@ -29,6 +29,7 @@ const colors: ThemeColors = {
     base: '#F5F5F5',
     secondary: '#F4F4F4',
     darker: '#E8E8E8',
+    partnerLogo: '#FFFFFF',
   },
   text: {
     primary: '#1B1B1B',
@@ -44,6 +45,7 @@ const colors: ThemeColors = {
     danger: '#FFC107',
     warning: '#FFC107',
     info: '#0D6EFD',
+    rose: '#db2777',
   },
   pwa: {
     backgroundColor: '#F5F5F5',
