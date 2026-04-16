@@ -14,12 +14,14 @@ Platform-specific documentation for `kupito.club`.
 
 ## Sections
 
-- [setup/SETUP.md](./setup/SETUP.md) — initial setup and installation
+- [setup/setup.md](./setup/setup.md) — initial setup and installation
 - [deployment/production-deployment.md](./deployment/production-deployment.md) — production deployment
 - [parsing/README.md](./parsing/README.md) — parser implementations and operations
 - [sentry/sentry-setup.md](./sentry/sentry-setup.md) — Sentry setup
 - [sentry/sentry-launch-checklist.md](./sentry/sentry-launch-checklist.md) — Sentry launch checklist
 - [popular-brands-sync.md](./popular-brands-sync.md) — brands sync workflow
+- [documentation-refactor-report.md](./documentation-refactor-report.md) — documentation migration status
+- [_audit/documentation-audit.md](./_audit/documentation-audit.md) — documentation audit snapshot
 
 ## Core references
 

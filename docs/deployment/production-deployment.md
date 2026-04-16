@@ -376,7 +376,7 @@ Ensure all environment variables are updated:
 - [ ] All listings deleted (if cleanup was performed)
 - [ ] All users deleted (if cleanup was performed)
 - [ ] Administrator assigned correctly
-- [ ] Brands and models loaded (if needed, see [brands-models-master-plan.md](../../core/docs/scripts/brands-models-master-plan.md))
+- [ ] Brands and models loaded (if needed, see [brands-models-master-plan.md](../../core/docs/reference/brands-models-master-plan.md))
 
 ### 6.4. Functionality Verification
 
@@ -421,7 +421,7 @@ Ensure all environment variables are updated:
 ## 🔗 Related Documents
 
 - [Scripts Documentation](../../core/backend/docs/scripts.md)
-- [Brands and Models (Master Plan)](../../core/docs/scripts/brands-models-master-plan.md)
+- [Brands and Models (Master Plan)](../../core/docs/reference/brands-models-master-plan.md)
 - [Project Architecture](../../core/docs/architecture/technical.md)
 - [Platform Setup](../setup/setup.md)
 
@@ -431,7 +431,7 @@ Ensure all environment variables are updated:
 
 1. **Data cleanup:** Execute only after complete deploy and functionality verification
 2. **Data generation:** NOT needed on prod - data is created by real users
-3. **Brands and models generation:** If needed, use [brands-models-master-plan.md](../../core/docs/scripts/brands-models-master-plan.md)
+3. **Brands and models generation:** If needed, use [brands-models-master-plan.md](../../core/docs/reference/brands-models-master-plan.md)
 4. **Admin assignment:** Can be done immediately after user registration
 5. **Environment variables:** Must verify in Render.com before deploy
 6. **Backup:** Recommended to backup database before cleanup

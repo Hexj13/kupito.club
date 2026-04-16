@@ -1,7 +1,7 @@
 ---
 title: Documentation Audit
 status: audit
-accuracy: accurate
+accuracy: partial
 migration_action: keep
 tags:
   - type/audit
@@ -21,7 +21,7 @@ last_updated: "2026-03"
 | Path                                     | Purpose                   | Status | Accuracy | Action        | Target section         |
 | ---------------------------------------- | ------------------------- | ------ | -------- | ------------- | ---------------------- |
 | README.md                                | Platform root nav         | active | accurate | update        | root                   |
-| docs/README.md                           | Platform docs index       | active | accurate | remove        | —                      |
+| docs/README.md                           | Platform docs index       | active | accurate | keep/update   | platform root          |
 | docs/deployment/production-deployment.md | Moldova deploy            | active | accurate | keep          | operations             |
 | docs/setup/setup.md                      | Platform setup            | active | accurate | keep          | engineering            |
 | docs/sentry/sentry-setup.md              | Sentry step-by-step       | active | accurate | merge → core  | operations             |
@@ -33,10 +33,10 @@ last_updated: "2026-03"
 | core/docs/architecture/\*.md             | Architecture              | active | partial  | update/rename | architecture           |
 | core/docs/guides/\*.md                   | Guides                    | active | partial  | update/rename | engineering/operations |
 | core/docs/features/\*.md                 | Feature docs              | active | partial  | update/rename | domains                |
-| core/docs/scripts/\*.md                  | Scripts                   | active | accurate | update/rename | reference              |
+| core/docs/reference/brands-models-master-plan.md | Scripts reference        | active | accurate | keep          | reference              |
 | core/docs/analytics/\*.md                | Analytics                 | active | accurate | update/rename | reference              |
 | core/docs/audits/\*.md                   | Audits                    | active | accurate | update/rename | reference              |
-| core/docs/LINTING.md                     | Linting                   | active | accurate | move          | engineering            |
+| core/docs/engineering/linting.md         | Linting                   | active | accurate | keep          | engineering            |
 | core/docs/features/TODO.md               | Project TODO              | active | accurate | consolidate   | master TODO            |
 | core/backend/docs/\*.md                  | Backend docs              | active | accurate | update/rename | engineering            |
 | core/frontend/docs/\*.md                 | Frontend docs             | active | accurate | update/rename | engineering            |
@@ -50,9 +50,9 @@ last_updated: "2026-03"
 
 ### 1.3 Cursor commands (`.cursor/commands/*.md`)
 
-- feature-review.md, docs-update.md, release-check.md, telegram-update-post.md, parallel-tasks.md
+- No command docs are currently present in `.cursor/commands/`.
 
-**Action:** Refactor in Phase 5 (template, README update, domain placement).
+**Action:** Keep this section only as historical inventory from Phase 1.
 
 ### 1.4 Skills (`.cursor/skills/*/SKILL.md`)
 
@@ -69,16 +69,16 @@ last_updated: "2026-03"
 
 | Topic                 | Current SOT                                                                                   | After migration                                               |
 | --------------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
-| Sentry setup          | docs/sentry/sentry-setup.md + core/docs/guides/sentry.md                                      | core/docs/operations/sentry-setup.md (+ platform env in root) |
+| Sentry setup          | docs/sentry/sentry-setup.md + core/docs/guides/SENTRY.md                                      | core/docs/guides/SENTRY.md (+ platform env in root)           |
 | Popular brands script | docs/popular-brands-sync.md                                                                   | core/docs/reference/popular-brands-sync.md                    |
 | Platform assets       | assets/README.md + PLATFORM_CHECKLIST                                                         | core/docs/reference/platform-assets.md                        |
-| Deployment            | core/docs/guides/DEPLOYMENT.md (generic) + docs/deployment/PRODUCTION_DEPLOYMENT.md (Moldova) | Unchanged split                                               |
+| Deployment            | core/docs/guides/DEPLOYMENT.md (generic) + docs/deployment/production-deployment.md (Moldova) | Unchanged split                                               |
 | Platform setup        | docs/setup/setup.md                                                                           | Root docs/setup only                                          |
 
 ## 4. Gap analysis
 
-- **Missing:** docs/engineering/documentation-standards.md (format, headings, tags).
-- **Missing:** docs/engineering/obsidian-usage.md (repo vs vault, tags, MOC).
+- **Missing (resolved in core):** `core/docs/engineering/documentation-standards.md` (format, headings, tags).
+- **Missing (resolved in core):** `core/docs/engineering/obsidian-usage.md` (repo vs vault, tags, MOC).
 - **Missing:** Single master TODO document; reference from features/TODO and elsewhere.
 - **Missing:** ADR index and initial ADRs (e.g. doc structure decision).
 - **Missing:** Tag taxonomy document (type/_, domain/_, status/_, ops/_).

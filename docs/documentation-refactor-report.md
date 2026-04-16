@@ -14,29 +14,29 @@ tags:
 
 | Old                                    | New                                                                                   |
 | -------------------------------------- | ------------------------------------------------------------------------------------- |
-| docs/README.md                         | Removed. Navigation via root README + core/docs/README.md                             |
+| docs/README.md                         | Kept as platform docs index; complements root README + core/docs/README.md            |
 | docs/popular-brands-sync.md            | core/docs/reference/popular-brands-sync.md (root file is redirect)                    |
 | assets/README.md                       | core/docs/reference/platform-assets.md (root file has summary + link)                 |
-| docs/sentry/sentry-setup.md            | Unchanged; top note points to core/docs/guides/sentry.md                              |
+| docs/sentry/sentry-setup.md            | Unchanged; top note points to core/docs/guides/SENTRY.md                              |
 | docs/sentry/sentry-launch-checklist.md | core/docs/operations/sentry-launch-checklist.md (root kept as platform-specific copy) |
 | core/docs/features/TODO.md             | core/docs/reference/documentation-todo.md (features/TODO.md is redirect)              |
 
 ## Renamed
 
-- **Naming pass (done):** All doc filenames standardized to kebab-case; links updated across repo. Legacy UPPER_SNAKE names were renamed (e.g. ARCHITECTURE_OVERVIEW.md → architecture-overview.md).
+- **Naming pass (partial):** Many doc filenames were standardized to kebab-case and links updated across the repo. Some legacy upper-case names still remain (for example `TECHNICAL.md`, `DEPLOYMENT.md`, `SENTRY.md`, `SITEMAP.md`).
 
 ## Merged
 
-- Sentry: shared launch checklist merged into core/docs/operations/sentry-launch-checklist.md; setup remains in guides/sentry.md; platform sentry docs point to core.
+- Sentry: shared launch checklist merged into core/docs/operations/sentry-launch-checklist.md; setup remains in guides/SENTRY.md; platform sentry docs point to core.
 - Platform assets: merged into core/docs/reference/platform-assets.md.
 
 ## Deprecated
 
-- docs/\_deprecated/ created; no docs moved there in this pass.
+- `core/docs/_deprecated/` created; no docs moved there in this pass.
 
 ## Removed
 
-- docs/README.md (replaced by root README and core docs entry point).
+- No platform docs were removed in this pass; `docs/README.md` remains the platform-specific index.
 
 ## Added
 
@@ -65,7 +65,7 @@ tags:
 ## New rules and commands
 
 - .cursor/rules/documentation.mdc: doc-first workflow, section choice, README nav, Obsidian boundary, frontmatter/tags
-- .cursor/commands/docs-update.md: doc placement, templates reference, updated locations list
+- `.cursor/commands/` is currently empty; any command docs mentioned in the original migration notes are no longer present.
 
 ## New templates
 

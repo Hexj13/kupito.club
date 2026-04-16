@@ -133,7 +133,9 @@ Parser does not transform images directly. For each image:
 
 1. download from source
 2. upload through `POST /api/upload/image`
-3. use returned processed URL in listing payload
+3. use returned processed URL and `blurhash` in listing payload
+
+The upload endpoint computes a blurhash for every image. The import pipeline collects these hashes and sends them as `image_blur_hashes` when creating/updating the listing, so blur placeholders are available immediately without a separate backfill step.
 
 This preserves the same validation/watermark/format pipeline as regular website uploads.
 

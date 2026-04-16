@@ -10,7 +10,7 @@ tags:
 
 # Sentry Setup (Moldova / platform-specific)
 
-Shared setup and reference: **[core/docs/guides/sentry.md](../../core/docs/guides/sentry.md)**. This doc: step-by-step and platform env (e.g. kupito-frontend, kupito-backend).
+Shared setup and reference: **[core/docs/guides/SENTRY.md](../../core/docs/guides/SENTRY.md)**. This doc: step-by-step and platform env (e.g. kupito-frontend, kupito-backend).
 
 Structured payloads, `X-Request-Id` correlation, and sanitization rules: **[core/docs/guides/logging.md](../../core/docs/guides/logging.md)**.
 
