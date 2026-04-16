@@ -18,24 +18,24 @@ The parser is sequential, restartable, and keeps a separate registry from CipAut
 
 ## Location
 
-Source of truth (platform):
-
-- `parsers/999md-import/`
-
-Runtime copy after `npm run prepare:build`:
+Source of truth (core submodule):
 
 - `core/backend/src/scripts/tools/999md-import/`
 
-Shared import infrastructure remains in core:
+Shared import infrastructure (also in core):
 
 - `core/backend/src/scripts/tools/partner-import-shared/`
+
+Platform-level parser catalog (which parsers are enabled for this platform):
+
+- `config/parsers.ts` in the platform root (copied into `core/frontend/lib/config/parsers.ts` and `core/backend/src/common/config/parsers.ts` by `prepare:build`)
 
 ## Commands
 
 Run from repository root:
 
 ```bash
-npm run prepare:build
+npm run prepare:build  # syncs platform-level config/parsers.ts into core
 cd core/backend
 npm run 999md:scan -- --login=AGMOTORS --env=local --page-size=50
 npm run 999md:import -- --userId=<UUID> --status=paused --env=local --limit=5

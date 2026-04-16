@@ -24,24 +24,24 @@ The parser is:
 
 ## Location
 
-Source of truth (platform):
-
-- `parsers/cipauto-import/`
-
-Runtime copy after `npm run prepare:build`:
+Source of truth (core submodule):
 
 - `core/backend/src/scripts/tools/cipauto-import/`
 
-Shared import infrastructure remains in core:
+Shared import infrastructure (also in core):
 
 - `core/backend/src/scripts/tools/partner-import-shared/`
+
+Platform-level parser catalog (which parsers are enabled for this platform):
+
+- `config/parsers.ts` in the platform root (copied into `core/frontend/lib/config/parsers.ts` and `core/backend/src/common/config/parsers.ts` by `prepare:build`)
 
 ## Commands
 
 Run from repository root:
 
 ```bash
-npm run prepare:build
+npm run prepare:build  # syncs platform-level config/parsers.ts into core
 cd core/backend
 npm run cipauto:scan -- --pages=24 --env=prod
 npm run cipauto:import -- --userId=<UUID> --status=paused --env=prod --limit=10

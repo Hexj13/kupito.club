@@ -66,7 +66,3 @@ core/frontend/lib/theme.json
 # Uploads (local)
 uploads/
 public/uploads/
-
-# Parser runtime artifacts (local generated data)
-parsers/*/data/*-registry.json
-parsers/*/reports/*-run-*.json
