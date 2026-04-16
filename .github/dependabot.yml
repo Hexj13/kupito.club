@@ -21,6 +21,9 @@ updates:
       include: scope
     labels:
       - dependencies
+    ignore:
+      - dependency-name: typescript
+        update-types: ['version-update:semver-major']
 
   - package-ecosystem: github-actions
     directory: /
@@ -34,3 +37,10 @@ updates:
     labels:
       - dependencies
       - github-actions
+    ignore:
+      - dependency-name: actions/checkout
+        update-types: ['version-update:semver-major']
+      - dependency-name: actions/cache
+        update-types: ['version-update:semver-major']
+      - dependency-name: actions/setup-node
+        update-types: ['version-update:semver-major']
