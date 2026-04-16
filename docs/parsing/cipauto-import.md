@@ -106,9 +106,18 @@ Source-specific:
 
 ## Runtime artifacts
 
-- Registry history: `data/cipauto-registry.json`
-- Active PLP snapshot: `data/cipauto-current-plp.json`
-- Reports: `reports/cipauto-run-*.json`
+Filesystem layout (registry + PLP + reports survive deploys only if this tree is on a **persistent volume**, e.g. Render Disk):
+
+- `PARSING_RUNTIME_DIR` — optional; when unset, defaults to `core/backend/runtime/parsing` (relative to `cwd` when you run CLI from `core/backend`). On Render, set this to your **disk mount path** on the backend service (must match the mount path exactly). The same variable is forwarded into parser CLI children when you use **admin Parsing** or the **scheduler**, so CLI paths and the UI stay aligned.
+- Optional overrides: `CIPAUTO_REGISTRY_PATH`, `CIPAUTO_CURRENT_PLP_PATH`, `CIPAUTO_REPORTS_DIR` (absolute or relative to `cwd`). When set, these are also forwarded to admin-spawned parser processes.
+
+Default paths under `<PARSING_RUNTIME_DIR or runtime/parsing>/cipauto/`:
+
+- `cipauto-registry.json` — registry history
+- `cipauto-current-plp.json` — active PLP snapshot
+- `reports/cipauto-run-*.json` — import run reports
+
+Legacy locations under `src/scripts/tools/cipauto-import/data/` are no longer used by the CLI.
 
 ## Kupito site vs PLP vs registry
 
@@ -127,10 +136,10 @@ If you already have hundreds of active partner listings on Kupito but **`existin
 
 ### Which flow applies?
 
-| Symptom | Likely cause | Flow |
-|--------|----------------|------|
-| After `cipauto:scan`, **`existingListings=0`** and large **`readyForImport`** while Kupito already has partner listings | Registry not seeded from DB | **Registry seeding** below |
-| Kupito count vs CipAuto catalog diverges; you need “still on CipAuto?” vs “should close” | Compare DB listings to latest PLP snapshot (and optionally HTTP checks) | **`cipauto:audit-stale`** (see [Stale listings audit](#stale-listings-audit)) |
+| Symptom                                                                                                                 | Likely cause                                                            | Flow                                                                          |
+| ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| After `cipauto:scan`, **`existingListings=0`** and large **`readyForImport`** while Kupito already has partner listings | Registry not seeded from DB                                             | **Registry seeding** below                                                    |
+| Kupito count vs CipAuto catalog diverges; you need “still on CipAuto?” vs “should close”                                | Compare DB listings to latest PLP snapshot (and optionally HTTP checks) | **`cipauto:audit-stale`** (see [Stale listings audit](#stale-listings-audit)) |
 
 ## Registry seeding (existing Kupito listings)
 
@@ -138,7 +147,7 @@ When the partner already has listings in Kupito **before** the registry is popul
 
 ```bash
 cd core/backend
-npm run cipauto:seed-registry -- <userId>
+npm run cipauto:seed-registry -- [--env local|prod] <userId>
 ```
 
 The script reads listings for that user from the **database** (same env as your TypeORM config), finds `Cod Produs: …` in descriptions (HTML entities and case are normalized), and writes **`sourceListingId → kupitoListingId`** into `cipauto-registry.json`. Re-running is idempotent.
@@ -160,7 +169,7 @@ When the issue is “active on Kupito but not in the latest PLP snapshot” (or 
 
 ```bash
 cd core/backend
-npm run cipauto:audit-stale -- <userId> --plp-file <path-to-cipauto-current-plp.json>
+npm run cipauto:audit-stale -- [--env local|prod] <userId> --plp-file <path-to-cipauto-current-plp.json>
 ```
 
 Treating the PLP JSON as the source of truth for active `sourceId` values avoids slow per-URL checks when you trust the last full scan.

@@ -101,10 +101,18 @@ Legacy aliases are still supported (`CIPAUTO_*` auth/api/secret/debug).
 
 ## Runtime artifacts
 
-- Registry: `data/999md-registry.json`
-- Reports: `reports/999md-run-*.json`
+Filesystem layout (registry + per-login PLP JSON + reports survive deploys only if this tree is on a **persistent volume**, e.g. Render Disk):
 
-These files are generated runtime data and must stay local. They are ignored by git and should never be committed.
+- `PARSING_RUNTIME_DIR` — optional; when unset, defaults to `core/backend/runtime/parsing` (relative to `cwd` when you run CLI from `core/backend`). On Render, set to your **disk mount path** (must match the backend service env if you use admin Parsing or schedules).
+- Optional overrides: `SITE999MD_REGISTRY_PATH`, `SITE999MD_REPORTS_DIR` (absolute or relative to `cwd`).
+
+Default paths under `<PARSING_RUNTIME_DIR or runtime/parsing>/999md/`:
+
+- `999md-registry.json`
+- `current-plp/<login>.json` — PLP snapshots per profile login
+- `reports/999md-run-*.json`
+
+These files are runtime data, ignored by git, and must not be committed. Legacy paths under `src/scripts/tools/999md-import/data/` are not used by the CLI.
 
 ## Mapping highlights
 

@@ -107,16 +107,25 @@ npm run cipauto:report -- --last --env=prod
 
 ## Артефакты рантайма
 
-- История реестра: `data/cipauto-registry.json`
-- Снимок активного PLP: `data/cipauto-current-plp.json`
-- Отчёты: `reports/cipauto-run-*.json`
+Файловая схема (реестр + PLP + отчёты переживают деплой только если каталог на **персистентном томе**, например Render Disk):
+
+- `PARSING_RUNTIME_DIR` — необязательно; если не задано, по умолчанию `core/backend/runtime/parsing` (относительно `cwd` при запуске CLI из `core/backend`). На Render задайте **ровно mount path** диска на **сервисе backend** (не только в разовой Shell-сессии): админка **Parsing** и **планировщик** запускают те же CLI на этом хосте и резолвят `plpDataPath` относительно этого корня. Значение пробрасывается в дочерние процессы парсера.
+- Переопределения: `CIPAUTO_REGISTRY_PATH`, `CIPAUTO_CURRENT_PLP_PATH`, `CIPAUTO_REPORTS_DIR` (абсолютный путь или относительно `cwd`); при задании тоже передаются в CLI, запущенные из админки.
+
+Пути по умолчанию под `<PARSING_RUNTIME_DIR или runtime/parsing>/cipauto/`:
+
+- `cipauto-registry.json` — реестр
+- `cipauto-current-plp.json` — снимок PLP
+- `reports/cipauto-run-*.json` — отчёты импорта
+
+Старые пути в `src/scripts/tools/cipauto-import/data/` CLI больше не использует.
 
 ## Сайт Kupito, PLP и реестр
 
 Три разных слоя:
 
 1. **Каталог CipAuto (PLP)** — карточки в HTML; `cipauto:scan` читает их и обновляет реестр и `cipauto-current-plp.json`.
-2. **Рейестр парсера** (`cipauto-registry.json`) — сопоставляет `sourceListingId` (код товара CipAuto) со состоянием импорта и при наличии с `kupitoListingId`. Этот файл обеспечивает идемпотентность импорта.
+2. **Реестр парсера** (`cipauto-registry.json`) — сопоставляет `sourceListingId` (код товара CipAuto) со состоянием импорта и при наличии с `kupitoListingId`. Этот файл обеспечивает идемпотентность импорта.
 3. **База Kupito** — живые объявления пользователя-партнёра.
 
 Строка итога скана `[SCAN] [DONE] ... existingListings=... readyForImport=...` означает:
@@ -128,10 +137,10 @@ npm run cipauto:report -- --last --env=prod
 
 ### Какой сценарий?
 
-| Симптом | Вероятная причина | Действие |
-|--------|-------------------|----------|
-| После `cipauto:scan` **`existingListings=0`** и большой **`readyForImport`**, хотя на Kupito уже есть объявления партнёра | Реестр не заполнен из БД | **Заполнение реестра (seed)** ниже |
-| Расходятся счётчики Kupito и каталога CipAuto; нужно понять «ещё на CipAuto?» vs «закрыть» | Сверка объявлений в БД со снимком PLP (опционально HTTP) | **`cipauto:audit-stale`** (раздел «Аудит устаревших объявлений» ниже) |
+| Симптом                                                                                                                   | Вероятная причина                                        | Действие                                                              |
+| ------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- | --------------------------------------------------------------------- |
+| После `cipauto:scan` **`existingListings=0`** и большой **`readyForImport`**, хотя на Kupito уже есть объявления партнёра | Реестр не заполнен из БД                                 | **Заполнение реестра (seed)** ниже                                    |
+| Расходятся счётчики Kupito и каталога CipAuto; нужно понять «ещё на CipAuto?» vs «закрыть»                                | Сверка объявлений в БД со снимком PLP (опционально HTTP) | **`cipauto:audit-stale`** (раздел «Аудит устаревших объявлений» ниже) |
 
 ## Заполнение реестра (уже есть объявления в Kupito)
 
@@ -139,7 +148,7 @@ npm run cipauto:report -- --last --env=prod
 
 ```bash
 cd core/backend
-npm run cipauto:seed-registry -- <userId>
+npm run cipauto:seed-registry -- [--env local|prod] <userId>
 ```
 
 Скрипт читает объявления этого пользователя из **БД** (то же окружение, что у TypeORM), ищет в описаниях `Cod Produs: …` (нормализуются HTML-сущности и регистр) и пишет в `cipauto-registry.json` связки **`sourceListingId → kupitoListingId`**. Повторный запуск идемпотентен.
@@ -161,7 +170,7 @@ npm run cipauto:seed-registry -- <userId>
 
 ```bash
 cd core/backend
-npm run cipauto:audit-stale -- <userId> --plp-file <path-to-cipauto-current-plp.json>
+npm run cipauto:audit-stale -- [--env local|prod] <userId> --plp-file <path-to-cipauto-current-plp.json>
 ```
 
 Если доверяете последнему полному скану, JSON PLP как источник истины по активным `sourceId` избавляет от медленных проверок по URL.
