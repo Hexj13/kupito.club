@@ -1,0 +1,96 @@
+"use strict";
+
+const fs = require("fs");
+const path = require("path");
+
+const root = path.resolve(__dirname, "..");
+
+function syncFile(absFrom, absTo) {
+  const src = fs.readFileSync(absFrom);
+  let changed = true;
+  try {
+    const dst = fs.readFileSync(absTo);
+    changed = src.length !== dst.length || !src.equals(dst);
+  } catch {
+    changed = true;
+  }
+  if (changed) {
+    fs.mkdirSync(path.dirname(absTo), { recursive: true });
+    fs.writeFileSync(absTo, src);
+  }
+}
+
+function walkSyncFiles(absFromDir, absToDir) {
+  if (!fs.existsSync(absFromDir)) {
+    console.error("Missing directory:", absFromDir);
+    process.exit(1);
+  }
+  fs.mkdirSync(absToDir, { recursive: true });
+  for (const ent of fs.readdirSync(absFromDir, { withFileTypes: true })) {
+    const from = path.join(absFromDir, ent.name);
+    const to = path.join(absToDir, ent.name);
+    if (ent.isDirectory()) {
+      walkSyncFiles(from, to);
+    } else {
+      syncFile(from, to);
+    }
+  }
+}
+
+function main() {
+  const localeFront = [
+    ["locales/ro.json", "core/frontend/lib/locales/ro.json"],
+    ["locales/ru.json", "core/frontend/lib/locales/ru.json"],
+    ["locales/en.json", "core/frontend/lib/locales/en.json"],
+  ];
+  const localeBack = [
+    ["locales/backend/ro.json", "core/backend/src/common/i18n/ro.json"],
+    ["locales/backend/ru.json", "core/backend/src/common/i18n/ru.json"],
+    ["locales/backend/en.json", "core/backend/src/common/i18n/en.json"],
+  ];
+  for (const [relFrom, relTo] of [...localeFront, ...localeBack]) {
+    syncFile(path.join(root, relFrom), path.join(root, relTo));
+  }
+
+  const configDir = path.join(root, "config");
+  const configDest = path.join(root, "core/frontend/lib/config");
+  fs.mkdirSync(configDest, { recursive: true });
+  for (const name of fs.readdirSync(configDir)) {
+    if (name.endsWith(".ts") || name.endsWith(".json")) {
+      syncFile(path.join(configDir, name), path.join(configDest, name));
+    }
+  }
+
+  syncFile(
+    path.join(root, "config/parsers.ts"),
+    path.join(root, "core/backend/src/common/config/parsers.ts"),
+  );
+
+  const themeDir = path.join(root, "theme");
+  const themeDest = path.join(root, "core/frontend/lib/theme");
+  fs.mkdirSync(themeDest, { recursive: true });
+  for (const name of fs.readdirSync(themeDir)) {
+    if (name.endsWith(".ts")) {
+      syncFile(path.join(themeDir, name), path.join(themeDest, name));
+    }
+  }
+
+  walkSyncFiles(
+    path.join(root, "assets/frontend/public"),
+    path.join(root, "core/frontend/public"),
+  );
+
+  const wmFrom = path.join(root, "assets/backend/watermark");
+  const wmTo = path.join(root, "core/backend/assets/watermark");
+  fs.mkdirSync(wmTo, { recursive: true });
+  if (fs.existsSync(wmFrom)) {
+    for (const name of fs.readdirSync(wmFrom)) {
+      const fp = path.join(wmFrom, name);
+      if (fs.statSync(fp).isFile()) {
+        syncFile(fp, path.join(wmTo, name));
+      }
+    }
+  }
+}
+
+main();

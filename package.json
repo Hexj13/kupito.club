@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "format:platform": "cd core/frontend && npx prettier --write ../../config/*.ts ../../theme/*.ts ../../locales/*.json",
-    "prepare:build": "mkdir -p core/frontend/lib/locales core/frontend/lib/config core/frontend/lib/theme core/backend/src/common/config core/backend/src/common/i18n core/backend/assets/watermark core/frontend/public && cp locales/ro.json locales/ru.json locales/en.json core/frontend/lib/locales/ && cp locales/backend/ro.json locales/backend/ru.json locales/backend/en.json core/backend/src/common/i18n/ && cp config/*.ts core/frontend/lib/config/ && cp config/*.json core/frontend/lib/config/ && cp config/parsers.ts core/backend/src/common/config/parsers.ts && cp theme/*.ts core/frontend/lib/theme/ && cp -R assets/frontend/public/. core/frontend/public/ && cp assets/backend/watermark/* core/backend/assets/watermark/ && TS_NODE_PROJECT=core/frontend/tsconfig.json node -r ts-node/register core/frontend/scripts/write-theme-json.js",
+    "prepare:build": "node scripts/sync-platform-to-core.cjs && TS_NODE_PROJECT=core/frontend/tsconfig.json node -r ts-node/register core/frontend/scripts/write-theme-json.js",
     "check-env": "node core/scripts/check-env.js",
     "check-env:runtime": "node core/scripts/check-env.js --runtime",
     "prebuild": "node core/scripts/check-env.js",
