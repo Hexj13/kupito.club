@@ -81,22 +81,37 @@ npm run format        # Prettier
 npm run test          # Jest tests
 ```
 
+### Release check
+
+From the repository root:
+
+```bash
+npm run release-check        # full: prepare:build + lint + test + integration + build
+npm run release-check:fast   # quick: prepare:build + lint + unit tests (no integration, no build)
+```
+
+The same steps run in CI in parallel jobs; `release-check:fast` is also invoked from the `pre-push` husky hook (set `HUSKY=0` to skip).
+
 ---
 
 ## 📦 Build Process
 
-When running `npm run prepare:build`, files are copied from platform-repo to core:
+`npm run prepare:build` copies platform files into the core submodule in place, without removing core-only files:
 
 ```
-assets/frontend/public/*        → core/frontend/public/
-assets/backend/watermark/        → core/backend/assets/watermark/
-locales/ro.json, locales/ru.json, locales/en.json → core/frontend/lib/locales/
-locales/backend/*.json          → core/backend/src/common/i18n/
-theme/                          → core/frontend/lib/theme/
-config/                         → core/frontend/lib/config/
+assets/frontend/public/*         → core/frontend/public/
+assets/backend/watermark/*       → core/backend/assets/watermark/
+locales/{ro,ru,en}.json          → core/frontend/lib/locales/
+locales/backend/{ro,ru,en}.json  → core/backend/src/common/i18n/
+theme/*.ts                       → core/frontend/lib/theme/
+config/*.ts, config/*.json       → core/frontend/lib/config/
+config/parsers.ts                → core/backend/src/common/config/parsers.ts
+theme/colors.ts (via script)     → core/frontend/lib/theme.json
 ```
 
-**Core remains universal**, works for all platforms!
+The script is the single source of truth — CI uses the same `npm run prepare:build`, so there is no drift between local and CI copies.
+
+**Core remains universal**, works for all platforms.
 
 ---
 

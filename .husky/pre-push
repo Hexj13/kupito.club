@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+
+# Skip on CI and when HUSKY=0
+if [ "$CI" = "true" ] || [ "$HUSKY" = "0" ]; then
+  exit 0
+fi
+
+# Skip for tags, deletes, and when nothing to push
+if [ -z "$1" ]; then
+  exit 0
+fi
+
+echo "Running release-check:fast before push (set HUSKY=0 to skip)..."
+npm run release-check:fast

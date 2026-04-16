@@ -70,6 +70,19 @@ npm run clear-listings-and-users:prod
 
 ## 🚀 Preparing for Deploy
 
+### 1.0. Deploy Flow (CI → Render Hooks)
+
+Deploys are gated by CI. The root workflow [.github/workflows/ci.yml](../../.github/workflows/ci.yml) runs `prepare` + `frontend-check` + `backend-check` in parallel, then the `deploy` job (only on `push: main`) triggers Render Deploy Hooks:
+
+- `RENDER_FRONTEND_DEPLOY_HOOK` — frontend service webhook URL
+- `RENDER_BACKEND_DEPLOY_HOOK` — backend service webhook URL
+
+Both are GitHub repository secrets (Repository Settings → Secrets and variables → Actions). If a secret is missing, the corresponding deploy step is skipped — in that case Render's own auto-deploy on `push: main` still triggers (fallback).
+
+**Recommended configuration:** to avoid double-deploys, turn off Render's "Auto-Deploy" on the service and rely on the CI-driven webhook. This way a red CI blocks production — you never ship a main that failed lint/test/build.
+
+Branch protection for `main` (required checks, no force-push) is documented in [branch-protection.md](branch-protection.md).
+
 ### 1.1. Updating Environment Variables in Render.com
 
 **Backend Service (Render.com):**
@@ -420,6 +433,7 @@ Ensure all environment variables are updated:
 
 ## 🔗 Related Documents
 
+- [Branch Protection for main](branch-protection.md)
 - [Scripts Documentation](../../core/backend/docs/scripts.md)
 - [Brands and Models (Master Plan)](../../core/docs/reference/brands-models-master-plan.md)
 - [Project Architecture](../../core/docs/architecture/technical.md)

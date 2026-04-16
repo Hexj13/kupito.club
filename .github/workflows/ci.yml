@@ -3,6 +3,8 @@ name: CI/CD MD
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 env:
@@ -10,9 +12,129 @@ env:
   ONNXRUNTIME_NODE_INSTALL: skip
 
 jobs:
-  build:
-    name: Build and Deploy MD
+  prepare:
+    name: Prepare platform files
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          submodules: recursive
+          token: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: 'npm'
+          cache-dependency-path: |
+            package-lock.json
+            core/frontend/package-lock.json
+            core/backend/package-lock.json
+
+      - name: Install root dependencies
+        run: npm ci
+
+      - name: Prepare platform files
+        run: npm run prepare:build
+
+      - name: Verify platform files
+        run: |
+          for f in \
+            core/frontend/lib/locales/ro.json \
+            core/frontend/lib/locales/ru.json \
+            core/frontend/lib/locales/en.json \
+            core/frontend/lib/theme/colors.ts \
+            core/frontend/lib/theme.json \
+            core/frontend/lib/config/site.ts \
+            core/frontend/lib/config/parsers.ts \
+            core/backend/src/common/i18n/ro.json \
+            core/backend/src/common/i18n/ru.json \
+            core/backend/src/common/i18n/en.json \
+            core/backend/src/common/config/parsers.ts \
+            core/frontend/public/logo.png \
+            core/backend/assets/watermark/logo.png; do
+            if [ ! -f "$f" ]; then
+              echo "Error: Missing expected file: $f"
+              exit 1
+            fi
+          done
+          echo "All platform files copied and verified"
+
+  frontend-check:
+    name: Frontend check
+    runs-on: ubuntu-latest
+    needs: prepare
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          submodules: recursive
+          token: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: 'npm'
+          cache-dependency-path: |
+            package-lock.json
+            core/frontend/package-lock.json
+            core/backend/package-lock.json
+
+      - name: Install root dependencies
+        run: npm ci
+
+      - name: Prepare platform files
+        run: npm run prepare:build
+
+      - name: Install frontend dependencies
+        working-directory: ./core/frontend
+        run: npm ci
+
+      - name: Cache Next.js build
+        uses: actions/cache@v4
+        with:
+          path: core/frontend/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('core/frontend/package-lock.json') }}-${{ hashFiles('core/frontend/**/*.[jt]s', 'core/frontend/**/*.[jt]sx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('core/frontend/package-lock.json') }}-
+
+      - name: Lint
+        working-directory: ./core/frontend
+        run: npm run lint
+
+      - name: Lint styles
+        working-directory: ./core/frontend
+        run: npm run lint:styles
+
+      - name: Check formatting
+        working-directory: ./core/frontend
+        run: npm run format:check
+
+      - name: Run tests
+        working-directory: ./core/frontend
+        run: npm test -- --passWithNoTests
+
+      - name: Build
+        working-directory: ./core/frontend
+        env:
+          NEXT_PUBLIC_COUNTRY: md
+          NEXT_PUBLIC_SITE_URL: https://kupito.club
+          NEXT_PUBLIC_API_URL: ${{ secrets.API_URL }}
+        run: npm run build
+
+      - name: Verify build
+        working-directory: ./core/frontend
+        run: |
+          if [ ! -d ".next" ]; then
+            echo "Build failed: .next directory not found"
+            exit 1
+          fi
+          echo "Frontend build OK"
+
+  backend-check:
+    name: Backend check
+    runs-on: ubuntu-latest
+    needs: prepare
 
     services:
       postgres:
@@ -47,76 +169,28 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v5
         with:
-          node-version: '24'
+          node-version-file: .nvmrc
+          cache: 'npm'
+          cache-dependency-path: |
+            package-lock.json
+            core/frontend/package-lock.json
+            core/backend/package-lock.json
 
-      - name: Copy platform files to core
-        run: |
-          for dir in locales theme config assets; do
-            if [ ! -d "$dir" ]; then
-              echo "Error: Required directory '$dir' not found"
-              exit 1
-            fi
-          done
-
-          mkdir -p core/frontend/lib/locales
-          rm -rf core/frontend/lib/locales/backend
-          cp locales/ro.json locales/ru.json core/frontend/lib/locales/
-
-          mkdir -p core/backend/src/common/i18n
-          cp locales/backend/*.json core/backend/src/common/i18n/
-
-          cp -r theme core/frontend/lib/
-          cp -r config core/frontend/lib/
-
-          cp -r assets/frontend/public/* core/frontend/public/
-          cp -r assets/backend/watermark core/backend/assets/
-
-          for f in \
-            core/frontend/lib/locales/ro.json \
-            core/frontend/lib/locales/ru.json \
-            core/frontend/lib/theme/colors.ts \
-            core/frontend/lib/config/site.ts \
-            core/backend/src/common/i18n/ro.json \
-            core/backend/src/common/i18n/ru.json \
-            core/backend/src/common/i18n/en.json \
-            core/frontend/public/logo.png \
-            core/backend/assets/watermark/logo.png; do
-            if [ ! -f "$f" ]; then
-              echo "Error: Missing expected file: $f"
-              exit 1
-            fi
-          done
-          echo "All platform files copied and verified"
-
-      - name: Install frontend dependencies
-        working-directory: ./core/frontend
+      - name: Install root dependencies
         run: npm ci
 
-      - name: Run frontend linter
-        working-directory: ./core/frontend
-        run: npm run lint
-
-      - name: Run frontend style linter
-        working-directory: ./core/frontend
-        run: npm run lint:styles
-
-      - name: Check formatting (frontend)
-        working-directory: ./core/frontend
-        run: npm run format:check
-
-      - name: Run frontend tests
-        working-directory: ./core/frontend
-        run: npm test -- --passWithNoTests
+      - name: Prepare platform files
+        run: npm run prepare:build
 
       - name: Install backend dependencies
         working-directory: ./core/backend
         run: npm ci
 
-      - name: Run backend linter
+      - name: Lint
         working-directory: ./core/backend
         run: npm run lint:check
 
-      - name: Check formatting (backend)
+      - name: Check formatting
         working-directory: ./core/backend
         run: npm run format:check
 
@@ -130,7 +204,7 @@ jobs:
           done
           echo "PostgreSQL is ready!"
 
-      - name: Run backend tests
+      - name: Run tests
         working-directory: ./core/backend
         env:
           NODE_ENV: test
@@ -144,7 +218,7 @@ jobs:
           REDIS_PORT: 6379
         run: npm test
 
-      - name: Run backend integration tests
+      - name: Run integration tests
         working-directory: ./core/backend
         env:
           NODE_ENV: test
@@ -158,50 +232,78 @@ jobs:
           REDIS_PORT: 6379
         run: timeout 300 npm run test:integration
 
-      - name: TypeScript check (frontend)
-        working-directory: ./core/frontend
-        run: npx tsc --noEmit
-
-      - name: TypeScript check (backend)
-        working-directory: ./core/backend
-        run: npx tsc --noEmit
-
-      - name: Build frontend
-        working-directory: ./core/frontend
-        env:
-          NEXT_PUBLIC_COUNTRY: md
-          NEXT_PUBLIC_SITE_URL: https://kupito.club
-          NEXT_PUBLIC_API_URL: ${{ secrets.API_URL }}
-        run: npm run build
-
-      - name: Verify frontend build
-        working-directory: ./core/frontend
-        run: |
-          if [ ! -d ".next" ]; then
-            echo "❌ Build failed: .next directory not found"
-            exit 1
-          fi
-          echo "✅ Frontend build successful"
-
-      - name: Build backend
+      - name: Build
         working-directory: ./core/backend
         run: npm run build
 
-      - name: Verify backend build
+      - name: Verify build
         working-directory: ./core/backend
         run: |
           if [ ! -d "dist" ]; then
-            echo "❌ Build failed: dist directory not found"
+            echo "Build failed: dist directory not found"
             exit 1
           fi
           if [ ! -f "dist/main.js" ]; then
-            echo "❌ Build failed: dist/main.js not found"
+            echo "Build failed: dist/main.js not found"
             exit 1
           fi
-          echo "✅ Backend build successful"
+          echo "Backend build OK"
 
-      - name: Deploy
-        # Add your deployment steps here
+  audit:
+    name: Dependency audit (non-blocking)
+    runs-on: ubuntu-latest
+    needs: prepare
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          submodules: recursive
+          token: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: 'npm'
+          cache-dependency-path: |
+            package-lock.json
+            core/frontend/package-lock.json
+            core/backend/package-lock.json
+
+      - name: Audit frontend
+        working-directory: ./core/frontend
+        run: npm audit --omit=dev --audit-level=high || true
+
+      - name: Audit backend
+        working-directory: ./core/backend
+        run: npm audit --omit=dev --audit-level=high || true
+
+  deploy:
+    name: Deploy to Render
+    runs-on: ubuntu-latest
+    needs: [frontend-check, backend-check]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - name: Trigger Render frontend deploy hook
+        env:
+          HOOK: ${{ secrets.RENDER_FRONTEND_DEPLOY_HOOK }}
         run: |
-          echo "Deploy to production..."
-          # Your deployment commands
+          if [ -z "$HOOK" ]; then
+            echo "RENDER_FRONTEND_DEPLOY_HOOK not set — skipping (Render auto-deploy on push main will trigger)."
+            exit 0
+          fi
+          echo "Triggering frontend deploy..."
+          curl -fsS -X POST "$HOOK"
+          echo "Frontend deploy hook sent"
+
+      - name: Trigger Render backend deploy hook
+        env:
+          HOOK: ${{ secrets.RENDER_BACKEND_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "RENDER_BACKEND_DEPLOY_HOOK not set — skipping (Render auto-deploy on push main will trigger)."
+            exit 0
+          fi
+          echo "Triggering backend deploy..."
+          curl -fsS -X POST "$HOOK"
+          echo "Backend deploy hook sent"
