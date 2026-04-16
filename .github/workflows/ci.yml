@@ -91,7 +91,7 @@ jobs:
         run: npm ci
 
       - name: Cache Next.js build
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: core/frontend/.next/cache
           key: ${{ runner.os }}-nextjs-${{ hashFiles('core/frontend/package-lock.json') }}-${{ hashFiles('core/frontend/**/*.[jt]s', 'core/frontend/**/*.[jt]sx') }}
