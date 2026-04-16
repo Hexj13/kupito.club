@@ -10,6 +10,8 @@ tags:
 
 # CipAuto Partner Listings Import
 
+Russian copy: [cipauto-import-ru.md](./cipauto-import-ru.md).
+
 ## Purpose
 
 `cipauto-import` migrates vehicle listings from `cipauto.md` into Kupito through the backend API.
@@ -107,6 +109,63 @@ Source-specific:
 - Registry history: `data/cipauto-registry.json`
 - Active PLP snapshot: `data/cipauto-current-plp.json`
 - Reports: `reports/cipauto-run-*.json`
+
+## Kupito site vs PLP vs registry
+
+Three different layers:
+
+1. **CipAuto catalog (PLP)** — HTML listing cards; `cipauto:scan` reads them and updates the registry plus `cipauto-current-plp.json`.
+2. **Parser registry** (`cipauto-registry.json`) — maps `sourceListingId` (CipAuto product code) to import state and, when known, `kupitoListingId`. This file is what makes imports idempotent.
+3. **Kupito database** — live listings for the partner user.
+
+Scan summary line `[SCAN] [DONE] ... existingListings=... readyForImport=...` means:
+
+- **`existingListings`** — PLP cards whose `sourceListingId` already has a registry row **with** `kupitoListingId` (already linked to a Kupito listing).
+- **`readyForImport`** — cards that are candidates for create/update through the import command according to registry rules, not “unmatched HTML”.
+
+If you already have hundreds of active partner listings on Kupito but **`existingListings` stays `0`**, the registry usually has **no** `sourceListingId → kupitoListingId` links yet (new machine, wiped `data/`, or listings were created outside this parser). That is **not** fixed by deleting listings and re-importing.
+
+### Which flow applies?
+
+| Symptom | Likely cause | Flow |
+|--------|----------------|------|
+| After `cipauto:scan`, **`existingListings=0`** and large **`readyForImport`** while Kupito already has partner listings | Registry not seeded from DB | **Registry seeding** below |
+| Kupito count vs CipAuto catalog diverges; you need “still on CipAuto?” vs “should close” | Compare DB listings to latest PLP snapshot (and optionally HTTP checks) | **`cipauto:audit-stale`** (see [Stale listings audit](#stale-listings-audit)) |
+
+## Registry seeding (existing Kupito listings)
+
+When the partner already has listings in Kupito **before** the registry is populated, run **once** (per environment) before relying on scan/import counts:
+
+```bash
+cd core/backend
+npm run cipauto:seed-registry -- <userId>
+```
+
+The script reads listings for that user from the **database** (same env as your TypeORM config), finds `Cod Produs: …` in descriptions (HTML entities and case are normalized), and writes **`sourceListingId → kupitoListingId`** into `cipauto-registry.json`. Re-running is idempotent.
+
+Then:
+
+1. `npm run cipauto:scan -- --pages=<n> --env=prod` (or `local`) — **`existingListings`** should reflect cards already linked.
+2. `npm run cipauto:import -- --userId=<UUID> ...` — add **`--update-existing`** when you intend to refresh PDP-backed fields for rows already linked.
+
+**Requirements:** listings must contain a `Cod Produs:` line with the CipAuto product code in a description field; otherwise they are skipped by seeding and need manual description fixes.
+
+**Environment:** use the same `--env` / DB for `seed-registry`, `scan`, and `import` so registry and snapshots align with the data you care about.
+
+Full script notes: `core/backend/docs/SCRIPTS.md` (Partner listing imports → **CipAuto registry seeding**).
+
+## Stale listings audit
+
+When the issue is “active on Kupito but not in the latest PLP snapshot” (or you want to close listings gone from CipAuto), use:
+
+```bash
+cd core/backend
+npm run cipauto:audit-stale -- <userId> --plp-file <path-to-cipauto-current-plp.json>
+```
+
+Treating the PLP JSON as the source of truth for active `sourceId` values avoids slow per-URL checks when you trust the last full scan.
+
+Add **`--close`** only after you understand the audit categories (see `core/backend/docs/SCRIPTS.md` → **CipAuto stale listings audit**). Wrong closes affect live listings and promotions.
 
 ## Data lifecycle
 

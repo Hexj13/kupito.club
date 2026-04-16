@@ -21,7 +21,8 @@ Platform-specific parser implementation and operations for `kupito.club`.
 
 ## Documents
 
-- [cipauto-import.md](./cipauto-import.md) — CipAuto HTML parser
+- [cipauto-import.md](./cipauto-import.md) — CipAuto HTML parser (includes Kupito vs registry vs PLP operations)
+- [cipauto-import-ru.md](./cipauto-import-ru.md) — same (Russian)
 - [999md-import.md](./999md-import.md) — 999.md GraphQL parser
 
 ## Related core documentation
