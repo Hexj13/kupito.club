@@ -23,6 +23,7 @@
     "999md:scan": "cd core/backend && npm run 999md:scan --",
     "999md:import": "cd core/backend && npm run 999md:import --",
     "999md:report": "cd core/backend && npm run 999md:report --",
+    "999md:seed-registry": "cd core/backend && npm run 999md:seed-registry --",
     "999md:dealer-audit": "cd core/backend && npm run 999md:dealer-audit --",
     "prepare": "husky"
   },

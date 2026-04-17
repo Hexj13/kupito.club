@@ -40,7 +40,13 @@ cd core/backend
 npm run 999md:scan -- --login=AGMOTORS --env=local --page-size=50
 npm run 999md:import -- --userId=<UUID> --status=paused --env=local --limit=5
 npm run 999md:report -- --last --env=local
+npm run 999md:seed-registry -- --login=AGMOTORS --userId=<UUID> --env=local --dry-run
+npm run partner:check-urls -- --partner 999md --userId=<UUID> --env=local
 ```
+
+From the **platform repo root** you can use the same wrapper as other `999md:*` scripts: `npm run 999md:seed-registry -- --login=... --userId=...`.
+
+The shared script `partner:check-urls` (see below) is also run from `core/backend` after `cd core/backend`.
 
 ### `999md:scan` flags
 
@@ -59,12 +65,65 @@ Same semantics as `cipauto:import`:
 - `--userId` (required), `--status`, `--env`, `--limit`, `--resume`, `--dry-run`
 - `--only-failed`, `--update-existing`, `--source-id`
 - `--registration-type`, `--default-hp`, `--city`, `--delay`
+- `--check-user-duplicates-before-create` — before `createListing`, load the partner user’s vehicle rows from the DB and skip create when a duplicate is found, in order: **(1)** same user + `partner_source_code = 999md` + `partner_listing_external_key` = this ad id; **(2)** single unambiguous **VIN** match among that user’s vehicle listings; **(3)** exactly one **fingerprint** match (same fields/tolerances as `999md:seed-registry`). Tolerances: `--dedupe-999-price-tolerance-pct` (default `0`), `--dedupe-999-photo-count-tolerance` (default `1`). Requires PostgreSQL env from `core/backend` (same pattern as `seed-registry`). Ambiguous VIN or fingerprint → registry `manual_review` with `DUPLICATE_AMBIGUOUS:` in `error`. Registry state `duplicate_skipped` uses `error` prefix `DUPLICATE_MATCH:` plus layer (`partner_key`, `vin`, or `fingerprint`).
+
+**Admin UI:** **Admin → Parsing → PDP** — the same option appears as **Check duplicates before create** on manual runs and on PDP schedules (`config_snapshot.checkUserDuplicatesBeforeCreate`).
 
 ### `999md:report` flags
 
 - `--last`
 - `--file=<path>`
 - `--env=local|prod`
+
+### `999md:seed-registry` (registry recovery / dedup)
+
+Use when the partner already has vehicle listings in Kupito but the **999.md parser registry** was lost or never aligned (e.g. ephemeral disk). Without seeding, a fresh `scan` + `import` would create duplicates.
+
+The script:
+
+1. Loads vehicle listings for `--userId` from the Kupito database (Active, Paused, Closed).
+2. Fetches the 999.md profile PLP for `--login`, then PDP for each ad (sequential, with delay).
+3. Matches each 999 ad to at most one listing: **VIN** first (single candidate among listings not yet consumed), else a **fingerprint** (resolved brand/model, mapped fuel and color, year, mileage, engine volume with tolerance, price + currency with optional tolerance, image count with tolerance).
+4. Writes **`999md-registry.json`** (`upsert` with `kupitoListingId`, `state: created`, etc.) and updates **`listings.partner_source_code`**, **`partner_listing_external_key`**, and **`partner_listing_canonical_url`** (999 listing canonical URL) for matched rows (unless `--dry-run`).
+
+Requires **PostgreSQL** (same env as the API DB), **Kupito import admin auth**, and 999 GraphQL env vars as for `scan`/`import`.
+
+**Admin UI:** With `registrySyncEnabled` for 999.md, **Admin → Parsing → PLP files → Sync registry** on a login’s PLP snapshot row queues the same `999md:seed-registry` process as the CLI (`--login` is taken from the PLP JSON; partner UUID is required and may be prefilled from recent runs). Closing the modal does not cancel; use **Cancel** while the run is active.
+
+**Admin UI (PDP):** **Manual PDP** and **new PDP schedules** call the same **`sync-hint`** after you pick a PLP file, prefilling the partner UUID and showing a login vs filename warning when applicable (hint read does not require `registrySyncEnabled`; **Sync registry** still does).
+
+```bash
+cd core/backend
+npm run 999md:seed-registry -- --login=AGMOTORS --userId=<UUID> --env=local --dry-run
+npm run 999md:seed-registry -- --login=AGMOTORS --userId=<UUID> --env=local
+```
+
+Flags:
+
+- `--login` (required) — 999.md profile login
+- `--userId` (required) — Kupito user UUID (partner) whose listings are matched
+- `--env=local|prod`
+- `--dry-run` — only write `reports/999md-seed-*.{json,csv}`; do not mutate registry or DB
+- `--delay=<ms>` — pause between PDP fetches (default `2000`)
+- `--price-tolerance-pct=<n>` — max price drift vs listing, percent of the higher of the two prices (default `0` = exact after rounding)
+- `--photo-count-tolerance=<n>` — allowed difference between `min(999 images, 20)` and Kupito `images.length` (default `1`)
+
+Reports land next to import reports: `reports/999md-seed-<timestamp>.json` and `.csv` under the 999.md runtime dir (see below).
+
+**Database:** listings store the external 999 id under `partner_source_code = '999md'`, `partner_listing_external_key = <GraphQL ad id>`, and optional **`partner_listing_canonical_url`** (technical canonical PDP URL, not shown in the storefront UI). Apply backend migrations so these columns exist before relying on seed or import to persist them.
+
+**API (admin only):** create and update listing payloads may include `partner_source_code` and `partner_listing_external_key` only together; **`partner_listing_canonical_url`** may be set only with that pair (https URL, validated server-side). Keys must be unique across listings. The 999 import CLI sets all three automatically on each successful create/update (and sends a narrow partner-metadata PATCH when import skips a full update because `--update-existing` is off).
+
+### `partner:check-urls` (saved URL health check)
+
+Shared script for **CipAuto** and **999.md**: loads vehicle listings for `--userId` that already have `partner_listing_canonical_url`, runs the same PDP parser as imports, and writes **`reports/partner-url-check-<partner>-*.{json,csv}`** under that parser’s runtime `reports/` directory (`cipauto` vs `999md` config).
+
+```bash
+cd core/backend
+npm run partner:check-urls -- --partner 999md --userId=<UUID> [--env local|prod] [--dry-run] [--limit=<n>] [--delay=<ms>]
+```
+
+Flags: `--partner` `cipauto` or `999md` (required), `--userId` (required), `--env`, `--dry-run`, `--limit`, `--delay`. See `core/backend/docs/SCRIPTS.md` → **Partner listing URL check**.
 
 ### Dealer audit
 
@@ -110,7 +169,9 @@ Default paths under `<PARSING_RUNTIME_DIR or runtime/parsing>/999md/`:
 
 - `999md-registry.json`
 - `current-plp/<login>.json` — PLP snapshots per profile login
-- `reports/999md-run-*.json`
+- `reports/999md-run-*.json` — import run summaries
+- `reports/999md-seed-*.{json,csv}` — seed-registry outcomes (`matched_vin`, `matched_fingerprint`, `no_match`, `ambiguous`, etc.)
+- `reports/partner-url-check-999md-*.{json,csv}` — optional output from `npm run partner:check-urls -- --partner 999md ...`
 
 These files are runtime data, ignored by git, and must not be committed. Legacy paths under `src/scripts/tools/999md-import/data/` are not used by the CLI.
 

@@ -48,6 +48,7 @@ cd core/backend
 npm run cipauto:scan -- --pages=24 --env=prod
 npm run cipauto:import -- --userId=<UUID> --status=paused --env=prod --limit=10
 npm run cipauto:report -- --last --env=prod
+npm run partner:check-urls -- --partner cipauto --userId=<UUID> --env=prod
 ```
 
 ### `cipauto:scan` flags
@@ -74,6 +75,11 @@ npm run cipauto:report -- --last --env=prod
 - `--default-hp=<number>` (default `150`)
 - `--city=<name>` (default `Chișinău`)
 - `--delay=<ms>` (default `3000`)
+- `--check-user-duplicates-before-create` — before `createListing`, load the partner user’s vehicle rows from the DB and skip create when a duplicate is found, in order: **(1)** same user + `partner_source_code = cipauto` + `partner_listing_external_key` matches this `sourceListingId` (case-insensitive); **(2)** else **Cod Produs** parsed from listing descriptions matches this id. Requires PostgreSQL env from `core/backend` (same as `seed-registry`). Ambiguous matches → `manual_review` with `DUPLICATE_AMBIGUOUS:` in `error`. Clear duplicate → registry `duplicate_skipped` with `DUPLICATE_MATCH:partner_key` or `DUPLICATE_MATCH:cod_produs`.
+
+**Admin UI:** **Admin → Parsing → PDP** — **Check duplicates before create** on manual runs and PDP schedules sets the same flag (`config_snapshot.checkUserDuplicatesBeforeCreate`).
+
+Without **`--update-existing`**, `cipauto:import` still performs a **narrow PATCH** of `partner_source_code`, `partner_listing_external_key`, and `partner_listing_canonical_url` after PDP when a registry row already has `kupitoListingId`, so scheduled runs can backfill partner metadata without rewriting the full listing body.
 
 ### `cipauto:report` flags
 
@@ -116,6 +122,7 @@ Default paths under `<PARSING_RUNTIME_DIR or runtime/parsing>/cipauto/`:
 - `cipauto-registry.json` — registry history
 - `cipauto-current-plp.json` — active PLP snapshot
 - `reports/cipauto-run-*.json` — import run reports
+- `reports/partner-url-check-cipauto-*.{json,csv}` — optional output from `npm run partner:check-urls -- --partner=cipauto ...`
 
 Legacy locations under `src/scripts/tools/cipauto-import/data/` are no longer used by the CLI.
 
@@ -150,7 +157,7 @@ cd core/backend
 npm run cipauto:seed-registry -- [--env local|prod] <userId>
 ```
 
-The script reads listings for that user from the **database** (same env as your TypeORM config), finds `Cod Produs: …` in descriptions (HTML entities and case are normalized), and writes **`sourceListingId → kupitoListingId`** into `cipauto-registry.json`. Re-running is idempotent.
+The script reads listings for that user from the **database** (same env as your TypeORM config), finds `Cod Produs: …` in descriptions (HTML entities and case are normalized), writes **`sourceListingId → kupitoListingId`** into `cipauto-registry.json`, and updates each matched Kupito row with **`partner_source_code`**, **`partner_listing_external_key`**, and **`partner_listing_canonical_url`** (derived CipAuto listing URL). Re-running is idempotent.
 
 Then:
 
@@ -161,7 +168,22 @@ Then:
 
 **Environment:** use the same `--env` / DB for `seed-registry`, `scan`, and `import` so registry and snapshots align with the data you care about.
 
+**Admin UI:** With `registrySyncEnabled` for CipAuto in the catalog, **Admin → Parsing → PLP files → Sync registry** on the mono PLP row runs the same `cipauto:seed-registry` child process as the CLI (partner UUID required; may be prefilled from recent PDP/PLP runs with an assigned user). Closing the modal does not cancel the job; cancel is explicit from the modal while the run is active.
+
+**Admin UI (PDP):** **Admin → Parsing → manual PDP** and **new PDP schedules** use the same `sync-hint` request after you select the PLP file, so the partner UUID field is prefilled the same way as in **Sync registry** (no `registrySyncEnabled` required for that read-only hint).
+
 Full script notes: `core/backend/docs/SCRIPTS.md` (Partner listing imports → **CipAuto registry seeding**).
+
+### `partner:check-urls` (saved URL health check)
+
+Shared script: re-fetches PDP for listings that already have **`partner_listing_canonical_url`** stored in Postgres. Reports land under **`reports/partner-url-check-cipauto-*.{json,csv}`** (same tree as other CipAuto reports).
+
+```bash
+cd core/backend
+npm run partner:check-urls -- --partner cipauto --userId=<UUID> [--env local|prod] [--dry-run] [--limit=<n>] [--delay=<ms>]
+```
+
+See `core/backend/docs/SCRIPTS.md` → **Partner listing URL check** for flag details.
 
 ## Stale listings audit
 

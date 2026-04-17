@@ -49,6 +49,7 @@ cd core/backend
 npm run cipauto:scan -- --pages=24 --env=prod
 npm run cipauto:import -- --userId=<UUID> --status=paused --env=prod --limit=10
 npm run cipauto:report -- --last --env=prod
+npm run partner:check-urls -- --partner cipauto --userId=<UUID> --env=prod
 ```
 
 ### Флаги `cipauto:scan`
@@ -75,6 +76,11 @@ npm run cipauto:report -- --last --env=prod
 - `--default-hp=<number>` (по умолчанию `150`)
 - `--city=<name>` (по умолчанию `Chișinău`)
 - `--delay=<ms>` (по умолчанию `3000`)
+- `--check-user-duplicates-before-create` — перед `createListing` загрузить из БД объявления пользователя-партнёра и не создавать дубликат: **(1)** тот же пользователь + `partner_source_code = cipauto` + совпадение `partner_listing_external_key` с текущим `sourceListingId` (без учёта регистра); **(2)** иначе совпадение **Cod Produs** в описании объявления. Нужен PostgreSQL из `core/backend`, как у `seed-registry`. Неоднозначный случай — `manual_review` с `DUPLICATE_AMBIGUOUS:`. Явный дубликат — состояние реестра `duplicate_skipped` с `DUPLICATE_MATCH:partner_key` или `DUPLICATE_MATCH:cod_produs`.
+
+Та же опция в админке: **Admin → Parsing → PDP** — чекбокс **Check duplicates before create** для ручного запуска и для расписаний PDP (`config_snapshot.checkUserDuplicatesBeforeCreate`).
+
+Без **`--update-existing`** команда `cipauto:import` после PDP всё равно делает **узкий PATCH** полей `partner_source_code`, `partner_listing_external_key` и `partner_listing_canonical_url`, если в реестре уже есть `kupitoListingId` — чтобы плановые прогоны могли догнать технические поля без полного обновления объявления.
 
 ### Флаги `cipauto:report`
 
@@ -117,6 +123,7 @@ npm run cipauto:report -- --last --env=prod
 - `cipauto-registry.json` — реестр
 - `cipauto-current-plp.json` — снимок PLP
 - `reports/cipauto-run-*.json` — отчёты импорта
+- `reports/partner-url-check-cipauto-*.{json,csv}` — при необходимости после `npm run partner:check-urls -- --partner cipauto ...`
 
 Старые пути в `src/scripts/tools/cipauto-import/data/` CLI больше не использует.
 
@@ -151,7 +158,7 @@ cd core/backend
 npm run cipauto:seed-registry -- [--env local|prod] <userId>
 ```
 
-Скрипт читает объявления этого пользователя из **БД** (то же окружение, что у TypeORM), ищет в описаниях `Cod Produs: …` (нормализуются HTML-сущности и регистр) и пишет в `cipauto-registry.json` связки **`sourceListingId → kupitoListingId`**. Повторный запуск идемпотентен.
+Скрипт читает объявления этого пользователя из **БД** (то же окружение, что у TypeORM), ищет в описаниях `Cod Produs: …` (нормализуются HTML-сущности и регистр), пишет в `cipauto-registry.json` связки **`sourceListingId → kupitoListingId`** и обновляет в Kupito строки **`partner_source_code`**, **`partner_listing_external_key`** и **`partner_listing_canonical_url`** (канонический URL объявления на CipAuto). Повторный запуск идемпотентен.
 
 Далее:
 
@@ -162,7 +169,22 @@ npm run cipauto:seed-registry -- [--env local|prod] <userId>
 
 **Окружение:** для `seed-registry`, `scan` и `import` используйте ту же БД / тот же смысл `--env`, чтобы реестр и снимки совпадали с данными.
 
+**Админка:** при `registrySyncEnabled` для CipAuto в каталоге в **Админка → Parsing → файлы PLP** у строки единственного PLP есть пункт **«Синхронизировать»** — запускается тот же процесс, что и `cipauto:seed-registry` в CLI (нужен UUID партнёра на Kupito; может подставиться из недавних PDP/PLP с назначенным пользователем). Закрытие окна не отменяет задачу; отмена — отдельной кнопкой, пока запуск активен.
+
+**Админка (PDP):** в **ручном PDP** и при **новом расписании PDP** после выбора файла PLP вызывается тот же `sync-hint`, что и в модалке синхронизации — поле UUID партнёра предзаполняется так же (для этого чтения не нужен `registrySyncEnabled`).
+
 Подробности скриптов: `core/backend/docs/SCRIPTS.md` (Partner listing imports → **CipAuto registry seeding**).
+
+### `partner:check-urls` (проверка по сохранённому URL)
+
+Общий скрипт для CipAuto и 999.md: для объявлений с заполненным **`partner_listing_canonical_url`** снова дергается тот же PDP-парсер, что и при импорте; отчёты — **`reports/partner-url-check-cipauto-*.{json,csv}`** (каталог отчётов CipAuto).
+
+```bash
+cd core/backend
+npm run partner:check-urls -- --partner cipauto --userId=<UUID> [--env local|prod] [--dry-run] [--limit=<n>] [--delay=<ms>]
+```
+
+Флаги и смысл исходов — в `core/backend/docs/SCRIPTS.md` → **Partner listing URL check**.
 
 ## Аудит устаревших объявлений
 
