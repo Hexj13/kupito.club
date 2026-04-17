@@ -99,7 +99,7 @@ Branch protection for `main` (required checks, no force-push) is documented in [
 ### 1.2. Database Verification
 
 Ensure that:
-- Migrations are applied (via Render Shell: `cd core/backend && npm run migration:run`)
+- Migrations are applied (via Render Shell: `cd core/backend && npm run migration:run:prod` after a successful `npm run build`)
 - Database is accessible
 - DB connection environment variables are configured
 
@@ -109,7 +109,7 @@ Ensure that:
 2. **Execute command:**
    ```bash
    cd core/backend
-   npm run migration:run
+   npm run migration:run:prod
    ```
 
 ---
