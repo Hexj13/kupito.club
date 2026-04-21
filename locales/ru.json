@@ -8,9 +8,8 @@
     "privacy": "Политика конфиденциальности",
     "cookieSettings": "Настройки cookies",
     "contacts": "Контакты",
-    "partnerCipautoDescription": "Импорт и продажа авто",
-    "partnerInfocarDescription": "Отчеты по истории авто",
-    "partnerFactumDescription": "Импорт и продажа авто"
+    "partnerImportSalesDescription": "Импорт и продажа авто",
+    "partnerInfocarDescription": "Отчеты по истории авто"
   },
   "header": {
     "addListing": "Создать объявление",

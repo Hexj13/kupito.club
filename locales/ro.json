@@ -8,9 +8,8 @@
     "privacy": "Politica de confidențialitate",
     "cookieSettings": "Setări cookies",
     "contacts": "Contacte",
-    "partnerCipautoDescription": "Import și vânzare auto",
-    "partnerInfocarDescription": "Rapoarte de istoric auto",
-    "partnerFactumDescription": "Import și vânzare auto"
+    "partnerImportSalesDescription": "Import și vânzare auto",
+    "partnerInfocarDescription": "Rapoarte de istoric auto"
   },
   "header": {
     "addListing": "Creează anunț",

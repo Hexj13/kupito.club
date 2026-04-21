@@ -19,7 +19,7 @@ const config: SiteConfig = {
       logoSrc: '/partners/cipauto.webp',
       logoWidth: 139,
       logoHeight: 30,
-      descriptionKey: 'footer.partnerCipautoDescription',
+      descriptionKey: 'footer.partnerImportSalesDescription',
     },
     {
       name: 'INFOCAR.md',
@@ -36,7 +36,16 @@ const config: SiteConfig = {
       logoWidth: 800,
       logoHeight: 203,
       logoSurface: 'transparent',
-      descriptionKey: 'footer.partnerFactumDescription',
+      descriptionKey: 'footer.partnerImportSalesDescription',
+    },
+    {
+      name: 'A&G MOTORS',
+      href: 'https://agmotors.md/',
+      logoSrc: '/partners/ag_motors.webp',
+      logoWidth: 3262,
+      logoHeight: 468,
+      logoSurface: 'transparent',
+      descriptionKey: 'footer.partnerImportSalesDescription',
     },
   ],
   reportProvider: {
