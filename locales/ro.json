@@ -4,6 +4,8 @@
     "tagline": "Platformă pentru publicarea anunțurilor de vânzare auto în Moldova",
     "partnersTitle": "Partenerii noștri",
     "faq": "Întrebări frecvente",
+    "partners": "Partenerilor",
+    "investors": "Investitorilor",
     "terms": "Termeni de utilizare",
     "privacy": "Politica de confidențialitate",
     "cookieSettings": "Setări cookies",
@@ -954,6 +956,10 @@
     "creditSection": "Credit/rate",
     "downPaymentFromTitle": "Suma minimă a avansului (număr întreg)",
     "labels": "Etichete",
+    "sellerTypeLabel": "Tipul vânzătorului",
+    "sellerTypePlaceholder": "Neselectat",
+    "sellerTypeIndividual": "Persoană fizică",
+    "sellerTypeBusiness": "Persoană juridică (Dealer auto)",
     "urgent": "Urgent",
     "new": "Autoturism nou",
     "newMoto": "Nou",
@@ -1843,6 +1849,134 @@
       "email": "support@kupito.club"
     }
   },
+  "partners": {
+    "title": "Pentru parteneri",
+    "intro": "Invităm companiile să devină parteneri Kupito. Pe scurt: cum aplicați, ce oferă programul și cum puteți încheia colaborarea.",
+    "howToBecome": {
+      "title": "Cum deveniți partener",
+      "items": [
+        "Scrieți-ne prin pagina Contacte și descrieți scurt afacerea.",
+        "Participă doar persoane juridice cu cont de firmă pe Kupito.",
+        "Vă răspundem și, la nevoie, configurăm sincronizarea automată a anunțurilor cu site-ul dvs. sau alte platforme."
+      ]
+    },
+    "benefits": {
+      "title": "Ce oferă parteneriatul",
+      "items": [
+        "Sincronizare automată a anunțurilor cu site-ul dvs. sau cu alte platforme, fără dublare manuală.",
+        "Bonusuri de promovare gratuită: un bonus la fiecare 20 de anunțuri noi. Statusul și balanța apar în profil.",
+        "Pe pagina „Anunțurile mele” cheltuiți singuri balanța, activând promovarea gratuită pentru anunțul ales.",
+        "Etichetă de partener pe pagina de anunț și pe panoul dvs. public de anunțuri.",
+        "Sigla și linkul dvs. în subsolul Kupito."
+      ]
+    },
+    "whoCan": {
+      "title": "Cine poate deveni partener",
+      "items": [
+        "Doar o persoană juridică cu cont de firmă (alegeți opțiunea companie la înregistrare).",
+        "Vânzătorii particulari nu participă în program."
+      ]
+    },
+    "howToLeave": {
+      "title": "Cum puteți încheia parteneriatul",
+      "items": [
+        "Scrieți-ne pe canalele de contact și spuneți că doriți încheierea parteneriatului.",
+        "Vă retragem statutul, vă scoatem din subsol și anulăm balanța de promovări gratuite acumulate.",
+        "Condițiile complete despre statut și bonusuri sunt în Termenii de utilizare."
+      ]
+    },
+    "obligations": {
+      "title": "Așteptări și recomandări",
+      "items": [
+        "Parteneriatul nu adaugă obligații financiare sau juridice suplimentare față de ceea ce este descris în serviciu și în Termeni.",
+        "Apreciem dacă menționați Kupito pe site și în rețelele sociale și ne trimiteți clienții care doresc să vândă o mașină, dar dvs. nu o cumpărați."
+      ]
+    },
+    "contactCta": "Contactați-ne"
+  },
+  "investors": {
+    "title": "Pentru investitori",
+    "intro": "Kupito.club este o platformă pentru anunțuri de vânzare auto, axată pe simplitate, automatizare și scalabilitate.",
+    "about": {
+      "title": "Despre proiect",
+      "paragraphs": [
+        "Proiectul pornește de la ipoteza că maturitatea pieței de anunțuri auto urmărește nivelul economiei și al pieței IT din țară. În țările dezvoltate apar produse comode și tehnologice, iar pe piețe mai puțin dezvoltate experiența rămâne adesea învechită și inconfortabilă.",
+        "Kupito.club rezolvă această problemă printr-un nucleu universal care permite lansarea unei platforme moderne de anunțuri în orice țară în câteva zile."
+      ]
+    },
+    "done": {
+      "title": "Ce am realizat deja",
+      "items": [
+        "Platformă lansată în Republica Moldova ca piață de test",
+        "Sistem de anunțuri cu interfață modernă",
+        "Primii parteneri, dealeri auto",
+        "Sincronizare automată a anunțurilor",
+        "Trafic inițial și primii utilizatori"
+      ]
+    },
+    "product": {
+      "title": "Produs",
+      "lead": "Kupito.club oferă:",
+      "items": [
+        "Publicare gratuită a anunțurilor",
+        "Căutare și comparare ușoară",
+        "Salvarea anunțurilor la favorite",
+        "Salvarea filtrelor de căutare",
+        "Instrumente pentru dealeri",
+        "Sincronizare automată cu site-uri externe",
+        "Experiență Mobile-first și dezvoltarea aplicației mobile"
+      ]
+    },
+    "businessModel": {
+      "title": "Model de business",
+      "lead": "Principalele surse de venit:",
+      "items": [
+        "Promovare plătită a anunțurilor",
+        "Publicitate pe platformă",
+        "Abonamente premium cu funcții extinse",
+        "Instrumente B2B pentru dealeri"
+      ]
+    },
+    "vision": {
+      "title": "Viziune",
+      "paragraphs": [
+        "Crearea unei infrastructuri universale pentru anunțuri auto, care poate fi implementată și adaptată rapid la orice piață."
+      ]
+    },
+    "strategy": {
+      "title": "Strategie de creștere",
+      "items": [
+        "Validarea modelului pe piața din Republica Moldova",
+        "Scalarea marketingului",
+        "Creșterea rețelei de parteneri dealeri",
+        "Intrarea pe piețe noi"
+      ]
+    },
+    "scaling": {
+      "title": "Scalare",
+      "lead": "După validarea modelului, planificăm lansări în alte țări cu condiții de piață similare:",
+      "items": ["Europa de Est", "Balcanii", "America Latină", "Africa", "Asia"]
+    },
+    "whyNow": {
+      "title": "De ce acum",
+      "items": [
+        "Piața anunțurilor auto rămâne fragmentată",
+        "În multe țări lipsesc soluții moderne",
+        "Putem ocupa rapid o nișă prin viteza de lansare și calitatea produsului"
+      ]
+    },
+    "offer": {
+      "title": "Propunere de investiție",
+      "lead": "Căutăm investiții pentru:",
+      "items": [
+        "Scalarea marketingului",
+        "Accelerarea dezvoltării produsului",
+        "Intrarea pe piețe noi"
+      ],
+      "footer": "Suntem deschiși să discutăm termenii parteneriatului și putem furniza informații suplimentare la cerere."
+    },
+    "contactCta": "Contactați-ne"
+  },
   "contacts": {
     "title": "Contacte",
     "intro": "Suntem echipa de dezvoltare kupito.club și suntem mereu gata să vă ajutăm. Contactați-ne prin oricare din canalele de mai jos.",
@@ -1978,6 +2112,20 @@
       "ogTitle": "Întrebări frecvente (FAQ) - Kupito",
       "ogDescription": "Găsiți răspunsuri la cele mai frecvente întrebări despre Kupito. Aflați cum să publicați un anunț, cum să gestionați anunțurile, cum să căutați și să comparați autoturisme și multe altele.",
       "ogAlt": "Kupito - Întrebări frecvente"
+    },
+    "partners": {
+      "title": "Pentru parteneri - Kupito",
+      "description": "Programul de parteneri Kupito: sincronizare anunțuri, promovări gratuite, etichetă de partener și prezență în subsol. Pentru conturi de firmă.",
+      "ogTitle": "Pentru parteneri - Kupito",
+      "ogDescription": "Informații pentru parteneri: cum să aplicați, ce oferă programul, cine poate participa, cum încheiați colaborarea.",
+      "ogAlt": "Kupito - Pentru parteneri"
+    },
+    "investors": {
+      "title": "Pentru investitori - Kupito",
+      "description": "Kupito.club: platformă de anunțuri auto, nucleu pentru lansări rapide, model de business, strategie. Pagina nu este destinată indexării în motoarele de căutare.",
+      "ogTitle": "Pentru investitori - Kupito",
+      "ogDescription": "Prezentare Kupito: produs, model de business și strategie. Contactați-ne pentru a discuta parteneriatul.",
+      "ogAlt": "Kupito - Pentru investitori"
     },
     "contacts": {
       "title": "Contacte - kupito.club",
