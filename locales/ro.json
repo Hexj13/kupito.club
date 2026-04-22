@@ -2227,7 +2227,12 @@
     "updateAvailable": "O nouă versiune este disponibilă",
     "updateDescription": "O nouă versiune a aplicației este gata. Actualizează acum pentru cele mai recente îmbunătățiri.",
     "updateNow": "Actualizează acum",
-    "updateLater": "Mai târziu"
+    "updateLater": "Mai târziu",
+    "openPlayStore": "Deschide în Google Play",
+    "openAppStore": "Deschide în App Store",
+    "desktopStoreTitle": "Aplicația Kupito pentru mobil",
+    "desktopStoreDescription": "Scanează codul QR sau folosește butonul de mai jos.",
+    "storeModalClose": "Închide"
   },
   "metadata": {
     "site": {
@@ -2387,6 +2392,79 @@
       "empty": "Nu există istoric promovări",
       "active": "Activ",
       "loadError": "Eroare la încărcarea istoricului"
+    }
+  },
+  "mobile": {
+    "auth": {
+      "login": "Autentificare",
+      "emailOrPhone": "Email sau telefon",
+      "password": "Parolă",
+      "signIn": "Intră",
+      "signUp": "Înregistrare",
+      "createAccount": "Creează cont",
+      "haveAccount": "Ai deja cont? Autentifică-te",
+      "phone": "Telefon",
+      "emailOptional": "Email (opțional)",
+      "firstNameOptional": "Prenume (opțional)",
+      "signInFailed": "Autentificare eșuată. Verificați datele.",
+      "signUpFailed": "Înregistrare eșuată. Încercați din nou."
+    },
+    "tabs": {
+      "catalog": "Catalog",
+      "favorites": "Favorite",
+      "create": "Publică",
+      "profile": "Profil"
+    },
+    "catalog": {
+      "title": "Anunțuri",
+      "empty": "Nu există anunțuri",
+      "loadMore": "Încarcă mai multe"
+    },
+    "listing": {
+      "price": "Preț",
+      "city": "Oraș",
+      "callSeller": "Contact",
+      "favoriteAdd": "La favorite",
+      "favoriteRemove": "Scoate din favorite"
+    },
+    "create": {
+      "title": "Anunț nou",
+      "editTitle": "Editează anunț",
+      "brand": "Marcă",
+      "model": "Model",
+      "year": "An",
+      "mileage": "Km",
+      "price": "Preț (EUR)",
+      "city": "Oraș",
+      "listingTitle": "Titlu",
+      "description": "Descriere",
+      "bodyType": "Caroserie",
+      "pickImages": "Alege imagini",
+      "takePhoto": "Fă poză",
+      "submit": "Publică",
+      "saveDraft": "Salvează",
+      "uploading": "Se încarcă…",
+      "success": "Anunț creat",
+      "publish": "Publică anunțul",
+      "selectBrand": "Selectați marca",
+      "selectModel": "Selectați modelul"
+    },
+    "favorites": {
+      "title": "Favorite",
+      "empty": "Nu aveți favorite",
+      "needAuth": "Autentificați-vă pentru favorite"
+    },
+    "profile": {
+      "title": "Profil",
+      "myListings": "Anunțurile mele",
+      "signOut": "Ieșire",
+      "language": "Limbă",
+      "push": "Activează notificări",
+      "guest": "Nu sunteți autentificat"
+    },
+    "permissions": {
+      "camera": "Kupito folosește camera pentru fotografii la anunțuri.",
+      "photos": "Kupito accesează galeria pentru imagini la anunțuri."
     }
   }
 }

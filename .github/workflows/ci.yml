@@ -52,7 +52,10 @@ jobs:
             core/backend/src/common/i18n/en.json \
             core/backend/src/common/config/parsers.ts \
             core/frontend/public/logo.png \
-            core/backend/assets/watermark/logo.png; do
+            core/backend/assets/watermark/logo.png \
+            core/mobile/src/i18n/ro.json \
+            core/mobile/src/i18n/ru.json \
+            core/mobile/src/i18n/en.json; do
             if [ ! -f "$f" ]; then
               echo "Error: Missing expected file: $f"
               exit 1

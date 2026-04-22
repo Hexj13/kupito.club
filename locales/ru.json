@@ -2227,7 +2227,12 @@
     "updateAvailable": "Доступна новая версия",
     "updateDescription": "Новая версия приложения готова. Обновите сейчас, чтобы получить последние улучшения.",
     "updateNow": "Обновить сейчас",
-    "updateLater": "Позже"
+    "updateLater": "Позже",
+    "openPlayStore": "Открыть в Google Play",
+    "openAppStore": "Открыть в App Store",
+    "desktopStoreTitle": "Мобильное приложение Kupito",
+    "desktopStoreDescription": "Отсканируйте QR-код или нажмите кнопку ниже.",
+    "storeModalClose": "Закрыть"
   },
   "metadata": {
     "site": {
@@ -2387,6 +2392,79 @@
       "empty": "Нет истории продвижений",
       "active": "Активно",
       "loadError": "Ошибка при загрузке истории"
+    }
+  },
+  "mobile": {
+    "auth": {
+      "login": "Вход",
+      "emailOrPhone": "Email или телефон",
+      "password": "Пароль",
+      "signIn": "Войти",
+      "signUp": "Регистрация",
+      "createAccount": "Создать аккаунт",
+      "haveAccount": "Уже есть аккаунт? Войти",
+      "phone": "Телефон",
+      "emailOptional": "Email (необязательно)",
+      "firstNameOptional": "Имя (необязательно)",
+      "signInFailed": "Не удалось войти. Проверьте данные.",
+      "signUpFailed": "Регистрация не удалась. Попробуйте снова."
+    },
+    "tabs": {
+      "catalog": "Каталог",
+      "favorites": "Избранное",
+      "create": "Разместить",
+      "profile": "Профиль"
+    },
+    "catalog": {
+      "title": "Объявления",
+      "empty": "Нет объявлений",
+      "loadMore": "Загрузить ещё"
+    },
+    "listing": {
+      "price": "Цена",
+      "city": "Город",
+      "callSeller": "Связаться",
+      "favoriteAdd": "В избранное",
+      "favoriteRemove": "Убрать из избранного"
+    },
+    "create": {
+      "title": "Новое объявление",
+      "editTitle": "Редактировать",
+      "brand": "Марка",
+      "model": "Модель",
+      "year": "Год",
+      "mileage": "Пробег, км",
+      "price": "Цена (EUR)",
+      "city": "Город",
+      "listingTitle": "Заголовок",
+      "description": "Описание",
+      "bodyType": "Тип кузова",
+      "pickImages": "Выбрать фото",
+      "takePhoto": "Снять",
+      "submit": "Опубликовать",
+      "saveDraft": "Сохранить",
+      "uploading": "Загрузка…",
+      "success": "Объявление создано",
+      "publish": "Опубликовать объявление",
+      "selectBrand": "Выберите марку",
+      "selectModel": "Выберите модель"
+    },
+    "favorites": {
+      "title": "Избранное",
+      "empty": "Нет избранного",
+      "needAuth": "Войдите для избранного"
+    },
+    "profile": {
+      "title": "Профиль",
+      "myListings": "Мои объявления",
+      "signOut": "Выйти",
+      "language": "Язык",
+      "push": "Включить уведомления",
+      "guest": "Вы не авторизованы"
+    },
+    "permissions": {
+      "camera": "Kupito использует камеру для фото в объявлениях.",
+      "photos": "Kupito читает галерею для изображений объявлений."
     }
   }
 }

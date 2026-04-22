@@ -1,0 +1,45 @@
+name: Mobile CI
+
+on:
+  push:
+    branches: [feature/android-mobile-app]
+  pull_request:
+    branches: [feature/android-mobile-app]
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  mobile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          submodules: recursive
+          token: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            core/mobile/package-lock.json
+
+      - name: Install root deps
+        run: npm ci
+
+      - name: Prepare platform files
+        run: npm run prepare:build
+
+      - name: Install mobile deps
+        working-directory: core/mobile
+        run: npm ci
+
+      - name: Lint mobile
+        working-directory: core/mobile
+        run: npm run lint
+
+      - name: Test mobile
+        working-directory: core/mobile
+        run: npm test

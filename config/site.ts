@@ -78,6 +78,11 @@ const config: SiteConfig = {
     },
     partnerFrom: 'kupito',
   },
+  mobileApp: {
+    enabled: false,
+    androidUrl: 'https://play.google.com/store/apps/details?id=club.kupito.app',
+    iosUrl: null,
+  },
 };
 
 export default config;

@@ -13,6 +13,12 @@ export interface LocaleRoutingConfig {
   languageSwitcherTranslationKeys?: Readonly<Record<string, string>>;
 }
 
+export interface MobileAppLinks {
+  enabled: boolean;
+  androidUrl: string | null;
+  iosUrl: string | null;
+}
+
 export interface SiteConfig {
   country: string;
   name: string;
@@ -37,4 +43,5 @@ export interface SiteConfig {
     descriptionKey?: string;
   }>;
   reportProvider?: ReportProviderConfig;
+  mobileApp?: MobileAppLinks;
 }
