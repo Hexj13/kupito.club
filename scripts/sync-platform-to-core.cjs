@@ -66,7 +66,7 @@ function main() {
         syncFile(from, to, (text) =>
           text.replace(
             "from '../core/frontend/lib/content/legal'",
-            "from '@/lib/content/legal'",
+            "from '../content/legal'",
           ),
         );
       } else {
