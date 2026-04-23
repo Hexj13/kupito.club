@@ -25,7 +25,7 @@
     "999md:report": "cd core/backend && npm run 999md:report --",
     "999md:seed-registry": "cd core/backend && npm run 999md:seed-registry --",
     "999md:dealer-audit": "cd core/backend && npm run 999md:dealer-audit --",
-    "prepare": "husky"
+    "prepare": "husky || true"
   },
   "devDependencies": {
     "husky": "^9.1.7",
