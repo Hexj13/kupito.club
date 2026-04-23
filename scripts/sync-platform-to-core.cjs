@@ -5,18 +5,21 @@ const path = require("path");
 
 const root = path.resolve(__dirname, "..");
 
-function syncFile(absFrom, absTo) {
-  const src = fs.readFileSync(absFrom);
+function syncFile(absFrom, absTo, transform) {
+  let payload = fs.readFileSync(absFrom);
+  if (typeof transform === "function") {
+    payload = Buffer.from(transform(payload.toString("utf8")), "utf8");
+  }
   let changed = true;
   try {
     const dst = fs.readFileSync(absTo);
-    changed = src.length !== dst.length || !src.equals(dst);
+    changed = payload.length !== dst.length || !payload.equals(dst);
   } catch {
     changed = true;
   }
   if (changed) {
     fs.mkdirSync(path.dirname(absTo), { recursive: true });
-    fs.writeFileSync(absTo, src);
+    fs.writeFileSync(absTo, payload);
   }
 }
 
@@ -57,7 +60,18 @@ function main() {
   fs.mkdirSync(configDest, { recursive: true });
   for (const name of fs.readdirSync(configDir)) {
     if (name.endsWith(".ts") || name.endsWith(".json")) {
-      syncFile(path.join(configDir, name), path.join(configDest, name));
+      const from = path.join(configDir, name);
+      const to = path.join(configDest, name);
+      if (name === "legal.ts") {
+        syncFile(from, to, (text) =>
+          text.replace(
+            "from '../core/frontend/lib/content/legal'",
+            "from '@/lib/content/legal'",
+          ),
+        );
+      } else {
+        syncFile(from, to);
+      }
     }
   }
 
