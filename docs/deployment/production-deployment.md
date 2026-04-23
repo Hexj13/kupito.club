@@ -87,14 +87,12 @@ Branch protection for `main` (required checks, no force-push) is documented in [
 
 Both Render services use `npm run prepare:build` — no ad-hoc `cp -r` steps. The script syncs platform files into the core submodule (`locales`, `theme`, `config`, assets, watermark) and rewrites the `legal.ts` import path for the core layout.
 
-**Frontend service — Build Command:**
+> ⚠️ Render pastes the Build Command verbatim into `bash -c`. Do **not** use backslash line-continuations (`\ `) — enter each command as a **single line**.
+
+**Frontend service — Build Command (one line):**
 
 ```bash
-git config --global credential.helper store && \
-echo "https://x-access-token:${GITHUB_PAT}@github.com" > ~/.git-credentials && \
-git submodule update --init --recursive && \
-npm ci && npm run prepare:build && \
-cd core/frontend && npm ci && npm run build
+git config --global credential.helper store && echo "https://x-access-token:${GITHUB_PAT}@github.com" > ~/.git-credentials && git submodule update --init --recursive && npm ci && npm run prepare:build && cd core/frontend && npm ci && npm run build
 ```
 
 **Frontend service — Start Command:**
@@ -103,14 +101,10 @@ cd core/frontend && npm ci && npm run build
 cd core/frontend && npm start
 ```
 
-**Backend service — Build Command:**
+**Backend service — Build Command (one line):**
 
 ```bash
-git config --global credential.helper store && \
-echo "https://x-access-token:${GITHUB_PAT}@github.com" > ~/.git-credentials && \
-git submodule update --init --recursive && \
-npm ci && npm run prepare:build && \
-cd core/backend && npm ci && npm run build
+git config --global credential.helper store && echo "https://x-access-token:${GITHUB_PAT}@github.com" > ~/.git-credentials && git submodule update --init --recursive && npm ci && npm run prepare:build && cd core/backend && npm ci && npm run build
 ```
 
 **Backend service — Start Command:**
