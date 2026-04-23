@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "format:platform": "cd core/frontend && npx prettier --write ../../config/*.ts ../../theme/*.ts ../../locales/*.json",
-    "prepare:build": "node scripts/sync-platform-to-core.cjs && TS_NODE_PROJECT=core/frontend/tsconfig.json node -r ts-node/register core/frontend/scripts/write-theme-json.js",
+    "prepare:build": "node scripts/sync-platform-to-core.cjs && node --experimental-strip-types core/frontend/scripts/write-theme-json.js",
     "check-env": "node core/scripts/check-env.js",
     "check-env:runtime": "node core/scripts/check-env.js --runtime",
     "prebuild": "node core/scripts/check-env.js",

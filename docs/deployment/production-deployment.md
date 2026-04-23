@@ -83,6 +83,50 @@ Both are GitHub repository secrets (Repository Settings → Secrets and variable
 
 Branch protection for `main` (required checks, no force-push) is documented in [branch-protection.md](branch-protection.md).
 
+#### Render service Build Commands (single source of truth)
+
+Both Render services use `npm run prepare:build` — no ad-hoc `cp -r` steps. The script syncs platform files into the core submodule (`locales`, `theme`, `config`, assets, watermark) and rewrites the `legal.ts` import path for the core layout.
+
+**Frontend service — Build Command:**
+
+```bash
+git config --global credential.helper store && \
+echo "https://x-access-token:${GITHUB_PAT}@github.com" > ~/.git-credentials && \
+git submodule update --init --recursive && \
+npm ci && npm run prepare:build && \
+cd core/frontend && npm ci && npm run build
+```
+
+**Frontend service — Start Command:**
+
+```bash
+cd core/frontend && npm start
+```
+
+**Backend service — Build Command:**
+
+```bash
+git config --global credential.helper store && \
+echo "https://x-access-token:${GITHUB_PAT}@github.com" > ~/.git-credentials && \
+git submodule update --init --recursive && \
+npm ci && npm run prepare:build && \
+cd core/backend && npm ci && npm run build
+```
+
+**Backend service — Start Command:**
+
+```bash
+cd core/backend && npm run start:prod
+```
+
+Requirements:
+
+- Render service must use Node.js **≥ 22** (the repo pins `24` via `.nvmrc`). The `write-theme-json.js` step uses `node --experimental-strip-types` to load `lib/theme.ts` without `ts-node`, so there is no runtime TS dependency in production.
+- Frontend service's `prebuild` (`core/frontend/package.json`) also runs `sync-platform-to-core.cjs` + `write-theme-json.js` as a safety net — so a bare `cd core/frontend && npm run build` is self-sufficient if the submodule is already checked out. The canonical Build Command above still runs `npm run prepare:build` at the root once, which matches CI.
+- Do **not** add manual `cp -r locales core/frontend/lib/`, `cp -r theme core/frontend/lib/`, `cp -r config core/frontend/lib/`. They duplicate the sync script but skip the import rewrite in `lib/config/legal.ts` and silently break TypeScript compilation.
+
+See also: [TECHNICAL.md §13.4.1 / §13.4.2](../../core/docs/architecture/TECHNICAL.md) — full Render configuration reference.
+
 ### 1.1. Updating Environment Variables in Render.com
 
 **Backend Service (Render.com):**
