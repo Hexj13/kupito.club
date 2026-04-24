@@ -255,9 +255,9 @@ All queries should return `0`.
 - Render Dashboard → Your PostgreSQL Database → **Connect** → **psql**
 - Execute SQL queries above
 
-### 2.3. Clearing AI listing reports only
+### 2.3. Clearing persisted listing AI analyses only
 
-To drop all persisted AI listing reports (table `listing_ai_reports`) and reset in-flight locks and hourly generation quotas in Redis—without deleting listings or users—use:
+To drop all persisted listing AI analysis rows (table `listing_ai_reports`) and reset in-flight locks and hourly generation quotas in Redis—without deleting listings or users—use:
 
 **Via Render Shell:**
 
@@ -268,7 +268,7 @@ To drop all persisted AI listing reports (table `listing_ai_reports`) and reset 
    npm run clear-listing-ai-reports:prod
    ```
 
-Use this when prompt rules or output format change and you want users to receive freshly generated reports on the next request.
+Use this when prompt rules or output format change and you want users to receive freshly generated AI analyses on the next request.
 
 ---
 

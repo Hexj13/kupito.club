@@ -756,14 +756,14 @@
     "actionCardPromoteDescriptionWhenPromoted": "Asta îi crește vizibilitatea în listări",
     "actionCardAiDescription": "Analiza acestui anunț",
     "aiReportNewBadge": "New",
-    "aiReportActionCardGenerating": "Generăm prezentarea…",
-    "aiReportActionCardAlreadyCreating": "Prezentarea se creează deja",
-    "aiReport": "Prezentare AI",
-    "aiReportModalTitle": "Prezentare AI a anunțului",
-    "aiReportLoading": "Pregătim prezentarea…",
-    "aiReportPending": "Prezentarea este în curs de generare…",
+    "aiReportActionCardGenerating": "Generăm analiza anunțului…",
+    "aiReportActionCardAlreadyCreating": "Analiza anunțului se creează deja",
+    "aiReport": "Analiză AI",
+    "aiReportModalTitle": "Analiză AI a anunțului",
+    "aiReportLoading": "Pregătim analiza anunțului…",
+    "aiReportPending": "Analizăm anunțul…",
     "aiReportUnavailableTitle": "Temporar indisponibil",
-    "aiReportUnavailableBody": "Prezentarea AI nu a putut fi încărcată. Încercați mai târziu.",
+    "aiReportUnavailableBody": "Analiza AI nu a putut fi încărcată. Încercați mai târziu.",
     "aiReportSectionSummary": "Rezumatul anunțului",
     "aiReportSectionModelContext": "Despre acest model de vehicul",
     "aiReportSectionAnalysis": "Analiza anunțului",
@@ -777,7 +777,7 @@
     "aiReportSectionChecks": "Ce să verificați la cumpărare",
     "aiReportSectionQuestions": "Ce întrebări să puneți la cumpărare",
     "aiReportSectionRisks": "Riscuri posibile",
-    "aiReportCopy": "Copiază întreaga prezentare",
+    "aiReportCopy": "Copiază întreaga analiză",
     "aiReportCopied": "Copiat",
     "aiReportProductDisclaimer": "Generat de IA (Google Gemini). Pot exista inexactități; nu înlocuiește inspectarea sau diagnostica. Verificați pe cont propriu detaliile importante.",
     "sampleReport": "Exemplu de raport",
@@ -1893,30 +1893,30 @@
   },
   "partners": {
     "title": "Pentru parteneri",
-    "intro": "Invităm companiile să devină parteneri Kupito. Pe scurt: cum aplicați, ce oferă programul și cum puteți încheia colaborarea.",
+    "intro": "Invităm companii să devină parteneri Kupito. Pe scurt: cum aplicați, ce oferă programul și cum puteți încheia colaborarea.",
     "howToBecome": {
       "title": "Cum deveniți partener",
       "items": [
         "Scrieți-ne prin pagina Contacte și descrieți scurt afacerea.",
-        "Participă doar persoane juridice cu cont de firmă pe Kupito.",
+        "Participă doar conturile înregistrate pe platformă ca persoane juridice.",
         "Vă răspundem și, la nevoie, configurăm sincronizarea automată a anunțurilor cu site-ul dvs. sau alte platforme."
       ]
     },
     "benefits": {
       "title": "Ce oferă parteneriatul",
       "items": [
-        "Sincronizare automată a anunțurilor cu site-ul dvs. sau cu alte platforme, fără dublare manuală.",
+        "Sincronizarea automată a anunțurilor cu site-ul dvs. sau cu alte platforme, fără dublare manuală.",
         "Bonusuri de promovare gratuită: un bonus la fiecare 20 de anunțuri noi. Statusul și balanța apar în profil.",
         "Pe pagina „Anunțurile mele” cheltuiți singuri balanța, activând promovarea gratuită pentru anunțul ales.",
-        "Etichetă de partener pe pagina de anunț și pe panoul dvs. public de anunțuri.",
+        "Eticheta de partener pe pagina de anunț și pe panoul dvs. public de anunțuri.",
         "Sigla și linkul dvs. în subsolul Kupito."
       ]
     },
     "whoCan": {
       "title": "Cine poate deveni partener",
       "items": [
-        "Doar o persoană juridică cu cont de firmă (alegeți opțiunea companie la înregistrare).",
-        "Vânzătorii particulari nu participă în program."
+        "Doar utilizatorii înregistrați pe platformă ca persoană juridică (la înregistrare alegeți varianta pentru companie, nu pentru persoană fizică).",
+        "Vânzătorii particulari nu participă la program."
       ]
     },
     "howToLeave": {
@@ -1960,13 +1960,14 @@
       "title": "Produs",
       "lead": "Kupito.club oferă:",
       "items": [
-        "Publicare gratuită a anunțurilor",
-        "Căutare și comparare ușoară",
+        "Publicarea gratuită a anunțurilor",
+        "Căutarea și compararea ușoară a anunțurilor",
         "Salvarea anunțurilor la favorite",
         "Salvarea filtrelor de căutare",
-        "Instrumente pentru dealeri",
-        "Sincronizare automată cu site-uri externe",
-        "Experiență Mobile-first și dezvoltarea aplicației mobile"
+        "Posibilitatea de a obține un rezumat informativ scurt cu AI pentru anunțuri auto eligibile (utilizatori autentificați; în funcție de disponibilitate și limite)",
+        "Panoul de anunțuri al unui vânzător, cu toate anunțurile sale pe o singură pagină",
+        "Sincronizarea automată cu site-uri externe",
+        "Interfața orientată spre mobile și dezvoltarea aplicației mobile"
       ]
     },
     "businessModel": {
@@ -2157,7 +2158,7 @@
     },
     "partners": {
       "title": "Pentru parteneri - Kupito",
-      "description": "Programul de parteneri Kupito: sincronizare anunțuri, promovări gratuite, etichetă de partener și prezență în subsol. Pentru conturi de firmă.",
+      "description": "Programul de parteneri Kupito: sincronizare anunțuri, promovări gratuite, etichetă de partener și prezență în subsol. Pentru persoane juridice.",
       "ogTitle": "Pentru parteneri - Kupito",
       "ogDescription": "Informații pentru parteneri: cum să aplicați, ce oferă programul, cine poate participa, cum încheiați colaborarea.",
       "ogAlt": "Kupito - Pentru parteneri"
