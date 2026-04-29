@@ -151,6 +151,8 @@ After setup, the project will have these files:
 - `app/error.tsx` - error catching via Error Boundary
 - `app/sentry-test/page.tsx` - test page for Sentry verification
 
+Client-side Sentry is production-only, keeps `sendDefaultPii` disabled, and masks text, inputs, and media in Session Replay.
+
 ### Backend (`core/backend/src/`)
 
 - `common/sentry.config.ts` - Sentry initialization for NestJS

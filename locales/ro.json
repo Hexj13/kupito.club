@@ -417,6 +417,23 @@
     "loadMore": "Încarcă mai multe",
     "showMore": "Arată mai multe",
     "noMoreListings": "Nu mai există anunțuri",
+    "partnerPromo": {
+      "titleQuestion": "Vindeți multe automobile?",
+      "titlePartnerLead": "Deveniți ",
+      "titlePartnerEmphasis": "partener",
+      "titlePartnerTail": " Kupito.club",
+      "description": "Dacă publicați anunțuri regulat și sunteți dealer auto, showroom auto sau vânzător profesionist, suntem pregătiți să vă oferim condiții speciale de parteneriat.",
+      "features": {
+        "sync": "Sincronizare automată a anunțurilor",
+        "promotion": "Promovări gratuite",
+        "visibility": "Vizibilitate suplimentară pe platformă"
+      },
+      "sideTitle": "Împreună — mai puternici",
+      "sideDescription": "Dezvoltați afacerea și primiți mai multe oportunități cu Kupito.club.",
+      "cta": "Detalii",
+      "dismiss": "Nu mai afișa",
+      "imageAlt": "Automobile pentru programul de parteneriat Kupito"
+    },
     "selectBrand": "Selectați marca",
     "selectCity": "Selectați orașul",
     "descriptionPlaceholder": "Adăugați o descriere a autoturismului...",
@@ -779,7 +796,7 @@
     "aiReportSectionRisks": "Riscuri posibile",
     "aiReportCopy": "Copiază întreaga analiză",
     "aiReportCopied": "Copiat",
-    "aiReportProductDisclaimer": "Generat de IA (Google Gemini). Pot exista inexactități; nu înlocuiește inspectarea sau diagnostica. Verificați pe cont propriu detaliile importante.",
+    "aiReportProductDisclaimer": "Formulat de o rețea neuronală pe baza Google Gemini. Informațiile au caracter orientativ, pot conține inexactități și nu înlocuiesc inspecția sau diagnosticul profesional. Se recomandă verificarea independentă a informațiilor esențiale.",
     "sampleReport": "Exemplu de raport",
     "historyHint": "Afișăm anunțuri anterioare pentru acest vehicul cu același VIN. Pentru protecția confidențialității, prețul și datele personale ale autorilor sunt ascunse pentru anunțuri închise.",
     "vinNotProvided": "Codul VIN nu este specificat de vânzător",
