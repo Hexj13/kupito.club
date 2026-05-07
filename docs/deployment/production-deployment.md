@@ -426,6 +426,7 @@ Ensure all environment variables are updated:
 - `COUNTRY=md` (in Backend, for scripts)
 - `DEFAULT_CURRENCY` (optional, in Backend) — default currency for new listings when not sent by client; should match platform `config/site.ts` `currency` (e.g. `EUR`)
 - `FXRATESAPI_API_KEY` (optional, in Backend) — API key for [FXRatesAPI](https://fxratesapi.com) to fetch exchange rates for approximate price in default currency (e.g. MDL→EUR)
+- Listing video (optional, Backend): MediaConvert + SNS webhook + related AWS variables — [listing-video-production-setup-ru.md](../../core/docs/guides/listing-video-production-setup-ru.md) (operators, Russian); API summary in [listings.md](../../core/docs/features/listings.md)
 
 ### 6.2. Website Operation Verification
 
@@ -450,6 +451,7 @@ Ensure all environment variables are updated:
 - [ ] Listing creation works
 - [ ] Listing search works
 - [ ] Image upload works
+- [ ] (If listing video is enabled) Video upload completes and playback works on a listing
 - [ ] Admin panel accessible for administrator
 
 ---
@@ -491,6 +493,7 @@ Ensure all environment variables are updated:
 - [Brands and Models (Master Plan)](../../core/docs/reference/brands-models-master-plan.md)
 - [Project Architecture](../../core/docs/architecture/technical.md)
 - [Platform Setup](../setup/setup.md)
+- [Listing video (production, RU)](../../core/docs/guides/listing-video-production-setup-ru.md) — AWS MediaConvert, SNS, Render env
 
 ---
 

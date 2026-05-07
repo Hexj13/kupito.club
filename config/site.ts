@@ -5,6 +5,16 @@ const config: SiteConfig = {
   name: 'Kupito',
   domain: 'kupito.club',
   locale: 'ro-MD',
+  localeRouting: {
+    defaultLocale: 'ro',
+    supportedLocales: ['ro', 'ru'],
+    prefixedLocales: ['ru'],
+    enableLegacyDefaultLocaleRedirect: true,
+    languageSwitcherTranslationKeys: {
+      ro: 'common.languageRo',
+      ru: 'common.languageRu',
+    },
+  },
   currency: 'EUR',
   currencies: ['EUR', 'MDL'] as const,
   countryCode: 'MD',

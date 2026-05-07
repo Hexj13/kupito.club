@@ -4,6 +4,15 @@ export interface ReportProviderConfig {
   partnerFrom: string;
 }
 
+export interface LocaleRoutingConfig {
+  defaultLocale: string;
+  supportedLocales: readonly string[];
+  prefixedLocales: readonly string[];
+  enableLegacyDefaultLocaleRedirect?: boolean;
+  enableLegacyRoPathRedirect?: boolean;
+  languageSwitcherTranslationKeys?: Readonly<Record<string, string>>;
+}
+
 export interface SiteConfig {
   country: string;
   name: string;
@@ -14,6 +23,7 @@ export interface SiteConfig {
   countryCode: string;
   supportEmail: string;
   siteUrl: string;
+  localeRouting?: LocaleRoutingConfig;
   assetVersion?: string;
   footerPartnerLogoSurfaceDefault?: 'light' | 'transparent';
   footerPartners?: Array<{

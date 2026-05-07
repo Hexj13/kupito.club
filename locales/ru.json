@@ -36,6 +36,8 @@
   },
   "home": {
     "title": "Продажа авто в Молдове",
+    "titleWithBrand": "Продажа {brand} в Молдове",
+    "titleWithBrandModel": "Продажа {brand} {model} в Молдове",
     "subtitle": "Опубликуйте объявление",
     "subtitleBold": "Kupito!",
     "subtitle2": ". Продайте или купите авто на ",
@@ -69,6 +71,7 @@
     "no": "Нет",
     "search": "Поиск",
     "choose": "Выберите...",
+    "rangeDash": "—",
     "selectedCount": "Выбрано {count}",
     "requiredAsterisk": "*",
     "apiErrors": {
@@ -131,7 +134,8 @@
     "daysAgo": "{days} дней назад",
     "languageEn": "Английский",
     "languageRo": "Română",
-    "languageRu": "Русский"
+    "languageRu": "Русский",
+    "languageLocaleCode": "{code}"
   },
   "errors": {
     "smsHourlyLimit": "Достигнут лимит SMS для этого номера. Новый код можно запросить через час.",
@@ -179,7 +183,62 @@
       "description": "Для получения дополнительной информации о том, как мы используем cookies и как защищаем ваши данные, пожалуйста, прочитайте"
     },
     "privacyPolicy": "Политика конфиденциальности",
-    "preferencesSavedMessage": "Ваши настройки сохранены в вашем браузере и будут активны 365 дней. Вы можете изменить их в любое время на этой странице."
+    "preferencesSavedMessage": "Ваши настройки сохранены в вашем браузере и будут активны 365 дней. Вы можете изменить их в любое время на этой странице.",
+    "cookieTable": {
+      "title": "Перечень cookies и хранилища",
+      "intro": "Ниже перечислены основные HTTP-cookies и схожие ключи в браузере. Данные сессии входа хранятся в localStorage (не в HTTP-cookies). При разрешении аналитических cookies запускается Google Analytics с параметрами Consent Mode и обновлениями согласия.",
+      "headers": {
+        "name": "Название",
+        "type": "Тип",
+        "purpose": "Назначение",
+        "duration": "Срок",
+        "provider": "Поставщик"
+      },
+      "rows": {
+        "ga": {
+          "name": "_ga",
+          "type": "Аналитический",
+          "purpose": "Идентификатор клиента Google Analytics; используется только после явного согласия на аналитические cookies.",
+          "duration": "До 2 лет (по умолчанию Google)",
+          "provider": "Google Ireland Limited / Google LLC"
+        },
+        "gid": {
+          "name": "_gid",
+          "type": "Аналитический",
+          "purpose": "Группировка сессии Google Analytics; используется только после явного согласия на аналитические cookies.",
+          "duration": "24 часа (по умолчанию Google)",
+          "provider": "Google Ireland Limited / Google LLC"
+        },
+        "consentCookie": {
+          "name": "cookie_consent",
+          "type": "Необходимый",
+          "purpose": "Хранит ваш выбор по cookies (JSON с меткой времени) для синхронизации с Consent Mode.",
+          "duration": "365 дней",
+          "provider": "Kupito"
+        },
+        "localeCookie": {
+          "name": "kupito-locale",
+          "type": "Функциональный",
+          "purpose": "Запоминает язык интерфейса (ro или ru), если включён переключатель языка.",
+          "duration": "365 дней",
+          "provider": "Kupito"
+        },
+        "gtm": {
+          "name": "gtag.js (Google Tag)",
+          "type": "Аналитический",
+          "purpose": "Подключает Google Analytics после согласия и отправляет обновления Consent Mode (analytics_storage).",
+          "duration": "Сессия / по политике Google",
+          "provider": "Google Ireland Limited / Google LLC"
+        },
+        "authLocalStorage": {
+          "name": "auth-storage (localStorage)",
+          "type": "Необходимый (локальное хранилище)",
+          "purpose": "Сохраняет состояние авторизованной сессии (токены) для вошедших пользователей; это не HTTP-cookie.",
+          "duration": "До выхода или истечения срока в приложении",
+          "provider": "Kupito"
+        }
+      }
+    }
   },
   "login": {
     "title": "Вход",
@@ -356,6 +415,30 @@
     "closed": "Закрыто",
     "loadingTimeout": "Время загрузки объявлений истекло"
   },
+  "listingForm": {
+    "video": {
+      "title": "Видео",
+      "posterAlt": "Превью видео",
+      "addButton": "Добавить видео",
+      "remove": "Удалить видео",
+      "fileLabel": "Файл:",
+      "constraints": "Максимальный размер файла {maxSizeMb} МБ, максимальная длительность {maxDurationMin} минут. Форматы: MP4, MOV, AVI, WebM, MKV.",
+      "stagedHintTooltip": "Видео загрузится автоматически сразу после создания объявления.",
+      "status": {
+        "uploading": "Загрузка…",
+        "processing": "Обработка видео…",
+        "ready": "Видео готово",
+        "failed": "Не удалось обработать видео"
+      },
+      "errors": {
+        "invalidType": "Неподдерживаемый формат видео",
+        "tooLarge": "Файл слишком большой",
+        "uploadFailed": "Не удалось загрузить видео",
+        "uploadAfterCreateFailed": "Объявление создано, но видео не удалось загрузить. Вы можете добавить его при редактировании объявления.",
+        "deleteFailed": "Не удалось удалить видео"
+      }
+    }
+  },
   "listings": {
     "defaultTitle": "Автомобиль на продажу",
     "imageAlt": "{title} - Изображение {index}",
@@ -363,6 +446,8 @@
     "closeImageModal": "Закрыть просмотр фото",
     "previousPhoto": "Предыдущее фото",
     "nextPhoto": "Следующее фото",
+    "cardImageCounter": "{current} / {total}",
+    "modalThumbnailAlt": "Изображение {index} из {total}",
     "notFoundTitle": "Объявление не найдено",
     "notFoundDescription": "Объявление не существует или недоступно.",
     "addToFavorites": "Добавлено в избранное",
@@ -541,6 +626,7 @@
     "liters": "л",
     "km": "км",
     "priceLabel": "Цена",
+    "currency": "Валюта",
     "negotiable": "Возможен торг",
     "availableInCredit": "Доступно в кредит/рассрочку",
     "downPaymentFrom": "Сумма первого взноса от",
@@ -580,6 +666,7 @@
     "tireCardPriceScopePerUnit": "(за штуку)",
     "tireCardPriceScopePerSet": "(за комплект)",
     "promoted": "Продвинуто",
+    "videoBadge": "Видео",
     "promote": "Продвинуть",
     "unpromote": "Отменить продвижение",
     "promotionEnabled": "Продвижение активировано",
@@ -693,12 +780,16 @@
     "ownerNoticeText": "Здесь отображаются все ваши активные объявления. Вы можете использовать ссылку на эту страницу, чтобы отправить её в мессенджерах или соцсетях и показать все свои объявления на одной странице."
   },
   "listingDetail": {
+    "video": {
+      "playButton": "Воспроизвести видео объявления",
+      "playIcon": "▶",
+      "captionsTrackLabel": "Субтитры для речи отсутствуют"
+    },
     "home": "Главная",
     "addToFavorites": "В избранное",
     "removeFromFavorites": "Удалить из избранного",
     "yourListing": "Ваше объявление",
-    "cannotAddOwnListing": "Вы не можете добавить свое объявление в избранное",
-    "cannotFavoriteOwnListingToast": "Свои объявления нельзя добавлять в избранное.\nОни находятся в разделе «Мои объявления».",
+    "cannotFavoriteOwnListingToast": "Свои объявления нельзя добавлять в избранное.",
     "compare": "Сравнить",
     "alreadyInComparison": "Уже в сравнении",
     "cannotCompareMore": "Вы можете сравнить максимум 3 транспортных средства",
@@ -987,6 +1078,8 @@
     "city": "Город",
     "yearFrom": "Год от",
     "yearTo": "Год до",
+    "yearRangeSummary": "с {from} по {to}",
+    "priceRangeSummary": "от {from} до {to}",
     "selectYear": "Выберите год",
     "currency": "Валюта",
     "priceFrom": "Цена от",
@@ -1338,8 +1431,6 @@
       "archiveDisabledHasListings": "Есть активные объявления с этой маркой/моделью"
     },
     "parsing": {
-      "envTitle": "Окружение парсера",
-      "envBody": "Запуски выполняются в целевом окружении: {env}. Значение задаётся на сервере и не меняется из интерфейса.",
       "subtabPlp": "Каталог (PLP)",
       "subtabPdp": "Карточки (PDP)",
       "subtabScheduler": "Расписания",
@@ -1543,7 +1634,6 @@
       "plpFileDeleted": "PLP-файл удалён",
       "searchPlaceholder": "Поиск по тексту",
       "searchMatches": "Совпадений: {count}",
-      "searchNoMatches": "Совпадения не найдены",
       "copy": "Копировать",
       "copySuccess": "{label} скопирован",
       "copyError": "Ошибка при копировании",
@@ -2215,10 +2305,27 @@
       "ogDescription": "Узнайте, как Kupito собирает, использует и защищает ваши личные данные. Прочитайте нашу политику конфиденциальности, чтобы понять, как мы обрабатываем ваши данные в соответствии с GDPR.",
       "ogAlt": "Kupito - Политика конфиденциальности"
     },
+    "brandLanding": {
+      "title": "Купить {brand} в Молдове: продажа авто с пробегом и новых",
+      "titleWithPrice": "Купить {brand} в Молдове: продажа авто с пробегом и новых от {price}",
+      "description": "Объявления {brand} на Kupito. Актуальные предложения в Молдове.",
+      "h1": "{brand} — на продажу",
+      "intro": "Найдите автомобили {brand} от частных продавцов и дилеров.",
+      "ogAlt": "{brand} — объявления Kupito"
+    },
+    "brandModelLanding": {
+      "title": "Купить {brand} {model} в Молдове: продажа авто с пробегом и новых",
+      "titleWithPrice": "Купить {brand} {model} в Молдове: продажа авто с пробегом и новых от {price}",
+      "description": "Объявления {brand} {model} на Kupito. Актуальные цены в Молдове.",
+      "h1": "{brand} {model} — на продажу",
+      "ogAlt": "{brand} {model} — Kupito"
+    },
     "listing": {
       "notFoundTitle": "Объявление не найдено",
       "notFoundDescription": "Объявление не существует или недоступно.",
       "defaultDescription": "Купите или продайте авто на Kupito! Опубликуйте объявление бесплатно.",
+      "ogAltVehicle": "{brand} {model} {year} — продажа в {city}",
+      "ogAltTire": "{title} — продажа в {city}",
       "keywords": {
         "cars": "автомобили",
         "buyCar": "купить автомобиль",

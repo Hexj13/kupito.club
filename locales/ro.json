@@ -36,6 +36,8 @@
   },
   "home": {
     "title": "Vânzare auto în Moldova",
+    "titleWithBrand": "Vânzare {brand} în Moldova",
+    "titleWithBrandModel": "Vânzare {brand} {model} în Moldova",
     "subtitle": "Publicați anunțul",
     "subtitleBold": "Kupito!",
     "subtitle2": ". Cumpărați sau vindeți auto pe ",
@@ -69,6 +71,7 @@
     "no": "Nu",
     "search": "Caută",
     "choose": "Alege...",
+    "rangeDash": "—",
     "selectedCount": "Selectate {count}",
     "requiredAsterisk": "*",
     "apiErrors": {
@@ -131,7 +134,8 @@
     "daysAgo": "acum {days} zile",
     "languageEn": "Engleză",
     "languageRo": "Română",
-    "languageRu": "Русский"
+    "languageRu": "Русский",
+    "languageLocaleCode": "{code}"
   },
   "errors": {
     "smsHourlyLimit": "Limita SMS pentru acest număr a fost atinsă. Puteți solicita un cod nou peste o oră.",
@@ -179,7 +183,62 @@
       "description": "Pentru mai multe informații despre modul în care folosim cookies și despre modul în care protejăm datele dvs., vă rugăm să citiți"
     },
     "privacyPolicy": "Politica de confidențialitate",
-    "preferencesSavedMessage": "Preferințele dvs. sunt salvate în browser-ul dvs. și vor rămâne active 365 de zile. Le puteți schimba în orice moment de pe această pagină."
+    "preferencesSavedMessage": "Preferințele dvs. sunt salvate în browser-ul dvs. și vor rămâne active 365 de zile. Le puteți schimba în orice moment de pe această pagină.",
+    "cookieTable": {
+      "title": "Inventar cookies și stocare",
+      "intro": "Mai jos sunt principalele cookie-uri HTTP și chei similare de stocare în browser. Datele de sesiune după autentificare sunt păstrate în localStorage (nu cookie-uri HTTP). Când acceptați cookies analitice, Google Analytics rulează cu valorile implicite Consent Mode și actualizări ulterioare.",
+      "headers": {
+        "name": "Denumire",
+        "type": "Tip",
+        "purpose": "Scop",
+        "duration": "Păstrare",
+        "provider": "Furnizor"
+      },
+      "rows": {
+        "ga": {
+          "name": "_ga",
+          "type": "Analitic",
+          "purpose": "ID client Google Analytics; folosit numai după ce acordați cookies analitice.",
+          "duration": "Până la 2 ani (implicit Google)",
+          "provider": "Google Ireland Limited / Google LLC"
+        },
+        "gid": {
+          "name": "_gid",
+          "type": "Analitic",
+          "purpose": "Grupare sesiune Google Analytics; folosit numai după ce acordați cookies analitice.",
+          "duration": "24 de ore (implicit Google)",
+          "provider": "Google Ireland Limited / Google LLC"
+        },
+        "consentCookie": {
+          "name": "cookie_consent",
+          "type": "Esențial",
+          "purpose": "Stochează alegerea dvs. privind cookies (JSON cu marcaj temporal) pentru sincronizare cu Consent Mode.",
+          "duration": "365 de zile",
+          "provider": "Kupito"
+        },
+        "localeCookie": {
+          "name": "kupito-locale",
+          "type": "Funcțional",
+          "purpose": "Memorează limba interfeței (ro sau ru) când comutatorul de limbă este activat.",
+          "duration": "365 de zile",
+          "provider": "Kupito"
+        },
+        "gtm": {
+          "name": "gtag.js (Google Tag)",
+          "type": "Analitic",
+          "purpose": "Încarcă Google Analytics după consimțământ și trimite actualizări Consent Mode (analytics_storage).",
+          "duration": "Sesiune / conform politicii Google",
+          "provider": "Google Ireland Limited / Google LLC"
+        },
+        "authLocalStorage": {
+          "name": "auth-storage (localStorage)",
+          "type": "Esențial (stocare locală)",
+          "purpose": "Păstrează starea sesiunii autentificate (token-uri) pentru utilizatori conectați; nu este un cookie HTTP.",
+          "duration": "Până la deconectare sau expirare gestionată de aplicație",
+          "provider": "Kupito"
+        }
+      }
+    }
   },
   "login": {
     "title": "Autentificare",
@@ -356,6 +415,30 @@
     "closed": "Închis",
     "loadingTimeout": "Timpul de încărcare a anunțurilor a expirat"
   },
+  "listingForm": {
+    "video": {
+      "title": "Video",
+      "posterAlt": "Imagine previzualizare video",
+      "addButton": "Adaugă video",
+      "remove": "Elimină video",
+      "fileLabel": "Fișier:",
+      "constraints": "Dimensiune maximă {maxSizeMb} MB, durată maximă {maxDurationMin} minute. Formate acceptate: MP4, MOV, AVI, WebM, MKV.",
+      "stagedHintTooltip": "Acest video se va încărca automat imediat după crearea anunțului.",
+      "status": {
+        "uploading": "Se încarcă…",
+        "processing": "Se procesează video…",
+        "ready": "Video este gata",
+        "failed": "Procesarea video a eșuat"
+      },
+      "errors": {
+        "invalidType": "Format video neacceptat",
+        "tooLarge": "Fișierul este prea mare",
+        "uploadFailed": "Încărcarea video a eșuat",
+        "uploadAfterCreateFailed": "Anunțul a fost creat, dar video nu s-a putut încărca. Îl puteți adăuga la editarea anunțului.",
+        "deleteFailed": "Nu s-a putut elimina video"
+      }
+    }
+  },
   "listings": {
     "defaultTitle": "Autoturism de vânzare",
     "imageAlt": "{title} - Imagine {index}",
@@ -363,6 +446,8 @@
     "closeImageModal": "Închide vizualizarea foto",
     "previousPhoto": "Imaginea anterioară",
     "nextPhoto": "Imaginea următoare",
+    "cardImageCounter": "{current} / {total}",
+    "modalThumbnailAlt": "Imaginea {index} din {total}",
     "notFoundTitle": "Anunțul nu a fost găsit",
     "notFoundDescription": "Anunțul nu există sau nu este disponibil.",
     "addToFavorites": "Adăugat la favorite",
@@ -541,6 +626,7 @@
     "liters": "l",
     "km": "km",
     "priceLabel": "Preț",
+    "currency": "Monedă",
     "negotiable": "Preț negociabil",
     "availableInCredit": "Disponibil în credit/rate",
     "downPaymentFrom": "Suma primei rate de la",
@@ -580,6 +666,7 @@
     "tireCardPriceScopePerUnit": "(pe anvelopă)",
     "tireCardPriceScopePerSet": "(pentru set)",
     "promoted": "Promovat",
+    "videoBadge": "Video",
     "promote": "Promovează",
     "unpromote": "Anulează promovarea",
     "promotionEnabled": "Promovarea este activată",
@@ -693,12 +780,16 @@
     "ownerNoticeText": "Aici sunt afișate toate anunțurile dvs. active. Puteți folosi linkul către această pagină pentru a o trimite în mesagerii sau rețelele sociale și a afișa toate anunțurile pe o singură pagină."
   },
   "listingDetail": {
+    "video": {
+      "playButton": "Redă video anunțului",
+      "playIcon": "▶",
+      "captionsTrackLabel": "Fără subtitrări pentru dialog"
+    },
     "home": "Acasă",
     "addToFavorites": "La favorite",
     "removeFromFavorites": "Elimină din favorite",
     "yourListing": "Anunțul dvs.",
-    "cannotAddOwnListing": "Nu puteți adăuga propriul anunț la favorite",
-    "cannotFavoriteOwnListingToast": "Nu puteți adăuga propriile anunțuri la favorite.\nAcestea se află în secțiunea «Anunțurile mele».",
+    "cannotFavoriteOwnListingToast": "Nu puteți adăuga propriile anunțuri la favorite.",
     "compare": "Compară",
     "alreadyInComparison": "Deja în comparație",
     "cannotCompareMore": "Puteți compara maximum 3 vehicule",
@@ -987,6 +1078,8 @@
     "city": "Oraș",
     "yearFrom": "An de la",
     "yearTo": "An până la",
+    "yearRangeSummary": "de la {from} la {to}",
+    "priceRangeSummary": "de la {from} la {to}",
     "selectYear": "Selectează anul",
     "currency": "Valută",
     "priceFrom": "Preț de la",
@@ -1338,8 +1431,6 @@
       "archiveDisabledHasListings": "Există anunțuri active cu această marcă/model"
     },
     "parsing": {
-      "envTitle": "Mediul parserului",
-      "envBody": "Rulările folosesc mediul țintă: {env}. Valoarea este setată pe server și nu poate fi schimbată din interfață.",
       "subtabPlp": "Catalog (PLP)",
       "subtabPdp": "Pagini anunț (PDP)",
       "subtabScheduler": "Programe",
@@ -1543,7 +1634,6 @@
       "plpFileDeleted": "Fișierul PLP a fost șters",
       "searchPlaceholder": "Căutare în text",
       "searchMatches": "Potriviri: {count}",
-      "searchNoMatches": "Nu au fost găsite potriviri",
       "copy": "Copiază",
       "copySuccess": "{label} a fost copiat",
       "copyError": "Eroare la copiere",
@@ -2215,10 +2305,27 @@
       "ogDescription": "Aflați cum Kupito colectează, folosește și protejează datele dvs. personale. Citiți politica noastră de confidențialitate pentru a înțelege cum procesăm datele dvs. în conformitate cu GDPR.",
       "ogAlt": "Kupito - Politica de confidențialitate"
     },
+    "brandLanding": {
+      "title": "Cumpără {brand} în Moldova: autoturisme rulate și noi de vânzare",
+      "titleWithPrice": "Cumpără {brand} în Moldova: autoturisme rulate și noi de la {price}",
+      "description": "Răsfoiți anunțuri {brand} pe Kupito. Listări actuale din Republica Moldova.",
+      "h1": "{brand} — de vânzare",
+      "intro": "Găsiți mașini {brand} verificate de la proprietari și dealeri.",
+      "ogAlt": "{brand} — anunțuri auto Kupito"
+    },
+    "brandModelLanding": {
+      "title": "Cumpără {brand} {model} în Moldova: autoturisme rulate și noi de vânzare",
+      "titleWithPrice": "Cumpără {brand} {model} în Moldova: autoturisme rulate și noi de la {price}",
+      "description": "Răsfoiți {brand} {model} pe Kupito. Prețuri actuale în Moldova.",
+      "h1": "{brand} {model} — de vânzare",
+      "ogAlt": "{brand} {model} — Kupito"
+    },
     "listing": {
       "notFoundTitle": "Anunțul nu a fost găsit",
       "notFoundDescription": "Anunțul nu există sau nu este disponibil.",
       "defaultDescription": "Cumpără sau vinde auto pe Kupito! Publică anunț gratuit.",
+      "ogAltVehicle": "{brand} {model} {year} — de vânzare în {city}",
+      "ogAltTire": "{title} — de vânzare în {city}",
       "keywords": {
         "cars": "autoturisme",
         "buyCar": "cumpără autoturism",

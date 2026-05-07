@@ -55,7 +55,6 @@ npm run partner:check-urls -- --partner cipauto --userId=<UUID> --env=prod
 
 - `--pages` required total pages
 - `--page-from`, `--page-to` optional range
-- `--resume`
 - `--dry-run`
 - `--env=local|prod`
 - `--delay=<ms>`
@@ -68,11 +67,12 @@ npm run partner:check-urls -- --partner cipauto --userId=<UUID> --env=prod
 - `--limit=<n>`
 - `--resume`
 - `--dry-run`
+- `--remove-closed` — re-import paths that PDP marks as closed (same registry semantics as 999.md import)
 - `--only-failed`
 - `--update-existing`
 - `--source-id=<sourceListingId>`
 - `--registration-type=Local|Foreign|Cleared` (default `Cleared`)
-- `--default-hp=<number>` (default `150`)
+- `--default-hp=<number>` (default `100`)
 - `--city=<name>` (default `Chișinău`)
 - `--delay=<ms>` (default `3000`)
 - `--check-user-duplicates-before-create` — before `createListing`, load the partner user’s vehicle rows from the DB and skip create when a duplicate is found, in order: **(1)** same user + `partner_source_code = cipauto` + `partner_listing_external_key` matches this `sourceListingId` (case-insensitive); **(2)** else **Cod Produs** parsed from listing descriptions matches this id. Requires PostgreSQL env from `core/backend` (same as `seed-registry`). Ambiguous matches → `manual_review` with `DUPLICATE_AMBIGUOUS:` in `error`. Clear duplicate → registry `duplicate_skipped` with `DUPLICATE_MATCH:partner_key` or `DUPLICATE_MATCH:cod_produs`.
@@ -228,6 +228,10 @@ Parser does not transform images directly. For each image:
 The upload endpoint computes a blurhash for every image. The import pipeline collects these hashes and sends them as `image_blur_hashes` when creating/updating the listing, so blur placeholders are available immediately without a separate backfill step.
 
 This preserves the same validation/watermark/format pipeline as regular website uploads.
+
+## Listing video (optional)
+
+When PDP exposes a video URL (for example `og:video` or a `<video>` source), `cipauto:import` may call `POST /api/upload/video/from-url` after create/update. Failures are logged and the import continues. See `core/docs/features/listings.md`.
 
 ## Troubleshooting
 

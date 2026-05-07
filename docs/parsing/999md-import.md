@@ -16,6 +16,16 @@ tags:
 
 The parser is sequential, restartable, and keeps a separate registry from CipAuto.
 
+## PDP closure detection (GraphQL)
+
+PDP batches use `advert(input: { id })` with fields including `state`, `isExpired`, `expire`, and `moderation { status }`. An advert is treated as **closed** when:
+
+- GraphQL returns **no advert** (`null`) — close reason `graphql_advert_null`;
+- **`isExpired` is true** (including when `state` is still `AD_STATE_PUBLIC`) — `graphql_is_expired`;
+- **`state` is not `AD_STATE_PUBLIC`** for known non-public states (removed/blocked/need pay/hidden/draft/pre-moderation) — registry reasons `graphql_ad_state_*`.
+
+That covers cases where the storefront HTML shows “listing not found” while GraphQL still returns an object (often expired).
+
 ## Location
 
 Source of truth (core submodule):
@@ -53,17 +63,19 @@ The shared script `partner:check-urls` (see below) is also run from `core/backen
 - `--login` required profile login on 999.md
 - `--page-size=<n>` (default `50`)
 - `--max-items=<n>`
-- `--resume`
 - `--dry-run`
 - `--env=local|prod`
 - `--delay=<ms>` (default `3000`)
+
+After a successful PLP write, the registry is finalized against the new snapshot **for the scanned profile login only** (`profileLogin` on registry rows): items that disappear from that PLP are marked `missing_candidate` without touching other 999.md profiles in the same registry file (see shared `finalizeRegistryAfterPlpScan` with optional `shouldMarkMissing`). The PLP JSON written to `current-plp/<login>.json` includes `meta.missingCandidateSourceIds` and `meta.closeEstimateSourceIds` so a later **`999md:import --plp-file=... --remove-closed`** still selects those IDs for PDP checks even when they are no longer listed under `items`. Older PLP files without `meta.missingCandidateSourceIds` cannot reliably drive closure for listings that dropped off the PLP; re-run `999md:scan` or use **`--source-id`** for a one-off recovery. **Admin / scheduler PLP runs** do not pass resume or remove-closed into the scan CLI; use **`999md:import --remove-closed`** (and optional `--resume`) when you want PDP to close or re-process listings for removed or null GraphQL ads.
 
 ### `999md:import` flags
 
 Same semantics as `cipauto:import`:
 
 - `--userId` (required), `--status`, `--env`, `--limit`, `--resume`, `--dry-run`
-- `--only-failed`, `--update-existing`, `--source-id`
+- `--remove-closed` — when PDP marks the source closed (`sourceStatus: 'closed'`: GraphQL advert missing, expired, or non-public `state`), close the Kupito listing when allowed and update registry state
+- `--only-failed`, `--update-existing`, `--source-id`, `--plp-file`
 - `--registration-type`, `--default-hp`, `--city`, `--delay`
 - `--check-user-duplicates-before-create` — before `createListing`, load the partner user’s vehicle rows from the DB and skip create when a duplicate is found, in order: **(1)** same user + `partner_source_code = 999md` + `partner_listing_external_key` = this ad id; **(2)** single unambiguous **VIN** match among that user’s vehicle listings; **(3)** exactly one **fingerprint** match (same fields/tolerances as `999md:seed-registry`). Tolerances: `--dedupe-999-price-tolerance-pct` (default `0`), `--dedupe-999-photo-count-tolerance` (default `1`). Requires PostgreSQL env from `core/backend` (same pattern as `seed-registry`). Ambiguous VIN or fingerprint → registry `manual_review` with `DUPLICATE_AMBIGUOUS:` in `error`. Registry state `duplicate_skipped` uses `error` prefix `DUPLICATE_MATCH:` plus layer (`partner_key`, `vin`, or `fingerprint`).
 
@@ -158,6 +170,8 @@ Legacy aliases are still supported (`CIPAUTO_*` auth/api/secret/debug).
 - `SITE999MD_ADVERT_BATCH_SIZE`
 - `SITE999MD_DEBUG=1`
 
+Admin parsing schedules use an HTTP availability probe for parser code `999md` (configured in `config/parsers.ts` as `availabilityProbe`): `GET https://999.md/ro/` plus paginated-style checks on `/ro/?probe={page}`.
+
 ## Runtime artifacts
 
 Filesystem layout (registry + per-login PLP JSON + reports survive deploys only if this tree is on a **persistent volume**, e.g. Render Disk):
@@ -174,6 +188,10 @@ Default paths under `<PARSING_RUNTIME_DIR or runtime/parsing>/999md/`:
 - `reports/partner-url-check-999md-*.{json,csv}` — optional output from `npm run partner:check-urls -- --partner 999md ...`
 
 These files are runtime data, ignored by git, and must not be committed. Legacy paths under `src/scripts/tools/999md-import/data/` are not used by the CLI.
+
+## Listing video (optional)
+
+When PDP exposes a video URL, `999md:import` may request server-side ingest via the Kupito API (`POST /api/upload/video/from-url`) after the listing row exists. If ingest fails, the run logs a warning and continues. See `core/docs/features/listings.md`.
 
 ## Mapping highlights
 
