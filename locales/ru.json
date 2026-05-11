@@ -147,7 +147,10 @@
     "emailChangeTooManyAttempts": "Сменить email можно не более 2 раз за 24 часа. Попробуйте позже.",
     "invalidCurrentPassword": "Неверный текущий пароль",
     "newPasswordMustDiffer": "Новый пароль должен отличаться от текущего",
-    "emailVerificationResendOnCooldown": "Письмо с подтверждением уже отправлено. Запросить новое можно после истечения срока действия ссылки из этого письма."
+    "emailVerificationResendOnCooldown": "Письмо с подтверждением уже отправлено. Запросить новое можно после истечения срока действия ссылки из этого письма.",
+    "googleSignInFailed": "Не удалось войти через Google. Попробуйте ещё раз.",
+    "googleEmailNotVerified": "Email в Google не подтверждён. Подтвердите его в Google и попробуйте снова.",
+    "useGoogleSignIn": "Этот аккаунт входит через Google. Вход по паролю недоступен."
   },
   "cookieSettings": {
     "loading": "Загрузка...",
@@ -186,7 +189,7 @@
     "preferencesSavedMessage": "Ваши настройки сохранены в вашем браузере и будут активны 365 дней. Вы можете изменить их в любое время на этой странице.",
     "cookieTable": {
       "title": "Перечень cookies и хранилища",
-      "intro": "Ниже перечислены основные HTTP-cookies и схожие ключи в браузере. Данные сессии входа хранятся в localStorage (не в HTTP-cookies). При разрешении аналитических cookies запускается Google Analytics с параметрами Consent Mode и обновлениями согласия.",
+      "intro": "Ниже перечислены основные HTTP-cookies и схожие ключи в браузере. Вход использует httpOnly cookie сессии (access и refresh токены). Опционально Google Sign-In загружает скрипт Google Identity Services на странице входа, если он включён. При разрешении аналитических cookies запускается Google Analytics с параметрами Consent Mode и обновлениями согласия.",
       "headers": {
         "name": "Название",
         "type": "Тип",
@@ -313,6 +316,7 @@
     "registering": "Регистрация...",
     "registerButton": "Зарегистрироваться",
     "phoneExists": "Пользователь с таким телефоном уже существует",
+    "primaryPhoneMustUseChangeFlow": "Чтобы сменить телефон аккаунта, используйте в профиле пункт «Смена телефона».",
     "serviceUnavailable": "Сервис недоступен. Проверьте, работает ли сервер и был ли он перезапущен.",
     "invalidPhoneFormat": "Неверный формат телефона",
     "serverError": "Ошибка на сервере. Попробуйте позже.",
@@ -324,7 +328,12 @@
   },
   "sign": {
     "pageTitle": "Вход и регистрация",
-    "greeting": "Привет!"
+    "greeting": "Привет!",
+    "dividerOr": "или",
+    "continueWithGoogle": "Продолжить с Google",
+    "googleConsentPrefix": "Продолжая вход через Google, вы принимаете ",
+    "googleConsentConjunction": " и ",
+    "googleConsentSuffix": "."
   },
   "resetPassword": {
     "title": "Сброс пароля",
@@ -2174,7 +2183,11 @@
     "fixErrors": "Пожалуйста, исправьте ошибки в форме",
     "fillAtLeastOne": "Введите хотя бы одно поле для сохранения",
     "registrationSuccess": "Вы успешно зарегистрировались",
-    "registrationEmailVerificationSent": "Мы отправили вам письмо на указанную почту для подтверждения email."
+    "registrationEmailVerificationSent": "Мы отправили вам письмо на указанную почту для подтверждения email.",
+    "phoneRequiredTitle": "Подтвердите номер телефона",
+    "phoneRequiredDescription": "Чтобы продолжить пользоваться Kupito, подтвердите номер телефона по SMS. Это помогает защитить ваш аккаунт.",
+    "phoneRequiredCurrent": "Номер для подтверждения",
+    "phoneRequiredContinue": "Отправить SMS-код"
   },
   "pwa": {
     "install": "Установить приложение",

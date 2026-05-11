@@ -147,7 +147,10 @@
     "emailChangeTooManyAttempts": "Poți schimba emailul de cel mult 2 ori în 24 de ore. Încearcă mai târziu.",
     "invalidCurrentPassword": "Parola actuală este incorectă",
     "newPasswordMustDiffer": "Parola nouă trebuie să fie diferită de cea actuală",
-    "emailVerificationResendOnCooldown": "Un email de confirmare a fost deja trimis. Poți solicita altul după ce expiră linkul din acel mesaj."
+    "emailVerificationResendOnCooldown": "Un email de confirmare a fost deja trimis. Poți solicita altul după ce expiră linkul din acel mesaj.",
+    "googleSignInFailed": "Autentificarea Google a eșuat. Încearcă din nou.",
+    "googleEmailNotVerified": "Emailul Google nu este verificat. Verifică-l în Google și încearcă din nou.",
+    "useGoogleSignIn": "Acest cont folosește autentificarea Google. Autentificarea cu parolă nu este disponibilă."
   },
   "cookieSettings": {
     "loading": "Se încarcă...",
@@ -186,7 +189,7 @@
     "preferencesSavedMessage": "Preferințele dvs. sunt salvate în browser-ul dvs. și vor rămâne active 365 de zile. Le puteți schimba în orice moment de pe această pagină.",
     "cookieTable": {
       "title": "Inventar cookies și stocare",
-      "intro": "Mai jos sunt principalele cookie-uri HTTP și chei similare de stocare în browser. Datele de sesiune după autentificare sunt păstrate în localStorage (nu cookie-uri HTTP). Când acceptați cookies analitice, Google Analytics rulează cu valorile implicite Consent Mode și actualizări ulterioare.",
+      "intro": "Mai jos sunt principalele cookie-uri HTTP și chei similare de stocare în browser. Autentificarea folosește cookie-uri httpOnly de sesiune (token de acces și reîmprospătare). Opțional, autentificarea Google încarcă scriptul Google Identity Services pe pagina de autentificare când este activată. Când acceptați cookies analitice, Google Analytics rulează cu valorile implicite Consent Mode și actualizări ulterioare.",
       "headers": {
         "name": "Denumire",
         "type": "Tip",
@@ -313,6 +316,7 @@
     "registering": "Se înregistrează...",
     "registerButton": "Înregistrează-te",
     "phoneExists": "Există deja un utilizator cu acest număr de telefon",
+    "primaryPhoneMustUseChangeFlow": "Pentru a schimba numărul de telefon al contului, folosește opțiunea „Schimbă telefonul” din profil.",
     "serviceUnavailable": "Serviciul nu este disponibil. Verificați dacă serverul funcționează și a fost repornit.",
     "invalidPhoneFormat": "Format de telefon invalid",
     "serverError": "Eroare pe server. Încercați din nou mai târziu.",
@@ -324,7 +328,12 @@
   },
   "sign": {
     "pageTitle": "Autentificare și înregistrare",
-    "greeting": "Bună!"
+    "greeting": "Bună!",
+    "dividerOr": "sau",
+    "continueWithGoogle": "Continuă cu Google",
+    "googleConsentPrefix": "Continuând cu Google, acceptați ",
+    "googleConsentConjunction": " și ",
+    "googleConsentSuffix": "."
   },
   "resetPassword": {
     "title": "Resetare parolă",
@@ -2174,7 +2183,11 @@
     "fixErrors": "Vă rugăm corectați erorile din formular",
     "fillAtLeastOne": "Introduceți cel puțin un câmp pentru a salva",
     "registrationSuccess": "V-ați înregistrat cu succes",
-    "registrationEmailVerificationSent": "Ți-am trimis un email la adresa indicată pentru confirmarea adresei de email."
+    "registrationEmailVerificationSent": "Ți-am trimis un email la adresa indicată pentru confirmarea adresei de email.",
+    "phoneRequiredTitle": "Verifică numărul de telefon",
+    "phoneRequiredDescription": "Pentru a continua să folosești Kupito, confirmă numărul de telefon prin SMS. Acest lucru ajută la protejarea contului tău.",
+    "phoneRequiredCurrent": "Număr de verificat",
+    "phoneRequiredContinue": "Trimite codul SMS"
   },
   "pwa": {
     "install": "Instalează aplicația",
