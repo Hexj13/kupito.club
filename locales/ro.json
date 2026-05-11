@@ -2187,7 +2187,9 @@
     "phoneRequiredTitle": "Verifică numărul de telefon",
     "phoneRequiredDescription": "Pentru a continua să folosești Kupito, confirmă numărul de telefon prin SMS. Acest lucru ajută la protejarea contului tău.",
     "phoneRequiredCurrent": "Număr de verificat",
-    "phoneRequiredContinue": "Trimite codul SMS"
+    "phoneRequiredContinue": "Trimite codul SMS",
+    "businessOnboardingTitle": "Datele companiei",
+    "businessOnboardingInfo": "Câmpurile opționale pot fi completate mai târziu în secțiunea „Profil”."
   },
   "pwa": {
     "install": "Instalează aplicația",

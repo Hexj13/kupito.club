@@ -2187,7 +2187,9 @@
     "phoneRequiredTitle": "Подтвердите номер телефона",
     "phoneRequiredDescription": "Чтобы продолжить пользоваться Kupito, подтвердите номер телефона по SMS. Это помогает защитить ваш аккаунт.",
     "phoneRequiredCurrent": "Номер для подтверждения",
-    "phoneRequiredContinue": "Отправить SMS-код"
+    "phoneRequiredContinue": "Отправить SMS-код",
+    "businessOnboardingTitle": "Данные компании",
+    "businessOnboardingInfo": "Необязательные поля можно заполнить позже в разделе «Профиль»."
   },
   "pwa": {
     "install": "Установить приложение",
