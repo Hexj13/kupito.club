@@ -24,11 +24,12 @@ Platform-specific parser implementation and operations for `kupito.club`.
 - [cipauto-import.md](./cipauto-import.md) — CipAuto HTML parser (includes Kupito vs registry vs PLP operations)
 - [cipauto-import-ru.md](./cipauto-import-ru.md) — same (Russian)
 - [999md-import.md](./999md-import.md) — 999.md GraphQL parser
-- Shared **`npm run partner:check-urls`** (CipAuto + 999.md, reports under each parser’s `reports/`) — see [999md-import.md](./999md-import.md) § `partner:check-urls` and `core/backend/docs/SCRIPTS.md`
+- [autooutlet-import.md](./autooutlet-import.md) — AutoOutlet.md HTML catalog + WordPress AJAX PLP + HTML PDP
+- Shared **`npm run partner:check-urls`** (CipAuto + 999.md + AutoOutlet, reports under each parser’s `reports/`) — see parser docs and `core/backend/docs/SCRIPTS.md`
 
 ### Admin UI (registry sync)
 
-For parsers with `registrySyncEnabled` in the platform catalog (`config/parsers.ts`), Kupito **Admin → Parsing → PLP files** exposes **Sync registry** on each PLP file row. It queues the same `seed-registry` logic as the CLI (live logs, optional cancel, report when the script finishes). See [cipauto-import.md](./cipauto-import.md) and [999md-import.md](./999md-import.md) under registry seeding.
+For parsers with `registrySyncEnabled` in the platform catalog (`config/parsers.ts`), Kupito **Admin → Parsing → PLP files** exposes **Sync registry** on each PLP file row. It queues the same `seed-registry` logic as the CLI (live logs, optional cancel, report when the script finishes). See [cipauto-import.md](./cipauto-import.md), [999md-import.md](./999md-import.md), and [autooutlet-import.md](./autooutlet-import.md) under registry seeding.
 
 ### Admin UI (PDP — partner UUID prefill)
 
@@ -36,7 +37,7 @@ When you pick a **PLP file** in the **manual PDP** modal or in a **new PDP sched
 
 ### Admin UI (PDP — check duplicates before create)
 
-In **Admin → Parsing**, the manual PDP run form and **scheduler** PDP `config_snapshot` can enable **Check duplicates before create** (`checkUserDuplicatesBeforeCreate`). That queues the import CLI with `--check-user-duplicates-before-create` (same behavior as documented for `cipauto:import` / `999md:import`). JSON import reports then include `summary.duplicateSkipped` and `duplicateSkippedItems` when rows are skipped. Overview: [parsing-framework.md](../../core/docs/features/parsing-framework.md); CLI flags: [cipauto-import.md](./cipauto-import.md) and [999md-import.md](./999md-import.md) (`### …:import` flags).
+In **Admin → Parsing**, the manual PDP run form and **scheduler** PDP `config_snapshot` can enable **Check duplicates before create** (`checkUserDuplicatesBeforeCreate`). That queues the import CLI with `--check-user-duplicates-before-create` (same behavior as documented for `cipauto:import` / `999md:import` / `autooutlet:import`). JSON import reports then include `summary.duplicateSkipped` and `duplicateSkippedItems` when rows are skipped. Overview: [parsing-framework.md](../../core/docs/features/parsing-framework.md); CLI flags: [cipauto-import.md](./cipauto-import.md), [999md-import.md](./999md-import.md), and [autooutlet-import.md](./autooutlet-import.md) (`### …:import` flags).
 
 ## Related core documentation
 

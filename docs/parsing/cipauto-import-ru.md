@@ -77,8 +77,10 @@ npm run partner:check-urls -- --partner cipauto --userId=<UUID> --env=prod
 - `--city=<name>` (по умолчанию `Chișinău`)
 - `--delay=<ms>` (по умолчанию `3000`)
 - `--check-user-duplicates-before-create` — перед `createListing` загрузить из БД объявления пользователя-партнёра и не создавать дубликат: **(1)** тот же пользователь + `partner_source_code = cipauto` + совпадение `partner_listing_external_key` с текущим `sourceListingId` (без учёта регистра); **(2)** иначе совпадение **Cod Produs** в описании объявления. Нужен PostgreSQL из `core/backend`, как у `seed-registry`. Неоднозначный случай — `manual_review` с `DUPLICATE_AMBIGUOUS:`. Явный дубликат — состояние реестра `duplicate_skipped` с `DUPLICATE_MATCH:partner_key` или `DUPLICATE_MATCH:cod_produs`.
+- `--auto-create-brands` — если распознанная марка отсутствует в нашем каталоге, создать её через admin API (`POST /api/admin/brands`) и продолжить импорт объявления в этом же запуске. Учётная запись импорта должна быть **Admin**. HTTP 409 трактуется как гонка и обрабатывается одной повторной выборкой списка марок. Использовать только после ручной проверки нормализации марок, чтобы не плодить дубликаты из некорректного разбиения заголовка.
+- `--auto-create-models` — если модели нет в каталоге под уже выбранной маркой, создать её через admin API (`POST /api/admin/vehicle-models`) и повторить разрешение в этом же запуске. Поведение admin-аккаунта и обработки 409 — то же, что и у `--auto-create-brands`.
 
-Та же опция в админке: **Admin → Parsing → PDP** — чекбокс **Check duplicates before create** для ручного запуска и для расписаний PDP (`config_snapshot.checkUserDuplicatesBeforeCreate`).
+В админке: **Admin → Parsing → PDP** — чекбоксы **Check duplicates before create**, **Auto-create missing brands** и **Auto-create missing models** для ручного запуска и для расписаний PDP сохраняют те же флаги (`config_snapshot.checkUserDuplicatesBeforeCreate`, `autoCreateBrands`, `autoCreateModels`).
 
 Без **`--update-existing`** команда `cipauto:import` после PDP всё равно делает **узкий PATCH** полей `partner_source_code`, `partner_listing_external_key` и `partner_listing_canonical_url`, если в реестре уже есть `kupitoListingId` — чтобы плановые прогоны могли догнать технические поля без полного обновления объявления.
 

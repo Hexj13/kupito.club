@@ -1598,6 +1598,14 @@
       "fieldCheckUserDuplicatesBeforeCreate": "Verifică duplicate înainte de creare",
       "fieldCheckUserDuplicatesBeforeCreateHint": "Înainte de a crea un anunț nou, încarcă din baza de date vehiculele utilizatorului partener și omite crearea dacă există un duplicat (reguli specifice parserului). Necesită acces la baza de date din procesul de import.",
       "fieldCheckUserDuplicatesBeforeCreateHintButton": "Ajutor verificare duplicate",
+      "pdp": {
+        "autoCreateBrands": "Creează automat mărci lipsă",
+        "autoCreateBrandsHint": "Dacă marca parsată lipsește din catalogul nostru, o creează prin API admin (utilizatorul de import trebuie să fie Admin), apoi continuă importul anunțului în aceeași rulare.",
+        "autoCreateBrandsHintButton": "Ajutor creare automată mărci",
+        "autoCreateModels": "Creează automat modele lipsă",
+        "autoCreateModelsHint": "Dacă modelul parsat lipsește din catalogul nostru, îl creează prin API admin (utilizatorul de import trebuie să fie Admin), apoi continuă importul anunțului în aceeași rulare.",
+        "autoCreateModelsHintButton": "Ajutor creare automată modele"
+      },
       "fieldRemoveClosed": "Închide anunțurile când sursa nu mai este disponibilă",
       "fieldRemoveClosedHint": "Când sursa marchează un anunț ca închis sau indisponibil (404, 410, șablon „închis\"), acesta va fi închis și pe platforma noastră. Când este dezactivat, anunțul este marcat în registru, dar rămâne activ pe platformă.",
       "fieldRemoveClosedHintButton": "Ajutor: închidere anunțuri indisponibile",

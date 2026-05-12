@@ -76,8 +76,10 @@ npm run partner:check-urls -- --partner cipauto --userId=<UUID> --env=prod
 - `--city=<name>` (default `Chișinău`)
 - `--delay=<ms>` (default `3000`)
 - `--check-user-duplicates-before-create` — before `createListing`, load the partner user’s vehicle rows from the DB and skip create when a duplicate is found, in order: **(1)** same user + `partner_source_code = cipauto` + `partner_listing_external_key` matches this `sourceListingId` (case-insensitive); **(2)** else **Cod Produs** parsed from listing descriptions matches this id. Requires PostgreSQL env from `core/backend` (same as `seed-registry`). Ambiguous matches → `manual_review` with `DUPLICATE_AMBIGUOUS:` in `error`. Clear duplicate → registry `duplicate_skipped` with `DUPLICATE_MATCH:partner_key` or `DUPLICATE_MATCH:cod_produs`.
+- `--auto-create-brands` — when the parsed brand is missing in our catalog, create it via the admin API (`POST /api/admin/brands`) and continue importing the listing in the same run. The import account must be **Admin**. HTTP 409 from the create call is treated as a race and resolved by re-fetching the brand list once. Use only after manual review of brand normalization to avoid duplicates from title-split issues.
+- `--auto-create-models` — when the parsed model is missing in our catalog under the resolved brand, create it via the admin API (`POST /api/admin/vehicle-models`) and retry the resolver in the same run. Same admin-account and 409-retry behavior as `--auto-create-brands`.
 
-**Admin UI:** **Admin → Parsing → PDP** — **Check duplicates before create** on manual runs and PDP schedules sets the same flag (`config_snapshot.checkUserDuplicatesBeforeCreate`).
+**Admin UI:** **Admin → Parsing → PDP** — **Check duplicates before create**, **Auto-create missing brands**, and **Auto-create missing models** on manual runs and PDP schedules persist the same flags (`config_snapshot.checkUserDuplicatesBeforeCreate`, `autoCreateBrands`, `autoCreateModels`).
 
 Without **`--update-existing`**, `cipauto:import` still performs a **narrow PATCH** of `partner_source_code`, `partner_listing_external_key`, and `partner_listing_canonical_url` after PDP when a registry row already has `kupitoListingId`, so scheduled runs can backfill partner metadata without rewriting the full listing body.
 

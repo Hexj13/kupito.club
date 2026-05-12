@@ -78,8 +78,9 @@ Same semantics as `cipauto:import`:
 - `--only-failed`, `--update-existing`, `--source-id`, `--plp-file`
 - `--registration-type`, `--default-hp`, `--city`, `--delay`
 - `--check-user-duplicates-before-create` — before `createListing`, load the partner user’s vehicle rows from the DB and skip create when a duplicate is found, in order: **(1)** same user + `partner_source_code = 999md` + `partner_listing_external_key` = this ad id; **(2)** single unambiguous **VIN** match among that user’s vehicle listings; **(3)** exactly one **fingerprint** match (same fields/tolerances as `999md:seed-registry`). Tolerances: `--dedupe-999-price-tolerance-pct` (default `0`), `--dedupe-999-photo-count-tolerance` (default `1`). Requires PostgreSQL env from `core/backend` (same pattern as `seed-registry`). Ambiguous VIN or fingerprint → registry `manual_review` with `DUPLICATE_AMBIGUOUS:` in `error`. Registry state `duplicate_skipped` uses `error` prefix `DUPLICATE_MATCH:` plus layer (`partner_key`, `vin`, or `fingerprint`).
+- `--auto-create-brands` / `--auto-create-models` — same semantics as `cipauto:import` (see [cipauto-import.md](./cipauto-import.md)): when the resolved brand or model is missing in our catalog, create it via the admin API (`POST /api/admin/brands` or `POST /api/admin/vehicle-models`) and continue importing in the same run. The import account must be **Admin**. HTTP 409 is treated as a race and resolved by re-fetching once. The CLI passes `vehicleType` to the resolver so a brand/model can be auto-created under the correct vehicle type.
 
-**Admin UI:** **Admin → Parsing → PDP** — the same option appears as **Check duplicates before create** on manual runs and on PDP schedules (`config_snapshot.checkUserDuplicatesBeforeCreate`).
+**Admin UI:** **Admin → Parsing → PDP** — **Check duplicates before create**, **Auto-create missing brands**, and **Auto-create missing models** on manual runs and PDP schedules persist as `config_snapshot.checkUserDuplicatesBeforeCreate`, `autoCreateBrands`, `autoCreateModels`.
 
 ### `999md:report` flags
 

@@ -57,6 +57,15 @@ const config: SiteConfig = {
       logoSurface: 'transparent',
       descriptionKey: 'footer.partnerImportSalesDescription',
     },
+    {
+      name: 'AutoOutlet.md',
+      href: 'https://autooutlet.md/',
+      logoSrc: '/partners/autooutlet.webp',
+      logoWidth: 181,
+      logoHeight: 20,
+      logoBackgroundColor: '#DF133B',
+      descriptionKey: 'footer.partnerImportSalesDescription',
+    },
   ],
   reportProvider: {
     baseUrls: {
