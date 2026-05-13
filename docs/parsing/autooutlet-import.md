@@ -75,7 +75,7 @@ See `core/backend/docs/SCRIPTS.md` (`AUTOOUTLET_BASE_URL`, `AUTOOUTLET_REGISTRY_
 
 ## Release status
 
-The platform catalog ships AutoOutlet with `releaseStage: 'prepared'` and `schedulerEnabled: false` until operators validate live scan/import and stale handling.
+The platform catalog ships AutoOutlet with `releaseStage: 'prepared'` and `schedulerEnabled: true` so admin PLP/PDP schedules can target AutoOutlet after operators validate live scan/import and stale handling.
 
 ## Tests
 
