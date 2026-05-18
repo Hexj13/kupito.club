@@ -2225,6 +2225,7 @@
     "offlineMessage": "Nu sunteți conectat la internet. Verificați conexiunea.",
     "retry": "Încearcă din nou",
     "updateAvailable": "O nouă versiune este disponibilă",
+    "updateDescription": "O nouă versiune a aplicației este gata. Actualizează acum pentru cele mai recente îmbunătățiri.",
     "updateNow": "Actualizează acum",
     "updateLater": "Mai târziu"
   },
