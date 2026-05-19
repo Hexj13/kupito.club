@@ -2418,18 +2418,39 @@
     "catalog": {
       "title": "Anunțuri",
       "empty": "Nu există anunțuri",
-      "loadMore": "Încarcă mai multe"
+      "loadMore": "Încarcă mai multe",
+      "searchPlaceholder": "Căutare în titlu…",
+      "filters": "Filtre",
+      "filtersTitle": "Filtre de căutare",
+      "vehicleType": "Categorie",
+      "vehicleType_car": "Autoturisme",
+      "vehicleType_truck": "Camioane",
+      "vehicleType_moto": "Motociclete",
+      "priceRange": "Preț (EUR)",
+      "priceFrom": "De la",
+      "priceTo": "Până la",
+      "sort": "Sortare",
+      "applyFilters": "Aplică",
+      "resetFilters": "Resetează",
+      "activeFilters": "Filtre active",
+      "categoryVehicles": "Autovehicule",
+      "categoryTires": "Anvelope"
     },
     "listing": {
       "price": "Preț",
       "city": "Oraș",
       "callSeller": "Contact",
       "favoriteAdd": "La favorite",
-      "favoriteRemove": "Scoate din favorite"
+      "favoriteRemove": "Scoate din favorite",
+      "specsTitle": "Detalii vehicul",
+      "tireSpecsTitle": "Detalii anvelope"
     },
     "create": {
       "title": "Anunț nou",
       "editTitle": "Editează anunț",
+      "modeVehicle": "Autovehicul",
+      "modeTire": "Anvelope",
+      "photoCount": "{count} fotografii",
       "brand": "Marcă",
       "model": "Model",
       "year": "An",
@@ -2447,7 +2468,8 @@
       "success": "Anunț creat",
       "publish": "Publică anunțul",
       "selectBrand": "Selectați marca",
-      "selectModel": "Selectați modelul"
+      "selectModel": "Selectați modelul",
+      "selectCity": "Selectați orașul"
     },
     "favorites": {
       "title": "Favorite",

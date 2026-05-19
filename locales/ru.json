@@ -2418,18 +2418,39 @@
     "catalog": {
       "title": "Объявления",
       "empty": "Нет объявлений",
-      "loadMore": "Загрузить ещё"
+      "loadMore": "Загрузить ещё",
+      "searchPlaceholder": "Поиск по заголовку…",
+      "filters": "Фильтры",
+      "filtersTitle": "Фильтры поиска",
+      "vehicleType": "Категория",
+      "vehicleType_car": "Легковые",
+      "vehicleType_truck": "Грузовики",
+      "vehicleType_moto": "Мото",
+      "priceRange": "Цена (EUR)",
+      "priceFrom": "От",
+      "priceTo": "До",
+      "sort": "Сортировка",
+      "applyFilters": "Применить",
+      "resetFilters": "Сбросить",
+      "activeFilters": "Фильтры включены",
+      "categoryVehicles": "Авто",
+      "categoryTires": "Шины"
     },
     "listing": {
       "price": "Цена",
       "city": "Город",
       "callSeller": "Связаться",
       "favoriteAdd": "В избранное",
-      "favoriteRemove": "Убрать из избранного"
+      "favoriteRemove": "Убрать из избранного",
+      "specsTitle": "Данные авто",
+      "tireSpecsTitle": "Параметры шин"
     },
     "create": {
       "title": "Новое объявление",
       "editTitle": "Редактировать",
+      "modeVehicle": "Авто",
+      "modeTire": "Шины",
+      "photoCount": "{count} фото",
       "brand": "Марка",
       "model": "Модель",
       "year": "Год",
@@ -2447,7 +2468,8 @@
       "success": "Объявление создано",
       "publish": "Опубликовать объявление",
       "selectBrand": "Выберите марку",
-      "selectModel": "Выберите модель"
+      "selectModel": "Выберите модель",
+      "selectCity": "Выберите город"
     },
     "favorites": {
       "title": "Избранное",
