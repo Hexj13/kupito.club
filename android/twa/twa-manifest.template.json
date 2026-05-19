@@ -1,0 +1,14 @@
+{
+  "packageId": "club.kupito.app",
+  "host": "kupito.club",
+  "name": "Kupito",
+  "launcherName": "Kupito",
+  "display": "standalone",
+  "orientation": "portrait",
+  "themeColor": "#40916B",
+  "backgroundColor": "#F5F5F5",
+  "startUrl": "/",
+  "webManifestUrl": "https://kupito.club/manifest.json",
+  "fallbackType": "customtabs",
+  "enableNotifications": false
+}

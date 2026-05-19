@@ -13,6 +13,13 @@ export interface LocaleRoutingConfig {
   languageSwitcherTranslationKeys?: Readonly<Record<string, string>>;
 }
 
+export interface MobileAppConfig {
+  enabled: boolean;
+  androidUrl: string | null;
+  iosUrl: string | null;
+  androidPackageName?: string;
+}
+
 export interface SiteConfig {
   country: string;
   name: string;
@@ -25,6 +32,7 @@ export interface SiteConfig {
   siteUrl: string;
   localeRouting?: LocaleRoutingConfig;
   assetVersion?: string;
+  mobileApp?: MobileAppConfig;
   footerPartnerLogoSurfaceDefault?: 'light' | 'transparent';
   footerPartners?: Array<{
     name: string;

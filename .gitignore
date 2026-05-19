@@ -67,3 +67,18 @@ core/frontend/lib/theme.json
 uploads/
 public/uploads/
 autooutlet/
+
+# Android TWA local artifacts
+android/twa/.gradle/
+android/twa/build/
+android/twa/app/build/
+android/twa/local.properties
+android/twa/signing.properties
+android/twa/*.apk
+android/twa/*.aab
+android/twa/*.jks
+android/twa/*.keystore
+android/twa/*.p12
+android/twa/*.pem
+android/twa/*.key
+android/twa/play-service-account*.json

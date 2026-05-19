@@ -21,6 +21,12 @@ const config: SiteConfig = {
   supportEmail: 'support@kupito.club',
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://kupito.club',
   assetVersion: '20260313',
+  mobileApp: {
+    enabled: false,
+    androidUrl: null,
+    iosUrl: null,
+    androidPackageName: 'club.kupito.app',
+  },
   footerPartnerLogoSurfaceDefault: 'light',
   footerPartners: [
     {
