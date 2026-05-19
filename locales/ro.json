@@ -862,6 +862,8 @@
     "externalReports": "Raport despre acest autovehicul",
     "externalReportsHint": "Vă redirecționăm către parteneri care întocmesc raportul vehiculului din diverse surse. Detalii și condiții pe site-ul partenerului.",
     "orderReport": "Comandă raport",
+    "actionCardContactTitle": "Contactați",
+    "actionCardContactDescription": "Cu vânzătorul",
     "actionCardFavoriteDescription": "Salvați anunțul",
     "actionCardFavoriteTitleWhenSaved": "La favorite",
     "actionCardFavoriteDescriptionWhenSaved": "Eliminați din salvate",
