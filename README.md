@@ -136,15 +136,15 @@ git push
 - **[Deploy](./docs/deployment/production-deployment.md)** — production deployment
 - **[Sentry](./docs/sentry/sentry-setup.md)** — Sentry setup and launch checklist (platform env)
 
-### Core (source of truth)
+### Core (PPCSL submodule)
 
-All shared documentation lives in **core**:
+Shared docs live in the **`core` submodule** ([PPCSL](https://github.com/Hexj13/PPCSL)). GitHub does not serve submodule files at `kupito.club/core/...` URLs — use the PPCSL links below (same paths under `./core/` after `git clone --recurse-submodules`).
 
-- **[Core docs](./core/docs/README.md)** — entry point
-- **[Documentation architecture](./core/docs/documentation-architecture.md)** — structure, repo vs vault
-- **[Reference](./core/docs/reference/)** — [popular-brands-sync](./core/docs/reference/popular-brands-sync.md), [platform-assets](./core/docs/reference/platform-assets.md), scripts, analytics
-- **[Operations](./core/docs/operations/)** — Sentry launch checklist, deploy, monitoring
-- **[Architecture](./core/docs/architecture/architecture-overview.md)** — system overview
+- **[Core docs](https://github.com/Hexj13/PPCSL/blob/main/docs/README.md)** — entry point
+- **[Documentation architecture](https://github.com/Hexj13/PPCSL/blob/main/docs/documentation-architecture.md)** — structure, repo vs vault
+- **[Reference](https://github.com/Hexj13/PPCSL/tree/main/docs/reference)** — [popular-brands-sync](https://github.com/Hexj13/PPCSL/blob/main/docs/reference/popular-brands-sync.md), [platform-assets](https://github.com/Hexj13/PPCSL/blob/main/docs/reference/platform-assets.md)
+- **[Operations](https://github.com/Hexj13/PPCSL/tree/main/docs/operations)** — Sentry launch checklist, deploy, monitoring
+- **[Architecture](https://github.com/Hexj13/PPCSL/blob/main/docs/architecture/architecture-overview.md)** — system overview; [backend overview](https://github.com/Hexj13/PPCSL/blob/main/docs/architecture/backend-overview.md)
 
 ---
 

@@ -23,9 +23,11 @@ Platform-specific documentation for `kupito.club`.
 - [documentation-refactor-report.md](./documentation-refactor-report.md) — documentation migration status
 - [_audit/documentation-audit.md](./_audit/documentation-audit.md) — documentation audit snapshot
 
-## Core references
+## Core references (PPCSL submodule)
 
-- `core/docs/README.md` — PPCSL core documentation
-- `core/docs/architecture/backend-overview.md` — backend monolith, stack, modules
-- `core/docs/architecture/backend-layers.md` — layered architecture and use cases
-- `core/docs/features/parsing-framework.md` — generic parsing runtime (core)
+Open on GitHub: [PPCSL](https://github.com/Hexj13/PPCSL). After clone, the same paths are under `./core/`.
+
+- [Core docs](https://github.com/Hexj13/PPCSL/blob/main/docs/README.md)
+- [Backend overview](https://github.com/Hexj13/PPCSL/blob/main/docs/architecture/backend-overview.md)
+- [Backend layers](https://github.com/Hexj13/PPCSL/blob/main/docs/architecture/backend-layers.md)
+- [Parsing framework](https://github.com/Hexj13/PPCSL/blob/main/docs/features/parsing-framework.md)
