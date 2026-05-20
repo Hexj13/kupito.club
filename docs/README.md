@@ -26,4 +26,6 @@ Platform-specific documentation for `kupito.club`.
 ## Core references
 
 - `core/docs/README.md` — PPCSL core documentation
+- `core/docs/architecture/backend-overview.md` — backend monolith, stack, modules
+- `core/docs/architecture/backend-layers.md` — layered architecture and use cases
 - `core/docs/features/parsing-framework.md` — generic parsing runtime (core)
