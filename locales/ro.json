@@ -2093,7 +2093,7 @@
         "Posibilitatea de a obține un rezumat informativ scurt cu AI pentru anunțuri auto eligibile (utilizatori autentificați; în funcție de disponibilitate și limite)",
         "Panoul de anunțuri al unui vânzător, cu toate anunțurile sale pe o singură pagină",
         "Sincronizarea automată cu site-uri externe",
-        "Interfața orientată spre mobile și dezvoltarea aplicației mobile"
+        "Interfață orientată spre mobile, instalare PWA și aplicație Android în Google Play (TWA)"
       ]
     },
     "businessModel": {

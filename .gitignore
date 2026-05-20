@@ -75,6 +75,7 @@ android/twa/app/build/
 android/twa/local.properties
 android/twa/signing.properties
 android/twa/*.apk
+android/twa/*.idsig
 android/twa/*.aab
 android/twa/*.jks
 android/twa/*.keystore
