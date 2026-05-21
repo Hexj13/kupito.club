@@ -104,8 +104,10 @@ cd core/frontend && npm start
 **Backend service — Build Command (one line):**
 
 ```bash
-git config --global credential.helper store && echo "https://x-access-token:${GITHUB_PAT}@github.com" > ~/.git-credentials && git submodule update --init --recursive && npm ci && npm run prepare:build && cd core/backend && npm ci && npm run build
+git config --global credential.helper store && echo "https://x-access-token:${GITHUB_PAT}@github.com" > ~/.git-credentials && git submodule update --init --recursive && npm ci && npm run prepare:build && cd core/backend && ONNXRUNTIME_NODE_INSTALL=skip npm ci && npm run build
 ```
+
+`ONNXRUNTIME_NODE_INSTALL=skip` avoids `onnxruntime-node` postinstall downloading optional GPU binaries from NuGet (plate masking uses CPU only). CI sets the same via workflow `env`; Render has no default — without it, `npm ci` can fail with `ETIMEDOUT` to `api.nuget.org`.
 
 **Backend service — Start Command:**
 
@@ -124,6 +126,7 @@ See also: [TECHNICAL.md §13.4.1 / §13.4.2](../../core/docs/architecture/TECHNI
 ### 1.1. Updating Environment Variables in Render.com
 
 **Backend Service (Render.com):**
+- Set `ONNXRUNTIME_NODE_INSTALL=skip` (or keep it in the Build Command as above; required so `onnxruntime-node` does not download GPU packages from NuGet during `npm ci`)
 - Set `NEXT_PUBLIC_COUNTRY=md`
 - Set `NEXT_PUBLIC_ENABLE_LANGUAGE_SWITCHER=true`
 - Set `COUNTRY=md` (for scripts)
@@ -460,7 +463,7 @@ Ensure all environment variables are updated:
 
 ### Before Deploy:
 - [ ] All code changes deployed
-- [ ] Environment variables updated in Render.com
+- [ ] Environment variables updated in Render.com (backend: `ONNXRUNTIME_NODE_INSTALL=skip` or equivalent in Build Command)
 - [ ] Migrations applied to database
 
 ### After Deploy:
