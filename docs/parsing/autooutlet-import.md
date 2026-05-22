@@ -88,4 +88,4 @@ npm run test -- autooutlet-import
 
 - WordPress `nonce` can expire; the CLI falls back to direct catalog URLs when AJAX fails.
 - PLP may still list sold cars; PDP and stale audit classify `VÂNDUT` / HTTP 404/410.
-- Multi-word brands (`Lynk & Co`, `Mercedes-Benz`) depend on the catalog brand `<option>` list and longest-prefix title split.
+- Multi-word brands (`Lynk & Co`, `Mercedes-Benz`) depend on the catalog brand `<option>` list and longest-prefix title split (PLP and PDP; PDP loads the same list from the catalog page when `#filter-brand` is missing).
