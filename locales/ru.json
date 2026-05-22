@@ -1090,7 +1090,7 @@
     "yearFrom": "Год от",
     "yearTo": "Год до",
     "yearRangeSummary": "с {from} по {to}",
-    "priceRangeSummary": "от {from} до {to}",
+    "fromToRangeSummary": "от {from} до {to}",
     "selectYear": "Выберите год",
     "currency": "Валюта",
     "priceFrom": "Цена от",
