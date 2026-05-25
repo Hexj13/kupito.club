@@ -884,11 +884,27 @@
     "aiReportUnavailableTitle": "Временно недоступно",
     "aiReportUnavailableBody": "Не удалось получить AI-анализ. Попробуйте позже.",
     "aiReportSectionSummary": "Резюме по объявлению",
+    "aiReportQualityOverall": "{score}/100",
+    "aiReportQualityItemScore": "{score}/100",
+    "aiReportQualityScoreSuffix": "/100",
+    "aiReportQualityScoreAfterLabel": "): ",
+    "aiReportQualityDetails": "Подробнее",
+    "aiReportQualityPositivePoints": "Что хорошо",
+    "aiReportQualityNegativePoints": "Что можно улучшить",
+    "aiReportQualityChartLabel": "Оценка объявления по критериям",
+    "aiReportQualityCriterionDataCompleteness": "Полнота данных",
+    "aiReportQualityCriterionSafeChoice": "Безопасный выбор",
+    "aiReportVehicleCriterionMileage": "Пробег",
+    "aiReportVehicleCriterionEquipment": "Комплектация авто",
+    "aiReportVehicleCriterionReliability": "Надёжность модели",
+    "aiReportVehicleCriterionLiquidity": "Ликвидность",
+    "aiReportVehicleCriterionPopularity": "Популярность на рынке",
     "aiReportSectionModelContext": "О данной модели авто",
     "aiReportSectionAnalysis": "Анализ объявления",
-    "aiReportAnalysisPrice": "Цена",
+    "aiReportSectionQualityAssessment": "Оценка качества объявления",
+    "aiReportSectionVehicleCharacteristics": "Оценка характеристик авто",
     "aiReportAnalysisMileage": "Пробег",
-    "aiReportAnalysisDescription": "Описание",
+    "aiReportAnalysisCondition": "Состояние",
     "aiReportAnalysisRegistration": "Регистрация",
     "aiReportAnalysisOptions": "Комплектация",
     "aiReportSectionStrengths": "Сильные стороны",
@@ -1130,6 +1146,8 @@
     "searching": "Поиск...",
     "reset": "Сбросить",
     "addToFavorites": "В избранное",
+    "smartSelection": "Smart-подбор",
+    "smartSelectionFilterLimitError": "Достигнут лимит сохранённых фильтров ({max} штук)",
     "login": "Войти",
     "noResults": "Результаты не найдены",
     "year": "Год",
@@ -2395,6 +2413,128 @@
       "empty": "Нет истории продвижений",
       "active": "Активно",
       "loadError": "Ошибка при загрузке истории"
+    }
+  },
+  "smartSelection": {
+    "title": "Smart-подбор",
+    "home": "Главная",
+    "intro": "Ответьте на несколько простых вопросов, и мы создадим сохранённый фильтр под ваши задачи.",
+    "progress": "Шаг {current} из {total}",
+    "back": "Назад",
+    "next": "Далее",
+    "submit": "Получить smart-подбор",
+    "submitSuccess": "Smart-фильтр сохранён",
+    "submitError": "Не удалось создать smart-фильтр. Попробуйте ещё раз.",
+    "sizeLabel": "Размер авто",
+    "flexibleBudget": "Готов немного увеличить бюджет ради хорошего варианта",
+    "bodyTypesLabel": "Тип кузова",
+    "transmissionLabel": "Коробка передач",
+    "fuelsLabel": "Тип топлива",
+    "yearLabel": "Возраст авто",
+    "mileageLabel": "Максимальный пробег",
+    "prioritiesLabel": "Что важнее всего (до 3)",
+    "steps": {
+      "0": {
+        "title": "Для чего вам авто?",
+        "hint": "Выберите до 3 сценариев использования."
+      },
+      "1": {
+        "title": "Где будете ездить чаще всего?",
+        "hint": "Это влияет на кузов, топливо и привод."
+      },
+      "2": {
+        "title": "Какой у вас бюджет?",
+        "hint": "Выберите комфортный диапазон цены для вашего бюджета."
+      },
+      "3": {
+        "title": "Размер и кузов",
+        "hint": "Укажите, сколько места нужно и какие кузова подходят."
+      },
+      "4": {
+        "title": "Топливо и коробка",
+        "hint": "Выберите то, что удобнее в вашем режиме езды."
+      },
+      "5": {
+        "title": "Возраст, пробег и приоритеты",
+        "hint": "Сбалансируем свежесть авто, пробег и ваши приоритеты."
+      }
+    },
+    "purposes": {
+      "city": "Езда по городу",
+      "commute": "Поездки на работу",
+      "family": "Семья и дети",
+      "long_trips": "Дальние поездки",
+      "travel": "Путешествия",
+      "first_car": "Первый автомобиль",
+      "taxi_work": "Такси / работа / доставка",
+      "business": "Для бизнеса",
+      "active_offroad": "Активный отдых / плохие дороги",
+      "comfort": "Главное — комфорт"
+    },
+    "drivingModes": {
+      "city": "В основном город",
+      "city_highway": "Город + трасса",
+      "highway": "В основном трасса",
+      "rural_bad_roads": "Село / плохие дороги",
+      "mixed": "Смешанный режим"
+    },
+    "budgetPresets": {
+      "up_to_5000": "До 5 000 {currency}",
+      "up_to_8000": "До 8 000 {currency}",
+      "up_to_12000": "До 12 000 {currency}",
+      "up_to_15000": "До 15 000 {currency}",
+      "up_to_20000": "До 20 000 {currency}",
+      "up_to_30000": "До 30 000 {currency}",
+      "up_to_50000": "До 50 000 {currency}"
+    },
+    "sizes": {
+      "small": "Маленький и удобный для города",
+      "medium": "Средний универсальный",
+      "large": "Большой и просторный",
+      "any": "Неважно, если подходит по параметрам"
+    },
+    "bodyTypes": {
+      "auto_pick": "Пусть подберёт система"
+    },
+    "transmissions": {
+      "automatic_only": "Только автомат",
+      "manual_only": "Только механика",
+      "any": "Любая",
+      "prefer_automatic": "Предпочтительно автомат",
+      "prefer_manual": "Предпочтительно механика"
+    },
+    "fuels": {
+      "any": "Любое",
+      "auto_pick": "Пусть подберёт система"
+    },
+    "yearPresets": {
+      "not_older_than_2": "Не старше 2 лет",
+      "not_older_than_3": "Не старше 3 лет",
+      "not_older_than_5": "Не старше 5 лет",
+      "not_older_than_7": "Не старше 7 лет",
+      "not_older_than_10": "Не старше 10 лет",
+      "any": "Возраст не важен"
+    },
+    "mileagePresets": {
+      "up_to_50000": "До 50 000 км",
+      "up_to_100000": "До 100 000 км",
+      "up_to_150000": "До 150 000 км",
+      "up_to_200000": "До 200 000 км",
+      "any": "Пробег не критичен"
+    },
+    "priorities": {
+      "low_consumption": "Низкий расход",
+      "reliability": "Надёжность",
+      "low_maintenance": "Недорогое обслуживание",
+      "comfort": "Комфорт",
+      "safety": "Безопасность",
+      "luggage": "Большой багажник",
+      "dynamics": "Динамика",
+      "looks": "Внешний вид",
+      "fresh_year": "Свежий год выпуска",
+      "low_mileage": "Небольшой пробег",
+      "resale": "Ликвидность при перепродаже",
+      "equipment": "Богатая комплектация"
     }
   }
 }

@@ -130,6 +130,7 @@ See also: [TECHNICAL.md §13.4.1 / §13.4.2](../../core/docs/architecture/TECHNI
 - Set `NEXT_PUBLIC_COUNTRY=md`
 - Set `NEXT_PUBLIC_ENABLE_LANGUAGE_SWITCHER=true`
 - Set `COUNTRY=md` (for scripts)
+- Optional listing AI analysis: set `GEMINI_API_KEY`; optionally set `GEMINI_MODEL`, `GEMINI_MODEL_FALLBACK`, and `AI_REPORT_MAX_GENERATIONS_PER_HOUR` (default production quota is 5 new generations per user per hour)
 
 **Frontend Service (Render.com):**
 - Set `NEXT_PUBLIC_COUNTRY=md`

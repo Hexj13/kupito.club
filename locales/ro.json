@@ -884,11 +884,27 @@
     "aiReportUnavailableTitle": "Temporar indisponibil",
     "aiReportUnavailableBody": "Analiza AI nu a putut fi încărcată. Încercați mai târziu.",
     "aiReportSectionSummary": "Rezumatul anunțului",
+    "aiReportQualityOverall": "{score}/100",
+    "aiReportQualityItemScore": "{score}/100",
+    "aiReportQualityScoreSuffix": "/100",
+    "aiReportQualityScoreAfterLabel": "): ",
+    "aiReportQualityDetails": "Detalii",
+    "aiReportQualityPositivePoints": "Ce este bine",
+    "aiReportQualityNegativePoints": "Ce poate fi îmbunătățit",
+    "aiReportQualityChartLabel": "Evaluarea anunțului pe criterii",
+    "aiReportQualityCriterionDataCompleteness": "Completitudinea datelor",
+    "aiReportQualityCriterionSafeChoice": "Alegere sigură",
+    "aiReportVehicleCriterionMileage": "Parcurs",
+    "aiReportVehicleCriterionEquipment": "Echipare",
+    "aiReportVehicleCriterionReliability": "Fiabilitatea modelului",
+    "aiReportVehicleCriterionLiquidity": "Lichiditate",
+    "aiReportVehicleCriterionPopularity": "Popularitate pe piață",
     "aiReportSectionModelContext": "Despre acest model de vehicul",
     "aiReportSectionAnalysis": "Analiza anunțului",
-    "aiReportAnalysisPrice": "Preț",
+    "aiReportSectionQualityAssessment": "Evaluarea calității anunțului",
+    "aiReportSectionVehicleCharacteristics": "Evaluarea caracteristicilor vehiculului",
     "aiReportAnalysisMileage": "Kilometraj",
-    "aiReportAnalysisDescription": "Descriere",
+    "aiReportAnalysisCondition": "Stare",
     "aiReportAnalysisRegistration": "Înregistrare",
     "aiReportAnalysisOptions": "Echipare",
     "aiReportSectionStrengths": "Puncte forte",
@@ -1130,6 +1146,8 @@
     "searching": "Se caută...",
     "reset": "Resetează",
     "addToFavorites": "La favorite",
+    "smartSelection": "Smart-selectare",
+    "smartSelectionFilterLimitError": "Limita filtrelor salvate a fost atinsă ({max} filtre)",
     "login": "Intră",
     "noResults": "Nu au fost găsite rezultate",
     "year": "An",
@@ -2395,6 +2413,128 @@
       "empty": "Nu există istoric promovări",
       "active": "Activ",
       "loadError": "Eroare la încărcarea istoricului"
+    }
+  },
+  "smartSelection": {
+    "title": "Smart-selectare",
+    "home": "Acasă",
+    "intro": "Răspundeți la câteva întrebări simple și vom crea un filtru salvat potrivit nevoilor dvs.",
+    "progress": "Pasul {current} din {total}",
+    "back": "Înapoi",
+    "next": "Înainte",
+    "submit": "Obține smart-selectare",
+    "submitSuccess": "Filtrul smart a fost salvat",
+    "submitError": "Nu s-a putut crea filtrul smart. Încercați din nou.",
+    "sizeLabel": "Dimensiunea mașinii",
+    "flexibleBudget": "Pot mări puțin bugetul pentru o variantă mai bună",
+    "bodyTypesLabel": "Tipuri de caroserie",
+    "transmissionLabel": "Cutie de viteze",
+    "fuelsLabel": "Tip combustibil",
+    "yearLabel": "Vechimea mașinii",
+    "mileageLabel": "Kilometraj maxim",
+    "prioritiesLabel": "Ce contează cel mai mult (până la 3)",
+    "steps": {
+      "0": {
+        "title": "Pentru ce aveți nevoie de mașină?",
+        "hint": "Alegeți până la 3 scenarii care descriu utilizarea zilnică."
+      },
+      "1": {
+        "title": "Unde veți conduce cel mai des?",
+        "hint": "Ne ajută să alegem caroseria, combustibilul și tracțiunea."
+      },
+      "2": {
+        "title": "Care este bugetul?",
+        "hint": "Selectați un interval de preț confortabil pentru bugetul dvs."
+      },
+      "3": {
+        "title": "Dimensiune și caroserie",
+        "hint": "Spuneți cât spațiu aveți nevoie și ce tipuri de caroserie vă plac."
+      },
+      "4": {
+        "title": "Combustibil și cutie",
+        "hint": "Alegeți ce se potrivește stilului dvs. de condus."
+      },
+      "5": {
+        "title": "Vechime, kilometraj și priorități",
+        "hint": "Echilibrăm vechimea, kilometrajul și ce contează pentru dvs."
+      }
+    },
+    "purposes": {
+      "city": "Mers în oraș",
+      "commute": "Navetă zilnică",
+      "family": "Familie și copii",
+      "long_trips": "Drumuri lungi",
+      "travel": "Călătorii",
+      "first_car": "Prima mașină",
+      "taxi_work": "Taxi / muncă / livrări",
+      "business": "Afaceri",
+      "active_offroad": "Activ / drumuri proaste",
+      "comfort": "Confort pe primul loc"
+    },
+    "drivingModes": {
+      "city": "În principal oraș",
+      "city_highway": "Oraș și drum",
+      "highway": "În principal drum",
+      "rural_bad_roads": "Sat / drumuri proaste",
+      "mixed": "Mixt"
+    },
+    "budgetPresets": {
+      "up_to_5000": "Până la 5.000 {currency}",
+      "up_to_8000": "Până la 8.000 {currency}",
+      "up_to_12000": "Până la 12.000 {currency}",
+      "up_to_15000": "Până la 15.000 {currency}",
+      "up_to_20000": "Până la 20.000 {currency}",
+      "up_to_30000": "Până la 30.000 {currency}",
+      "up_to_50000": "Până la 50.000 {currency}"
+    },
+    "sizes": {
+      "small": "Compactă, ușor în oraș",
+      "medium": "Universală, medie",
+      "large": "Spațioasă",
+      "any": "Nu contează dacă se potrivește"
+    },
+    "bodyTypes": {
+      "auto_pick": "Să aleagă sistemul"
+    },
+    "transmissions": {
+      "automatic_only": "Doar automat",
+      "manual_only": "Doar manuală",
+      "any": "Orice",
+      "prefer_automatic": "Prefer automat",
+      "prefer_manual": "Prefer manuală"
+    },
+    "fuels": {
+      "any": "Orice",
+      "auto_pick": "Să aleagă sistemul"
+    },
+    "yearPresets": {
+      "not_older_than_2": "Nu mai veche de 2 ani",
+      "not_older_than_3": "Nu mai veche de 3 ani",
+      "not_older_than_5": "Nu mai veche de 5 ani",
+      "not_older_than_7": "Nu mai veche de 7 ani",
+      "not_older_than_10": "Nu mai veche de 10 ani",
+      "any": "Vechimea nu e critică"
+    },
+    "mileagePresets": {
+      "up_to_50000": "Până la 50.000 km",
+      "up_to_100000": "Până la 100.000 km",
+      "up_to_150000": "Până la 150.000 km",
+      "up_to_200000": "Până la 200.000 km",
+      "any": "Kilometrajul nu e critic"
+    },
+    "priorities": {
+      "low_consumption": "Consum redus",
+      "reliability": "Fiabilitate",
+      "low_maintenance": "Întreținere ieftină",
+      "comfort": "Confort",
+      "safety": "Siguranță",
+      "luggage": "Portbagaj mare",
+      "dynamics": "Dinamică",
+      "looks": "Aspect",
+      "fresh_year": "An mai nou",
+      "low_mileage": "Kilometraj mic",
+      "resale": "Lichiditate la revânzare",
+      "equipment": "Dotări bogate"
     }
   }
 }
