@@ -1772,6 +1772,8 @@
     "notRegistered": "Не зарегистрирован",
     "price": "Цена",
     "notAvailable": "Н/Д",
+    "compareOptions": "Сравнить опции",
+    "hideOptionsComparison": "Скрыть сравнение опций",
     "tireBrand": "Марка шин",
     "tireModel": "Модель шин",
     "tireVehicleType": "Тип транспорта",

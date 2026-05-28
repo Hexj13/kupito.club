@@ -1772,6 +1772,8 @@
     "notRegistered": "Nu este înmatriculat",
     "price": "Preț",
     "notAvailable": "N/A",
+    "compareOptions": "Compară opțiunile",
+    "hideOptionsComparison": "Ascunde compararea opțiunilor",
     "tireBrand": "Marcă anvelope",
     "tireModel": "Model anvelope",
     "tireVehicleType": "Tip vehicul",
