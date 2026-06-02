@@ -9,7 +9,7 @@ tags:
   - scope/platform
   - status/active
 owner: platform
-last_updated: "2026-03"
+last_updated: "2026-06"
 ---
 
 # Documentation Audit (Phase 1)

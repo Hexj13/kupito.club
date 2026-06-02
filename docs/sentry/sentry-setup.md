@@ -14,6 +14,8 @@ Shared setup and reference: **[core/docs/guides/SENTRY.md](../../core/docs/guide
 
 Structured payloads, `X-Request-Id` correlation, and sanitization rules: **[core/docs/guides/logging.md](../../core/docs/guides/logging.md)**.
 
+Phone numbers, email addresses, auth headers, and SMS codes in Sentry events are redacted automatically via `beforeSend` (`sanitizeSentryEvent` on backend and frontend). See logging.md for file paths; do not rely on manual filtering alone.
+
 ## Step 1: Create Projects in Sentry
 
 ### Frontend Project
