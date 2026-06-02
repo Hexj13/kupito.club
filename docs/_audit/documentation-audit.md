@@ -14,6 +14,8 @@ last_updated: "2026-06"
 
 # Documentation Audit (Phase 1)
 
+> **Snapshot (2026-06):** Partial inventory from the documentation refactor. Some rows are outdated (for example `core/docs/audits/` was merged into `core/docs/reference/`; Playwright uses two projects `mobile` and `desktop` only). Prefer [core/docs/README.md](../../core/docs/README.md) and live workflow files for current truth.
+
 ## 1. Inventory
 
 ### 1.1 Markdown files (root and core)
@@ -35,7 +37,7 @@ last_updated: "2026-06"
 | core/docs/features/\*.md                 | Feature docs              | active | partial  | update/rename | domains                |
 | core/docs/reference/brands-models-master-plan.md | Scripts reference        | active | accurate | keep          | reference              |
 | core/docs/analytics/\*.md                | Analytics                 | active | accurate | update/rename | reference              |
-| core/docs/audits/\*.md                   | Audits                    | active | accurate | update/rename | reference              |
+| core/docs/reference/npm-audit-and-deprecations.md, reference/seo-audit.md | Audits (moved) | active | accurate | keep | reference |
 | core/docs/engineering/linting.md         | Linting                   | active | accurate | keep          | engineering            |
 | core/docs/features/TODO.md               | Project TODO              | active | accurate | consolidate   | master TODO            |
 | core/backend/docs/\*.md                  | Backend docs              | active | accurate | update/rename | engineering            |

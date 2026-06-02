@@ -26,6 +26,7 @@ After the first CI run on `main` each of these statuses will appear in the branc
 - `Prepare platform files`
 - `Frontend check`
 - `Backend check`
+- `Dependency audit`
 
 ### `PPCSL` (core)
 - `Backend Tests & Lint`
@@ -67,6 +68,7 @@ gh api --method PUT \
   -F 'required_status_checks.contexts[]=Prepare platform files' \
   -F 'required_status_checks.contexts[]=Frontend check' \
   -F 'required_status_checks.contexts[]=Backend check' \
+  -F 'required_status_checks.contexts[]=Dependency audit' \
   -F enforce_admins=true \
   -F 'required_pull_request_reviews.required_approving_review_count=0' \
   -F required_pull_request_reviews.dismiss_stale_reviews=true \
