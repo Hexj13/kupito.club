@@ -128,6 +128,8 @@ See also: [TECHNICAL.md §13.4.1 / §13.4.2](../../core/docs/architecture/TECHNI
 ### 1.1. Updating Environment Variables in Render.com
 
 **Backend Service (Render.com):**
+- Production requires `JWT_SECRET` (min 16 chars), `CRON_SECRET`, `DB_PASSWORD`, `REDIS_HOST`, and `REDIS_PORT`. Do not set `ALLOW_SMS_TEST_CODE` or `DB_SYNC=true` in production.
+- Prometheus or internal scrapers for `GET /metrics` must send header `x-cron-secret: <CRON_SECRET>` (endpoint is protected by `CronSecretGuard`).
 - Set `ONNXRUNTIME_NODE_INSTALL=skip` (or keep it in the Build Command as above; required so `onnxruntime-node` does not download GPU packages from NuGet during `npm ci`)
 - Set `NEXT_PUBLIC_COUNTRY=md`
 - Set `NEXT_PUBLIC_ENABLE_LANGUAGE_SWITCHER=true`
@@ -140,6 +142,12 @@ See also: [TECHNICAL.md §13.4.1 / §13.4.2](../../core/docs/architecture/TECHNI
 - **TWA / Digital Asset Links (before Play release):** set `MOBILE_APP_SHA256_FINGERPRINTS` to the Play App Signing SHA-256 (comma-separated if multiple). Optional `MOBILE_APP_PACKAGE_NAME` (`club.kupito.app`). Run `npm run mobile:assetlinks` locally to generate `assets/frontend/public/.well-known/assetlinks.json`, then `npm run prepare:build` before deploy, or rely on the dynamic `/.well-known/assetlinks.json` route when env vars are set.
 
 **Transactional email (optional):** To send verification and security emails from the API, set `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD`, and (recommended) `SMTP_FROM` and `FRONTEND_URL` on the **backend** service. See the core runbook [smtp-email-setup.md](../../core/docs/operations/smtp-email-setup.md) ([RU](../../core/docs/operations/smtp-email-setup-ru.md)) — local development, Render, Google Workspace.
+
+**Post-deploy checklist (web + TWA):**
+1. Run `cd core/backend && npm run migration:run:prod` after backend deploy.
+2. Verify `GET https://<domain>/.well-known/assetlinks.json` returns HTTP 200 and non-empty JSON before Play/TWA release.
+3. Set `MOBILE_APP_SHA256_FINGERPRINTS` on frontend (or commit generated `assetlinks.json` via `npm run mobile:assetlinks` + `npm run prepare:build`).
+4. Enable `mobileApp.enabled` in platform `config/site.ts` only after Play listing is live.
 
 ### 1.2. Database Verification
 
