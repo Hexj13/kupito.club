@@ -115,7 +115,7 @@ git config --global credential.helper store && echo "https://x-access-token:${GI
 cd core/backend && npm run migration:run:prod && npm run start:prod
 ```
 
-Run migrations before `start:prod` on every deploy so schema and code stay aligned. For zero-downtime deploys, use a Render **pre-deploy** / release command with the same migration step instead of only the start command.
+Run migrations before `start:prod` on every deploy so schema and code stay aligned. **Recommended:** configure Render **Pre-Deploy Command** as `cd core/backend && npm run migration:run:prod` and keep the start command as `cd core/backend && npm run start:prod` only, so migrations do not race with rolling restarts.
 
 Requirements:
 
@@ -137,6 +137,7 @@ See also: [TECHNICAL.md §13.4.1 / §13.4.2](../../core/docs/architecture/TECHNI
 **Frontend Service (Render.com):**
 - Set `NEXT_PUBLIC_COUNTRY=md`
 - Set `NEXT_PUBLIC_ENABLE_LANGUAGE_SWITCHER=true`
+- **TWA / Digital Asset Links (before Play release):** set `MOBILE_APP_SHA256_FINGERPRINTS` to the Play App Signing SHA-256 (comma-separated if multiple). Optional `MOBILE_APP_PACKAGE_NAME` (`club.kupito.app`). Run `npm run mobile:assetlinks` locally to generate `assets/frontend/public/.well-known/assetlinks.json`, then `npm run prepare:build` before deploy, or rely on the dynamic `/.well-known/assetlinks.json` route when env vars are set.
 
 **Transactional email (optional):** To send verification and security emails from the API, set `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD`, and (recommended) `SMTP_FROM` and `FRONTEND_URL` on the **backend** service. See the core runbook [smtp-email-setup.md](../../core/docs/operations/smtp-email-setup.md) ([RU](../../core/docs/operations/smtp-email-setup-ru.md)) — local development, Render, Google Workspace.
 
