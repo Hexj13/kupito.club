@@ -32,3 +32,11 @@ const outputPath = path.join(root, 'assets/frontend/public/.well-known/assetlink
 fs.mkdirSync(path.dirname(outputPath), { recursive: true });
 fs.writeFileSync(outputPath, `${JSON.stringify(assetLinks, null, 2)}\n`);
 console.log(`Wrote ${path.relative(root, outputPath)} for ${packageName}.`);
+
+const twaManifestPath = path.join(root, 'android/twa/twa-manifest.json');
+if (fs.existsSync(twaManifestPath)) {
+  const twaManifest = JSON.parse(fs.readFileSync(twaManifestPath, 'utf8'));
+  twaManifest.fingerprints = fingerprints;
+  fs.writeFileSync(twaManifestPath, `${JSON.stringify(twaManifest, null, 2)}\n`);
+  console.log(`Updated fingerprints in ${path.relative(root, twaManifestPath)}.`);
+}

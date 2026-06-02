@@ -58,4 +58,13 @@ The production App Signing SHA-256 fingerprint from Google Play must be added to
 assets/frontend/public/.well-known/assetlinks.json
 ```
 
+Generate the file from the platform root (also updates `android/twa/twa-manifest.json` fingerprints):
+
+```bash
+MOBILE_APP_SHA256_FINGERPRINTS="<Play App Signing SHA-256>" npm run mobile:assetlinks
+npm run prepare:build
+```
+
+On Render, set `MOBILE_APP_SHA256_FINGERPRINTS` (comma-separated) and optional `MOBILE_APP_PACKAGE_NAME` (`club.kupito.app`). The Next.js route `/.well-known/assetlinks.json` serves the static file when present, otherwise builds JSON from these environment variables.
+
 Do not commit placeholder fingerprints or signing credentials.
