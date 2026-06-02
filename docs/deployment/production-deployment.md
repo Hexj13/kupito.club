@@ -72,7 +72,7 @@ npm run clear-listings-and-users:prod
 
 ### 1.0. Deploy Flow (CI → Render Hooks)
 
-Deploys are gated by CI. The root workflow [.github/workflows/ci.yml](../../.github/workflows/ci.yml) runs `prepare` + `frontend-check` + `backend-check` in parallel, then the `deploy` job (only on `push: main`) triggers Render Deploy Hooks:
+Deploys are gated by CI. The root workflow [.github/workflows/ci.yml](../../.github/workflows/ci.yml) runs `prepare`, then `frontend-check` and `backend-check` in parallel (`frontend-check` includes ESLint, Prettier, `typecheck`, `knip`, unit tests, and build). `audit` runs `npm audit` at **critical** level (blocking). Optional jobs when repository variables are set: `frontend-lighthouse` (`vars.LIGHTHOUSE_URL`), `frontend-e2e-p0` (`vars.PLAYWRIGHT_BASE_URL`, mobile `@p0` smoke with `PLAYWRIGHT_SKIP_WEBSERVER=1`). The `deploy` job (only on `push: main`, after required checks) triggers Render Deploy Hooks:
 
 - `RENDER_FRONTEND_DEPLOY_HOOK` — frontend service webhook URL
 - `RENDER_BACKEND_DEPLOY_HOOK` — backend service webhook URL
@@ -112,8 +112,10 @@ git config --global credential.helper store && echo "https://x-access-token:${GI
 **Backend service — Start Command:**
 
 ```bash
-cd core/backend && npm run start:prod
+cd core/backend && npm run migration:run:prod && npm run start:prod
 ```
+
+Run migrations before `start:prod` on every deploy so schema and code stay aligned. For zero-downtime deploys, use a Render **pre-deploy** / release command with the same migration step instead of only the start command.
 
 Requirements:
 

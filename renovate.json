@@ -1,0 +1,18 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "packageRules": [
+    {
+      "matchPaths": ["core/backend/**"],
+      "groupName": "backend dependencies"
+    },
+    {
+      "matchPackagePatterns": ["^@aws-sdk/"],
+      "groupName": "aws-sdk"
+    },
+    {
+      "matchPackagePatterns": ["^@nestjs/"],
+      "groupName": "nestjs"
+    }
+  ]
+}

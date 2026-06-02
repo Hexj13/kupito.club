@@ -32,7 +32,9 @@ After the first CI run on `main` each of these statuses will appear in the branc
 - `Frontend Tests & Lint`
 - `TypeScript Type Check`
 
-Do NOT require `Dependency audit (non-blocking)` — it is intentionally `continue-on-error`.
+Optional CI jobs (enable via repo **Variables**, not required for merge by default): `Frontend Lighthouse` (`LIGHTHOUSE_URL`), `Frontend E2E @p0` (`PLAYWRIGHT_BASE_URL`).
+
+`Dependency audit` is blocking at **critical** severity (`npm audit --audit-level=critical`).
 
 ## Apply via GitHub UI
 
