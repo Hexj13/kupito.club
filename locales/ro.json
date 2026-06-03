@@ -150,7 +150,7 @@
     "emailVerificationResendOnCooldown": "Un email de confirmare a fost deja trimis. Poți solicita altul după ce expiră linkul din acel mesaj.",
     "googleSignInFailed": "Autentificarea Google a eșuat. Încearcă din nou.",
     "googleEmailNotVerified": "Emailul Google nu este verificat. Verifică-l în Google și încearcă din nou.",
-    "useGoogleSignIn": "Acest cont folosește autentificarea Google. Autentificarea cu parolă nu este disponibilă."
+    "useGoogleSignIn": "Pentru acest cont, folosiți autentificarea Google."
   },
   "cookieSettings": {
     "loading": "Se încarcă...",
@@ -1207,6 +1207,10 @@
     "lastName": "Nume",
     "lastNamePlaceholder": "Introduceți numele dvs.",
     "passwordChangeTitle": "Schimbare parolă",
+    "passwordSetTitle": "Setare parolă",
+    "passwordSetHint": "Autentificarea Google rămâne disponibilă. După setarea parolei, vă puteți autentifica și cu email sau telefon și această parolă.",
+    "passwordSetSuccess": "Parola a fost setată",
+    "passwordSetFillNew": "Introduceți parola nouă",
     "currentPasswordLabel": "Parola actuală",
     "newPasswordLabel": "Parola nouă",
     "changePasswordButton": "Schimbă parola",

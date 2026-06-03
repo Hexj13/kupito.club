@@ -150,7 +150,7 @@
     "emailVerificationResendOnCooldown": "Письмо с подтверждением уже отправлено. Запросить новое можно после истечения срока действия ссылки из этого письма.",
     "googleSignInFailed": "Не удалось войти через Google. Попробуйте ещё раз.",
     "googleEmailNotVerified": "Email в Google не подтверждён. Подтвердите его в Google и попробуйте снова.",
-    "useGoogleSignIn": "Этот аккаунт входит через Google. Вход по паролю недоступен."
+    "useGoogleSignIn": "Для этого аккаунта используйте вход через Google."
   },
   "cookieSettings": {
     "loading": "Загрузка...",
@@ -1207,6 +1207,10 @@
     "lastName": "Фамилия",
     "lastNamePlaceholder": "Введите вашу фамилию",
     "passwordChangeTitle": "Смена пароля",
+    "passwordSetTitle": "Установка пароля",
+    "passwordSetHint": "Вход через Google останется доступен. После установки пароля можно также входить по email или телефону и паролю.",
+    "passwordSetSuccess": "Пароль установлен",
+    "passwordSetFillNew": "Введите новый пароль",
     "currentPasswordLabel": "Текущий пароль",
     "newPasswordLabel": "Новый пароль",
     "changePasswordButton": "Сменить пароль",
