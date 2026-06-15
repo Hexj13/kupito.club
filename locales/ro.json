@@ -150,7 +150,12 @@
     "emailVerificationResendOnCooldown": "Un email de confirmare a fost deja trimis. Poți solicita altul după ce expiră linkul din acel mesaj.",
     "googleSignInFailed": "Autentificarea Google a eșuat. Încearcă din nou.",
     "googleEmailNotVerified": "Emailul Google nu este verificat. Verifică-l în Google și încearcă din nou.",
-    "useGoogleSignIn": "Pentru acest cont, folosiți autentificarea Google."
+    "useGoogleSignIn": "Pentru acest cont, folosiți autentificarea Google.",
+    "telegramSignInFailed": "Autentificarea Telegram a eșuat. Încearcă din nou.",
+    "telegramAuthExpired": "Sesiunea Telegram a expirat. Încearcă să te autentifici din nou.",
+    "telegramSignInUnavailable": "Autentificarea Telegram este temporar indisponibilă.",
+    "useTelegramSignIn": "Pentru acest cont, folosiți autentificarea Telegram.",
+    "useSocialSignIn": "Pentru acest cont, folosiți autentificarea prin rețea socială."
   },
   "cookieSettings": {
     "loading": "Se încarcă...",
@@ -331,9 +336,12 @@
     "greeting": "Bună!",
     "dividerOr": "sau",
     "continueWithGoogle": "Continuă cu Google",
-    "googleConsentPrefix": "Continuând cu Google, acceptați ",
-    "googleConsentConjunction": " și ",
-    "googleConsentSuffix": "."
+    "continueWithTelegram": "Continuă cu Telegram",
+    "oauthConsentPrefix": "Continuând, sunteți de acord cu ",
+    "oauthConsentTermsLink": "termenii de utilizare",
+    "oauthConsentConjunction": " și ",
+    "oauthConsentPrivacyLink": "politica de confidențialitate",
+    "oauthConsentSuffix": "."
   },
   "resetPassword": {
     "title": "Resetare parolă",
@@ -2221,7 +2229,7 @@
     "phoneRequiredTitle": "Verifică numărul de telefon",
     "phoneRequiredDescription": "Pentru a continua să folosești Kupito, confirmă numărul de telefon prin SMS. Acest lucru ajută la protejarea contului tău.",
     "phoneRequiredCurrent": "Număr de verificat",
-    "phoneRequiredContinue": "Trimite codul SMS",
+    "phoneRequiredContinue": "Confirmă",
     "businessOnboardingTitle": "Datele companiei",
     "businessOnboardingInfo": "Câmpurile opționale pot fi completate mai târziu în secțiunea „Profil”."
   },

@@ -150,7 +150,12 @@
     "emailVerificationResendOnCooldown": "Письмо с подтверждением уже отправлено. Запросить новое можно после истечения срока действия ссылки из этого письма.",
     "googleSignInFailed": "Не удалось войти через Google. Попробуйте ещё раз.",
     "googleEmailNotVerified": "Email в Google не подтверждён. Подтвердите его в Google и попробуйте снова.",
-    "useGoogleSignIn": "Для этого аккаунта используйте вход через Google."
+    "useGoogleSignIn": "Для этого аккаунта используйте вход через Google.",
+    "telegramSignInFailed": "Не удалось войти через Telegram. Попробуйте ещё раз.",
+    "telegramAuthExpired": "Сессия Telegram устарела. Попробуйте войти снова.",
+    "telegramSignInUnavailable": "Вход через Telegram временно недоступен.",
+    "useTelegramSignIn": "Для этого аккаунта используйте вход через Telegram.",
+    "useSocialSignIn": "Для этого аккаунта используйте вход через соцсеть."
   },
   "cookieSettings": {
     "loading": "Загрузка...",
@@ -331,9 +336,12 @@
     "greeting": "Привет!",
     "dividerOr": "или",
     "continueWithGoogle": "Продолжить с Google",
-    "googleConsentPrefix": "Продолжая вход через Google, вы принимаете ",
-    "googleConsentConjunction": " и ",
-    "googleConsentSuffix": "."
+    "continueWithTelegram": "Продолжить с Telegram",
+    "oauthConsentPrefix": "Продолжая, вы соглашаетесь с ",
+    "oauthConsentTermsLink": "условиями использования",
+    "oauthConsentConjunction": " и ",
+    "oauthConsentPrivacyLink": "политикой конфиденциальности",
+    "oauthConsentSuffix": "."
   },
   "resetPassword": {
     "title": "Сброс пароля",
@@ -2221,7 +2229,7 @@
     "phoneRequiredTitle": "Подтвердите номер телефона",
     "phoneRequiredDescription": "Чтобы продолжить пользоваться Kupito, подтвердите номер телефона по SMS. Это помогает защитить ваш аккаунт.",
     "phoneRequiredCurrent": "Номер для подтверждения",
-    "phoneRequiredContinue": "Отправить SMS-код",
+    "phoneRequiredContinue": "Подтвердить",
     "businessOnboardingTitle": "Данные компании",
     "businessOnboardingInfo": "Необязательные поля можно заполнить позже в разделе «Профиль»."
   },
