@@ -65,6 +65,10 @@ npm run partner:check-urls -- --partner autooutlet --userId=<UUID> --env=local
 
 `autooutlet:audit-stale` cross-references the user’s vehicle listings against the active PLP snapshot (registry or `--plp-file`). Source ids are resolved like seed-registry. Optional HTTP verification uses the AutoOutlet PDP URL pattern when not using `--skip-verify` or PLP-only trust mode.
 
+## Closing listings gone from the source
+
+Like CipAuto, `autooutlet:import --plp-file=... --remove-closed` closes the linked Kupito listing when PDP reports the source closed (HTTP 404/410 or sold template) or when the listing disappeared from the PLP; without `--remove-closed` such listings are only marked `source_only` in the registry and stay active. The PLP snapshot carries `meta.missingCandidateSourceIds` / `meta.closeEstimateSourceIds` so listings that left the PLP are still selected for PDP checks. Older snapshots without these arrays cannot drive closure — re-run `autooutlet:scan` or use `--source-id`.
+
 ## Auto-create brands/models
 
 Same flags as CipAuto: `--auto-create-brands`, `--auto-create-models`. Use brand auto-create only after manual review to avoid duplicates from title split issues.

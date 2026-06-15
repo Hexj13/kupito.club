@@ -67,7 +67,7 @@ npm run partner:check-urls -- --partner cipauto --userId=<UUID> --env=prod
 - `--limit=<n>`
 - `--resume`
 - `--dry-run`
-- `--remove-closed` — re-import paths that PDP marks as closed (same registry semantics as 999.md import)
+- `--remove-closed` — when PDP marks the source closed (HTTP 404/410 or sold template) or a listing has disappeared from the PLP, close the linked Kupito listing and set registry `closed`/`listing_closed`. Without this flag such listings are only marked in the registry as `source_only` and stay active on Kupito (same registry semantics as 999.md import). Listings that dropped off the PLP are still selected for PDP checks through `meta.missingCandidateSourceIds` in the snapshot when running with `--plp-file`.
 - `--only-failed`
 - `--update-existing`
 - `--source-id=<sourceListingId>`
@@ -122,7 +122,7 @@ Filesystem layout (registry + PLP + reports survive deploys only if this tree is
 Default paths under `<PARSING_RUNTIME_DIR or runtime/parsing>/cipauto/`:
 
 - `cipauto-registry.json` — registry history
-- `cipauto-current-plp.json` — active PLP snapshot
+- `cipauto-current-plp.json` — active PLP snapshot; `items` holds active cards, and `meta.missingCandidateSourceIds` / `meta.closeEstimateSourceIds` list ids that disappeared from the PLP (or were closed source-only) so a later `cipauto:import --plp-file=... --remove-closed` still selects them for PDP checks. Older snapshots without these arrays cannot drive closure for listings that left the PLP — re-run `cipauto:scan` or use `--source-id`.
 - `reports/cipauto-run-*.json` — import run reports
 - `reports/partner-url-check-cipauto-*.{json,csv}` — optional output from `npm run partner:check-urls -- --partner=cipauto ...`
 
