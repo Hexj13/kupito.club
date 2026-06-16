@@ -165,6 +165,57 @@ Ensure that:
    npm run migration:run:prod
    ```
 
+**Recommended Render settings (`kupito-backend`):**
+
+- **Pre-Deploy Command:** `cd core/backend && npm run migration:run:prod`
+- **Start Command:** `cd core/backend && npm run start:prod`
+
+Configure both in [Render Dashboard → kupito-backend → Settings](https://dashboard.render.com/web/srv-d4aca0a4d50c739u6f10/settings). Pre-deploy runs migrations before traffic switches; do not rely on manual Shell runs after each deploy.
+
+**Verify auth columns after deploy (read-only SQL):**
+
+```sql
+SELECT name, timestamp
+FROM migrations
+WHERE name LIKE '%Telegram%' OR name LIKE '%GoogleAuth%'
+ORDER BY timestamp;
+
+SELECT column_name
+FROM information_schema.columns
+WHERE table_name = 'users'
+  AND column_name IN ('telegram_id', 'telegram_username', 'google_id', 'auth_provider')
+ORDER BY column_name;
+```
+
+Expected: both migrations present (`AddGoogleAuthFields1792000000000`, `AddTelegramAuthToUser1824000000000`) and all four columns exist.
+
+**Smoke test after migration:**
+
+```bash
+curl -s -o /dev/null -w "%{http_code}" "https://kupito.onrender.com/api/listings/<listing-id>"
+```
+
+Expect `200` (or `404` if the listing was removed), not `500`.
+
+### 1.3. Troubleshooting: `column user.telegram_id does not exist`
+
+**Symptom:** `GET /api/listings/:id` returns HTTP 500; Sentry shows `QueryFailedError: column user.telegram_id does not exist`.
+
+**Cause:** Backend `User` entity expects `telegram_id` / `telegram_username` (migration `1824000000000-AddTelegramAuthToUser.ts`), but production Postgres schema was not updated before the new backend revision went live.
+
+**Fix:**
+
+1. Confirm migrations are in the deployed build (`dist/migrations/1824000000000-AddTelegramAuthToUser.js` exists after `npm run build`).
+2. Run read-only SQL above; if `telegram_id` is missing or the Telegram migration row is absent, apply pending migrations:
+   ```bash
+   cd core/backend
+   npm run migration:run:prod
+   ```
+3. Re-test the listing endpoint (smoke test above).
+4. Add **Pre-Deploy Command** on `kupito-backend` so future schema changes apply automatically on deploy.
+
+**Note:** Do not add a duplicate migration file — `1792000000000-AddGoogleAuthFields.ts` and `1824000000000-AddTelegramAuthToUser.ts` already exist and are idempotent.
+
 ---
 
 ## 🗑️ Clearing Data on Prod
