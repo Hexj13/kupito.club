@@ -1,7 +1,6 @@
 {
   "footer": {
     "copyright": "© 2025-2026 Kupito.club. Toate drepturile rezervate.",
-    "tagline": "Platformă pentru publicarea anunțurilor de vânzare auto în Moldova",
     "navTitle": "Navigare",
     "infoTitle": "Informații",
     "legalTitle": "Informații juridice",
@@ -15,7 +14,8 @@
     "cookieSettings": "Setări cookies",
     "contacts": "Contacte",
     "partnerImportSalesDescription": "Import și vânzare auto",
-    "partnerInfocarDescription": "Rapoarte de istoric auto"
+    "partnerInfocarDescription": "Rapoarte de istoric auto",
+    "tiktok": "Kupito.club pe TikTok"
   },
   "header": {
     "addListing": "Creează anunț",

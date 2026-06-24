@@ -1,7 +1,6 @@
 {
   "footer": {
     "copyright": "© 2025-2026 Kupito.club. Все права защищены.",
-    "tagline": "Платформа для публикации объявлений о продаже автомобилей в Молдове",
     "navTitle": "Навигация",
     "infoTitle": "Информация",
     "legalTitle": "Правовая информация",
@@ -15,7 +14,8 @@
     "cookieSettings": "Настройки cookies",
     "contacts": "Контакты",
     "partnerImportSalesDescription": "Импорт и продажа авто",
-    "partnerInfocarDescription": "Отчеты по истории авто"
+    "partnerInfocarDescription": "Отчеты по истории авто",
+    "tiktok": "Kupito.club в TikTok"
   },
   "header": {
     "addListing": "Создать объявление",

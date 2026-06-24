@@ -27,6 +27,11 @@ const config: SiteConfig = {
     iosUrl: null,
     androidPackageName: 'club.kupito.app',
   },
+  socialLinks: {
+    tiktok: 'https://www.tiktok.com/@kupito.club',
+    telegram: 'https://t.me/kupitoclub_bot',
+    whatsapp: 'https://wa.me/message/R3V326NKFJFGH1',
+  },
   footerPartnerLogoSurfaceDefault: 'light',
   footerPartners: [
     {
