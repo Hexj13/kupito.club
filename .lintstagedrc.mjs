@@ -1,6 +1,6 @@
 export default {
   'core/frontend/**/*.{ts,tsx}': (filenames) => [
-    `cd core/frontend && npx eslint --fix -c config/eslint.config.mjs ${filenames.join(' ')}`,
+    `cd core/frontend && npx eslint --fix ${filenames.join(' ')}`,
     `npx prettier --write --config core/frontend/.prettierrc ${filenames.join(' ')}`,
   ],
   'core/frontend/**/*.css': (filenames) => [
