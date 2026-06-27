@@ -1186,6 +1186,7 @@
     "mileage": "Пробег",
     "from": "от",
     "to": "до",
+    "rangeAny": "Не выбрано",
     "horsepower": "Мощность (л.с.)",
     "engine": "Объём (л)",
     "selectionLimitBrands": "Можно выбрать не более {max} марок.",

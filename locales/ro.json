@@ -1186,6 +1186,7 @@
     "mileage": "Kilometraj",
     "from": "de la",
     "to": "până la",
+    "rangeAny": "Neselectat",
     "horsepower": "Putere (CP)",
     "engine": "Motor (l)",
     "selectionLimitBrands": "Puteți selecta cel mult {max} mărci.",
