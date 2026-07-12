@@ -1,0 +1,15 @@
+---
+description: Frontend UI translations, theme, info/help components, and toast notifications
+globs: "core/frontend/**/*.{ts,tsx}"
+alwaysApply: false
+---
+
+# Frontend UI
+
+- Use translation keys for user-facing text and theme tokens for colors.
+- Reuse existing listing fields and responsive controls such as `MobileSelectField` and `ListingYearField`.
+- Use `InfoBlock` from `@/ui` for always-visible information (`info` or `warning`).
+- Use `HintTooltip` from `@/ui` for on-demand help; do not create custom `?` hints.
+- Use `toast` from `@/lib/toast` for success, error, and info notifications (`toast.success()` / `toast.error()` where applicable).
+- Do not create custom notification components or add emoji/checkmarks to toast text; the shared toaster handles icons, deduplication, and counters.
+- Component guidance: `core/docs/features/ui-components.md`.

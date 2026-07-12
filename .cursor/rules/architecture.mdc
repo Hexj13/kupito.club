@@ -1,0 +1,37 @@
+---
+description: Platform/core architecture, source-of-truth, build copy, scripts, and parser boundaries
+alwaysApply: true
+---
+
+# Platform and core boundaries
+
+- `core/` is the PPCSL submodule: frontend/backend implementation, database models, and all scripts.
+- Platform sources of truth live in root: `locales/`, `locales/backend/`, `theme/`, `config/`, and `assets/`.
+- Edit root sources, never generated copies in `core/frontend/lib/`, `core/frontend/public/`, or `core/backend/src/common/i18n/`.
+
+## Build copies
+
+- `locales/*.json` → `core/frontend/lib/locales/`
+- `locales/backend/*.json` → `core/backend/src/common/i18n/`
+- `theme/` → `core/frontend/lib/theme/`
+- `config/` → `core/frontend/lib/config/`
+- `config/parsers.ts` → `core/backend/src/common/config/parsers.ts`
+- `assets/frontend/public/*` → `core/frontend/public/`
+- `assets/backend/watermark/` → `core/backend/assets/watermark/`
+- Run `npm run prepare:build` after changing root platform sources; `npm run build` also copies them before building frontend.
+- CI verifies `core/frontend/lib/locales/ro.json`, theme/config, `core/frontend/public/logo.png`, backend `i18n/ro.json`, and watermark.
+
+## Scripts and parsers
+
+- Scripts belong in `core/backend/src/scripts/`; platform-specific scripts use `COUNTRY=md`, `checkPlatform(['md'])`, and `getPlatformConfig()` (for example `COUNTRY=md npx ts-node -r tsconfig-paths/register src/scripts/stage/seed.ts`).
+- Moldova platform data belongs in `core/backend/src/scripts/platforms/md/config.ts`.
+- Parser implementations and shared helpers (`cipauto-import`, `999md-import`, `partner-import-shared`) remain tracked in `core/backend/src/scripts/tools/`; `prepare:build` does not copy parser code.
+- Root `config/parsers.ts` is only the platform parser catalog copied to frontend and backend.
+- Never add root `parsers/` or restore `cp -r parsers/* core/backend/src/scripts/tools/`; it overwrites core-only parser commands.
+
+## Where to edit
+
+- Core feature or parser code → `core/`
+- Frontend/backend translations → root `locales/` / `locales/backend/`
+- Theme, config, assets → root source
+- Platform seed data → `core/backend/src/scripts/platforms/md/config.ts`

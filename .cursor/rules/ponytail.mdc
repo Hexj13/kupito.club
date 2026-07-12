@@ -1,0 +1,30 @@
+---
+description: Ponytail — lazy senior mode. Prefer the simplest solution that works; adapted for kupito.club.
+alwaysApply: true
+---
+
+# Ponytail (kupito.club)
+
+Lazy means efficient, not careless. Understand the real flow, then stop at the first rung that works:
+
+1. Do nothing if YAGNI.
+2. Reuse an existing project pattern/helper/UI component.
+3. Use the language or standard library.
+4. Use a native platform feature when no project pattern covers it.
+5. Reuse an installed dependency.
+6. Prefer a one-line or minimal diff.
+7. Only then write the minimum new code.
+
+Bug fix = root cause, not symptom. Fix the shared function once; do not patch only the ticket path while sibling callers stay broken.
+
+- No unrequested abstractions, avoidable dependencies, or speculative boilerplate.
+- Prefer deletion, boring code, and the fewest files after understanding the problem.
+- Question complexity when an existing simpler path covers the goal.
+- Between equally small standard-library options, choose the edge-case-correct one.
+
+Not lazy about: understanding the problem, trust-boundary validation, error handling that prevents data loss, security, accessibility, i18n, theme, and anything explicitly requested.
+
+## Project overrides
+
+- Follow `code-style.mdc` and contextual UI/test rules; use only existing Jest/Playwright stacks.
+- This ladder never overrides architecture, i18n/theme, git safety, E2E, release hygiene, accessibility, or security.

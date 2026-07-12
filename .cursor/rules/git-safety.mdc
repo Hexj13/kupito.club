@@ -1,0 +1,9 @@
+---
+description: Git commit safety rules — prevents accidental file deletions in core submodule
+alwaysApply: true
+---
+
+- In `core/`, never use `git add .`, `-A`, or `--all`; explicitly list every staged path.
+- Before a `core/` commit run `git diff --cached --name-status` and allow only intended files, with no unexpected `D` or `M`.
+- In root, use `git add .` only when the sole change is the intended `core` submodule ref; otherwise list paths.
+- Never stage deletions you did not make; warn the user.

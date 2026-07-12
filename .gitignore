@@ -28,6 +28,17 @@ core/backend/.env*
 .vscode/
 .idea/
 
+# Cursor: share rules/commands/skills in repo; keep local-only files private
+# (overrides ~/.config/git/ignore .cursor/ for listed paths)
+.cursor/*
+!.cursor/rules/
+!.cursor/commands/
+!.cursor/skills/
+!.cursor/rules/**
+!.cursor/commands/**
+!.cursor/skills/**
+!.cursor/README.md
+
 # Obsidian (local vault config)
 .obsidian/
 *.swp

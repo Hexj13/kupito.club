@@ -1,0 +1,11 @@
+---
+description: Required lint, format, test, and release-check entry points
+alwaysApply: true
+---
+
+- Verify proportionally to the change; run the full root `npm run release-check` for release/commit readiness.
+- Frontend (`core/frontend`): `npm run lint`, `lint:styles`, `format`, and `test`.
+- Backend (`core/backend`): `npm run lint:check`, `format`, and `test`; add `test:integration` when integration paths change.
+- Use existing Jest/Playwright stacks only; do not add ad-hoc test frameworks.
+- Do not modify ESLint, Stylelint, Prettier, or test configuration without discussion.
+- Detailed commands: `core/docs/engineering/linting.md`; contextual rules: `tests-english.mdc` and `e2e-playwright.mdc`.

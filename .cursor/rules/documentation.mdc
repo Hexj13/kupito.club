@@ -1,0 +1,12 @@
+---
+description: Documentation language and structure rules
+globs: "**/*.{md,mdc}"
+alwaysApply: false
+---
+
+- Write project docs in English; only language-suffixed docs and rules enforcing another language may differ. Translation files are not docs.
+- Search and update existing docs before creating new files.
+- Choose architecture, domains, engineering, operations, reference, or prompts per `core/docs/engineering/documentation-standards.md`.
+- Keep docs short and link instead of duplicating; update section README navigation when files move or are added.
+- Repo docs are stable source-of-truth; Obsidian is for research/ideas (`core/docs/engineering/obsidian-usage.md`).
+- Use kebab-case filenames, one H1, and required title/owner/type/scope/status frontmatter.

@@ -1,0 +1,16 @@
+---
+description: Pre-finish hygiene and release-check failure policy
+alwaysApply: true
+---
+
+- Before finishing, check the relevant architecture, translations, UI, test, E2E, docs, and legal rules; prefer small targeted fixes.
+- Root platform changes require `npm run prepare:build`; never fix source content in generated core copies.
+- Update docs only for changed behavior, setup, scripts, operations, or legal/data-processing details.
+- Data processing, partners, retention, redirects, or user obligations require reviewing `config/legal.ts`.
+
+## Release-check failures
+
+- Fix in order: lint → stylelint → format → tests → build, then rerun the full check.
+- Fix warnings as well as errors; never bypass them with disabled rules, weakened config, skipped steps, or `--max-warnings` unless the exception is already documented.
+- Frontend copy requires all frontend locales; API validation/messages/options require all backend locales.
+- Report only exit status, failed step, and exact errors/fixes unless the user asks for broader explanation.

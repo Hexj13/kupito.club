@@ -1,0 +1,24 @@
+---
+description: Brand/model catalog, canonical diacritics, URL slugs, seed scripts, and cache invalidation
+globs: "core/**/*{brand,Brand,model,Model,slug,Slug,seed,Seed}*.{ts,tsx}"
+alwaysApply: false
+---
+
+# Catalog data
+
+- `brands.name` is unique after lowercase, NFD diacritic removal, non-alphanumeric removal, and trim.
+- Store canonical spelling (`Citroën`, `Škoda`, `MINI`), never ASCII/case duplicates (`Citroen`, `Skoda`, `Mini`).
+- `vehicle_models` belongs to one brand through `brand_id`; `vehicleType` is `car`, `truck`, or `moto`.
+
+## Slugs
+
+- Use `createSlug`, `slugMatches`, and fallback-only `slugToName` from the shared slug utilities; do not reimplement them.
+- URLs omit diacritics (`citroen/c-elysee`); titles use database names (`Citroën C-Elysée`).
+- Resolve by `createSlug(name) === slug` before legacy lowercase-name fallback.
+
+## Data changes
+
+- Keep corresponding brand/model data synchronized in `core/backend/src/scripts/stage/` and `production/`.
+- Use `fix-brand-duplicates.ts` for canonical duplicate cleanup.
+- After database changes run `cd core/backend && npm run clear-cache:brands`.
+- Invalidate `brands:*`, `brands:models:*`, and `listings:search:*`.

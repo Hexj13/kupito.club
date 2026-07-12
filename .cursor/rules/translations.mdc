@@ -1,0 +1,10 @@
+---
+description: Translation and localization rules
+alwaysApply: true
+---
+
+- Frontend Next.js UI source: root `locales/{ro,ru,en}.json`.
+- Backend NestJS API/validation/options source: root `locales/backend/{ro,ru,en}.json`.
+- Add every key at the same location in all three files of its layer; never add one-language keys.
+- Run `npm run prepare:build` after changes and never edit generated core locale copies.
+- Frontend SEO metadata keys: `metadata.site.defaultTitle`, `defaultDescription`, and `keywords`.

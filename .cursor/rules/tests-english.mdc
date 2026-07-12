@@ -1,0 +1,10 @@
+---
+description: Tests must be written in English
+globs: "**/*.{test,spec,integration}.{ts,tsx}"
+alwaysApply: false
+---
+
+- Use English in `describe`/`it`, assertions, mock/fixture labels, placeholders, and mocked user-facing/error text.
+- Use English mock translations and `getByText`/`findByText` values; backend specs should mock `I18nService` to return English.
+- Locale strings are allowed only when the test explicitly verifies i18n behavior; prefer asserting keys when possible.
+- API contract tests should assert English field names and response structure rather than localized message literals.

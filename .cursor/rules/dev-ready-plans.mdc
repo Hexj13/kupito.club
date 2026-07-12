@@ -1,0 +1,32 @@
+---
+description: Dev-ready plans written in Russian with a fixed structure and implementation checklist
+alwaysApply: true
+---
+
+# Dev-ready plans
+
+A plan in Plan mode, `CreatePlan`, or a handoff must let another AI agent implement the task without hidden chat context or guesswork.
+
+## Plan language
+
+- Write the entire plan in Russian: title, headings, steps, acceptance criteria, and risks.
+- Keep paths, symbols, commands, environment variables, and code/config keys unchanged.
+- State in Russian that tests and docs must be implemented in English, except `*-ru` docs.
+- Do not mix Russian and English explanatory prose.
+
+## Required structure
+
+1. **Goal and value** — what changes and why.
+2. **Scope** — included work and explicit non-goals.
+3. **Concrete approach** — one chosen solution and existing patterns/APIs; no options or TBD.
+4. **Implementation steps** — order, paths, symbols, commands, and execution details.
+5. **Touch list** — primary files; distinguish root/`core/` and source-of-truth/generated files.
+6. **Must-consider checklist** — only relevant locales + `prepare:build`, theme/config/assets, tests, E2E, docs, legal, cache/scripts, and git/submodule items; mark the rest N/A briefly.
+7. **Acceptance criteria** — verifiable behavior and lint/test/release-check commands.
+8. **Risks and constraints** — breakage, migrations, rollout, and do-not-touch areas.
+
+## Prohibited
+
+- Relying on hidden context or leaving blocking alternatives or “optional if needed.”
+- Restating the problem without concrete steps or including implementation dumps.
+- Omitting affected docs/tests/locales/legal or making a small plan disproportionately large.

@@ -1,0 +1,38 @@
+---
+description: Backend layered architecture and DDD rules for core/backend
+globs: "core/backend/src/**/*.ts"
+alwaysApply: false
+---
+
+# Backend Architecture: Layered + DDD
+
+Reference: `core/docs/architecture/backend-overview.md`, `core/docs/architecture/backend-layers.md`
+
+## Dependencies
+
+`Presentation → Application → Domain`; Infrastructure implements Application/Domain ports. Dependencies point inward only.
+
+- Controllers validate DTOs, call a use case/service, and return responses. No business rules or direct DB/Redis/ORM access.
+- A use case has one public `execute()` and orchestrates domain, repositories, and cache. Move limits, statuses, and calculations to domain behavior.
+- Entities own invariants and state transitions through methods such as `publish()`; external code must not mutate state directly.
+- Domain services contain pure cross-entity rules with no NestJS, TypeORM, Redis, or HTTP dependencies.
+- Infrastructure owns TypeORM entities/repositories, query building, external adapters, and cache implementations.
+- Keep methods focused; split orchestration before a method exceeds 50 lines.
+
+## Boundaries
+
+- Bounded contexts: Listings, Auth, Users, Catalog, Favorites, SavedFilters, Admin, Upload, Geography.
+- A module owns and registers only its entities; communicate across modules through public services/ports.
+
+## Target module structure
+
+```
+module/
+├── presentation/    (controller, dto/)
+├── application/     (use-cases/, ports/)
+├── domain/          (entities/, value-objects/, services/, types.ts)
+├── infrastructure/  (persistence/, cache/)
+└── module.ts
+```
+
+New code follows this structure; migrate legacy code incrementally.

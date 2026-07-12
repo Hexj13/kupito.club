@@ -1,0 +1,9 @@
+---
+description: Agent language and code conventions
+alwaysApply: true
+---
+
+- Always respond in Russian
+- Follow existing code patterns and conventions
+- Use strict TypeScript, functional React/hooks, and small focused components
+- Do not add code comments unless the user explicitly asks

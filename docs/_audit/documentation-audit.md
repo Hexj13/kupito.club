@@ -46,9 +46,9 @@ last_updated: "2026-06"
 
 ### 1.2 Cursor rules (`.cursor/rules/*.mdc`)
 
-- testing-linting.mdc, project-specific.mdc, no-comments.mdc, release-check-failures.mdc, backend-architecture.mdc, documentation.mdc, build-process.mdc, tests-english.mdc, architecture.mdc, slugs-diacritics.mdc, translations.mdc, notifications.mdc, pre-release-hygiene.mdc, agents-parallel.mdc, code-style.mdc, brands-models.mdc
+- architecture.mdc, backend-architecture.mdc, catalog-data.mdc, code-style.mdc, dev-ready-plans.mdc, documentation.mdc, e2e-playwright.mdc, frontend-ui.mdc, git-safety.mdc, ponytail.mdc, pre-release-hygiene.mdc, testing-linting.mdc, tests-english.mdc, translations.mdc
 
-**Action:** Refactor in Phase 5 (doc-first, section choice, README nav, Obsidian boundary).
+**Action:** Keep global rules concise and use contextual rules for backend, catalog, docs, E2E, frontend UI, and tests.
 
 ### 1.3 Cursor commands (`.cursor/commands/*.md`)
 

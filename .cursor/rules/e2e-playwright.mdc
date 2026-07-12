@@ -1,0 +1,13 @@
+---
+description: Playwright E2E standards — mobile-first viewport matrix
+globs: "core/frontend/{e2e/**/*,playwright.config.ts}"
+alwaysApply: false
+---
+
+- Run mobile before desktop; every spec targets both unless `playwright.config.ts` assigns an existing documented viewport-only exception through `testIgnore`.
+- Never use in-spec `test.skip` for viewport mismatch.
+- Mobile search and listing fields use bottom sheets (`SearchFilters`, `MobileSelectField`, `ListingYearField` below `768px`).
+- Page objects must hide viewport differences: use `e2e/utils/viewport.ts` and `BottomSheetComponent`; do not branch in spec bodies.
+- Add `data-testid` only for flows needing stable selectors.
+- Mutating specs use cleanup helpers or isolated flows; run the full suite after changing shared-account flows.
+- Reference: `core/docs/guides/e2e-playwright-standards.md`.
