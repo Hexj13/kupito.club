@@ -92,7 +92,7 @@ Both Render services use `npm run prepare:build` — no ad-hoc `cp -r` steps. Th
 **Frontend service — Build Command (one line):**
 
 ```bash
-git config --global credential.helper store && echo "https://x-access-token:${GITHUB_PAT}@github.com" > ~/.git-credentials && git submodule update --init --recursive && npm ci && npm run prepare:build && cd core/frontend && npm ci && npm run build
+git config --global credential.helper store && echo "https://x-access-token:${GITHUB_PAT}@github.com" > ~/.git-credentials && rm -rf core .git/modules/core && git submodule update --init --recursive && npm ci && npm run prepare:build && cd core/frontend && npm ci && npm run build
 ```
 
 **Frontend service — Start Command:**
@@ -104,9 +104,10 @@ cd core/frontend && npm start
 **Backend service — Build Command (one line):**
 
 ```bash
-git config --global credential.helper store && echo "https://x-access-token:${GITHUB_PAT}@github.com" > ~/.git-credentials && git submodule update --init --recursive && npm ci && npm run prepare:build && cd core/backend && ONNXRUNTIME_NODE_INSTALL=skip npm ci && npm run build
+git config --global credential.helper store && echo "https://x-access-token:${GITHUB_PAT}@github.com" > ~/.git-credentials && rm -rf core .git/modules/core && git submodule update --init --recursive && npm ci && npm run prepare:build && cd core/backend && ONNXRUNTIME_NODE_INSTALL=skip npm ci && npm run build
 ```
 
+`rm -rf core .git/modules/core` is required on Render: the platform syncs submodules and then restores a build cache that can leave a non-empty `core/` directory, so a plain `git submodule update --init` fails with `destination path ... already exists and is not an empty directory`.
 `ONNXRUNTIME_NODE_INSTALL=skip` avoids `onnxruntime-node` postinstall downloading optional GPU binaries from NuGet (plate masking uses CPU only). CI sets the same via workflow `env`; Render has no default — without it, `npm ci` can fail with `ETIMEDOUT` to `api.nuget.org`.
 
 **Backend service — Start Command:**
