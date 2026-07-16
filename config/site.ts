@@ -28,7 +28,7 @@ const config: SiteConfig = {
     androidPackageName: 'club.kupito.app',
   },
   socialLinks: {
-    tiktok: 'https://www.tiktok.com/@kupito.club',
+    tiktok: 'https://www.tiktok.com/@kupito.club_moldova',
     telegram: 'https://t.me/kupitoclub_bot',
     whatsapp: 'https://wa.me/message/R3V326NKFJFGH1',
   },
