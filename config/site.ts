@@ -7,12 +7,13 @@ const config: SiteConfig = {
   locale: 'ro-MD',
   localeRouting: {
     defaultLocale: 'ro',
-    supportedLocales: ['ro', 'ru'],
-    prefixedLocales: ['ru'],
+    supportedLocales: ['ro', 'ru', 'en'],
+    prefixedLocales: ['ru', 'en'],
     enableLegacyDefaultLocaleRedirect: true,
     languageSwitcherTranslationKeys: {
       ro: 'common.languageRo',
       ru: 'common.languageRu',
+      en: 'common.languageEn',
     },
   },
   currency: 'EUR',

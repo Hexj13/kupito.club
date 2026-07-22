@@ -61,7 +61,7 @@
     "subtitle2": ". Cumpărați sau vindeți {category} pe ",
     "subtitle3": "gratuit",
     "descriptionIntro": "Această platformă este destinată cumpărării și vânzării de automobile în Moldova fără complicații inutile.",
-    "descriptionDetails": "Kupito.club îi ajută pe vânzători să publice rapid anunțuri, iar pe cumpărători să găsească automobilul potrivit după marcă, preț, an și alți parametri importanți. Reunim anunțuri private și oferte ale dealerilor într-o căutare comodă, astfel încât drumul de la interes la apel să fie cât mai scurt.",
+    "descriptionDetails": "Kupito.club îi ajută pe vânzători să publice rapid anunțuri, iar pe cumpărători să găsească automobilul potrivit după marcă, preț, an și alți parametri importanți. Reunim anunțuri unice de la proprietari și oferte ale dealerilor într-o căutare comodă, astfel încât drumul de la interes la apel să fie cât mai scurt.",
     "descriptionExpand": "Extinde",
     "descriptionCollapse": "Restrânge",
     "popularSearches": "Căutări populare"
@@ -157,7 +157,7 @@
     "goToHome": "Acasă",
     "today": "Astăzi",
     "daysAgo": "acum {days} zile",
-    "languageEn": "Engleză",
+    "languageEn": "English",
     "languageRo": "Română",
     "languageRu": "Русский",
     "languageLocaleCode": "{code}"
@@ -2317,15 +2317,15 @@
   "metadata": {
     "site": {
       "defaultTitle": "Autoturisme în Moldova",
-      "defaultDescription": "Cumpără sau vinde auto pe Kupito! Publică anunț gratuit.",
-      "homePageDescription": "Cumpără sau vinde auto pe Kupito! Publică anunț gratuit. Platformă pentru cumpărarea și vânzarea autoturismelor online în Moldova. Anunțuri auto Moldova - publicare gratuită de anunțuri pentru persoane fizice și dealeri auto.",
-      "homePageDescriptionWithBrand": "Cumpără autoturisme {brand} pe Kupito! Găsește cele mai bune prețuri și selecție de autoturisme {brand} în Moldova.",
-      "homePageDescriptionWithBrandModel": "Cumpără {brand} {model} pe Kupito! Găsește cele mai bune prețuri și selecție de autoturisme {brand} {model} în Moldova.",
+      "defaultDescription": "Cumpără sau vinde auto pe Kupito! Anunțuri unice de la proprietari și dealeri. Publicare gratuită.",
+      "homePageDescription": "Cumpără sau vinde auto pe Kupito! Publică anunț gratuit. Platformă pentru cumpărarea și vânzarea autoturismelor online în Moldova. Anunțuri unice de la proprietari și dealeri auto — publicare gratuită de anunțuri.",
+      "homePageDescriptionWithBrand": "Cumpără autoturisme {brand} pe Kupito! Anunțuri unice de la proprietari și dealeri — cele mai bune prețuri și selecție de {brand} în Moldova.",
+      "homePageDescriptionWithBrandModel": "Cumpără {brand} {model} pe Kupito! Anunțuri unice de la proprietari și dealeri — cele mai bune prețuri și selecție de {brand} {model} în Moldova.",
       "tiresDefaultTitle": "Anvelope în Moldova",
       "tiresHomePageDescription": "Cumpără sau vinde anvelope pe Kupito! Anunțuri gratuite pentru anvelope în Moldova: noi și uzate, diverse dimensiuni și sezoane.",
       "tiresHomePageDescriptionWithBrand": "Anvelope {brand} pe Kupito! Alegere și prețuri pentru anvelope {brand} în Moldova.",
       "tiresHomePageDescriptionWithBrandModel": "Anvelope {brand} {model} pe Kupito! Alegere și prețuri pentru {brand} {model} în Moldova.",
-      "organizationDescription": "Cumpără sau vinde auto pe Kupito! Publică anunț gratuit. Platformă pentru cumpărarea și vânzarea autoturismelor online în Moldova. Anunțuri auto Moldova.",
+      "organizationDescription": "Cumpără sau vinde auto pe Kupito! Anunțuri unice de la proprietari și dealeri. Platformă pentru cumpărarea și vânzarea autoturismelor online în Moldova.",
       "homeTitleTemplate": "Kupito.club: cumpără, vinde sau schimbă {category} în Moldova",
       "homeBrandTitleTemplate": "Cumpără {value} în Moldova pe Kupito.club",
       "categoryTitle": {
@@ -2339,6 +2339,9 @@
         "cumpărare auto online",
         "vânzare auto Moldova",
         "anunțuri auto Moldova",
+        "anunțuri unice auto",
+        "auto de la proprietari Moldova",
+        "dealeri auto Moldova",
         "autoturisme Chișinău",
         "mașini de vânzare Moldova",
         "anunțuri auto Chișinău",
@@ -2427,7 +2430,7 @@
       "titleWithPrice": "Cumpără {brand} în Moldova: autoturisme rulate și noi de la {price}",
       "description": "Răsfoiți anunțuri {brand} pe Kupito. Listări actuale din Republica Moldova.",
       "h1": "{brand} — de vânzare",
-      "intro": "Găsiți mașini {brand} verificate de la proprietari și dealeri.",
+      "intro": "Găsiți anunțuri unice {brand} de la proprietari și dealeri.",
       "ogAlt": "{brand} — anunțuri auto Kupito"
     },
     "brandModelLanding": {
@@ -2440,7 +2443,7 @@
     "listing": {
       "notFoundTitle": "Anunțul nu a fost găsit",
       "notFoundDescription": "Anunțul nu există sau nu este disponibil.",
-      "defaultDescription": "Cumpără sau vinde auto pe Kupito! Publică anunț gratuit.",
+      "defaultDescription": "Cumpără sau vinde auto pe Kupito! Anunțuri unice de la proprietari și dealeri. Publicare gratuită.",
       "titlePrefix": "Cumpără",
       "powerUnit": "C.P.",
       "inCity": "în",
