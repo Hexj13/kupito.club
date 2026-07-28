@@ -200,6 +200,7 @@ When PDP exposes a video URL, `999md:import` may request server-side ingest via 
 - unresolved subcategory -> `manual_review` (`UNMAPPED_SUBCATEGORY`)
 - brand/model resolution uses shared `BrandModelResolver` with `vehicleType`
 - parser reuses shared enum/color/equipment/field mapping pipeline
+- `availability`, `country_of_origin`, `owners_count`, `interior_color`, and `seats` are not on the 999.md advert payload (or not reliably extractable); import leaves them unset
 
 ## Tests
 

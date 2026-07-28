@@ -55,10 +55,12 @@ Scan safety: page 1 with 0 cards throws immediately; without `maxPages`, scan st
 
 1. **Fetch:** `GET https://autooutlet.md/vehicul/<id>-slug/` — SSR HTML with `main.autooutlet-single-vehicle`.
 2. **Status:** only from `.autooutlet-header-badges .badge` (`DISPONIBIL`, `În drum`, `La comandă`, `Rezervat` → active; `Vândut` → closed) or JSON-LD `offers.availability` (`InStock` vs `SoldOut`). Page-wide i18n strings like `"sold":"Vândut"` are ignored.
-3. **JSON-LD:** prefers `@type: Car` (fallback legacy `Product`) for title, brand/model, year, mileage, fuel, transmission, drive, body, color, price, and availability when DOM is missing.
-4. **Gallery:** extracts original image URLs from Next `/_next/image/?url=…` inside `.vehicle-gallery-simple` / `.autooutlet-gallery-*`; legacy `#gallery-data` and `wp-content/uploads` remain as fallback.
-5. **Specs / credit / description / options:** DOM selectors `.autooutlet-specifications`, `.autooutlet-price`, `.autooutlet-description-*`, `.autooutlet-options-grid`.
-6. **Brands:** same `/marci-modele/` list as PLP for multi-word title split.
+3. **Availability** (listing field, separate from source closed/active): header badges `DISPONIBIL`, `În drum`, `Rezervat` → `InStock`; `La comandă` → `OnOrder`. JSON-LD `offers.availability`: `InStock` / `LimitedAvailability` → `InStock`; `PreOrder` → `OnOrder`. Omitted when PDP is closed/sold.
+4. **Seats:** spec badges matching `N locuri` (integer 1–9).
+5. **JSON-LD:** prefers `@type: Car` (fallback legacy `Product`) for title, brand/model, year, mileage, fuel, transmission, drive, body, color, price, and availability when DOM is missing.
+6. **Gallery:** extracts original image URLs from Next `/_next/image/?url=…` inside `.vehicle-gallery-simple` / `.autooutlet-gallery-*`; legacy `#gallery-data` and `wp-content/uploads` remain as fallback.
+7. **Specs / credit / description / options:** DOM selectors `.autooutlet-specifications`, `.autooutlet-price`, `.autooutlet-description-*`, `.autooutlet-options-grid`.
+8. **Brands:** same `/marci-modele/` list as PLP for multi-word title split.
 
 Import still requires at least 2 uploaded images; closed PDPs are not created/updated.
 

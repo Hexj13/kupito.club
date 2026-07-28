@@ -220,6 +220,10 @@ npm run cipauto:audit-stale -- [--env local|prod] <userId> --plp-file <path-to-c
 - `missing_candidate`
 - `closed`
 
+## Поля, не маппятся с источника
+
+`availability`, `country_of_origin`, `owners_count`, `interior_color` и `seats` на HTML PDP CipAuto отсутствуют. Импорт их не заполняет; продавец может указать их в Kupito после импорта.
+
 ## Конвейер изображений
 
 Парсер не трансформирует файлы сам. Для каждого изображения:

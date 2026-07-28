@@ -231,6 +231,10 @@ The upload endpoint computes a blurhash for every image. The import pipeline col
 
 This preserves the same validation/watermark/format pipeline as regular website uploads.
 
+## Fields not mapped from source
+
+`availability`, `country_of_origin`, `owners_count`, `interior_color`, and `seats` are not available on CipAuto PDP HTML. Import leaves them unset; sellers can fill them in Kupito after import.
+
 ## Listing video (optional)
 
 When PDP exposes a video URL (for example `og:video` or a `<video>` source), `cipauto:import` may call `POST /api/upload/video/from-url` after create/update. Failures are logged and the import continues. See `core/docs/features/listings.md`.
