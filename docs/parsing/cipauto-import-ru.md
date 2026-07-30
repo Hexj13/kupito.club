@@ -61,6 +61,13 @@ npm run partner:check-urls -- --partner cipauto --userId=<UUID> --env=prod
 - `--env=local|prod`
 - `--delay=<ms>`
 
+## Пагинация PLP
+
+1. **Страница 1:** `GET /catalog-auto/?sort=newest`
+2. **Страница ≥ 2:** `GET /catalog-auto/page/{n}/?sort=newest`
+3. **maxPages:** из `#vehicles-pagination` / `.page-numbers` (`data-page` и `.current`), либо `ceil(#vehicles-count / pageSize)` при наличии ссылки на следующую страницу (legacy: `window.vehiclesData.maxPages`)
+
+Защита скана: пустая страница 1 сразу даёт ошибку; без `maxPages` скан останавливается после 2 пустых страниц подряд.
 ### Флаги `cipauto:import`
 
 - `--userId` — обязательный UUID владельца

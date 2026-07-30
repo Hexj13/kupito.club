@@ -59,6 +59,13 @@ npm run partner:check-urls -- --partner cipauto --userId=<UUID> --env=prod
 - `--env=local|prod`
 - `--delay=<ms>`
 
+## PLP pagination
+
+1. **Catalog page 1:** `GET /catalog-auto/?sort=newest`
+2. **Page ≥ 2:** `GET /catalog-auto/page/{n}/?sort=newest`
+3. **maxPages:** from `#vehicles-pagination` / `.page-numbers` (`data-page` and `.current`), or `ceil(#vehicles-count / pageSize)` when a next-page link exists (legacy: `window.vehiclesData.maxPages`)
+
+Scan safety: page 1 with 0 cards throws immediately; without `maxPages`, scan stops after 2 consecutive empty pages.
 ### `cipauto:import` flags
 
 - `--userId` required owner user UUID
