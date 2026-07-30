@@ -171,7 +171,7 @@ Legacy aliases are still supported (`CIPAUTO_*` auth/api/secret/debug).
 - `SITE999MD_ADVERT_BATCH_SIZE`
 - `SITE999MD_DEBUG=1`
 
-Admin parsing schedules use an HTTP availability probe for parser code `999md` (configured in `config/parsers.ts` as `availabilityProbe`): `GET https://999.md/ro/` plus paginated-style checks on `/ro/?probe={page}`.
+Admin parsing schedules use an HTTP availability probe for parser code `999md` (configured in `config/parsers.ts` as `availabilityProbe`): a single `GET` against the source base URL `https://999.md`.
 
 ## Runtime artifacts
 
