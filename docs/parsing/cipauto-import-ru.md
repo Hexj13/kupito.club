@@ -112,6 +112,20 @@ npm run partner:check-urls -- --partner cipauto --userId=<UUID> --env=prod
 - `CIPAUTO_MAX_RETRIES`
 - `CIPAUTO_DEFAULT_DELAY_MS`
 - `CIPAUTO_IMAGE_DELAY_MS`
+- `CIPAUTO_FLARESOLVERR_URL` — необязательный URL FlareSolverr (например `http://127.0.0.1:8191`). Если задан, HTML-запросы CipAuto (PLP/PDP/audit/проверка URL) идут через FlareSolverr `request.get` с одной уникальной browser-сессией на CLI-процесс. Нужен в production, когда Cloudflare отдаёт managed challenge (HTTP 403 «Just a moment...»). Не переиспользуйте cookie браузера с другого IP: clearance привязан к IP, а egress backend на Render отличается от отдельного сервиса FlareSolverr.
+- `CIPAUTO_FLARESOLVERR_TIMEOUT_MS` — таймаут challenge FlareSolverr в мс (по умолчанию `60000`)
+
+### Cloudflare / FlareSolverr
+
+CipAuto может стоять за Cloudflare Bot Management. Обычный Node `fetch` тогда получает challenge вместо HTML каталога.
+
+1. Локально: из `core/` выполните `docker compose up -d flaresolverr` (образ `ghcr.io/flaresolverr/flaresolverr:v3.5.0`, порт `127.0.0.1:8191`).
+2. Задайте `CIPAUTO_FLARESOLVERR_URL=http://127.0.0.1:8191` для backend/CLI.
+3. Смоук: `curl http://127.0.0.1:8191/health`, затем `npm run cipauto:scan -- --pages=1 --dry-run --env=local`.
+
+На Render поднимите FlareSolverr как **Private Service** (без публичного URL) в том же workspace и region, что `kupito-backend`, и задайте на backend `CIPAUTO_FLARESOLVERR_URL=http://<имя-сервиса>:8191`. Держите `ADMIN_PARSING_MAX_CONCURRENT_RUNS=1`, пока не подтвердите запас RAM. Не публикуйте FlareSolverr в интернет.
+
+Без `CIPAUTO_FLARESOLVERR_URL` Cloudflare challenge завершается короткой ошибкой с указанием на этот env (полный HTML challenge в лог не пишется).
 
 ## Артефакты рантайма
 

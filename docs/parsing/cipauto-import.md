@@ -111,6 +111,20 @@ Source-specific:
 - `CIPAUTO_MAX_RETRIES`
 - `CIPAUTO_DEFAULT_DELAY_MS`
 - `CIPAUTO_IMAGE_DELAY_MS`
+- `CIPAUTO_FLARESOLVERR_URL` — optional FlareSolverr base URL (for example `http://127.0.0.1:8191`). When set, CipAuto HTML fetches (PLP/PDP/audit/URL check) go through FlareSolverr `request.get` with one unique browser session per CLI process. Required in production when Cloudflare returns a managed challenge (HTTP 403 “Just a moment...”). Do not reuse browser cookies from another IP: Cloudflare clearance is IP-bound, and Render backend egress differs from a separate FlareSolverr service.
+- `CIPAUTO_FLARESOLVERR_TIMEOUT_MS` — FlareSolverr challenge timeout in ms (default `60000`)
+
+### Cloudflare / FlareSolverr
+
+CipAuto may sit behind Cloudflare Bot Management. Plain Node `fetch` then receives a challenge page instead of catalog HTML.
+
+1. Locally: from `core/`, run `docker compose up -d flaresolverr` (image `ghcr.io/flaresolverr/flaresolverr:v3.5.0`, bound to `127.0.0.1:8191`).
+2. Set `CIPAUTO_FLARESOLVERR_URL=http://127.0.0.1:8191` for the backend/CLI process.
+3. Smoke: `curl http://127.0.0.1:8191/health`, then `npm run cipauto:scan -- --pages=1 --dry-run --env=local`.
+
+On Render, run FlareSolverr as a **Private Service** (no public URL) in the same workspace and region as `kupito-backend`, then set `CIPAUTO_FLARESOLVERR_URL=http://<service-name>:8191` on the backend. Keep `ADMIN_PARSING_MAX_CONCURRENT_RUNS=1` until memory usage is confirmed. Never expose FlareSolverr to the public internet.
+
+Without `CIPAUTO_FLARESOLVERR_URL`, a Cloudflare challenge fails fast with a short error that points at this env var (full challenge HTML is not logged).
 
 ## Runtime artifacts
 

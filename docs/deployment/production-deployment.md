@@ -493,6 +493,7 @@ Ensure all environment variables are updated:
 - `COUNTRY=md` (in Backend, for scripts)
 - `DEFAULT_CURRENCY` (optional, in Backend) — default currency for new listings when not sent by client; should match platform `config/site.ts` `currency` (e.g. `EUR`)
 - `FXRATESAPI_API_KEY` (optional, in Backend) — API key for [FXRatesAPI](https://fxratesapi.com) to fetch exchange rates for approximate price in default currency (e.g. MDL→EUR)
+- `WEEKLY_VIEWS_DIGEST_ENABLED` (optional, in Backend) — weekly email digest for listing view counts; off when unset; set to `true` to enable cron sends and the profile UI toggle (via `GET /api/auth/me`)
 - Listing video (optional, Backend): MediaConvert + SNS webhook + related AWS variables — [listing-video-production-setup-ru.md](../../core/docs/guides/listing-video-production-setup-ru.md) (operators, Russian); API summary in [listings.md](../../core/docs/features/listings.md)
 
 ### 6.2. Website Operation Verification
