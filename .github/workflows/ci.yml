@@ -213,8 +213,11 @@ jobs:
       - name: Run E2E smoke @p0
         working-directory: ./core/frontend
         env:
+          COUNTRY: md
+          NEXT_PUBLIC_COUNTRY: md
           PLAYWRIGHT_BASE_URL: ${{ vars.PLAYWRIGHT_BASE_URL }}
           PLAYWRIGHT_SKIP_WEBSERVER: '1'
+          SMS_OUTBOUND_DISABLED: 'true'
         run: npm run test:e2e:p0 -- --project=mobile
 
   backend-check:

@@ -7,5 +7,6 @@ alwaysApply: true
 - Frontend (`core/frontend`): `npm run lint`, `lint:styles`, `format`, and `test`.
 - Backend (`core/backend`): `npm run lint:check`, `format`, and `test`; add `test:integration` when integration paths change.
 - Use existing Jest/Playwright stacks only; do not add ad-hoc test frameworks.
+- Playwright e2e is multi-platform (`md` + `al`): follow `e2e-playwright.mdc` — no country-hardcoded phones/locales outside `e2e/platform`.
 - Do not modify ESLint, Stylelint, Prettier, or test configuration without discussion.
 - Detailed commands: `core/docs/engineering/linting.md`; contextual rules: `tests-english.mdc` and `e2e-playwright.mdc`.

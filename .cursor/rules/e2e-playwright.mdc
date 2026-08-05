@@ -1,5 +1,5 @@
 ---
-description: Playwright E2E standards — mobile-first viewport matrix
+description: Playwright E2E standards — mobile-first viewport matrix + multi-platform
 globs: "core/frontend/{e2e/**/*,playwright.config.ts}"
 alwaysApply: false
 ---
@@ -10,4 +10,6 @@ alwaysApply: false
 - Page objects must hide viewport differences: use `e2e/utils/viewport.ts` and `BottomSheetComponent`; do not branch in spec bodies.
 - Add `data-testid` only for flows needing stable selectors.
 - Mutating specs use cleanup helpers or isolated flows; run the full suite after changing shared-account flows.
+- **Multi-platform:** one suite for all platforms (`COUNTRY=md` / `al`). Never hardcode phone prefixes (`+373`, `+355`), default locale cookies (`ro`/`sq`), or locale JSON paths (`ro.json`/`sq.json`). Use `getE2ePlatform()` / `buildUniquePlatformPhone` / `buildAvailablePlatformPhone` from `e2e/platform/contract.ts`.
+- After changing e2e in core, verify at least `@p0` on **both** platform repos after `prepare:build` + seed.
 - Reference: `core/docs/guides/e2e-playwright-standards.md`.
