@@ -19,4 +19,5 @@ export type FAQConfigWithLanguages = {
   ro?: FAQConfig;
   ru?: FAQConfig;
   en?: FAQConfig;
+  sq?: FAQConfig;
 };
