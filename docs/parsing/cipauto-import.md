@@ -208,6 +208,13 @@ npm run partner:check-urls -- --partner cipauto --userId=<UUID> [--env local|pro
 
 See `core/backend/docs/SCRIPTS.md` → **Partner listing URL check** for flag details.
 
+Partner-imported listings set `listings.is_parsed = true`. The platform 90-day auto-close cron **skips** those rows; use `--remove-closed` / `cipauto:audit-stale` for source-driven closure.
+
+```bash
+npm run partner:mark-parsed -- --partner=cipauto --userId=<UUID> --env=prod [--plp-file <path>] [--dry-run]
+npm run partner:reopen-parsed -- --partner=cipauto --userId=<UUID> --env=prod [--dry-run]
+```
+
 ## Stale listings audit
 
 When the issue is “active on Kupito but not in the latest PLP snapshot” (or you want to close listings gone from CipAuto), use:

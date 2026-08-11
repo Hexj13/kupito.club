@@ -86,6 +86,16 @@ Import still requires at least 2 uploaded images; closed PDPs are not created/up
 
 Like CipAuto, `autooutlet:import --plp-file=... --remove-closed` closes the linked Kupito listing when PDP reports the source closed (HTTP 404/410 or sold template) or when the listing disappeared from the PLP; without `--remove-closed` such listings are only marked `source_only` in the registry and stay active. The PLP snapshot carries `meta.missingCandidateSourceIds` / `meta.closeEstimateSourceIds` so listings that left the PLP are still selected for PDP checks. Older snapshots without these arrays cannot drive closure — re-run `autooutlet:scan` or use `--source-id`.
 
+Partner-imported listings set `listings.is_parsed = true` (migration backfill + create with partner keys). The platform 90-day auto-close cron **skips** `is_parsed` rows; use `--remove-closed` / `autooutlet:audit-stale` for source-driven closure.
+
+```bash
+# After a fresh PLP scan: mark registry/PLP-linked listings (any status)
+npm run partner:mark-parsed -- --partner=autooutlet --userId=<UUID> --env=prod [--plp-file <path>] [--dry-run]
+
+# Reopen Closed is_parsed listings still live on AutoOutlet (does not change last_updated_at)
+npm run partner:reopen-parsed -- --partner=autooutlet --userId=<UUID> --env=prod [--dry-run]
+```
+
 ## Auto-create brands/models
 
 Same flags as CipAuto: `--auto-create-brands`, `--auto-create-models`. Use brand auto-create only after manual review to avoid duplicates from title split issues.
