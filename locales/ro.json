@@ -183,7 +183,11 @@
     "telegramAuthExpired": "Sesiunea Telegram a expirat. Încearcă să te autentifici din nou.",
     "telegramSignInUnavailable": "Autentificarea Telegram este temporar indisponibilă.",
     "useTelegramSignIn": "Pentru acest cont, folosiți autentificarea Telegram.",
-    "useSocialSignIn": "Pentru acest cont, folosiți autentificarea prin rețea socială."
+    "useSocialSignIn": "Pentru acest cont, folosiți autentificarea prin rețea socială.",
+    "facebookSignInFailed": "Autentificarea Facebook a eșuat. Încearcă din nou.",
+    "facebookEmailRequired": "Facebook nu a furnizat un email. Adaugă un email în Facebook și încearcă din nou sau autentifică-te altfel.",
+    "facebookEmailAlreadyExists": "Există deja un cont cu acest email. Autentifică-te folosind metoda lui actuală.",
+    "useFacebookSignIn": "Pentru acest cont, folosiți autentificarea Facebook."
   },
   "cookieSettings": {
     "loading": "Se încarcă...",
@@ -372,7 +376,8 @@
     "oauthConsentTermsLink": "termenii de utilizare",
     "oauthConsentConjunction": " și ",
     "oauthConsentPrivacyLink": "politica de confidențialitate",
-    "oauthConsentSuffix": "."
+    "oauthConsentSuffix": ".",
+    "continueWithFacebook": "Continuă cu Facebook"
   },
   "resetPassword": {
     "title": "Resetare parolă",
@@ -2257,7 +2262,13 @@
     "scaling": {
       "title": "Scalare",
       "lead": "După validarea modelului de produs și comercial, pot fi analizate lansări pe piețe cu structură similară a cererii și probleme apropiate în segmentul anunțurilor auto:",
-      "items": ["Europa de Est", "Balcanii", "America Latină", "Africa", "Asia"]
+      "items": [
+        "Europa de Est",
+        "Balcanii",
+        "America Latină",
+        "Africa",
+        "Asia"
+      ]
     },
     "whyNow": {
       "title": "De ce acum",

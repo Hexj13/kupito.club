@@ -183,7 +183,11 @@
     "telegramAuthExpired": "Сессия Telegram устарела. Попробуйте войти снова.",
     "telegramSignInUnavailable": "Вход через Telegram временно недоступен.",
     "useTelegramSignIn": "Для этого аккаунта используйте вход через Telegram.",
-    "useSocialSignIn": "Для этого аккаунта используйте вход через соцсеть."
+    "useSocialSignIn": "Для этого аккаунта используйте вход через соцсеть.",
+    "facebookSignInFailed": "Не удалось войти через Facebook. Попробуйте ещё раз.",
+    "facebookEmailRequired": "Facebook не передал email. Добавьте email в Facebook и попробуйте снова или войдите другим способом.",
+    "facebookEmailAlreadyExists": "Аккаунт с таким email уже существует. Войдите в него текущим способом.",
+    "useFacebookSignIn": "Для этого аккаунта используйте вход через Facebook."
   },
   "cookieSettings": {
     "loading": "Загрузка...",
@@ -372,7 +376,8 @@
     "oauthConsentTermsLink": "условиями использования",
     "oauthConsentConjunction": " и ",
     "oauthConsentPrivacyLink": "политикой конфиденциальности",
-    "oauthConsentSuffix": "."
+    "oauthConsentSuffix": ".",
+    "continueWithFacebook": "Продолжить с Facebook"
   },
   "resetPassword": {
     "title": "Сброс пароля",
@@ -2257,7 +2262,13 @@
     "scaling": {
       "title": "Масштабирование",
       "lead": "После подтверждения продуктовой и коммерческой модели возможны запуски на рынках с близкой структурой спроса и похожими проблемами в сегменте автообъявлений:",
-      "items": ["Восточная Европа", "Балканы", "Латинская Америка", "Африка", "Азия"]
+      "items": [
+        "Восточная Европа",
+        "Балканы",
+        "Латинская Америка",
+        "Африка",
+        "Азия"
+      ]
     },
     "whyNow": {
       "title": "Почему сейчас",

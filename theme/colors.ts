@@ -42,6 +42,7 @@ const colors: ThemeColors = {
   newBadge: '#6AA4C6',
   brand: {
     telegram: '#229ED9',
+    facebook: '#1877F2',
   },
   semantic: {
     success: '#28A745',
