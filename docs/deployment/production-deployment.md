@@ -21,6 +21,7 @@ After deploying to production, perform the following actions:
 1. **Update environment variables** in Render.com:
    - `NEXT_PUBLIC_COUNTRY=md` (in Backend and Frontend)
    - `NEXT_PUBLIC_ENABLE_LANGUAGE_SWITCHER=true` (in Backend and Frontend)
+   - `NEXT_PUBLIC_ENABLE_MODEL_CATALOG=true` (in Backend and Frontend)
    - `COUNTRY=md` (in Backend, for scripts)
 
 2. **Clear data** (if needed):
@@ -134,12 +135,14 @@ See also: [TECHNICAL.md §13.4.1 / §13.4.2](../../core/docs/architecture/TECHNI
 - Set `ONNXRUNTIME_NODE_INSTALL=skip` (or keep it in the Build Command as above; required so `onnxruntime-node` does not download GPU packages from NuGet during `npm ci`)
 - Set `NEXT_PUBLIC_COUNTRY=md`
 - Set `NEXT_PUBLIC_ENABLE_LANGUAGE_SWITCHER=true`
+- Set `NEXT_PUBLIC_ENABLE_MODEL_CATALOG=true` (footer catalog block: popular manufacturers + “Car models” letter ranges, plus `/catalog/models/*`; also set on backend so `pages.xml` includes those URLs)
 - Set `COUNTRY=md` (for scripts)
 - Optional listing AI analysis: set `GEMINI_API_KEY`; optionally set `GEMINI_MODEL`, `GEMINI_MODEL_FALLBACK`, and `AI_REPORT_MAX_GENERATIONS_PER_HOUR` (default production quota is 5 new generations per user per hour)
 
 **Frontend Service (Render.com):**
 - Set `NEXT_PUBLIC_COUNTRY=md`
 - Set `NEXT_PUBLIC_ENABLE_LANGUAGE_SWITCHER=true`
+- Set `NEXT_PUBLIC_ENABLE_MODEL_CATALOG=true` (must match backend; rebuild frontend after changing this flag)
 - **TWA / Digital Asset Links (before Play release):** set `MOBILE_APP_SHA256_FINGERPRINTS` to the Play App Signing SHA-256 (comma-separated if multiple). Optional `MOBILE_APP_PACKAGE_NAME` (`club.kupito.app`). Run `npm run mobile:assetlinks` locally to generate `assets/frontend/public/.well-known/assetlinks.json`, then `npm run prepare:build` before deploy, or rely on the dynamic `/.well-known/assetlinks.json` route when env vars are set.
 
 **Transactional email (optional):** To send verification and security emails from the API, set `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD`, and (recommended) `SMTP_FROM` and `FRONTEND_URL` on the **backend** service. See the core runbook [smtp-email-setup.md](../../core/docs/operations/smtp-email-setup.md) ([RU](../../core/docs/operations/smtp-email-setup-ru.md)) — local development, Render, Google Workspace.
@@ -490,6 +493,7 @@ If for some reason you need to create test data on prod (e.g., for demonstration
 Ensure all environment variables are updated:
 - `NEXT_PUBLIC_COUNTRY=md` (in Backend and Frontend)
 - `NEXT_PUBLIC_ENABLE_LANGUAGE_SWITCHER=true` (in Backend and Frontend)
+- `NEXT_PUBLIC_ENABLE_MODEL_CATALOG=true` (in Backend and Frontend; omit on platforms that should hide the whole footer catalog block)
 - `COUNTRY=md` (in Backend, for scripts)
 - `DEFAULT_CURRENCY` (optional, in Backend) — default currency for new listings when not sent by client; should match platform `config/site.ts` `currency` (e.g. `EUR`)
 - `FXRATESAPI_API_KEY` (optional, in Backend) — API key for [FXRatesAPI](https://fxratesapi.com) to fetch exchange rates for approximate price in default currency (e.g. MDL→EUR)

@@ -15,7 +15,9 @@
     "contacts": "Contacte",
     "partnerImportSalesDescription": "Import și vânzare auto",
     "partnerInfocarDescription": "Rapoarte de istoric auto",
-    "tiktok": "Kupito.club pe TikTok"
+    "tiktok": "Kupito.club pe TikTok",
+    "popularManufacturers": "Producători auto populari:",
+    "carModels": "Modele auto:"
   },
   "header": {
     "addListing": "Creează anunț",
@@ -2262,13 +2264,7 @@
     "scaling": {
       "title": "Scalare",
       "lead": "După validarea modelului de produs și comercial, pot fi analizate lansări pe piețe cu structură similară a cererii și probleme apropiate în segmentul anunțurilor auto:",
-      "items": [
-        "Europa de Est",
-        "Balcanii",
-        "America Latină",
-        "Africa",
-        "Asia"
-      ]
+      "items": ["Europa de Est", "Balcanii", "America Latină", "Africa", "Asia"]
     },
     "whyNow": {
       "title": "De ce acum",
@@ -2300,6 +2296,11 @@
     "copyTitle": "Copiază",
     "openInNewTab": "Deschide în tab nou",
     "openEmail": "Deschide clientul de email"
+  },
+  "modelCatalog": {
+    "title": "Modele auto: {range}",
+    "description": "Catalog de mărci și modele auto din intervalul {range} cu anunțuri active pe Kupito.club.",
+    "empty": "Nu există anunțuri active în acest interval."
   },
   "verifyEmail": {
     "title": "Verificare adresă email",

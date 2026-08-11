@@ -15,7 +15,9 @@
     "contacts": "Контакты",
     "partnerImportSalesDescription": "Импорт и продажа авто",
     "partnerInfocarDescription": "Отчеты по истории авто",
-    "tiktok": "Kupito.club в TikTok"
+    "tiktok": "Kupito.club в TikTok",
+    "popularManufacturers": "Популярные производители авто:",
+    "carModels": "Модели авто:"
   },
   "header": {
     "addListing": "Создать объявление",
@@ -2300,6 +2302,11 @@
     "copyTitle": "Копировать",
     "openInNewTab": "Открыть в новой вкладке",
     "openEmail": "Открыть почтовую программу"
+  },
+  "modelCatalog": {
+    "title": "Модели авто: {range}",
+    "description": "Каталог марок и моделей автомобилей в диапазоне {range} с активными объявлениями на Kupito.club.",
+    "empty": "В этом диапазоне пока нет активных объявлений."
   },
   "verifyEmail": {
     "title": "Проверка адреса email",
