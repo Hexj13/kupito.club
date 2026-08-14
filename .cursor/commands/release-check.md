@@ -28,6 +28,6 @@
 
 5. **Re-run release-check** after each batch of fixes until it passes with **no errors and no warnings** in any step output (or only cases explicitly documented in project rules).
 
-6. `npm run release-check` already unsets `devdir` internally, so no extra wrapper is needed.
+6. `npm run release-check` already unsets `devdir`, `npm_config_devdir`, and `NPM_CONFIG_DEVDIR` internally, so no extra wrapper is needed.
 
 Do not skip any failing step. Do not stop while warnings remain unfixed. Fix all errors and all warnings per project rules (see `.cursor/rules/`).
