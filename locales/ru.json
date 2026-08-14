@@ -1772,6 +1772,7 @@
       "submitScheduleSave": "Сохранить",
       "logsTitle": "Журнал выполнения",
       "logsEmpty": "Лог отсутствует.",
+      "logsRetentionExpired": "Логи старше 30 дней удалены.",
       "reportTitle": "Отчёт о выполнении",
       "fileTitle": "Текущий PLP-файл",
       "fileEmpty": "PLP-файл недоступен.",

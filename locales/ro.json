@@ -1772,6 +1772,7 @@
       "submitScheduleSave": "Salvează",
       "logsTitle": "Jurnal de execuție",
       "logsEmpty": "Jurnalul lipsește.",
+      "logsRetentionExpired": "Jurnalele mai vechi de 30 de zile sunt șterse.",
       "reportTitle": "Raport de execuție",
       "fileTitle": "Fișierul PLP curent",
       "fileEmpty": "Fișierul PLP nu este disponibil.",
