@@ -11,7 +11,7 @@
     "prebuild": "node core/scripts/check-env.js",
     "build": "npm run prepare:build && cd core/frontend && npm run build",
     "build:backend": "cd core/backend && npm run build",
-    "dev": "npm run prepare:build && cd core && npm run dev",
+    "dev": "npm run prepare:build && node core/scripts/kill-ports.js 3000 4000 && npx --prefix core concurrently -n FE,BE -c cyan,magenta \"cd core/frontend && env -u PORT npm run dev\" \"cd core/backend && npm run start:dev\"",
     "seed": "COUNTRY=md npm run prepare:build && cd core/backend && COUNTRY=md npx ts-node -r tsconfig-paths/register src/scripts/stage/seed.ts",
     "reset-and-seed": "COUNTRY=md npm run prepare:build && cd core/backend && COUNTRY=md npx ts-node -r tsconfig-paths/register src/scripts/stage/reset-and-seed.ts",
     "add-brands": "cd core/backend && npx ts-node -r tsconfig-paths/register src/scripts/stage/add-brands.ts",
