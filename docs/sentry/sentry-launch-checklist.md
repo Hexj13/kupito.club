@@ -15,22 +15,20 @@ Shared checklist: **[core/docs/operations/sentry-launch-checklist.md](../../core
 ## ✅ What's Already Configured
 
 ### Basic Monitoring
-- ✅ **Errors** - automatic collection of JavaScript errors, unhandled rejections, API errors (>= 500)
-- ✅ **Performance Tracing** - 10% traces on client, 100% on server
-- ✅ **Session Replay** - recordings of all sessions with errors (100%), 10% of all sessions
-- ✅ **Structured Logs** - enabled for all runtimes
-- ✅ **Metrics** - enabled by default
+- ✅ **Errors** — JavaScript errors, unhandled rejections, API errors (>= 500)
+- ✅ **Performance tracing** — 5% traces (health checks excluded)
+- ✅ **Session Replay** — 20% of error sessions only; random sessions off
+- ❌ **Sentry logs, profiling, custom metrics** — off (quota)
 
 ### Cron Jobs Monitoring
-- ✅ **auto-close-old-listings** - monitoring automatic closing of old listings
-- ✅ **ip-block-cleanup** - IP block cleanup monitoring (every hour)
-- ✅ **refresh-token-cleanup** - expired token cleanup monitoring (daily at 2:00)
-- Endpoint `POST /listings/cron/close-old` available for external cron (no Sentry monitor; monitoring only via `auto-close-old-listings`)
-
-### Business Metrics
-- ✅ **users.registered** - registration counter (with attributes: user_type, has_email, has_phone)
-- ✅ **listings.created** - listing creation counter (with attributes: status, currency, vehicle_type, is_promoted)
-- ✅ **listings.searches** - search query counter (with attributes: has_filters, results_count, page, vehicle_type)
+- ✅ **auto-close-old-listings** (`0 0 * * *`)
+- ✅ **refresh-token-cleanup** (`0 2 * * *`)
+- ✅ **exchange-rates-fetch** (`30 2 * * *`)
+- ✅ **listing-views-retention** (`0 3 * * *`)
+- ✅ **parser-log-retention** (`0 3 * * *`)
+- ✅ **admin-audit-log-retention** (`0 4 * * *`)
+- Endpoint `POST /listings/cron/close-old` available for external cron (no Sentry monitor)
+- IP blocks use Redis TTL; there is no `ip-block-cleanup` job
 
 ## 📋 What to Do Before Launch
 
@@ -59,9 +57,11 @@ After first deploy, create monitors for cron jobs in Sentry:
 1. Go to **Alerts** → **Crons** → **Create Monitor**
 2. Create monitors for:
    - `auto-close-old-listings` (schedule: `0 0 * * *`)
-   - `ip-block-cleanup` (schedule: every hour)
    - `refresh-token-cleanup` (schedule: `0 2 * * *`)
-   - (monitor `close-old-listings-endpoint` removed — only in-process cron is used)
+   - `exchange-rates-fetch` (schedule: `30 2 * * *`)
+   - `listing-views-retention` (schedule: `0 3 * * *`)
+   - `parser-log-retention` (schedule: `0 3 * * *`)
+   - `admin-audit-log-retention` (schedule: `0 4 * * *`)
 
 Or they will be created automatically on first execution (if using `withMonitor` with config).
 
@@ -83,63 +83,23 @@ Set up notifications for critical issues:
 After deploying to production, verify:
 
 1. **Sentry Dashboard** → **Issues** - test events should appear (if any)
-2. **Performance** → **Transactions** - traces should appear
-3. **Metrics** → verify metrics are arriving:
-   - `users.registered`
-   - `listings.created`
-   - `listings.searches`
-4. **Crons** → verify monitors are created and working
+2. **Crons** → verify monitors are created and working
+3. **Performance** → a small sample of traces is enough; do not expect 100% coverage
 
 ## 🎯 What to Monitor After Launch
 
 ### Critical Metrics to Monitor:
 
 1. **Errors:**
-   - Error rate (should be < 1% of requests)
+   - Error rate
    - Critical errors (500, unhandled exceptions)
    - Registration/listing creation errors
 
-2. **Performance:**
-   - API response time (should be < 500ms for 95% of requests)
-   - Web Vitals (LCP < 2.5s, INP < 200ms, CLS < 0.1)
-   - Slow requests (> 1s)
-
-3. **Business Metrics:**
-   - `users.registered` - number of registrations
-   - `listings.created` - number of created listings
-   - `listings.searches` - number of search queries
-   - Registration to search ratio
-
-4. **Cron Jobs:**
-   - Successful execution of all cron jobs
-   - Execution time (should not exceed maxRuntime)
+2. **Cron Jobs:**
+   - Successful execution of live monitors
    - Missed executions (missed check-ins)
 
-## 📊 Optimization Recommendations
-
-### If Traffic is High:
-
-1. **Lower sample rates:**
-   - Client traces: already 10% (good)
-   - Server traces: can lower to 0.1-0.2 if needed
-   - Session Replay: can lower to 0.05 (5%)
-
-2. **Configure dynamic sampling:**
-   ```typescript
-   tracesSampler: ({ name }) => {
-     if (name.includes("health")) return 0.05;
-     if (name.includes("/api/")) return 0.5;
-     return 0.1;
-   }
-   ```
-
-3. **Metric filtering:**
-   - Use `beforeSendMetric` to filter unimportant metrics
-
-### If Traffic is Low:
-
-- Can increase sample rates for more detailed analysis
-- Enable more session replays for UX analysis
+Keep traces at 5%, session replay off except 20% of error sessions, and do not add Sentry logs/metrics/profiling unless quota has clear headroom.
 
 ## 🚨 Critical Issues to Watch For
 
@@ -151,16 +111,7 @@ After deploying to production, verify:
 
 ## 📝 Additional Improvements (can do later)
 
-1. **Add more metrics:**
-   - Listing views
-   - Contact clicks
-   - Conversions (registration after viewing)
-
-2. **Add structured logs for key operations:**
-   - Detailed logging of registration process
-   - Logging of listing creation with full context
-
-3. **Configure custom dashboards** in Sentry for metric visualization
+Do not add extra Sentry metrics, logs, or session replay until error monitoring is stable and the spans quota has clear headroom.
 
 ## ✅ Final Checklist Before Launch
 
@@ -169,8 +120,7 @@ After deploying to production, verify:
 - [ ] Test events arriving in Sentry
 - [ ] Monitors for cron jobs created (or will be created automatically)
 - [ ] Alerts configured for critical errors
-- [ ] Team knows where to look for metrics and errors
-- [ ] Action plan exists for critical issues
+- [ ] Team knows where to look for errors and crons
 
 ---
 

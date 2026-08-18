@@ -189,15 +189,13 @@ After adding variables and deploying:
 ## Configuration Details
 
 - **Sentry is active only in production** - disabled in development
-- **TracesSampleRate (Client): 0.1** - 10% of traces collected on client in production
-- **TracesSampleRate (Server/Edge): 1.0** - 100% of traces collected on server (can lower with high traffic)
-- **ReplaysOnErrorSampleRate: 1.0** - all sessions with errors are recorded
-- **ReplaysSessionSampleRate: 0.1** - 10% of all sessions are recorded
-- **enableLogs: true** - logging enabled
-- **consoleLoggingIntegration** - automatic sending of console.error and console.warn
-- **browserTracingIntegration** - automatic instrumentation of navigation, fetch requests and Web Vitals
-- **Metrics** - enabled by default (SDK 10.37.0 supports metrics)
-- **automaticVercelMonitors: true** - automatic monitoring of Vercel Cron Jobs (if using Vercel)
+- **TracesSampleRate: 0.05** - 5% of traces on client, server, and edge (backend also drops `/health`)
+- **ReplaysOnErrorSampleRate: 0.2** - 20% of sessions with errors are recorded
+- **ReplaysSessionSampleRate: 0** - random sessions are not recorded
+- **enableLogs: false** - Sentry logs are off (use app logging)
+- **browserTracingIntegration** - navigation and fetch traces; Web Vitals INP/long-task spans are off
+- **automaticVercelMonitors: false** - not used (app is not on Vercel crons)
+- **Profiling and custom Sentry metrics** - off
 
 ## What's Tracked
 
@@ -208,25 +206,15 @@ After adding variables and deploying:
 - ✅ Errors from Error Boundary (`app/error.tsx`)
 - ✅ Global React errors (`app/global-error.tsx`)
 - ✅ Critical API errors (status >= 500)
-- ✅ Performance Monitoring (navigation and request traces)
-  - Automatic instrumentation: page loads, navigations, fetch requests
-  - Web Vitals: LCP, INP, CLS, FCP, TTFB
-  - Distributed tracing for own API requests
-- ✅ Session Replay (error session recordings)
-- ✅ Structured Logs (logging via `Sentry.logger`)
-- ✅ Console errors and warnings (via `consoleLoggingIntegration`)
-- ✅ Metrics (counters, gauges, distributions)
+- ✅ Performance Monitoring (5% of navigation and request traces)
+- ✅ Session Replay on errors only (20% of error sessions)
 
 ### Backend
 
 - ✅ Server errors (status >= 500)
 - ✅ Unhandled exceptions
-- ✅ Performance Monitoring (HTTP request traces)
-  - Automatic instrumentation: API routes, Server Components
-- ✅ Profiling (performance profiling)
+- ✅ Performance Monitoring (5% of HTTP request traces; health checks excluded)
 - ✅ Request context (method, path, user)
-- ✅ Structured Logs (logging via `Sentry.logger`)
-- ✅ Metrics (counters, gauges, distributions)
 - ✅ Cron Jobs Monitoring (periodic task monitoring)
 
 ## Performance Tracing
@@ -239,7 +227,6 @@ Sentry automatically instruments most operations for performance tracing.
 
 - Page loads and navigation
 - Fetch requests to own API
-- Web Vitals (LCP, INP, CLS, FCP, TTFB)
 
 **Server:**
 
@@ -340,108 +327,11 @@ Sentry.init({
 
 ### Web Vitals
 
-SDK automatically tracks Web Vitals on each page load:
+Page-load transactions may still include basic vitals. INP and long-task spans are disabled to save quota.
 
-| Metric   | What it measures                            | Threshold (good) |
-| -------- | ------------------------------------------- | ---------------- |
-| **LCP**  | Largest Contentful Paint — load performance | ≤ 2.5s           |
-| **INP**  | Interaction to Next Paint — responsiveness  | ≤ 200ms          |
-| **CLS**  | Cumulative Layout Shift — visual stability  | ≤ 0.1            |
-| **FCP**  | First Contentful Paint — initial render     | ≤ 1s             |
-| **TTFB** | Time to First Byte — server response        | ≤ 100ms          |
+## Metrics and structured logs
 
-Web Vitals are displayed as measurements on page load transactions and affect Performance Score in Sentry.
-
-## Using Metrics
-
-Sentry Metrics allows sending counters, gauges, and distributions from the application to Sentry. Metrics can be viewed alongside errors and filtered by attributes.
-
-**Requirements:** SDK version 10.25.0+ (installed version 10.37.0 ✅)
-
-### Metric Types
-
-| Type           | Usage                                     |
-| -------------- | ----------------------------------------- |
-| `count`        | Events (orders, clicks, API calls)        |
-| `gauge`        | Current values (queue depth, connections) |
-| `distribution` | Value ranges (response time, data size)   |
-
-### Basic Usage
-
-```typescript
-import * as Sentry from "@sentry/nextjs";
-
-// Event counter
-Sentry.metrics.count("orders_created", 1);
-
-// Current value
-Sentry.metrics.gauge("active_connections", 42);
-
-// Value distribution
-Sentry.metrics.distribution("api_latency", 187, {
-  unit: "millisecond",
-});
-```
-
-### Attributes for Filtering
-
-Use attributes for filtering and grouping metrics:
-
-```typescript
-Sentry.metrics.count("api_calls", 1, {
-  attributes: {
-    endpoint: "/api/orders",
-    user_tier: "pro",
-    region: "us-west",
-    user_id: user.id,
-    order_id: order.id,
-  },
-});
-```
-
-**Important:** Each metric has a 2KB size limit. If exceeded, the metric will be dropped.
-
-### Units
-
-Specify units for `gauge` and `distribution`:
-
-```typescript
-Sentry.metrics.distribution("response_time", 187.5, {
-  unit: "millisecond",
-});
-
-Sentry.metrics.gauge("memory_usage", 1024, {
-  unit: "byte",
-});
-```
-
-Available units: `millisecond`, `second`, `byte`, `kilobyte`, `megabyte`, and others.
-
-## Using Structured Logs
-
-Sentry supports structured logging for quick debugging.
-
-### Basic Usage
-
-```typescript
-import * as Sentry from "@sentry/nextjs";
-
-// Different log levels
-Sentry.logger.trace("Entering function", { fn: "processOrder" });
-Sentry.logger.debug("Cache lookup", { key: "user:123" });
-Sentry.logger.info("Order created", { order_id: "order_456" });
-Sentry.logger.warn("Rate limit approaching", { current: 95, max: 100 });
-Sentry.logger.error("Payment failed", { reason: "card_declined" });
-Sentry.logger.fatal("Database unavailable", { host: "primary" });
-```
-
-### Parameterized Messages
-
-Use `fmt` for parameterized messages — values are extracted as searchable attributes:
-
-```typescript
-Sentry.logger.info(Sentry.logger.fmt`User ${userId} purchased ${productName}`);
-```
+Custom `Sentry.metrics.*` and `Sentry.logger.*` are **not used**. Keep them off so they do not consume the logs/metrics quota. Application logs stay in the existing logger.
 
 ## Cron Jobs Monitoring
 
@@ -451,7 +341,7 @@ Sentry allows monitoring periodic tasks (cron jobs) for alerts and metrics to he
 
 ### Automatic Vercel Cron Jobs Monitoring
 
-If app is hosted on Vercel and uses [Vercel Cron Jobs](https://vercel.com/docs/cron-jobs), monitoring is already set up automatically via `automaticVercelMonitors: true` in `next.config.js`.
+If the app used Vercel Cron Jobs, Sentry could instrument them via `automaticVercelMonitors`. This project keeps that flag **false**.
 
 **Note:** Automatic Vercel cron jobs instrumentation only works for Pages Router. App Router route handlers are not yet supported.
 
@@ -503,13 +393,16 @@ Available configuration options:
 
 ### Existing Cron Jobs in Project
 
-Project uses these cron jobs:
+Project uses these cron jobs with Sentry monitors:
 
-1. **`autoCloseOldListings`** - closing old listings (every day at midnight)
-2. **IP Block cleanup** - clearing expired IP blocks (every hour)
-3. **Refresh Token cleanup** - clearing expired refresh tokens (every day at 2:00)
+1. **`auto-close-old-listings`** — closing old listings (`0 0 * * *`)
+2. **`refresh-token-cleanup`** — expired refresh tokens (`0 2 * * *`)
+3. **`exchange-rates-fetch`** — daily FX rates (`30 2 * * *`)
+4. **`listing-views-retention`** — listing view retention (`0 3 * * *`)
+5. **`parser-log-retention`** — parser log retention (`0 3 * * *`)
+6. **`admin-audit-log-retention`** — admin audit log retention (`0 4 * * *`)
 
-All can be wrapped in `Sentry.withMonitor()` for monitoring.
+IP blocks are stored in Redis with TTL and do not need a cleanup cron.
 
 ## Useful Links
 

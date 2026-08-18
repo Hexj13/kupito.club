@@ -45,12 +45,14 @@ After deploying to production, perform the following actions:
 3. Run the needed script: `npm run <command>`
 
 **Example:**
+
 ```bash
 cd core/backend
 npm run clear-listings-and-users:prod
 ```
 
 **✅ Advantages of using scripts:**
+
 - Automatic DB connection (uses environment variables)
 - Security (no need to know DB password)
 - Convenience (all in one place)
@@ -130,6 +132,7 @@ See also: [TECHNICAL.md §13.4.1 / §13.4.2](../../core/docs/architecture/TECHNI
 ### 1.1. Updating Environment Variables in Render.com
 
 **Backend Service (Render.com):**
+
 - Production requires `JWT_SECRET` (min 16 chars), `CRON_SECRET`, `DB_PASSWORD`, `REDIS_HOST`, and `REDIS_PORT`. Do not set `ALLOW_SMS_TEST_CODE` or `DB_SYNC=true` in production.
 - Prometheus or internal scrapers for `GET /metrics` must send header `x-cron-secret: <CRON_SECRET>` (endpoint is protected by `CronSecretGuard`).
 - Set `ONNXRUNTIME_NODE_INSTALL=skip` (or keep it in the Build Command as above; required so `onnxruntime-node` does not download GPU packages from NuGet during `npm ci`)
@@ -140,6 +143,7 @@ See also: [TECHNICAL.md §13.4.1 / §13.4.2](../../core/docs/architecture/TECHNI
 - Optional listing AI analysis: set `GEMINI_API_KEY`; optionally set `GEMINI_MODEL`, `GEMINI_MODEL_FALLBACK`, and `AI_REPORT_MAX_GENERATIONS_PER_HOUR` (default production quota is 5 new generations per user per hour)
 
 **Frontend Service (Render.com):**
+
 - Set `NEXT_PUBLIC_COUNTRY=md`
 - Set `NEXT_PUBLIC_ENABLE_LANGUAGE_SWITCHER=true`
 - Set `NEXT_PUBLIC_ENABLE_MODEL_CATALOG=true` (must match backend; rebuild frontend after changing this flag)
@@ -148,6 +152,7 @@ See also: [TECHNICAL.md §13.4.1 / §13.4.2](../../core/docs/architecture/TECHNI
 **Transactional email (optional):** To send verification and security emails from the API, set `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD`, and (recommended) `SMTP_FROM` and `FRONTEND_URL` on the **backend** service. See the core runbook [smtp-email-setup.md](../../core/docs/operations/smtp-email-setup.md) ([RU](../../core/docs/operations/smtp-email-setup-ru.md)) — local development, Render, Google Workspace.
 
 **Post-deploy checklist (web + TWA):**
+
 1. Run `cd core/backend && npm run migration:run:prod` after backend deploy.
 2. Verify `GET https://<domain>/.well-known/assetlinks.json` returns HTTP 200 and non-empty JSON before Play/TWA release.
 3. Set `MOBILE_APP_SHA256_FINGERPRINTS` on frontend (or commit generated `assetlinks.json` via `npm run mobile:assetlinks` + `npm run prepare:build`).
@@ -156,6 +161,7 @@ See also: [TECHNICAL.md §13.4.1 / §13.4.2](../../core/docs/architecture/TECHNI
 ### 1.2. Database Verification
 
 Ensure that:
+
 - Migrations are applied (via Render Shell: `cd core/backend && npm run migration:run:prod` after a successful `npm run build`)
 - Database is accessible
 - DB connection environment variables are configured
@@ -242,6 +248,7 @@ Production cleanup script is already created and available. Run via Render Shell
    ```
 
 Script automatically:
+
 - ✅ Connects to database (uses Render environment variables)
 - ✅ Deletes all listings, users and related data
 - ✅ Shows deletion statistics
@@ -265,6 +272,7 @@ If for some reason you need to execute SQL directly:
      - Password
 
 2. **Connect via psql (locally):**
+
    ```bash
    psql "postgresql://username:password@host:port/database"
    ```
@@ -322,6 +330,7 @@ SELECT COUNT(*) FROM vehicles;
 All queries should return `0`.
 
 **Or via Render Dashboard:**
+
 - Render Dashboard → Your PostgreSQL Database → **Connect** → **psql**
 - Execute SQL queries above
 
@@ -385,8 +394,8 @@ If user registered only with phone (without email), you can assign admin by phon
 Verify that user became admin:
 
 ```sql
-SELECT id, email, phone, first_name, last_name, type, active 
-FROM users 
+SELECT id, email, phone, first_name, last_name, type, active
+FROM users
 WHERE type = 'Admin';
 ```
 
@@ -398,18 +407,20 @@ WHERE type = 'Admin';
 
 **✅ Cities are available immediately after deploy!**
 
-Cities are stored **directly in code** in file `core/backend/src/cities/cities.service.ts` and **do NOT require generation or loading into database**.
+Cities are stored **directly in code** in `core/backend/src/cities/data/{md,al}.ts` (registered in `cities.service.ts`) and **do NOT require generation or loading into database**.
 
 **How it works:**
-- Cities are hardcoded in service as array of objects
-- On first request they are cached in Redis
+
+- Cities are hardcoded as arrays of objects (`name` official local spelling, ASCII `nameEn`, optional `nameRu`)
+- On first request they are cached in Redis (cache key includes a version suffix so name updates invalidate previous entries)
 - Available via API endpoint `/api/cities`
 - Do not require migrations or seed scripts
 
 **Cities for Moldova are already added to code:**
-- All cities from configuration `platforms/md/config.ts` are already in `cities.service.ts`
-- Include Romanian names (`name`), English (`nameEn`) and Russian (`nameRu`)
-- Total ~90 cities in Moldova
+
+- All cities from configuration `platforms/md/config.ts` are already in `cities/data/md.ts`
+- Include Romanian names (`name`), English without diacritics (`nameEn`, e.g. `Chisinau`) and Russian (`nameRu`)
+- Total ~75 cities in Moldova
 
 ### 4.2. Problem: Wrong Cities Displayed
 
@@ -420,28 +431,25 @@ Cities are stored **directly in code** in file `core/backend/src/cities/cities.s
    - Ensure `NEXT_PUBLIC_COUNTRY=md` is set in Backend and Frontend Services
 
 2. **Clear cities cache in Redis:**
-   
+
    **Option 1: Via Render Shell (RECOMMENDED)**
-   
+
    Open Render Dashboard → Backend Service → **Shell** and execute:
+
    ```bash
    cd core/backend
    npm run clear-cache:prod
    ```
-   
+
    **Option 2: Via Redis CLI (if you have access)**
-   
+
    Connect to Redis and execute:
-   ```bash
-   redis-cli
-   KEYS cache:cities:*
-   DEL cache:cities:all
-   ```
-   
-   Or delete all keys with prefix:
+
    ```bash
    redis-cli --scan --pattern "cache:cities:*" | xargs redis-cli DEL
    ```
+
+   Current keys look like `cache:cities:md:all:v2` (country + version suffix). Do not use `KEYS` on production Redis.
 
 3. **Restart Backend Service:**
    - After clearing cache, restart Backend Service in Render Dashboard
@@ -449,11 +457,14 @@ Cities are stored **directly in code** in file `core/backend/src/cities/cities.s
 
 **Verification:**
 After deploy and cache clearing, you can verify cities availability:
+
 ```bash
 curl https://api.kupito.club/api/cities
 ```
 
-Should return Moldova cities (Chișinău, Bălți, Tiraspol, etc.).
+Should return Moldova cities (`name` with diacritics such as Chișinău, ASCII `nameEn` such as Chisinau, and `nameRu`).
+
+The Redis cities cache key is versioned (`v2`), so a deploy picks up new names without waiting for the 7-day TTL. Frontend HTTP cache for `/api/cities` can still serve the previous payload for up to an hour.
 
 ---
 
@@ -464,6 +475,7 @@ Should return Moldova cities (Chișinău, Bălți, Tiraspol, etc.).
 **❌ NO, data generation is NOT needed on prod.**
 
 Generation scripts (`seed.ts`, `reset-and-seed.ts`) are intended **only for test/development environments** and create:
+
 - Test users
 - Test listings
 - Test data
@@ -491,6 +503,7 @@ If for some reason you need to create test data on prod (e.g., for demonstration
 ### 6.1. Environment Variables Verification
 
 Ensure all environment variables are updated:
+
 - `NEXT_PUBLIC_COUNTRY=md` (in Backend and Frontend)
 - `NEXT_PUBLIC_ENABLE_LANGUAGE_SWITCHER=true` (in Backend and Frontend)
 - `NEXT_PUBLIC_ENABLE_MODEL_CATALOG=true` (in Backend and Frontend; omit on platforms that should hide the whole footer catalog block)
@@ -531,27 +544,32 @@ Ensure all environment variables are updated:
 ## 📝 Execution Checklist
 
 ### Before Deploy:
+
 - [ ] All code changes deployed
 - [ ] Environment variables updated in Render.com (backend: `ONNXRUNTIME_NODE_INSTALL=skip` or equivalent in Build Command)
 - [ ] Migrations applied to database
 
 ### After Deploy:
+
 - [ ] Website accessible and working
 - [ ] API accessible and working
 - [ ] Environment variables verified
 
 ### Data Cleanup (if needed):
+
 - [ ] All listings deleted
 - [ ] All users deleted
 - [ ] Related data cleared (favorites, views, filters)
 
 ### Admin Assignment:
+
 - [ ] User registered
 - [ ] Administrator assigned (by email or phone)
 - [ ] Admin can log in
 - [ ] Admin panel accessible
 
 ### Final Verification:
+
 - [ ] All functions work correctly
 - [ ] No errors in logs
 - [ ] Users can register and create listings
@@ -583,6 +601,7 @@ Ensure all environment variables are updated:
 ## 📞 Support
 
 If problems occur:
+
 1. Check logs in Render.com
 2. Check database logs
 3. Check environment variables
