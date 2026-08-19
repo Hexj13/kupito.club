@@ -40,7 +40,14 @@
     "loginAndRegister": "Autentificare și înregistrare",
     "brandName": "Kupito",
     "toggleMenu": "Comută meniul",
-    "more": "Mai mult"
+    "more": "Mai mult",
+    "catalogSearch": "Caută",
+    "catalogSearchPlaceholder": "Marcă, model sau an",
+    "catalogSearchClear": "Șterge căutarea",
+    "catalogSearchLoading": "Se caută…",
+    "catalogSearchEmpty": "Nicio potrivire",
+    "catalogSearchYearWithValue": "Anul: {year}",
+    "openCatalogSearch": "Deschide căutarea în catalog"
   },
   "home": {
     "title": "Vânzare auto în Moldova",
@@ -1073,6 +1080,9 @@
     "equipmentSortModePartial": "Potrivire parțială",
     "equipmentSortModeHint": "Potrivire completă: în anunț trebuie să fie toate opțiunile de echipament selectate. Potrivire parțială: este suficient ca în anunț să fie prezentă cel puțin una dintre opțiunile selectate.",
     "categoryLabel": "Categorie:",
+    "vehicleTypeCar": "Auto",
+    "vehicleTypeTruck": "Camion",
+    "vehicleTypeMoto": "Moto",
     "comingSoonHint": "În curând pe site!",
     "tireAlt": "Anvelope",
     "tiresCategory": "Anvelope",

@@ -40,7 +40,14 @@
     "loginAndRegister": "Вход и регистрация",
     "brandName": "Kupito",
     "toggleMenu": "Переключить меню",
-    "more": "Ещё"
+    "more": "Ещё",
+    "catalogSearch": "Поиск",
+    "catalogSearchPlaceholder": "Марка, модель или год",
+    "catalogSearchClear": "Очистить поиск",
+    "catalogSearchLoading": "Идёт поиск…",
+    "catalogSearchEmpty": "Ничего не найдено",
+    "catalogSearchYearWithValue": "Год: {year}",
+    "openCatalogSearch": "Открыть поиск по каталогу"
   },
   "home": {
     "title": "Продажа авто в Молдове",
@@ -1073,6 +1080,9 @@
     "equipmentSortModePartial": "Частичное совпадение",
     "equipmentSortModeHint": "Полное совпадение: в объявлении должны быть все выбранные опции комплектации. Частичное совпадение: достаточно, чтобы в объявлении была хотя бы одна из выбранных опций.",
     "categoryLabel": "Категория:",
+    "vehicleTypeCar": "Легковые",
+    "vehicleTypeTruck": "Грузовые",
+    "vehicleTypeMoto": "Мото",
     "comingSoonHint": "Скоро на сайте!",
     "tireAlt": "Шины",
     "tiresCategory": "Шины",
