@@ -106,10 +106,13 @@ locales/backend/{ro,ru,en}.json  → core/backend/src/common/i18n/
 theme/*.ts                       → core/frontend/lib/theme/
 config/*.ts, config/*.json       → core/frontend/lib/config/
 config/parsers.ts                → core/backend/src/common/config/parsers.ts
+config/site.ts                   → core/backend/src/common/config/site.ts
 theme/colors.ts (via script)     → core/frontend/lib/theme.json
 ```
 
 The script is the single source of truth — CI uses the same `npm run prepare:build`, so there is no drift between local and CI copies.
+
+Backend `config/site.ts` is written by `core/scripts/copy-backend-site-overlay.cjs` (strips `SiteConfig` types). That file and overlay i18n JSON except `en.json` are **not committed** to PPCSL; they exist only after `prepare:build`. Never stage them inside `core/`.
 
 **Core remains universal**, works for all platforms.
 

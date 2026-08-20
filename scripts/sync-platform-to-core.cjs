@@ -1,5 +1,6 @@
 "use strict";
 
+const { execFileSync } = require("child_process");
 const fs = require("fs");
 const path = require("path");
 
@@ -78,6 +79,12 @@ function main() {
   syncFile(
     path.join(root, "config/parsers.ts"),
     path.join(root, "core/backend/src/common/config/parsers.ts"),
+  );
+
+  execFileSync(
+    process.execPath,
+    [path.join(root, "core/scripts/copy-backend-site-overlay.cjs")],
+    { cwd: root, stdio: "inherit" },
   );
 
   const themeDir = path.join(root, "theme");

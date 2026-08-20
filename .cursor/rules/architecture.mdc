@@ -16,10 +16,12 @@ alwaysApply: true
 - `theme/` → `core/frontend/lib/theme/`
 - `config/` → `core/frontend/lib/config/`
 - `config/parsers.ts` → `core/backend/src/common/config/parsers.ts`
+- `config/site.ts` → `core/backend/src/common/config/site.ts`
 - `assets/frontend/public/*` → `core/frontend/public/`
 - `assets/backend/watermark/` → `core/backend/assets/watermark/`
 - Run `npm run prepare:build` after changing root platform sources; `npm run build` also copies them before building frontend.
-- CI verifies `core/frontend/lib/locales/ro.json`, theme/config, `core/frontend/public/logo.png`, backend `i18n/ro.json`, and watermark.
+- CI verifies copied overlay files **after** `prepare:build` (`core/frontend/lib/locales/ro.json`, theme/config, `core/frontend/public/logo.png`, backend `i18n/ro.json`, backend `config/site.ts`, watermark).
+- Do not commit generated overlay copies into PPCSL: `core/backend/src/common/config/site.ts` and `core/backend/src/common/i18n/{ro,ru,sq}.json` are gitignored (keep tracked `en.json`). Backend `site.ts` is written by `core/scripts/copy-backend-site-overlay.cjs`.
 
 ## Scripts and parsers
 
