@@ -21,7 +21,11 @@ const config: SiteConfig = {
   countryCode: 'MD',
   supportEmail: 'support@kupito.club',
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://kupito.club',
-  assetVersion: '20260313',
+  assetVersion: '20260821',
+  headerLogo: {
+    desktop: { width: 1612, height: 508 },
+    mobile: { width: 1612, height: 508 },
+  },
   mobileApp: {
     enabled: false,
     androidUrl: null,

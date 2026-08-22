@@ -101,6 +101,15 @@ function main() {
     path.join(root, "core/frontend/public"),
   );
 
+  syncFile(
+    path.join(root, "assets/frontend/public/favicon.ico"),
+    path.join(root, "core/frontend/app/favicon.ico"),
+  );
+  syncFile(
+    path.join(root, "assets/frontend/public/favicon-64.png"),
+    path.join(root, "core/frontend/app/icon.png"),
+  );
+
   const wmFrom = path.join(root, "assets/backend/watermark");
   const wmTo = path.join(root, "core/backend/assets/watermark");
   fs.mkdirSync(wmTo, { recursive: true });

@@ -13,8 +13,8 @@
   "backgroundColor": "#F5F5F5",
   "enableNotifications": false,
   "startUrl": "/",
-  "iconUrl": "https://kupito.club/logo.png?v=20260313",
-  "maskableIconUrl": "https://kupito.club/logo.png?v=20260313",
+  "iconUrl": "https://kupito.club/logo.png?v=20260821",
+  "maskableIconUrl": "https://kupito.club/logo.png?v=20260821",
   "splashScreenFadeOutDuration": 300,
   "signingKey": {
     "path": "/Users/tarantullo/kupito.club/android/twa/android.keystore",
