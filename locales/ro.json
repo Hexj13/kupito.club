@@ -629,7 +629,7 @@
     "registrationDateFormatError": "Data trebuie să fie în format lună.an (de exemplu: 05.2025). Luna trebuie să fie formată din două cifre.",
     "brandAndModelRequired": "Este necesar să selectați marca și modelul",
     "yearRangeErrorForm": "Anul trebuie să fie între 1940 și {maxYear}",
-    "imageFormatError": "Sunt acceptate doar imagini (JPEG, PNG, GIF, WebP)",
+    "imageFormatError": "Sunt acceptate doar imagini (JPEG, PNG, GIF, WebP, HEIC)",
     "imageSizeError": "Dimensiunea maximă a fișierului este 10MB",
     "imageEmptyError": "Fișierul este gol",
     "imageMaxCountError": "Maximum 20 de fotografii",

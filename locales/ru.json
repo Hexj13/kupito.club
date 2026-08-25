@@ -629,7 +629,7 @@
     "registrationDateFormatError": "Дата должна быть в формате месяц.год (например: 05.2025). Месяц должен состоять из двух цифр.",
     "brandAndModelRequired": "Необходимо выбрать марку и модель",
     "yearRangeErrorForm": "Год должен быть между 1940 и {maxYear}",
-    "imageFormatError": "Принимаются только изображения (JPEG, PNG, GIF, WebP)",
+    "imageFormatError": "Принимаются только изображения (JPEG, PNG, GIF, WebP, HEIC)",
     "imageSizeError": "Максимальный размер файла 10MB",
     "imageEmptyError": "Файл пуст",
     "imageMaxCountError": "Максимум 20 фотографий",
