@@ -17,17 +17,17 @@ tags:
 | docs/README.md                         | Kept as platform docs index; complements root README + core/docs/README.md            |
 | docs/popular-brands-sync.md            | core/docs/reference/popular-brands-sync.md (root file is redirect)                    |
 | assets/README.md                       | core/docs/reference/platform-assets.md (root file has summary + link)                 |
-| docs/sentry/sentry-setup.md            | Unchanged; top note points to core/docs/guides/SENTRY.md                              |
+| docs/sentry/sentry-setup.md            | Unchanged; top note points to core/docs/guides/sentry.md                              |
 | docs/sentry/sentry-launch-checklist.md | core/docs/operations/sentry-launch-checklist.md (root kept as platform-specific copy) |
-| core/docs/features/TODO.md             | core/docs/reference/documentation-todo.md (features/TODO.md is redirect)              |
+| core/docs/features/TODO.md             | core/docs/reference/documentation-todo.md (features/todo.md is redirect)              |
 
 ## Renamed
 
-- **Naming pass (partial):** Many doc filenames were standardized to kebab-case and links updated across the repo. Some legacy upper-case names still remain (for example `TECHNICAL.md`, `DEPLOYMENT.md`, `SENTRY.md`, `SITEMAP.md`).
+- **Naming pass:** Doc filenames in `docs/`, `core/docs/`, `core/backend/docs/`, and `core/frontend/docs/` are kebab-case (or `README.md`). Enforced by `core/scripts/check-doc-filenames.cjs`.
 
 ## Merged
 
-- Sentry: shared launch checklist merged into core/docs/operations/sentry-launch-checklist.md; setup remains in guides/SENTRY.md; platform sentry docs point to core.
+- Sentry: shared launch checklist merged into core/docs/operations/sentry-launch-checklist.md; setup remains in guides/sentry.md; platform sentry docs point to core.
 - Platform assets: merged into core/docs/reference/platform-assets.md.
 
 ## Deprecated
@@ -53,8 +53,8 @@ tags:
 
 ## TODO consolidation
 
-- All items from core/docs/features/TODO.md moved to core/docs/reference/documentation-todo.md
-- features/TODO.md replaced with redirect to documentation-todo.md
+- All items from core/docs/features/todo.md moved to core/docs/reference/documentation-todo.md
+- features/todo.md replaced with redirect to documentation-todo.md
 - core/docs/README.md and reference/README.md link to documentation-todo.md
 
 ## Tag taxonomy and rules
@@ -73,6 +73,5 @@ tags:
 
 ## Unresolved / backlog
 
-- Optional: rename all UPPER_SNAKE doc filenames in core to kebab-case and update internal links.
 - Optional: move more feature docs into domains/ with domain-based READMEs.
-- SITEMAP.md previously linked to non-existent SITEMAP_GSC_RUNBOOK.md; link replaced with operations/ and SEO audit.
+- sitemap.md previously linked to a missing GSC runbook; link replaced with operations/ and SEO audit.

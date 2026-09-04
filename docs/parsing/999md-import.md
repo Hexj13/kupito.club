@@ -136,7 +136,7 @@ cd core/backend
 npm run partner:check-urls -- --partner 999md --userId=<UUID> [--env local|prod] [--dry-run] [--limit=<n>] [--delay=<ms>]
 ```
 
-Flags: `--partner` `cipauto` or `999md` (required), `--userId` (required), `--env`, `--dry-run`, `--limit`, `--delay`. See `core/backend/docs/SCRIPTS.md` → **Partner listing URL check**.
+Flags: `--partner` `cipauto` or `999md` (required), `--userId` (required), `--env`, `--dry-run`, `--limit`, `--delay`. See `core/backend/docs/scripts.md` → **Partner listing URL check**.
 
 Partner-imported listings set `listings.is_parsed = true`. The platform 90-day auto-close cron **skips** those rows; source-driven closure remains `--remove-closed`.
 

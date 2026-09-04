@@ -71,10 +71,10 @@ last_updated: "2026-06"
 
 | Topic                 | Current SOT                                                                                   | After migration                                               |
 | --------------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
-| Sentry setup          | docs/sentry/sentry-setup.md + core/docs/guides/SENTRY.md                                      | core/docs/guides/SENTRY.md (+ platform env in root)           |
+| Sentry setup          | docs/sentry/sentry-setup.md + core/docs/guides/sentry.md                                      | core/docs/guides/sentry.md (+ platform env in root)           |
 | Popular brands script | docs/popular-brands-sync.md                                                                   | core/docs/reference/popular-brands-sync.md                    |
 | Platform assets       | assets/README.md + PLATFORM_CHECKLIST                                                         | core/docs/reference/platform-assets.md                        |
-| Deployment            | core/docs/guides/DEPLOYMENT.md (generic) + docs/deployment/production-deployment.md (Moldova) | Unchanged split                                               |
+| Deployment            | core/docs/guides/deployment.md (generic) + docs/deployment/production-deployment.md (Moldova) | Unchanged split                                               |
 | Platform setup        | docs/setup/setup.md                                                                           | Root docs/setup only                                          |
 
 ## 4. Gap analysis

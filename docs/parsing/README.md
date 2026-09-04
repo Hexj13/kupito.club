@@ -25,7 +25,7 @@ Platform-specific parser implementation and operations for `kupito.club`.
 - [cipauto-import-ru.md](./cipauto-import-ru.md) — same (Russian)
 - [999md-import.md](./999md-import.md) — 999.md GraphQL parser
 - [autooutlet-import.md](./autooutlet-import.md) — AutoOutlet.md HTML catalog + WordPress AJAX PLP + HTML PDP
-- Shared **`npm run partner:check-urls`** (CipAuto + 999.md + AutoOutlet, reports under each parser’s `reports/`) — see parser docs and `core/backend/docs/SCRIPTS.md`
+- Shared **`npm run partner:check-urls`** (CipAuto + 999.md + AutoOutlet, reports under each parser’s `reports/`) — see parser docs and `core/backend/docs/scripts.md`
 
 ### Admin UI (registry sync)
 
@@ -42,4 +42,4 @@ In **Admin → Parsing**, the manual PDP run form and **scheduler** PDP `config_
 ## Related core documentation
 
 - `core/docs/features/parsing-framework.md` — generic parsing runtime, parser catalog contract, admin orchestration
-- `core/backend/docs/SCRIPTS.md` — backend script operations and env notes
+- `core/backend/docs/scripts.md` — backend script operations and env notes

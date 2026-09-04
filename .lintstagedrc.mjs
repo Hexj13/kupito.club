@@ -19,4 +19,10 @@ export default {
   'theme/**/*.ts': (filenames) => [
     `npx prettier --write --config core/frontend/.prettierrc ${filenames.join(' ')}`,
   ],
+  '{docs,core/docs,core/backend/docs,core/frontend/docs}/*.md': () => [
+    'node core/scripts/check-doc-filenames.cjs',
+  ],
+  '{docs,core/docs,core/backend/docs,core/frontend/docs}/**/*.md': () => [
+    'node core/scripts/check-doc-filenames.cjs',
+  ],
 };

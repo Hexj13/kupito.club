@@ -23,8 +23,8 @@ Identify: modified/added/deleted files in `core/`, root `config/`, `locales/`, `
 
 - **Core:** `core/docs/` (README.md, documentation-architecture.md, architecture/, guides/, features/, reference/, operations/, engineering/, analytics/, scripts/, audits/)
 - **Root:** `docs/` (setup/, deployment/, sentry/ — platform-only)
-- **Backend:** `core/backend/docs/` (TESTING.md, SCRIPTS.md, README.md)
-- **Frontend:** `core/frontend/docs/` (README, STORYBOOK, DESIGN_SYSTEM)
+- **Backend:** `core/backend/docs/` (testing.md, scripts.md, README.md)
+- **Frontend:** `core/frontend/docs/` (README.md, storybook.md, design-system.md)
 
 **Rules:**
 

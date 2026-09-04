@@ -127,7 +127,7 @@ Requirements:
 - Frontend service's `prebuild` (`core/frontend/package.json`) also runs `sync-platform-to-core.cjs` + `write-theme-json.js` as a safety net — so a bare `cd core/frontend && npm run build` is self-sufficient if the submodule is already checked out. The canonical Build Command above still runs `npm run prepare:build` at the root once, which matches CI.
 - Do **not** add manual `cp -r locales core/frontend/lib/`, `cp -r theme core/frontend/lib/`, `cp -r config core/frontend/lib/`. They duplicate the sync script but skip the import rewrite in `lib/config/legal.ts` and silently break TypeScript compilation.
 
-See also: [TECHNICAL.md §13.4.1 / §13.4.2](../../core/docs/architecture/TECHNICAL.md) — full Render configuration reference.
+See also: [technical.md §13.4.1 / §13.4.2](../../core/docs/architecture/technical.md) — full Render configuration reference.
 
 ### 1.1. Updating Environment Variables in Render.com
 

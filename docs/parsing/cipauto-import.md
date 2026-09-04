@@ -195,7 +195,7 @@ Then:
 
 **Admin UI (PDP):** **Admin → Parsing → manual PDP** and **new PDP schedules** use the same `sync-hint` request after you select the PLP file, so the partner UUID field is prefilled the same way as in **Sync registry** (no `registrySyncEnabled` required for that read-only hint).
 
-Full script notes: `core/backend/docs/SCRIPTS.md` (Partner listing imports → **CipAuto registry seeding**).
+Full script notes: `core/backend/docs/scripts.md` (Partner listing imports → **CipAuto registry seeding**).
 
 ### `partner:check-urls` (saved URL health check)
 
@@ -206,7 +206,7 @@ cd core/backend
 npm run partner:check-urls -- --partner cipauto --userId=<UUID> [--env local|prod] [--dry-run] [--limit=<n>] [--delay=<ms>]
 ```
 
-See `core/backend/docs/SCRIPTS.md` → **Partner listing URL check** for flag details.
+See `core/backend/docs/scripts.md` → **Partner listing URL check** for flag details.
 
 Partner-imported listings set `listings.is_parsed = true`. The platform 90-day auto-close cron **skips** those rows; use `--remove-closed` / `cipauto:audit-stale` for source-driven closure.
 
@@ -226,7 +226,7 @@ npm run cipauto:audit-stale -- [--env local|prod] <userId> --plp-file <path-to-c
 
 Treating the PLP JSON as the source of truth for active `sourceId` values avoids slow per-URL checks when you trust the last full scan.
 
-Add **`--close`** only after you understand the audit categories (see `core/backend/docs/SCRIPTS.md` → **CipAuto stale listings audit**). Wrong closes affect live listings and promotions.
+Add **`--close`** only after you understand the audit categories (see `core/backend/docs/scripts.md` → **CipAuto stale listings audit**). Wrong closes affect live listings and promotions.
 
 ## Data lifecycle
 

@@ -196,7 +196,7 @@ npm run cipauto:seed-registry -- [--env local|prod] <userId>
 
 **Админка (PDP):** в **ручном PDP** и при **новом расписании PDP** после выбора файла PLP вызывается тот же `sync-hint`, что и в модалке синхронизации — поле UUID партнёра предзаполняется так же (для этого чтения не нужен `registrySyncEnabled`).
 
-Подробности скриптов: `core/backend/docs/SCRIPTS.md` (Partner listing imports → **CipAuto registry seeding**).
+Подробности скриптов: `core/backend/docs/scripts.md` (Partner listing imports → **CipAuto registry seeding**).
 
 ### `partner:check-urls` (проверка по сохранённому URL)
 
@@ -207,7 +207,7 @@ cd core/backend
 npm run partner:check-urls -- --partner cipauto --userId=<UUID> [--env local|prod] [--dry-run] [--limit=<n>] [--delay=<ms>]
 ```
 
-Флаги и смысл исходов — в `core/backend/docs/SCRIPTS.md` → **Partner listing URL check**.
+Флаги и смысл исходов — в `core/backend/docs/scripts.md` → **Partner listing URL check**.
 
 ## Аудит устаревших объявлений
 
@@ -220,7 +220,7 @@ npm run cipauto:audit-stale -- [--env local|prod] <userId> --plp-file <path-to-c
 
 Если доверяете последнему полному скану, JSON PLP как источник истины по активным `sourceId` избавляет от медленных проверок по URL.
 
-Флаг **`--close`** подключайте только после того, как разберётесь с категориями аудита (см. `core/backend/docs/SCRIPTS.md` → **CipAuto stale listings audit**). Ошибочное закрытие затрагивает живые объявления и промо.
+Флаг **`--close`** подключайте только после того, как разберётесь с категориями аудита (см. `core/backend/docs/scripts.md` → **CipAuto stale listings audit**). Ошибочное закрытие затрагивает живые объявления и промо.
 
 ## Жизненный цикл данных
 

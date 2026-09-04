@@ -102,7 +102,7 @@ Same flags as CipAuto: `--auto-create-brands`, `--auto-create-models`. Use brand
 
 ## Env overrides
 
-See `core/backend/docs/SCRIPTS.md` (`AUTOOUTLET_BASE_URL`, `AUTOOUTLET_REGISTRY_PATH`, `AUTOOUTLET_CURRENT_PLP_PATH`, `AUTOOUTLET_REPORTS_DIR`, request timeouts).
+See `core/backend/docs/scripts.md` (`AUTOOUTLET_BASE_URL`, `AUTOOUTLET_REGISTRY_PATH`, `AUTOOUTLET_CURRENT_PLP_PATH`, `AUTOOUTLET_REPORTS_DIR`, request timeouts).
 
 ## Release status
 
