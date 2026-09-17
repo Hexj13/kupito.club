@@ -31,6 +31,7 @@ core/backend/.env*
 # Cursor: share rules/commands/skills in repo; keep local-only files private
 # (overrides ~/.config/git/ignore .cursor/ for listed paths)
 .cursor/*
+.cursorignore
 !.cursor/rules/
 !.cursor/commands/
 !.cursor/skills/
